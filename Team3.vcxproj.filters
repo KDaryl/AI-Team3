@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Helper Headers">
+      <UniqueIdentifier>{db0beade-7215-4093-b177-99040a6ba7a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Helper Source">
+      <UniqueIdentifier>{f9e0f0cc-9535-40a3-a071-64843fef4295}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scene Headers">
+      <UniqueIdentifier>{c2aca898-4a3f-4b9c-b7ae-2d2d1a6dbbc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene Source">
+      <UniqueIdentifier>{755fe53c-589f-4084-9cdc-080981310e4b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header\Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\InputHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Vector2f.h">
+      <Filter>Header Files\Helper Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\CollisionCircle.h">
+      <Filter>Header Files\Helper Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\CollisionBox.h">
+      <Filter>Header Files\Helper Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\SceneManager.h">
+      <Filter>Header Files\Scene Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Scene.h">
+      <Filter>Header Files\Scene Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\ResourceManager.h">
+      <Filter>Header Files\Helper Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InputHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CollisionBox.cpp">
+      <Filter>Source Files\Helper Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CollisionCircle.cpp">
+      <Filter>Source Files\Helper Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Vector2f.cpp">
+      <Filter>Source Files\Helper Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneManager.cpp">
+      <Filter>Source Files\Scene Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ResourceManager.cpp">
+      <Filter>Source Files\Helper Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
