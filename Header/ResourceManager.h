@@ -7,20 +7,13 @@
 class ResourceManager
 {
 public:
-	ResourceManager(ResourceManager const&) = delete;
-	void operator=(ResourceManager const&) = delete;
-
-	static ResourceManager& getInstance();
-
-	void loadTexture(std::string name, std::string fileName);
+	ResourceManager();
+	~ResourceManager() {};
+	void loadTexture(std::string name, std::string fileName, bool smooth = false);
 
 	//Getters
 	sf::Texture& getTexture(std::string textureName);
-
-
 private:
-	ResourceManager();
-	~ResourceManager() {};
 	const std::string m_filePath = "./Resources/"; //All resources will be in this file path
 	std::map<std::string, sf::Texture> m_textureMap; //Our texture map
 };

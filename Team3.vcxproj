@@ -69,18 +69,20 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(projectDir)\Header;$(projectDir)\SFML\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(projectDir)\Header;$(projectDir)\SFML\include\;$(projectDir)\Thor 2.0\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(projectDir)\SFML\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(projectDir)\SFML\lib;$(projectDir)\Thor 2.0\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;thor-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -122,8 +124,11 @@
   <ItemGroup>
     <ClInclude Include="Header\CollisionBox.h" />
     <ClInclude Include="Header\CollisionCircle.h" />
+    <ClInclude Include="Header\Environment.h" />
     <ClInclude Include="Header\Game.h" />
+    <ClInclude Include="Header\GameScene.h" />
     <ClInclude Include="Header\InputHandler.h" />
+    <ClInclude Include="Header\Player.h" />
     <ClInclude Include="Header\ResourceManager.h" />
     <ClInclude Include="Header\Scene.h" />
     <ClInclude Include="Header\SceneManager.h" />
@@ -132,9 +137,12 @@
   <ItemGroup>
     <ClCompile Include="Source\CollisionBox.cpp" />
     <ClCompile Include="Source\CollisionCircle.cpp" />
+    <ClCompile Include="Source\Environment.cpp" />
     <ClCompile Include="Source\Game.cpp" />
+    <ClCompile Include="Source\GameScene.cpp" />
     <ClCompile Include="Source\InputHandler.cpp" />
     <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Player.cpp" />
     <ClCompile Include="Source\ResourceManager.cpp" />
     <ClCompile Include="Source\SceneManager.cpp" />
     <ClCompile Include="Source\Vector2f.cpp" />

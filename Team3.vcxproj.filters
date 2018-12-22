@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Scene Source">
       <UniqueIdentifier>{755fe53c-589f-4084-9cdc-080981310e4b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game Source">
+      <UniqueIdentifier>{209f9761-3fc7-40de-8a4f-86a81614f271}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game Headers">
+      <UniqueIdentifier>{bab7d70c-ed6d-44ff-abe5-d49e7faf0202}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Game.h">
@@ -51,6 +57,15 @@
     <ClInclude Include="Header\ResourceManager.h">
       <Filter>Header Files\Helper Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Player.h">
+      <Filter>Header Files\Game Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\GameScene.h">
+      <Filter>Header Files\Scene Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Environment.h">
+      <Filter>Header Files\Game Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -76,6 +91,15 @@
     </ClCompile>
     <ClCompile Include="Source\ResourceManager.cpp">
       <Filter>Source Files\Helper Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Player.cpp">
+      <Filter>Source Files\Game Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameScene.cpp">
+      <Filter>Source Files\Scene Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Environment.cpp">
+      <Filter>Source Files\Game Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -7,6 +7,15 @@ Game::Game() :
 	m_window(sf::VideoMode(1280, 720), "AI Project - Team 3")
 {
 	init();
+
+	//Add our scenes to our scene manager
+	m_sceneManager.addScene("Game Scene", &m_gameScene);
+
+	//Set current scene
+	m_sceneManager.setCurrentScene("Game Scene");
+
+	//Once all scenes are added, set all the textures
+	m_sceneManager.setTextures();
 }
 
 void Game::init()
@@ -64,7 +73,7 @@ void Game::update(double dt)
 
 void Game::render()
 {
-	m_window.clear(sf::Color::Black); //Clear all previously drawn items
+	m_window.clear(sf::Color::Blue); //Clear all previously drawn items
 
 	m_sceneManager.draw(m_window); //Draw our current scene
 
@@ -73,5 +82,9 @@ void Game::render()
 
 void Game::handleInput()
 {
+	//Update the input handler and see what buttons are pressed
 	m_inputHandler.update(m_window);
+
+	//Pass the input handler to the scnee manager
+	m_sceneManager.handleInput(m_inputHandler);
 }
