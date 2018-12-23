@@ -8,6 +8,8 @@ InputHandler::InputHandler()
 	m_current["A"] = false;
 	m_current["S"] = false;
 	m_current["D"] = false;
+	m_current["E"] = false;
+	m_current["Q"] = false;
 	m_current["Up"] = false;
 	m_current["Left"] = false;
 	m_current["Right"] = false;
@@ -41,6 +43,8 @@ void InputHandler::update(sf::RenderWindow& win)
 	m_current["A"] = sf::Keyboard::isKeyPressed(sf::Keyboard::A);
 	m_current["S"] = sf::Keyboard::isKeyPressed(sf::Keyboard::S);
 	m_current["D"] = sf::Keyboard::isKeyPressed(sf::Keyboard::D);
+	m_current["E"] = sf::Keyboard::isKeyPressed(sf::Keyboard::E);
+	m_current["Q"] = sf::Keyboard::isKeyPressed(sf::Keyboard::Q);
 	m_current["Up"] = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
 	m_current["Left"] = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
 	m_current["Right"] = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);

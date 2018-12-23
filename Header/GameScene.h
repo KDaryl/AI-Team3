@@ -1,6 +1,8 @@
 #pragma once
 #include "Scene.h"
 #include "Player.h"
+#include "Door.h"
+#include "Boundary.h"
 #include "Environment.h" //For corridors, rooms
 
 class GameScene : public Scene
@@ -23,5 +25,7 @@ private:
 	std::vector<sf::FloatRect> m_bgColliders; //Our colliders for our BG, this will determine wheter to draw the bg sprite or not
 	sf::FloatRect m_viewRect; //Rectangle for our view, we will use this to determine wheter to draw something or not
 	std::vector<Environment> m_environment; //Our vector fo rour environment, this will be our corridors and rooms
+	std::vector<Door> m_doors; //Our vector of door,s there will be many doors throughout the map
+	std::vector<Boundary> m_boundaries; //Our vector of boundaries
 };
 

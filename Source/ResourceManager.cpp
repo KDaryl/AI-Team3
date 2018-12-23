@@ -15,6 +15,7 @@ ResourceManager::ResourceManager()
 	loadTexture("Three Exit Room", "Environment/Three Exit Room.png", true);
 	loadTexture("Top Left Corner Room", "Environment/Top Left Corner Room.png", true);
 	loadTexture("Two Exit Room", "Environment/Two Exit Room.png", true);
+	loadTexture("Door", "Environment/Door.png", true);
 }
 
 void ResourceManager::loadTexture(std::string name, std::string fileName, bool smooth)

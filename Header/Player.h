@@ -20,16 +20,18 @@ public:
 
 	//Public variables
 	Vector2f m_position;
+	Vector2f m_velocity;
+	sf::FloatRect m_rangeCollider;
+	sf::Sprite m_sprite;
 private:
 	//Private methods
 	void setupAnimations();
 
 
-	Vector2f m_velocity, m_turnVector;
+	Vector2f m_turnVector;
 	float m_moveSpeed, m_turnSpeed, m_friction, m_angle, m_dt;
 
 	//Sprite and animation variables
-	sf::Sprite m_sprite;
 	thor::Animator<sf::Sprite, std::string> m_animator; //Animator
 
 	bool m_isMoving, m_turningLeft, m_turningRight;

@@ -66,6 +66,12 @@
     <ClInclude Include="Header\Environment.h">
       <Filter>Header Files\Game Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Door.h">
+      <Filter>Header Files\Game Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Boundary.h">
+      <Filter>Header Files\Game Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -99,6 +105,12 @@
       <Filter>Source Files\Scene Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Environment.cpp">
+      <Filter>Source Files\Game Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Door.cpp">
+      <Filter>Source Files\Game Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Boundary.cpp">
       <Filter>Source Files\Game Source</Filter>
     </ClCompile>
   </ItemGroup>

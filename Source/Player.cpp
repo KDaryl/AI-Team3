@@ -1,9 +1,11 @@
 #include "Player.h"
 
 Player::Player() :
+	m_position(320, 160),
 	m_moveSpeed(.2f),
 	m_turnSpeed(.075f),
-	m_friction(.9997f)
+	m_friction(.9997f),
+	m_rangeCollider(0,0, 186, 270)
 {
 	setupAnimations(); //Setup our animations
 }
@@ -23,6 +25,8 @@ void Player::update(double dt)
 	//Set the position and rotation of our sprites and colliders
 	m_sprite.setPosition(m_position.x, m_position.y);
 	m_sprite.setRotation(m_angle + 90); //Add offset of 90 due to the sprite being faced the wrong way
+	m_rangeCollider.left = m_position.x - m_rangeCollider.width / 2;
+	m_rangeCollider.top = m_position.y - m_rangeCollider.height / 2;
 }
 
 void Player::draw(sf::RenderWindow & win)
