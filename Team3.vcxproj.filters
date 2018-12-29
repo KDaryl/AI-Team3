@@ -75,9 +75,6 @@
     <ClInclude Include="Header\Door.h">
       <Filter>Header Files\Game Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Boundary.h">
-      <Filter>Header Files\Game Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Header\Collisions.h">
       <Filter>Header Files\Helper Headers</Filter>
     </ClInclude>
@@ -123,9 +120,6 @@
       <Filter>Source Files\Game Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Door.cpp">
-      <Filter>Source Files\Game Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Boundary.cpp">
       <Filter>Source Files\Game Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Collisions.cpp">

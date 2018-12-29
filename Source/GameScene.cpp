@@ -21,17 +21,6 @@ GameScene::GameScene()
 	m_environment.push_back(Environment("Straight Corridor Y Flipped", 958, 160));
 	m_environment.push_back(Environment("Straight Corridor", 1596, 160));
 
-	//Add our boundaries
-	m_boundaries.push_back(Boundary(0, -160, 640, 80, m_player));
-	m_boundaries.push_back(Boundary(560, -160, 80, 240, m_player));
-	m_boundaries.push_back(Boundary(640, 0, 640, 80, m_player));
-	m_boundaries.push_back(Boundary(1280, 0, 640, 80, m_player));
-
-	m_boundaries.push_back(Boundary(560, 240, 80, 240, m_player));
-	m_boundaries.push_back(Boundary(640, 240, 640, 80, m_player));
-	m_boundaries.push_back(Boundary(1280, 240, 640, 80, m_player));
-	m_boundaries.push_back(Boundary(0, -160, 80, 640, m_player));
-
 	//Add our doors
 	m_doors.push_back(Door(640, 160, m_player));
 }
@@ -43,11 +32,6 @@ GameScene::~GameScene()
 void GameScene::update(double dt)
 {
 	for (auto& object : m_doors)
-	{
-		object.update(dt);
-	}
-
-	for (auto& object : m_boundaries)
 	{
 		object.update(dt);
 	}
@@ -93,13 +77,6 @@ void GameScene::draw(sf::RenderWindow & window)
 			object.draw(window);
 		}
 	}
-
-	//********DEBUG PURPOSES********//
-	for (auto& object : m_boundaries)
-	{
-		object.draw(window);
-	}
-
 
 	//Draw the player
 	m_player.draw(window);

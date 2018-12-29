@@ -13,6 +13,9 @@ Player::Player() :
 	//Set our box parameters to our position and size and to NOT use gravity
 	m_physicsBody.setBoxParameters(m_position, Vector2f(62, 90), false);
 	m_physicsBody.setFriction(m_friction);
+
+	//Add our body to our physics world
+	physics::world->addPhysicsBody(m_physicsBody);
 }
 
 void Player::update(double dt)
@@ -75,7 +78,7 @@ void Player::handleInput(InputHandler & input)
 
 		m_turnVector = m_turnVector.normalise();
 
-		m_velocity += m_turnVector * m_moveSpeed * m_dt; //Calculate our speed
+		m_physicsBody.velocity += m_turnVector * m_moveSpeed * m_dt; //Calculate our speed
 
 		//Play our moving animation
 		if (m_animator.isPlayingAnimation() && m_animator.getPlayingAnimation() != "Moving" || !m_animator.isPlayingAnimation())

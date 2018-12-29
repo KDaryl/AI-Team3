@@ -13,7 +13,6 @@ PhysicsBody::PhysicsBody(Type _type, Shape _shape) :
 		bCollider = new CollisionBox();
 	else
 		cCollider = new CollisionCircle();
-
 }
 
 PhysicsBody::~PhysicsBody()
@@ -71,14 +70,18 @@ void PhysicsBody::setGravityScalar(float val)
 	gravityScalar = val;
 }
 
-void PhysicsBody::setBoxParameters(Vector2f startPos, Vector2f size, bool _useGravity)
+void PhysicsBody::setBoxParameters(Vector2f startPos, Vector2f _size, bool _useGravity)
 {
+	position = startPos;
+	size = _size;
 	bCollider->setSize(startPos.x, startPos.y, size.x, size.y);//Set size and position of the box collider
 	useGravity = _useGravity;
 }
 
-void PhysicsBody::setCircleParameters(Vector2f startPos, float radius, bool _useGravity)
+void PhysicsBody::setCircleParameters(Vector2f startPos, float _radius, bool _useGravity)
 {
+	position = startPos;
+	radius = _radius;
 	cCollider->setSize(startPos.x, startPos.y, radius);//Set radius and position of the circle collider
 	useGravity = _useGravity;
 }

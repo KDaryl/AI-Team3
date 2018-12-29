@@ -2,7 +2,6 @@
 #include "SFML/Graphics.hpp"
 #include "Thor/Animations.hpp"
 #include "ResourceManager.h"
-#include "Vector2f.h"
 #include "Player.h"
 
 ///

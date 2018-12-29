@@ -122,7 +122,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Header\Boundary.h" />
     <ClInclude Include="Header\CollisionBox.h" />
     <ClInclude Include="Header\CollisionCircle.h" />
     <ClInclude Include="Header\Collisions.h" />
@@ -140,7 +139,6 @@
     <ClInclude Include="Header\Vector2f.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Boundary.cpp" />
     <ClCompile Include="Source\CollisionBox.cpp" />
     <ClCompile Include="Source\CollisionCircle.cpp" />
     <ClCompile Include="Source\Collisions.cpp" />

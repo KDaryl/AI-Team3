@@ -6,7 +6,7 @@
 #include "ResourceManager.h" //For texture loading
 
 //For physics, we include these for every physics object
-#include "PhysicsHandler.h" 
+#include "PhysicsHandler.h"
 using namespace physics;
 
 class Player
