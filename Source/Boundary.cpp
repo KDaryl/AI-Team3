@@ -17,12 +17,7 @@ Boundary::~Boundary()
 
 void Boundary::update(double dt)
 {
-	//If the player is colliding with 
-	if (m_playerPtr->m_sprite.getGlobalBounds().intersects(m_collider))
-	{
-		auto fV = m_playerPtr->m_velocity * -1;
-		m_playerPtr->m_velocity += (fV * 2);
-	}
+
 }
 
 void Boundary::draw(sf::RenderWindow & win)

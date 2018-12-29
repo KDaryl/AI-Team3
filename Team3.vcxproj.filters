@@ -31,6 +31,12 @@
     <Filter Include="Header Files\Game Headers">
       <UniqueIdentifier>{bab7d70c-ed6d-44ff-abe5-d49e7faf0202}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Physics Source">
+      <UniqueIdentifier>{43e8f8cc-35ab-46fd-bbd0-d70ae249a484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Physics Header">
+      <UniqueIdentifier>{f9f02c3b-0394-4d6e-8e32-e38c28a852f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Game.h">
@@ -72,6 +78,15 @@
     <ClInclude Include="Header\Boundary.h">
       <Filter>Header Files\Game Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Collisions.h">
+      <Filter>Header Files\Helper Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\PhysicsBody.h">
+      <Filter>Header Files\Physics Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\PhysicsHandler.h">
+      <Filter>Header Files\Physics Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -112,6 +127,15 @@
     </ClCompile>
     <ClCompile Include="Source\Boundary.cpp">
       <Filter>Source Files\Game Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Collisions.cpp">
+      <Filter>Source Files\Helper Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PhysicsBody.cpp">
+      <Filter>Source Files\Physics Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PhysicsHandler.cpp">
+      <Filter>Source Files\Physics Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
