@@ -7,11 +7,11 @@ public:
 	PhysicsHandler();
 	~PhysicsHandler();
 
-	void update(float dt);
-	void draw(sf::RenderWindow& window);
+	static void update(float dt);
+	static void draw(sf::RenderWindow& window);
 
-	void addPhysicsBody(PhysicsBody& body);
-	void deletePhysicsBody(PhysicsBody& body);
+	static void addPhysicsBody(PhysicsBody& body);
+	static void deletePhysicsBody(PhysicsBody& body);
 
 private:
 	std::vector<PhysicsBody*> bodies; //The vector of physics bodies, these are pointers

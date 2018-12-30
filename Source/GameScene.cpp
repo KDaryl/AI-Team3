@@ -82,6 +82,9 @@ void GameScene::draw(sf::RenderWindow & window)
 	m_player.draw(window);
 
 	drawMinimap(window); //Draw the mini map
+
+	//Set the windows view
+	window.setView(m_followView);
 }
 
 void GameScene::drawMinimap(sf::RenderWindow & window)
