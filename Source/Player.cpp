@@ -1,17 +1,18 @@
 #include "Player.h"
 
-Player::Player() :
-	m_position(320, 160),
+Player::Player(float x, float y) :
+	m_position(x, y),
 	m_moveSpeed(.2f),
 	m_turnSpeed(.075f),
 	m_friction(.9997f),
 	m_rangeCollider(0,0, 186, 255),
-	m_physicsBody(Type::Dynamic, Shape::Box, this)
+	m_physicsBody(Type::Dynamic, Shape::Circle, this)
 {
 	setupAnimations(); //Setup our animations
 
 	//Set our box parameters to our position and size and to NOT use gravity
-	m_physicsBody.setBoxParameters(Vector2f(m_position.x, m_position.y), Vector2f(62, 85), false);
+	m_physicsBody.setCircleParameters(Vector2f(m_position.x, m_position.y), 30, 1, false);
+	//m_physicsBody.setBoxParameters(Vector2f(m_position.x, m_position.y), Vector2f(62, 85), 1, false);
 	m_physicsBody.setFriction(m_friction);
 
 	//Add our body to our physics world

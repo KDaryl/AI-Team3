@@ -34,13 +34,16 @@ public:
 	//Set the scalar for gravity
 	void setGravityScalar(float val);
 	//Sets up a box shape physics shape
-	void setBoxParameters(Vector2f startPos, Vector2f size, bool useGravity);
+	void setBoxParameters(Vector2f startPos, Vector2f size, float mass, bool useGravity);
 	//Sets up a circle shape physics object
-	void setCircleParameters(Vector2f startPos, float radius, bool useGravity);
+	void setCircleParameters(Vector2f startPos, float radius, float mass, bool useGravity);
 
 	//Public variables
 	Vector2f position, velocity, size;
 	float radius, e, mass, gravityScalar, friction; //Radius, restitution, mass, gravity scalar & friction
+	float acceleration, inv_mass;
+	//Angular components
+	float orientation, angularVelocity, torque;
 	bool useGravity; //Boolean to use gravity or not
 	Shape shape; //The shape of the physics Object (box, circle)
 	Type type; //The type of the physics Object (dynamic, static)

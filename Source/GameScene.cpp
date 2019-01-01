@@ -1,6 +1,8 @@
 #include "GameScene.h"
 
-GameScene::GameScene()
+GameScene::GameScene() :
+	m_player(320, 160),
+	test(Type::Static, Shape::Circle, this)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
 	m_minimapView.setSize(sf::Vector2f(1280 * 5, 720 * 5));
@@ -23,6 +25,11 @@ GameScene::GameScene()
 
 	//Add our doors
 	m_doors.push_back(Door(640, 160, m_player));
+
+	test.setCircleParameters(Vector2f(320, 0), 100, 0, false);
+	//test.setBoxParameters(Vector2f(1280 / 2, 25), Vector2f(1280, 50), 0, false);
+	//Add our body to our physics world
+	physics::world->addPhysicsBody(test);
 }
 
 GameScene::~GameScene()

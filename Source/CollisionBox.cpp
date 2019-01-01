@@ -14,7 +14,7 @@ CollisionBox::CollisionBox(float x, float y, float w, float h) :
 	position(x, y),
 	w(w),
 	h(h),
-	min(position),
+	min(position.x - w / 2, position.y - h / 2),
 	max(position.x + w, position.y + h)
 {
 	setBox();
@@ -56,7 +56,6 @@ void CollisionBox::setPosition(float x, float y)
 	rect.setPosition(position.x, position.y); //Set rect position
 	min = Vector2f(rect.getGlobalBounds().left, rect.getGlobalBounds().top); //Set the min position
 	max = Vector2f(min.x + w, min.y + h); //Set the max
-
 }
 
 void CollisionBox::setPosition(Vector2f pos)

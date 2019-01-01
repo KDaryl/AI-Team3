@@ -18,6 +18,7 @@ public:
 private:
 	Player m_player;
 	sf::View m_followView, m_minimapView;
+	PhysicsBody test;
 
 	//Environment variables
 	sf::Sprite m_bgSprite;

@@ -4,8 +4,8 @@ PhysicsBody::PhysicsBody(Type _type, Shape _shape, void* data) :
 	type(_type),
 	shape(_shape),
 	radius(0), 
-	e(0),
-	mass(0),
+	e(1),
+	mass(1),
 	friction(1),
 	gravityScalar(1),
 	objectData(data)
@@ -15,6 +15,12 @@ PhysicsBody::PhysicsBody(Type _type, Shape _shape, void* data) :
 		bCollider = new CollisionBox();
 	else
 		cCollider = new CollisionCircle();
+
+	//Setting our inverse mass
+	if (mass == 0)
+		inv_mass = 0;
+	else
+		inv_mass = 1 / mass;
 }
 
 PhysicsBody::~PhysicsBody()
@@ -86,18 +92,30 @@ void PhysicsBody::setGravityScalar(float val)
 	gravityScalar = val;
 }
 
-void PhysicsBody::setBoxParameters(Vector2f startPos, Vector2f _size, bool _useGravity)
+void PhysicsBody::setBoxParameters(Vector2f startPos, Vector2f _size, float _mass, bool _useGravity)
 {
 	position = startPos;
 	size = _size;
 	bCollider->setSize(startPos.x, startPos.y, size.x, size.y);//Set size and position of the box collider
 	useGravity = _useGravity;
+	mass = _mass;
+	//Setting our inverse mass
+	if (mass == 0)
+		inv_mass = 0;
+	else
+		inv_mass = 1 / mass;
 }
 
-void PhysicsBody::setCircleParameters(Vector2f startPos, float _radius, bool _useGravity)
+void PhysicsBody::setCircleParameters(Vector2f startPos, float _radius, float _mass, bool _useGravity)
 {
 	position = startPos;
 	radius = _radius;
 	cCollider->setSize(startPos.x, startPos.y, radius);//Set radius and position of the circle collider
 	useGravity = _useGravity;
+	mass = _mass;
+	//Setting our inverse mass
+	if (mass == 0)
+		inv_mass = 0;
+	else
+		inv_mass = 1 / mass;
 }

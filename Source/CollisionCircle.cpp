@@ -28,16 +28,16 @@ void CollisionCircle::setCircle()
 	circle.setPosition(position.x, position.y);
 }
 
-void CollisionCircle::setRadius(float r)
+void CollisionCircle::setRadius(float _r)
 {
-	r = r;
+	r = _r;
 	setCircle();
 }
 
-void CollisionCircle::setSize(float x, float y, float r)
+void CollisionCircle::setSize(float x, float y, float _r)
 {
 	position = Vector2f(x, y);
-	r = r;
+	r = _r;
 	setCircle();
 }
 

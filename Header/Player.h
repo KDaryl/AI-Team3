@@ -12,7 +12,7 @@ using namespace physics;
 class Player
 {
 public:
-	Player();
+	Player(float x, float y);
 	~Player() {}
 
 	void update(double dt);
