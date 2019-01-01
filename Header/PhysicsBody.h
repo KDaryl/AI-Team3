@@ -18,10 +18,11 @@ class PhysicsBody
 {
 public:
 	//Constructor takes the type of body and the shape it will use
-	PhysicsBody(Type type, Shape shape);
+	PhysicsBody(Type type, Shape shape, void* data);
 	~PhysicsBody();
 
 	void update(float dt); //Update the physics body position and colliders
+	void draw(sf::RenderWindow& window); //Draw the collider of the physics object
 	void applyGravity(float gravity); //Applies gravity to the velocity of the physics body
 	bool operator==(const PhysicsBody &b);//Equals operator
 
@@ -46,4 +47,5 @@ public:
 	//The collider our physics object will use, this will be set using Shape
 	CollisionBox * bCollider; 
 	CollisionCircle * cCollider;
+	void* objectData; //This is a pointer to an object that this physics object belongs to
 };

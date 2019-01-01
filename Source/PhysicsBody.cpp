@@ -1,12 +1,14 @@
 #include "PhysicsBody.h"
 
-PhysicsBody::PhysicsBody(Type _type, Shape _shape) :
+PhysicsBody::PhysicsBody(Type _type, Shape _shape, void* data) :
 	type(_type),
 	shape(_shape),
 	radius(0), 
 	e(0),
 	mass(0),
-	friction(1)
+	friction(1),
+	gravityScalar(1),
+	objectData(data)
 {
 	//Set up our collider usign our shape provided
 	if (shape == Shape::Box)
@@ -26,11 +28,25 @@ void PhysicsBody::update(float dt)
 
 	switch (shape)
 	{
+		//Collider is centered on position
 		case Shape::Box:
 			bCollider->setPosition(position);
 		break;
 		case Shape::Circle:
 			cCollider->setPosition(position);
+		break;
+	}
+}
+
+void PhysicsBody::draw(sf::RenderWindow & window)
+{
+	switch (shape)
+	{
+	case Shape::Box:
+		bCollider->draw(window);
+		break;
+	case Shape::Circle:
+		cCollider->draw(window);
 		break;
 	}
 }

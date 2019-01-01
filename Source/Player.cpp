@@ -5,13 +5,13 @@ Player::Player() :
 	m_moveSpeed(.2f),
 	m_turnSpeed(.075f),
 	m_friction(.9997f),
-	m_rangeCollider(0,0, 186, 270),
-	m_physicsBody(Type::Dynamic, Shape::Box)
+	m_rangeCollider(0,0, 186, 255),
+	m_physicsBody(Type::Dynamic, Shape::Box, this)
 {
 	setupAnimations(); //Setup our animations
 
 	//Set our box parameters to our position and size and to NOT use gravity
-	m_physicsBody.setBoxParameters(m_position, Vector2f(62, 90), false);
+	m_physicsBody.setBoxParameters(Vector2f(m_position.x, m_position.y), Vector2f(62, 85), false);
 	m_physicsBody.setFriction(m_friction);
 
 	//Add our body to our physics world
@@ -23,12 +23,6 @@ void Player::update(double dt)
 	m_dt = dt; //Set dt as we will use it in other places
 	m_animator.update(sf::seconds(dt)); //Update our animator
 	m_animator.animate(m_sprite); //Animate our sprite
-
-	//Add our velocity to our players position
-	//m_position += m_velocity; 
-
-	//Multiply velocity by friction
-	//m_velocity *= m_friction;
 
 	m_position = m_physicsBody.position; //Set our position to our physics body position
 
