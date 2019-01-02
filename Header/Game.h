@@ -2,6 +2,7 @@
 #include "SFML/Graphics.hpp"
 #include "InputHandler.h"
 #include "SceneManager.h"
+using namespace physics;
 
 //Game loop
 class Game

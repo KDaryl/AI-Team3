@@ -31,6 +31,8 @@ public:
 	float magnitude();
 	float sqrdMagnitude();
 	float dotProduct(Vector2f v);
+	float crossProduct(Vector2f v);
+	Vector2f crossProduct(float s);
 	Vector2f normalise();
 	void zeroVector(); //Reset vector to 0,0
 

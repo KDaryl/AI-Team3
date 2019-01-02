@@ -1,13 +1,22 @@
 #include "Player.h"
 
-Player::Player() :
-	m_position(320, 160),
+Player::Player(float x, float y) :
+	m_position(x, y),
 	m_moveSpeed(.2f),
 	m_turnSpeed(.075f),
 	m_friction(.9997f),
-	m_rangeCollider(0,0, 186, 270)
+	m_rangeCollider(0,0, 186, 255),
+	m_physicsBody(Type::Dynamic, Shape::Circle, this)
 {
 	setupAnimations(); //Setup our animations
+
+	//Set our box parameters to our position and size and to NOT use gravity
+	m_physicsBody.setCircleParameters(Vector2f(m_position.x, m_position.y), 30, 1, false);
+	//m_physicsBody.setBoxParameters(Vector2f(m_position.x, m_position.y), Vector2f(62, 85), 1, false);
+	m_physicsBody.setFriction(m_friction);
+
+	//Add our body to our physics world
+	physics::world->addPhysicsBody(m_physicsBody);
 }
 
 void Player::update(double dt)
@@ -16,11 +25,7 @@ void Player::update(double dt)
 	m_animator.update(sf::seconds(dt)); //Update our animator
 	m_animator.animate(m_sprite); //Animate our sprite
 
-	//Add our velocity to our players position
-	m_position += m_velocity; 
-
-	//Multiply velocity by friction
-	m_velocity *= m_friction;
+	m_position = m_physicsBody.position; //Set our position to our physics body position
 
 	//Set the position and rotation of our sprites and colliders
 	m_sprite.setPosition(m_position.x, m_position.y);
@@ -68,7 +73,7 @@ void Player::handleInput(InputHandler & input)
 
 		m_turnVector = m_turnVector.normalise();
 
-		m_velocity += m_turnVector * m_moveSpeed * m_dt; //Calculate our speed
+		m_physicsBody.velocity += m_turnVector * m_moveSpeed * m_dt; //Calculate our speed
 
 		//Play our moving animation
 		if (m_animator.isPlayingAnimation() && m_animator.getPlayingAnimation() != "Moving" || !m_animator.isPlayingAnimation())

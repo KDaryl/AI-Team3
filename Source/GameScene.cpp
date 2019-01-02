@@ -1,6 +1,8 @@
 #include "GameScene.h"
 
-GameScene::GameScene()
+GameScene::GameScene() :
+	m_player(320, 160),
+	test(Type::Static, Shape::Circle, this)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
 	m_minimapView.setSize(sf::Vector2f(1280 * 5, 720 * 5));
@@ -21,19 +23,13 @@ GameScene::GameScene()
 	m_environment.push_back(Environment("Straight Corridor Y Flipped", 958, 160));
 	m_environment.push_back(Environment("Straight Corridor", 1596, 160));
 
-	//Add our boundaries
-	m_boundaries.push_back(Boundary(0, -160, 640, 80, m_player));
-	m_boundaries.push_back(Boundary(560, -160, 80, 240, m_player));
-	m_boundaries.push_back(Boundary(640, 0, 640, 80, m_player));
-	m_boundaries.push_back(Boundary(1280, 0, 640, 80, m_player));
-
-	m_boundaries.push_back(Boundary(560, 240, 80, 240, m_player));
-	m_boundaries.push_back(Boundary(640, 240, 640, 80, m_player));
-	m_boundaries.push_back(Boundary(1280, 240, 640, 80, m_player));
-	m_boundaries.push_back(Boundary(0, -160, 80, 640, m_player));
-
 	//Add our doors
 	m_doors.push_back(Door(640, 160, m_player));
+
+	test.setCircleParameters(Vector2f(320, 0), 100, 0, false);
+	//test.setBoxParameters(Vector2f(1280 / 2, 25), Vector2f(1280, 50), 0, false);
+	//Add our body to our physics world
+	physics::world->addPhysicsBody(test);
 }
 
 GameScene::~GameScene()
@@ -43,11 +39,6 @@ GameScene::~GameScene()
 void GameScene::update(double dt)
 {
 	for (auto& object : m_doors)
-	{
-		object.update(dt);
-	}
-
-	for (auto& object : m_boundaries)
 	{
 		object.update(dt);
 	}
@@ -94,17 +85,13 @@ void GameScene::draw(sf::RenderWindow & window)
 		}
 	}
 
-	//********DEBUG PURPOSES********//
-	for (auto& object : m_boundaries)
-	{
-		object.draw(window);
-	}
-
-
 	//Draw the player
 	m_player.draw(window);
 
 	drawMinimap(window); //Draw the mini map
+
+	//Set the windows view
+	window.setView(m_followView);
 }
 
 void GameScene::drawMinimap(sf::RenderWindow & window)

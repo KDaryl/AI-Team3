@@ -117,8 +117,21 @@ float Vector2f::dotProduct(Vector2f v)
 	return (x * v.x) + (y * v.y);
 }
 
+float Vector2f::crossProduct(Vector2f v)
+{
+	return (x * v.y) - (y * v.x);
+}
+
+Vector2f Vector2f::crossProduct(float s)
+{
+	return Vector2f(s * y, -s * x);
+}
+
 Vector2f Vector2f::normalise()
 {
+	if (x == 0 && y == 0)
+		return Vector2f(0,0);
+
 	float len = this->magnitude();
 	return Vector2f(x / len, y / len);
 }

@@ -1,54 +1,72 @@
 #include "CollisionBox.h"
 
 CollisionBox::CollisionBox() :
-	m_position(0,0),
-	m_w(0),
-	m_h(0)
+	position(0, 0),
+	w(0),
+	h(0),
+	min(0, 0),
+	max(0, 0)
 {
+	setBox();
 }
 
 CollisionBox::CollisionBox(float x, float y, float w, float h) :
-	m_position(x, y),
-	m_w(w),
-	m_h(h)
+	position(x, y),
+	w(w),
+	h(h),
+	min(position.x - w / 2, position.y - h / 2),
+	max(position.x + w, position.y + h)
 {
+	setBox();
 }
 
 CollisionBox::~CollisionBox()
 {
 }
 
-bool CollisionBox::intersects(CollisionBox & other)
+void CollisionBox::setBox()
 {
-	//Checks for rectangular collision
-	if (m_position.x < other.x() + other.w() &&
-		m_position.x + m_w > other.x() &&
-		m_position.y < other.y() + other.h() &&
-		m_h + m_position.y > other.y())
-		return true;
-	return false;
+	rect.setFillColor(sf::Color::Transparent);
+	rect.setOutlineThickness(7.5f);
+	rect.setOutlineColor(sf::Color::Red);
+	rect.setSize(sf::Vector2f(w, h));
+	rect.setOrigin(rect.getGlobalBounds().width / 2, rect.getGlobalBounds().height / 2);
+	rect.setPosition(position.x, position.y);
 }
 
-void CollisionBox::setSize(float w, float h)
+void CollisionBox::setSize(float _w, float _h)
 {
-	m_w = w;
-	m_h = h;
+	w = _w;
+	h = _h;
+	setBox();
 }
 
-void CollisionBox::setSize(float x, float y, float w, float h)
+void CollisionBox::setSize(float x, float y, float _w, float _h)
 {
-	m_position.x = x;
-	m_position.y = y;
-	m_w = w;
-	m_h = h;
+	position.x = x;
+	position.y = y;
+	w = _w;
+	h = _h;
+	setBox();
 }
 
 void CollisionBox::setPosition(float x, float y)
 {
-	m_position = Vector2f(x, y); //Set the position
+	position = Vector2f(x, y); //Set the position
+	rect.setPosition(position.x, position.y); //Set rect position
+	min = Vector2f(rect.getGlobalBounds().left, rect.getGlobalBounds().top); //Set the min position
+	max = Vector2f(min.x + w, min.y + h); //Set the max
 }
 
 void CollisionBox::setPosition(Vector2f pos)
 {
-	m_position = pos;
+	position = pos;
+	rect.setPosition(position.x, position.y); //Set rect position
+	min = Vector2f(rect.getGlobalBounds().left, rect.getGlobalBounds().top); //Set the min position
+	max = Vector2f(min.x + w, min.y + h); //Set the max
+}
+
+void CollisionBox::draw(sf::RenderWindow & window)
+{
+	window.draw(rect); //Draw the rectangle for the collider
 }

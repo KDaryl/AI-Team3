@@ -1,50 +1,59 @@
 #include "CollisionCircle.h"
 
 CollisionCircle::CollisionCircle() :
-	m_position(0,0),
-	m_r(0)
+	position(0,0),
+	r(0)
 {
+	setCircle();
 }
 
 CollisionCircle::CollisionCircle(float x, float y, float r) :
-	m_position(x, y),
-	m_r(r)
+	position(x, y),
+	r(r)
 {
-
+	setCircle();
 }
 
 CollisionCircle::~CollisionCircle()
 {
 }
 
-bool CollisionCircle::intersects(CollisionCircle & other)
+void CollisionCircle::setCircle()
 {
-	auto one = powf(((other.x() + other.r()) - (m_position.x + m_r)), 2);
-	auto two = powf(((m_position.y + m_r) - (other.y() + other.r())), 2);
-	auto three = powf((m_r + other.r()), 2);
-
-	if(one + two <= three)
-		return true;
-	return false;
+	circle.setFillColor(sf::Color::Transparent);
+	circle.setOutlineThickness(7.5f);
+	circle.setOutlineColor(sf::Color::Red);
+	circle.setRadius(r);
+	circle.setOrigin(circle.getGlobalBounds().width / 2, circle.getGlobalBounds().height / 2);
+	circle.setPosition(position.x, position.y);
 }
 
-void CollisionCircle::setRadius(float r)
+void CollisionCircle::setRadius(float _r)
 {
-	m_r = r;
+	r = _r;
+	setCircle();
 }
 
-void CollisionCircle::setSize(float x, float y, float r)
+void CollisionCircle::setSize(float x, float y, float _r)
 {
-	m_position = Vector2f(x, y);
-	m_r = r;
+	position = Vector2f(x, y);
+	r = _r;
+	setCircle();
 }
 
 void CollisionCircle::setPosition(float x, float y)
 {
-	m_position = Vector2f(x, y);
+	position = Vector2f(x, y);
+	circle.setPosition(position.x, position.y);
 }
 
 void CollisionCircle::setPosition(Vector2f pos)
 {
-	m_position = pos;
+	position = pos;
+	circle.setPosition(position.x, position.y);
+}
+
+void CollisionCircle::draw(sf::RenderWindow & window)
+{
+	window.draw(circle);
 }

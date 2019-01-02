@@ -8,20 +8,17 @@ public:
 	CollisionBox(float x, float y, float w, float h);
 	~CollisionBox();
 
-	bool intersects(CollisionBox& other);
+	void setBox();
 	void setSize(float w, float h);
 	void setSize(float x, float y, float w, float h);
 	void setPosition(float x, float y);
 	void setPosition(Vector2f pos);
+	void draw(sf::RenderWindow& window);
 
-	//Getters
-	float x() { return m_position.x; }
-	float y() { return m_position.y; }
-	float w() { return m_w; }
-	float h() { return m_h; }
-	Vector2f getPosition() { return m_position; }
-private:
-	float m_w, m_h; //Width and height of the collision box
-	Vector2f m_position; //Position of the collision box
+	
+	//Public variables
+	Vector2f position, min, max;
+	float w, h; //Width and height of the collision box
+	sf::RectangleShape rect; //Rectangle to represent the collider
 };
 

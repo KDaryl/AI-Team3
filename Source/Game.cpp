@@ -1,7 +1,7 @@
 #include "Game.h"
 
-//updates per millisecond
-static sf::Int32 MS_PER_UPDATE = 10;
+//updates per millisecond (60 fps)
+static sf::Int32 MS_PER_UPDATE = 16;
 
 Game::Game() :
 	m_window(sf::VideoMode(1280, 720), "AI Project - Team 3")
@@ -32,14 +32,16 @@ void Game::run()
 		processEvents();
 		sf::Time dt = clock.restart();
 		lag += dt.asMilliseconds();
-
+		auto dtToSec = dt.asSeconds(); //Convert dt to seconds so we can avoid multiple calls to a method
 
 		while (lag > MS_PER_UPDATE)
 		{
-			update(dt.asSeconds());
+			physics::world->update(dtToSec); //Update our physics
+			update(dtToSec);
 			lag -= MS_PER_UPDATE;
 		}
-		update(dt.asSeconds());
+		physics::world->update(dtToSec); //Update our physics
+		update(dtToSec);
 		render();
 	}
 }
@@ -76,6 +78,9 @@ void Game::render()
 	m_window.clear(sf::Color::Blue); //Clear all previously drawn items
 
 	m_sceneManager.draw(m_window); //Draw our current scene
+
+	//Draw our physics colliders for debugging
+	physics::world->draw(m_window);
 
 	m_window.display(); //Display all drawn items
 }
