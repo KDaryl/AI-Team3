@@ -5,6 +5,7 @@ Player::Player(float x, float y) :
 	m_moveSpeed(.2f),
 	m_turnSpeed(.075f),
 	m_friction(.9997f),
+	m_maxSpeed(0.25f),
 	m_rangeCollider(0,0, 186, 255),
 	m_physicsBody(Type::Dynamic, Shape::Circle, this)
 {
@@ -73,7 +74,12 @@ void Player::handleInput(InputHandler & input)
 
 		m_turnVector = m_turnVector.normalise();
 
+		//std::cout << m_physicsBody.velocity.magnitude() << std::endl;
 		m_physicsBody.velocity += m_turnVector * m_moveSpeed * m_dt; //Calculate our speed
+
+		//If our speed has gone past our max speed, clamp our speed to our max speed
+		if (m_physicsBody.velocity.magnitude() > m_maxSpeed)
+			m_physicsBody.velocity = m_physicsBody.velocity.normalise() * m_maxSpeed;
 
 		//Play our moving animation
 		if (m_animator.isPlayingAnimation() && m_animator.getPlayingAnimation() != "Moving" || !m_animator.isPlayingAnimation())
@@ -96,7 +102,7 @@ void Player::setTexture(ResourceManager & resources)
 	m_sprite.setTexture(resources.getTexture("Player"));
 
 	//Set center of our player sprite
-	m_sprite.setOrigin(sf::Vector2f(31, 50));
+	m_sprite.setOrigin(sf::Vector2f(31, 53));
 	
 	m_animator.playAnimation("Idle", true);
 }
