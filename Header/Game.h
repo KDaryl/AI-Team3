@@ -2,7 +2,6 @@
 #include "SFML/Graphics.hpp"
 #include "InputHandler.h"
 #include "SceneManager.h"
-#include "LevelLoader.h"
 using namespace physics;
 
 //Game loop
@@ -20,9 +19,6 @@ private:
 
 	sf::RenderWindow m_window; //Render window
 	InputHandler m_inputHandler;
-
-	//LevelLoader
-	LevelLoader m_levelLoader;
 
 	//Scene variables
 	SceneManager m_sceneManager;

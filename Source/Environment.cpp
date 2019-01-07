@@ -1,6 +1,6 @@
 #include "Environment.h"
 
-Environment::Environment(std::string _tag, float x, float y) :
+Environment::Environment(float x, float y, std::string _tag) :
 	m_position(x, y),
 	tag(_tag)
 {

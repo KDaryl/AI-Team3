@@ -11,7 +11,7 @@ public:
 	LevelLoader();
 	~LevelLoader() {}
 
+	json data; //Where our data will be held
 private:
 	const std::string filePath = "./Resources/Game Data.txt"; //Where the data is stored
-	json data; //Where our data will be held
 };

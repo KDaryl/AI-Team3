@@ -18,16 +18,13 @@ GameScene::GameScene() :
 		}
 	}
 
-	//Add objects to our environment, this will have to be loaded from a text file of some sort, yaml?
-	m_environment.push_back(Environment("Top Left Corner", 320, 160));
-	m_environment.push_back(Environment("Straight Corridor Y Flipped", 958, 160));
-	m_environment.push_back(Environment("Straight Corridor", 1596, 160));
-
 	//Add our doors
 	m_doors.push_back(Door(640, 160, m_player));
 
 	test.setCircleParameters(Vector2f(320, 0), 100, 0, false);
-	//test.setBoxParameters(Vector2f(1280 / 2, 25), Vector2f(1280, 50), 0, false);
+
+	loadMap();
+
 	//Add our body to our physics world
 	physics::world->addPhysicsBody(test);
 }
@@ -36,8 +33,35 @@ GameScene::~GameScene()
 {
 }
 
+void GameScene::loadMap()
+{
+	//Loop through the map pieces and 
+	for (auto& piece : m_levelLoader.data["Map Pieces"])
+	{
+		//Create the environment and add it to our vector
+		m_environment.push_back(Environment(piece["X"], piece["Y"], piece["Tag"]));
+	}
+}
+
+void GameScene::createBoundary(json bounds, Environment & object)
+{
+	//Loop through the bounds and look for the boundaries tagged with objects tag
+	for (auto& bound : bounds[object.tag])
+	{
+		auto body = new PhysicsBody(Type::Static, Shape::Box, this); //Create the body
+		auto size = Vector2f(bound["W"], bound["H"]);
+		auto pos = Vector2f(bound["X"], bound["Y"]); //Center the physics body
+		pos.x += object.m_position.x;
+		pos.y += object.m_position.y;
+		body->setBoxParameters(pos, size, 0, false); //Set the paaremeters of the body
+		physics::world->addPhysicsBody(*body); //Add body to the physics simulation
+	}
+}
+
+
 void GameScene::update(double dt)
 {
+	//Update the doors on the map
 	for (auto& object : m_doors)
 	{
 		object.update(dt);
@@ -131,22 +155,27 @@ void GameScene::setTexture(ResourceManager & resources)
 		object.setTexture(resources);
 	}
 
-	//Set our environment textures
+	//Get the boundaries information from the Json data
+	json bounds = m_levelLoader.data["Boundaries"];
+
+	//Set our environment textures and create our Boundaries for each piece
 	for (auto& object : m_environment)
 	{
-		if (object.tag == "Top Left Corner")
+		if (object.tag == "CTE") //Corner with Two Exits
 		{
 			object.setTexture(resources, "Top Left Corner Room");
 		}
-		else if (object.tag == "Straight Corridor")
+		else if (object.tag == "SC") //Straight Corridor
 		{
 			object.setTexture(resources, "Straight Corridor");
 		}
-		else if (object.tag == "Straight Corridor Y Flipped")
+		else if (object.tag == "SCF") //Straight Corridor Flipped
 		{
 			object.setTexture(resources, "Straight Corridor");
 			object.setScale(1, -1);
 		}
-		//Add more tag checks, if a room is a corner rotated, then set rotation
+
+		//Create the boundaries for the object
+		createBoundary(bounds, object);
 	}
 }

@@ -27,7 +27,7 @@ CollisionBox::~CollisionBox()
 void CollisionBox::setBox()
 {
 	rect.setFillColor(sf::Color::Transparent);
-	rect.setOutlineThickness(7.5f);
+	rect.setOutlineThickness(2.5f);
 	rect.setOutlineColor(sf::Color::Red);
 	rect.setSize(sf::Vector2f(w, h));
 	rect.setOrigin(rect.getGlobalBounds().width / 2, rect.getGlobalBounds().height / 2);
