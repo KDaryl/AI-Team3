@@ -78,10 +78,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(projectDir)\Header;$(projectDir)\SFML\include\;$(projectDir)\Thor 2.0\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(projectDir)\Header;$(projectDir)\Include\SFML\include\;$(projectDir)\Include\Thor 2.0\include\;$(projectDir)\Include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(projectDir)\SFML\lib;$(projectDir)\Thor 2.0\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(projectDir)\Include\SFML\lib;$(projectDir)\Include\Thor 2.0\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;thor-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -130,6 +130,7 @@
     <ClInclude Include="Header\Game.h" />
     <ClInclude Include="Header\GameScene.h" />
     <ClInclude Include="Header\InputHandler.h" />
+    <ClInclude Include="Header\LevelLoader.h" />
     <ClInclude Include="Header\PhysicsBody.h" />
     <ClInclude Include="Header\PhysicsHandler.h" />
     <ClInclude Include="Header\Player.h" />
@@ -147,6 +148,7 @@
     <ClCompile Include="Source\Game.cpp" />
     <ClCompile Include="Source\GameScene.cpp" />
     <ClCompile Include="Source\InputHandler.cpp" />
+    <ClCompile Include="Source\LevelLoader.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\PhysicsBody.cpp" />
     <ClCompile Include="Source\PhysicsHandler.cpp" />

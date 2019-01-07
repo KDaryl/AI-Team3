@@ -84,6 +84,9 @@
     <ClInclude Include="Header\PhysicsHandler.h">
       <Filter>Header Files\Physics Header</Filter>
     </ClInclude>
+    <ClInclude Include="Header\LevelLoader.h">
+      <Filter>Header Files\Helper Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -130,6 +133,9 @@
     </ClCompile>
     <ClCompile Include="Source\PhysicsHandler.cpp">
       <Filter>Source Files\Physics Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LevelLoader.cpp">
+      <Filter>Source Files\Helper Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
