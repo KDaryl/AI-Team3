@@ -20,6 +20,7 @@ GameScene::GameScene() :
 
 	//Add our doors
 	m_doors.push_back(Door(640, 160, m_player));
+	m_doors.push_back(Door(1916, 160, m_player));
 
 	test.setCircleParameters(Vector2f(320, 0), 100, 0, false);
 
@@ -38,8 +39,11 @@ void GameScene::loadMap()
 	//Loop through the map pieces and 
 	for (auto& piece : m_levelLoader.data["Map Pieces"])
 	{
+		auto env = Environment(piece["X"], piece["Y"], piece["Tag"]);
+		env.setRotation(piece["Angle"]); //Set the angle
+		env.setScale(piece["Scale"][0], piece["Scale"][1]);
 		//Create the environment and add it to our vector
-		m_environment.push_back(Environment(piece["X"], piece["Y"], piece["Tag"]));
+		m_environment.push_back(env);
 	}
 }
 
@@ -53,7 +57,15 @@ void GameScene::createBoundary(json bounds, Environment & object)
 		auto pos = Vector2f(bound["X"], bound["Y"]); //Center the physics body
 		pos.x += object.m_position.x;
 		pos.y += object.m_position.y;
+		if (object.angle != 0)
+		{
+			sf::Transform tf;//Rotate position around the center of the objects position
+			tf.rotate(object.angle, sf::Vector2f(object.m_position.x, object.m_position.y));
+			auto posAfter = tf.transformPoint(sf::Vector2f(pos.x, pos.y));
+			pos = Vector2f(posAfter.x, posAfter.y);
+		}
 		body->setBoxParameters(pos, size, 0, false); //Set the paaremeters of the body
+		body->setInitialRotation(object.angle); //Set the initial rotation of the body
 		physics::world->addPhysicsBody(*body); //Add body to the physics simulation
 	}
 }
@@ -169,10 +181,9 @@ void GameScene::setTexture(ResourceManager & resources)
 		{
 			object.setTexture(resources, "Straight Corridor");
 		}
-		else if (object.tag == "SCF") //Straight Corridor Flipped
+		else if (object.tag == "3RE")
 		{
-			object.setTexture(resources, "Straight Corridor");
-			object.setScale(1, -1);
+			object.setTexture(resources, "Three Exit Room");
 		}
 
 		//Create the boundaries for the object

@@ -34,6 +34,14 @@ void CollisionBox::setBox()
 	rect.setPosition(position.x, position.y);
 }
 
+void CollisionBox::rotate(float angle)
+{
+	rect.rotate(angle); //Add angle to the rotation of the collision box
+	rect.setPosition(position.x, position.y);
+	min = Vector2f(rect.getGlobalBounds().left, rect.getGlobalBounds().top); //Set the min position
+	max = Vector2f(min.x + w, min.y + h); //Set the max
+}
+
 void CollisionBox::setSize(float _w, float _h)
 {
 	w = _w;

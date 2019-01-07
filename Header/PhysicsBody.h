@@ -31,6 +31,7 @@ public:
 	void setVelocity(Vector2f vel);
 	void setFriction(float f);
 	void setRestitution(float resti);
+	void setInitialRotation(float angle);
 	//Set the scalar for gravity
 	void setGravityScalar(float val);
 	//Sets up a box shape physics shape

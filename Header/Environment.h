@@ -10,7 +10,8 @@
 //	"2E" : Two Exit room
 //	"SC" : Straight Corridor
 //	"SCF" : Straight Corridor Flipped
-//	"3ER" : Three exit room, T rotated -90 
+//	"3ER" : Three exit room
+//	"3ERF-90" : Three exit room, Flipped, rotated -90 
 //}
 
 class Environment
@@ -28,6 +29,7 @@ public:
 
 	std::string tag;
 	Vector2f m_position;
+	float angle;
 
 	//Getters
 	sf::FloatRect collider() { return m_collider; }
