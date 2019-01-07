@@ -27,11 +27,19 @@ CollisionBox::~CollisionBox()
 void CollisionBox::setBox()
 {
 	rect.setFillColor(sf::Color::Transparent);
-	rect.setOutlineThickness(7.5f);
+	rect.setOutlineThickness(2.5f);
 	rect.setOutlineColor(sf::Color::Red);
 	rect.setSize(sf::Vector2f(w, h));
 	rect.setOrigin(rect.getGlobalBounds().width / 2, rect.getGlobalBounds().height / 2);
 	rect.setPosition(position.x, position.y);
+}
+
+void CollisionBox::rotate(float angle)
+{
+	rect.rotate(angle); //Add angle to the rotation of the collision box
+	rect.setPosition(position.x, position.y);
+	min = Vector2f(rect.getGlobalBounds().left, rect.getGlobalBounds().top); //Set the min position
+	max = Vector2f(min.x + w, min.y + h); //Set the max
 }
 
 void CollisionBox::setSize(float _w, float _h)

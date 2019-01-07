@@ -1,4 +1,5 @@
 #pragma once
+#include "LevelLoader.h" //For level data
 #include "Scene.h"
 #include "Player.h"
 #include "Door.h"
@@ -10,6 +11,8 @@ public:
 	GameScene();
 	~GameScene();
 
+	void loadMap();
+	void createBoundary(json bounds, Environment& object);
 	void update(double dt);
 	void draw(sf::RenderWindow& window);
 	void drawMinimap(sf::RenderWindow& window);
@@ -19,6 +22,9 @@ private:
 	Player m_player;
 	sf::View m_followView, m_minimapView;
 	PhysicsBody test;
+
+	//LevelLoader
+	LevelLoader m_levelLoader;
 
 	//Environment variables
 	sf::Sprite m_bgSprite;

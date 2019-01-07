@@ -38,4 +38,8 @@ public:
 
 	//Public variables
 	float x, y;
+
+private:
+	float toRad(float deg);
+	float toDeg(float rad);
 };

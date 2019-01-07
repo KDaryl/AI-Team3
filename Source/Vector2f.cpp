@@ -141,3 +141,13 @@ void Vector2f::zeroVector()
 	x = 0;
 	y = 0;
 }
+
+float Vector2f::toRad(float deg)
+{
+	return deg * 0.0174533;
+}
+
+float Vector2f::toDeg(float rad)
+{
+	return rad * 57.2958f;
+}

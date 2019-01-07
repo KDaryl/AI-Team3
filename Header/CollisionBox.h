@@ -9,6 +9,7 @@ public:
 	~CollisionBox();
 
 	void setBox();
+	void rotate(float angle);
 	void setSize(float w, float h);
 	void setSize(float x, float y, float w, float h);
 	void setPosition(float x, float y);

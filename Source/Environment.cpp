@@ -1,8 +1,9 @@
 #include "Environment.h"
 
-Environment::Environment(std::string _tag, float x, float y) :
+Environment::Environment(float x, float y, std::string _tag) :
 	m_position(x, y),
-	tag(_tag)
+	tag(_tag),
+	angle(0)
 {
 }
 
@@ -25,8 +26,9 @@ void Environment::setTexture(ResourceManager & resources, std::string textureNam
 	m_collider = sf::FloatRect(m_position.x - m_sprite.getGlobalBounds().width / 2, m_position.y - m_sprite.getGlobalBounds().height / 2, m_sprite.getGlobalBounds().width, m_sprite.getGlobalBounds().height);
 }
 
-void Environment::setRotation(float angle)
+void Environment::setRotation(float _angle)
 {
+	angle = _angle;
 	m_sprite.setRotation(angle);
 }
 

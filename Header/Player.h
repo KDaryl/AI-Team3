@@ -31,7 +31,7 @@ private:
 	void setupAnimations();
 
 	Vector2f m_turnVector;
-	float m_moveSpeed, m_turnSpeed, m_friction, m_angle, m_dt;
+	float m_moveSpeed, m_turnSpeed, m_friction, m_angle, m_dt, m_maxSpeed;
 
 	//Sprite and animation variables
 	thor::Animator<sf::Sprite, std::string> m_animator; //Animator

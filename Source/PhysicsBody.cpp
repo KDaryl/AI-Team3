@@ -87,6 +87,14 @@ void PhysicsBody::setRestitution(float resti)
 	e = resti;
 }
 
+void PhysicsBody::setInitialRotation(float angle)
+{
+	if (shape == Shape::Box)
+	{
+		bCollider->rotate(angle);
+	}
+}
+
 void PhysicsBody::setGravityScalar(float val)
 {
 	gravityScalar = val;
