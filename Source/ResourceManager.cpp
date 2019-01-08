@@ -11,10 +11,19 @@ ResourceManager::ResourceManager()
 
 	//Load environment Textures (corridors, walls, backgrounds etc)
 	loadTexture("Starfield BG", "Environment/Starfield BG.png", true);
-	loadTexture("Straight Corridor", "Environment/Straight Corridor.png", true);
-	loadTexture("Three Exit Room", "Environment/Three Exit Room.png", true);
-	loadTexture("Top Left Corner Room", "Environment/Top Left Corner Room.png", true);
-	loadTexture("Two Exit Room", "Environment/Two Exit Room.png", true);
+	loadTexture("SC", "Environment/Straight Corridor.png", true);
+	loadTexture("CC", "Environment/Corridor Corner.png", true);
+	loadTexture("TJC", "Environment/Corridor T Junction.png", true);
+	loadTexture("CFJ", "Environment/Corrdior 4 Junction.png", true);
+	loadTexture("3ER", "Environment/Three Exit Room.png", true);
+	loadTexture("TLCR", "Environment/Top Left Corner Room.png", true);
+	loadTexture("TER", "Environment/Two Exit Room.png", true);
+	loadTexture("ROE", "Environment/Room One Exit.png", true);
+	loadTexture("BRFE", "Environment/Big Room Four Exits.png", true);
+	loadTexture("RFE", "Environment/Room Four Exits.png", true);
+	loadTexture("Worker Area", "Environment/Worker Area.png", true);
+
+	//Others
 	loadTexture("Door", "Environment/Door.png", true);
 }
 

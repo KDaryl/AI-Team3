@@ -26,12 +26,13 @@ void Game::init()
 void Game::run()
 {
 	sf::Clock clock;
-	sf::Int32 lag = 0;
+	sf::Int32 lag = 0, fpsTimer = 0, frames = 0;
 	while (m_window.isOpen())
 	{
 		processEvents();
 		sf::Time dt = clock.restart();
 		lag += dt.asMilliseconds();
+		fpsTimer += dt.asMilliseconds();
 		auto dtToSec = dt.asSeconds(); //Convert dt to seconds so we can avoid multiple calls to a method
 
 		while (lag > MS_PER_UPDATE)
@@ -39,10 +40,19 @@ void Game::run()
 			physics::world->update(dtToSec); //Update our physics
 			update(dtToSec);
 			lag -= MS_PER_UPDATE;
+			frames++;
 		}
 		physics::world->update(dtToSec); //Update our physics
 		update(dtToSec);
 		render();
+
+		//Checking FPS, this will bne useful for performance debugging
+		if (fpsTimer >= 1000)
+		{
+			std::cout << "FPS: " << frames << std::endl;
+			fpsTimer -= 1000;
+			frames = 0;
+		}
 	}
 }
 

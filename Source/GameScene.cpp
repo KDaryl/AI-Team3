@@ -1,10 +1,11 @@
 #include "GameScene.h"
 
 GameScene::GameScene() :
-	m_player(320, 160),
+	m_player(8315, 6480),
 	test(Type::Static, Shape::Circle, this)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
+	m_followView.zoom(1.0f);
 	m_minimapView.setSize(sf::Vector2f(1280 * 5, 720 * 5));
 	m_minimapView.setCenter(sf::Vector2f(1280 * 5 / 2, 720 * 5 / 2));
 	m_minimapView.setViewport(sf::FloatRect(0.005, 0.01, .25f, .25f));
@@ -173,18 +174,8 @@ void GameScene::setTexture(ResourceManager & resources)
 	//Set our environment textures and create our Boundaries for each piece
 	for (auto& object : m_environment)
 	{
-		if (object.tag == "CTE") //Corner with Two Exits
-		{
-			object.setTexture(resources, "Top Left Corner Room");
-		}
-		else if (object.tag == "SC") //Straight Corridor
-		{
-			object.setTexture(resources, "Straight Corridor");
-		}
-		else if (object.tag == "3RE")
-		{
-			object.setTexture(resources, "Three Exit Room");
-		}
+		//Set the texture of the object
+		object.setTexture(resources, object.tag);
 
 		//Create the boundaries for the object
 		createBoundary(bounds, object);
