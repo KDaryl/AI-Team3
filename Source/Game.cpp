@@ -82,7 +82,7 @@ void Game::render()
 	m_sceneManager.draw(m_window); //Draw our current scene
 
 	//Draw our physics colliders for debugging
-	physics::world->draw(m_window);
+	//physics::world->draw(m_window);
 
 	m_window.display(); //Display all drawn items
 }

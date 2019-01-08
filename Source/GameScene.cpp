@@ -44,6 +44,16 @@ void GameScene::loadMap()
 		d.setRotation(door["Angle"]);
 		m_doors.push_back(d);
 	}
+
+	//Load worker Areas
+	for (auto& area : m_levelLoader.data["Worker Areas"])
+	{
+		auto env = Environment(area["X"], area["Y"], "Worker Area");
+		m_environment.push_back(env);
+	}
+	//Load our spawn point
+	for(auto& spawn : m_levelLoader.data["Spawn Point"])
+		m_environment.push_back(Environment(spawn["X"], spawn["Y"], "Spawn Point"));
 }
 
 void GameScene::createBoundary(json bounds, Environment & object)

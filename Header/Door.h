@@ -22,14 +22,13 @@ public:
 	void setRotation(float angle);
 
 	//Getters
-	sf::FloatRect collider() { return m_collider; }
+	sf::FloatRect collider() { return m_sprite.getGlobalBounds(); }
 private:
 	bool m_closing;
 	Vector2f m_position;
 	Player* m_playerPtr;
 
 	sf::Sprite m_sprite;
-	sf::FloatRect m_collider;
 	thor::Animator<sf::Sprite, std::string> m_animator;
 };
 

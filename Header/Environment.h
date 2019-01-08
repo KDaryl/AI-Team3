@@ -14,7 +14,6 @@
 //	"CFJ" : Corridor 4 Junction
 //	"3ER" : Three exit room
 //	"TLCR" : Top Left Corner room
-//	"3ERF-90" : Three exit room, Flipped, rotated -90 
 //}
 
 class Environment
