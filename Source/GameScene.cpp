@@ -1,8 +1,7 @@
 #include "GameScene.h"
 
 GameScene::GameScene() :
-	m_player(8315, 6480),
-	test(Type::Static, Shape::Circle, this)
+	m_player(5760, 6476)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
 	m_followView.zoom(1.0f);
@@ -19,16 +18,7 @@ GameScene::GameScene() :
 		}
 	}
 
-	//Add our doors
-	m_doors.push_back(Door(640, 160, m_player));
-	m_doors.push_back(Door(1916, 160, m_player));
-
-	test.setCircleParameters(Vector2f(320, 0), 100, 0, false);
-
 	loadMap();
-
-	//Add our body to our physics world
-	physics::world->addPhysicsBody(test);
 }
 
 GameScene::~GameScene()
@@ -37,7 +27,7 @@ GameScene::~GameScene()
 
 void GameScene::loadMap()
 {
-	//Loop through the map pieces and 
+	//Loop through the map pieces and create our environment (rooms, corridors)
 	for (auto& piece : m_levelLoader.data["Map Pieces"])
 	{
 		auto env = Environment(piece["X"], piece["Y"], piece["Tag"]);
@@ -45,6 +35,14 @@ void GameScene::loadMap()
 		env.setScale(piece["Scale"][0], piece["Scale"][1]);
 		//Create the environment and add it to our vector
 		m_environment.push_back(env);
+	}
+
+	//Load our doors
+	for (auto& door : m_levelLoader.data["Doors"])
+	{
+		auto d = Door(door["X"], door["Y"], m_player);
+		d.setRotation(door["Angle"]);
+		m_doors.push_back(d);
 	}
 }
 

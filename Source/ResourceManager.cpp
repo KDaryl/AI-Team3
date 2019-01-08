@@ -25,6 +25,7 @@ ResourceManager::ResourceManager()
 
 	//Others
 	loadTexture("Door", "Environment/Door.png", true);
+	loadTexture("Spawn Point", "Environment/Spawn Point.png", true);
 }
 
 void ResourceManager::loadTexture(std::string name, std::string fileName, bool smooth)
