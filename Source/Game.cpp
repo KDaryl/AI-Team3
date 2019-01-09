@@ -20,7 +20,7 @@ Game::Game() :
 
 void Game::init()
 {
-
+	//m_window.setFramerateLimit(60);
 }
 
 void Game::run()
@@ -68,6 +68,8 @@ void Game::processEvents()
 
 void Game::update(double dt)
 {
+	m_fps.update(); //Update FPS
+
 	handleInput(); //Handle any input events in the game
 
 	m_sceneManager.update(dt);
@@ -80,7 +82,7 @@ void Game::render()
 	m_sceneManager.draw(m_window); //Draw our current scene
 
 	//Draw our physics colliders for debugging
-	physics::world->draw(m_window);
+	//physics::world->draw(m_window);
 
 	m_window.display(); //Display all drawn items
 }

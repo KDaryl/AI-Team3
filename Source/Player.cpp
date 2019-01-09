@@ -2,10 +2,11 @@
 
 Player::Player(float x, float y) :
 	m_position(x, y),
-	m_moveSpeed(.2f),
-	m_turnSpeed(.075f),
+	m_moveSpeed(.35f),
+	m_turnSpeed(.125f),
 	m_friction(.9997f),
-	m_maxSpeed(0.25f),
+	m_maxSpeed(0.35f),
+	m_angle(-90),
 	m_rangeCollider(0,0, 186, 255),
 	m_physicsBody(Type::Dynamic, Shape::Circle, this)
 {

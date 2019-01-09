@@ -6,12 +6,14 @@
 //For reference, dont uncomment
 //enum Tag
 //{
+//	"ROE" : Room One Exit
 //	"CTE" : Corner Two Exits
+//	"BRFE" : Big Room Four Exits
 //	"2E" : Two Exit room
 //	"SC" : Straight Corridor
-//	"SCF" : Straight Corridor Flipped
+//	"CFJ" : Corridor 4 Junction
 //	"3ER" : Three exit room
-//	"3ERF-90" : Three exit room, Flipped, rotated -90 
+//	"TLCR" : Top Left Corner room
 //}
 
 class Environment

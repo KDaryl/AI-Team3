@@ -3,8 +3,7 @@
 Door::Door(float x, float y, Player& player) :
 	m_position(x, y),
 	m_playerPtr(&player),
-	m_closing(true),
-	m_collider(x - 40, y - 80, 80, 160)
+	m_closing(true)
 {
 	thor::FrameAnimation opening, closing;
 
@@ -28,7 +27,7 @@ void Door::update(double dt)
 	m_animator.animate(m_sprite);
 
 	//If the player is in range of the door, play the door opening animation
-	if (m_collider.intersects(m_playerPtr->m_rangeCollider))
+	if (m_sprite.getGlobalBounds().intersects(m_playerPtr->m_rangeCollider))
 	{
 		//If no animation is playing play our opening animation
 		if (m_animator.isPlayingAnimation() && m_animator.getPlayingAnimation() != "Opening" || !m_animator.isPlayingAnimation() && m_closing)
@@ -63,5 +62,5 @@ void Door::setTexture(ResourceManager & resources)
 
 void Door::setRotation(float angle)
 {
-	m_sprite.setRotation(angle);
+	m_sprite.setRotation(angle); //Rotate the door sprite
 }

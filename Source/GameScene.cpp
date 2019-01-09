@@ -1,10 +1,10 @@
 #include "GameScene.h"
 
 GameScene::GameScene() :
-	m_player(320, 160),
-	test(Type::Static, Shape::Circle, this)
+	m_player(5760, 6476)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
+	m_followView.zoom(1.0f);
 	m_minimapView.setSize(sf::Vector2f(1280 * 5, 720 * 5));
 	m_minimapView.setCenter(sf::Vector2f(1280 * 5 / 2, 720 * 5 / 2));
 	m_minimapView.setViewport(sf::FloatRect(0.005, 0.01, .25f, .25f));
@@ -18,16 +18,7 @@ GameScene::GameScene() :
 		}
 	}
 
-	//Add our doors
-	m_doors.push_back(Door(640, 160, m_player));
-	m_doors.push_back(Door(1916, 160, m_player));
-
-	test.setCircleParameters(Vector2f(320, 0), 100, 0, false);
-
 	loadMap();
-
-	//Add our body to our physics world
-	physics::world->addPhysicsBody(test);
 }
 
 GameScene::~GameScene()
@@ -36,7 +27,7 @@ GameScene::~GameScene()
 
 void GameScene::loadMap()
 {
-	//Loop through the map pieces and 
+	//Loop through the map pieces and create our environment (rooms, corridors)
 	for (auto& piece : m_levelLoader.data["Map Pieces"])
 	{
 		auto env = Environment(piece["X"], piece["Y"], piece["Tag"]);
@@ -45,6 +36,24 @@ void GameScene::loadMap()
 		//Create the environment and add it to our vector
 		m_environment.push_back(env);
 	}
+
+	//Load our doors
+	for (auto& door : m_levelLoader.data["Doors"])
+	{
+		auto d = Door(door["X"], door["Y"], m_player);
+		d.setRotation(door["Angle"]);
+		m_doors.push_back(d);
+	}
+
+	//Load worker Areas
+	for (auto& area : m_levelLoader.data["Worker Areas"])
+	{
+		auto env = Environment(area["X"], area["Y"], "Worker Area");
+		m_environment.push_back(env);
+	}
+	//Load our spawn point
+	for(auto& spawn : m_levelLoader.data["Spawn Point"])
+		m_environment.push_back(Environment(spawn["X"], spawn["Y"], "Spawn Point"));
 }
 
 void GameScene::createBoundary(json bounds, Environment & object)
@@ -173,18 +182,8 @@ void GameScene::setTexture(ResourceManager & resources)
 	//Set our environment textures and create our Boundaries for each piece
 	for (auto& object : m_environment)
 	{
-		if (object.tag == "CTE") //Corner with Two Exits
-		{
-			object.setTexture(resources, "Top Left Corner Room");
-		}
-		else if (object.tag == "SC") //Straight Corridor
-		{
-			object.setTexture(resources, "Straight Corridor");
-		}
-		else if (object.tag == "3RE")
-		{
-			object.setTexture(resources, "Three Exit Room");
-		}
+		//Set the texture of the object
+		object.setTexture(resources, object.tag);
 
 		//Create the boundaries for the object
 		createBoundary(bounds, object);

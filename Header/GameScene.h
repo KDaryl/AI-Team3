@@ -21,7 +21,6 @@ public:
 private:
 	Player m_player;
 	sf::View m_followView, m_minimapView;
-	PhysicsBody test;
 
 	//LevelLoader
 	LevelLoader m_levelLoader;
