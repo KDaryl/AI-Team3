@@ -1,4 +1,5 @@
 #include "PhysicsHandler.h"
+#include <algorithm>
 
 PhysicsHandler::PhysicsHandler()
 {
@@ -49,6 +50,11 @@ void PhysicsHandler::checkCollision()
 							resolveCollision(m);
 						}
 						//Else check AABBvsCircle, needs to be implemented
+						if (other->shape == Shape::Circle && AABBvsCircle(m))
+						{
+							//If the collision boxes have collided, resolve collision
+							resolveCollision(m);
+						}
 					}
 					else
 					{
@@ -58,7 +64,14 @@ void PhysicsHandler::checkCollision()
 							//If the collision circles have collided, resolve collision
 							resolveCollision(m);
 						}
+						//Create the manifold here
+						Manifold m = Manifold(other, body);
+
 						//Else check circle vs AABB collision
+						if (other->shape == Shape::Box && AABBvsCircle(m))
+						{
+							resolveCollision(m);
+						}
 					}
 				}
 			}
@@ -224,7 +237,87 @@ bool PhysicsHandler::CirclevsCircle(Manifold& m)
 		return true;
 	}
 }
+bool PhysicsHandler::AABBvsCircle(Manifold& m)
+{
+	CollisionBox* a = m.A->bCollider;
+	CollisionCircle* b = m.B->cCollider;
 
+	//Vector from A to B
+	Vector2f n = b->position - a->position;
+
+	// Closest point on A to center of B
+	Vector2f closest = n;
+
+	// Calculate half extents along x axis for each object
+	float x_extent = (a->max.x - a->min.x) / 2;
+	float y_extent = (a->max.y - a->min.y) / 2;
+
+	// Clamp point to edges of the AABB
+	closest.x = clamp(-x_extent, x_extent, closest.x);
+	closest.y = clamp(-y_extent, y_extent, closest.y);
+
+	bool inside = false;
+
+	// Circle is inside the AABB, so we need to clamp the circle's center
+	 // to the closest edge
+	if (n == closest)
+	{
+		inside = true;
+
+		// Find closest axis
+		if (abs(n.x) > abs(n.y))
+		{
+			// Clamp to closest extent
+			if (closest.x > 0)
+				closest.x = x_extent;
+			else
+				closest.x = -x_extent;
+		}
+		// y axis is shorter
+		else
+		{
+			// Clamp to closest extent
+			if (closest.y > 0)
+				closest.y = y_extent;
+			else
+				closest.y = -y_extent;
+		}
+	}
+
+	Vector2f normal = n - closest;
+	float d = normal.sqrdMagnitude();
+	float r = b->r;
+
+	// Early out of the radius is shorter than distance to closest point and
+	// Circle not inside the AABB
+	if (d > r * r && !inside)
+		return false;
+
+	// Avoided sqrt until we needed
+	d = sqrt(d);
+
+	// Collision normal needs to be flipped to point outside if circle was
+	// inside the AABB
+	if (inside)
+	{
+		m.normal.x = -n.x;
+		m.normal.y = -n.y;
+		m.penetration = r - d;
+	}
+	else
+	{
+		m.normal = n;
+		m.penetration = r - d;
+	}
+
+	return true;
+}
+
+
+float PhysicsHandler::clamp(float minNum, float maxNum, float num)
+{
+	return min(maxNum, max(num, minNum));
+}
 float PhysicsHandler::min(float a, float b)
 {
 	return a < b ? a : b;
