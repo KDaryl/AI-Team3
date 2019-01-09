@@ -11,12 +11,12 @@ PhysicsHandler::~PhysicsHandler()
 
 void PhysicsHandler::update(float dt)
 {
-	checkCollision(); //Check for collisions
-
+	physics::dt = dt; //Set DT
 
 	//Loop through our bodies and update them
 	for (auto& body : physics::world->bodies)
 	{
+		//Only update the body if it is not a static
 		//If our body uses gravity, add gravity to our bodies velocity
 		if (body->useGravity)
 			body->applyGravity(physics::world->gravity * dt);
@@ -24,6 +24,8 @@ void PhysicsHandler::update(float dt)
 		//Update the body
 		body->update(dt);
 	}
+
+	checkCollision(); //Check for collisions
 }
 
 void PhysicsHandler::checkCollision()
@@ -38,6 +40,7 @@ void PhysicsHandler::checkCollision()
 			{
 				if (body != other) //If the bodies are not the same, check for collision
 				{
+
 					//Create the manifold here
 					Manifold m = Manifold(body, other);
 					//If The body we want to check is colliding off something, check what shape it is
@@ -175,13 +178,13 @@ bool PhysicsHandler::AABBvsAABB(Manifold& m)
 		if (y_overlap > 0)
 		{
 			// Find out which axis is axis of least penetration
-			if (x_overlap > y_overlap)
+			if (x_overlap < y_overlap)
 			{
 				// Point towards B knowing that n points from A to B
 				if (n.x < 0)
 					m.normal = Vector2f(-1, 0);
 				else
-					m.normal = Vector2f(0, 0);
+					m.normal = Vector2f(1, 0);
 				m.penetration = x_overlap;
 				return true;
 			}

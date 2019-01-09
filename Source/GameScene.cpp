@@ -18,6 +18,8 @@ GameScene::GameScene() :
 		}
 	}
 
+	m_miniMapTexture.create(11520, 6480);
+
 	loadMap();
 }
 
@@ -73,7 +75,7 @@ void GameScene::createBoundary(json bounds, Environment & object)
 			auto posAfter = tf.transformPoint(sf::Vector2f(pos.x, pos.y));
 			pos = Vector2f(posAfter.x, posAfter.y);
 		}
-		body->setBoxParameters(pos, size, 0, false); //Set the paaremeters of the body
+		body->setBoxParameters(pos, size, 0, false); //Set the parameters of the body
 		body->setInitialRotation(object.angle); //Set the initial rotation of the body
 		physics::world->addPhysicsBody(*body); //Add body to the physics simulation
 	}
@@ -141,23 +143,47 @@ void GameScene::draw(sf::RenderWindow & window)
 
 void GameScene::drawMinimap(sf::RenderWindow & window)
 {
-	window.setView(m_minimapView);
+	m_miniMapTexture.clear();
+		//m_miniMapTexture.setView(m_minimapView);
 
 	//Draw our bg sprite, everything else will be drawn over this
 	for (auto& bg : m_bgColliders)
 	{
 		m_bgSprite.setPosition(bg.left, bg.top);
-		window.draw(m_bgSprite);
+		m_miniMapTexture.draw(m_bgSprite);
 	}
 
 	//Draw all of our environment objects
 	for (auto& obj : m_environment)
 	{
-		obj.draw(window);
+		m_miniMapTexture.draw(obj.m_sprite);
 	}
 
-	//Draw out players marker point (just the player for now)
-	m_player.draw(window);
+	sf::Sprite map;
+	map.setTexture(m_miniMapTexture.getTexture());
+	map.setOrigin(map.getGlobalBounds().width / 2.0f, map.getGlobalBounds().height / 2);
+	map.setPosition(m_player.m_position.x, m_player.m_position.y);
+	map.setScale(sf::Vector2f(.1, -.1));
+
+	window.draw(map);
+
+	//window.setView(m_minimapView);
+
+	////Draw our bg sprite, everything else will be drawn over this
+	//for (auto& bg : m_bgColliders)
+	//{
+	//	m_bgSprite.setPosition(bg.left, bg.top);
+	//	window.draw(m_bgSprite);
+	//}
+
+	////Draw all of our environment objects
+	//for (auto& obj : m_environment)
+	//{
+	//	obj.draw(window);
+	//}
+
+	////Draw out players marker point (just the player for now)
+	//m_player.draw(window);
 }
 
 void GameScene::handleInput(InputHandler & input)

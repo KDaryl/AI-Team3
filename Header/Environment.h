@@ -31,12 +31,12 @@ public:
 
 	std::string tag;
 	Vector2f m_position;
+	sf::Sprite m_sprite;
 	float angle;
 
 	//Getters
 	sf::FloatRect collider() { return m_collider; }
 private:
 	sf::FloatRect m_collider;
-	sf::Sprite m_sprite;
 };
 

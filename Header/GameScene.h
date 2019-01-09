@@ -25,6 +25,9 @@ private:
 	//LevelLoader
 	LevelLoader m_levelLoader;
 
+	//Minimap
+	sf::RenderTexture m_miniMapTexture;
+
 	//Environment variables
 	sf::Sprite m_bgSprite;
 	std::vector<sf::FloatRect> m_bgColliders; //Our colliders for our BG, this will determine wheter to draw the bg sprite or not

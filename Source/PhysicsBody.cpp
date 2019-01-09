@@ -21,6 +21,9 @@ PhysicsBody::PhysicsBody(Type _type, Shape _shape, void* data) :
 		inv_mass = 0;
 	else
 		inv_mass = 1 / mass;
+
+	if(type == Type::Static)
+		e = 0.4f;
 }
 
 PhysicsBody::~PhysicsBody()
@@ -29,7 +32,6 @@ PhysicsBody::~PhysicsBody()
 
 void PhysicsBody::update(float dt)
 {
-	velocity *= friction; //Multiply velocity by friction
 	position += velocity; //Add velocity to our position
 
 	switch (shape)
@@ -93,6 +95,11 @@ void PhysicsBody::setInitialRotation(float angle)
 	{
 		bCollider->rotate(angle);
 	}
+}
+
+void PhysicsBody::addForce(Vector2f force)
+{
+	velocity += force * mass;
 }
 
 void PhysicsBody::setGravityScalar(float val)
