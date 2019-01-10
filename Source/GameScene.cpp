@@ -5,9 +5,6 @@ GameScene::GameScene() :
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
 	m_followView.zoom(1.0f);
-	m_minimapView.setSize(sf::Vector2f(1280 * 5, 720 * 5));
-	m_minimapView.setCenter(sf::Vector2f(1280 * 5 / 2, 720 * 5 / 2));
-	m_minimapView.setViewport(sf::FloatRect(0.005, 0.01, .25f, .25f));
 
 	//Setup our BG colliders
 	for (int i = 0; i < 5; i++) //5 rows
@@ -19,7 +16,13 @@ GameScene::GameScene() :
 	}
 
 	m_miniMapTexture.create(11520, 6480);
-
+	m_miniMapSprite.setTexture(m_miniMapTexture.getTexture());
+	m_miniMapSprite.setOrigin(0, m_miniMapSprite.getGlobalBounds().height);
+	m_miniMapSprite.setPosition(m_player.m_position.x, m_player.m_position.y);
+	m_miniMapSprite.setScale(sf::Vector2f(.025, -.025));
+	m_miniMapView = m_miniMapTexture.getView();
+	m_miniMapView.zoom(.25f);
+	m_miniMapTexture.setView(m_miniMapView);
 	loadMap();
 }
 
@@ -93,7 +96,8 @@ void GameScene::update(double dt)
 	//Set the views position to follow the player (player will be centered)
 	m_followView.setCenter(m_player.m_position.x, m_player.m_position.y);
 	m_viewRect = sf::FloatRect(m_player.m_position.x - 640, m_player.m_position.y - 360, 1280, 720);
-
+	m_miniMapSprite.setPosition(m_player.m_position.x - 630, m_player.m_position.y - 350);
+	m_miniMapView.setCenter(m_player.m_position.x, m_player.m_position.y);
 	m_player.update(dt);
 }
 
@@ -143,15 +147,16 @@ void GameScene::draw(sf::RenderWindow & window)
 
 void GameScene::drawMinimap(sf::RenderWindow & window)
 {
-	m_miniMapTexture.clear();
+	m_miniMapTexture.setView(m_miniMapView);
+	m_miniMapTexture.clear(sf::Color::Black);
 		//m_miniMapTexture.setView(m_minimapView);
 
 	//Draw our bg sprite, everything else will be drawn over this
-	for (auto& bg : m_bgColliders)
+	/*for (auto& bg : m_bgColliders)
 	{
 		m_bgSprite.setPosition(bg.left, bg.top);
 		m_miniMapTexture.draw(m_bgSprite);
-	}
+	}*/
 
 	//Draw all of our environment objects
 	for (auto& obj : m_environment)
@@ -159,13 +164,12 @@ void GameScene::drawMinimap(sf::RenderWindow & window)
 		m_miniMapTexture.draw(obj.m_sprite);
 	}
 
-	sf::Sprite map;
-	map.setTexture(m_miniMapTexture.getTexture());
-	map.setOrigin(map.getGlobalBounds().width / 2.0f, map.getGlobalBounds().height / 2);
-	map.setPosition(m_player.m_position.x, m_player.m_position.y);
-	map.setScale(sf::Vector2f(.1, -.1));
+	m_miniMapTexture.draw(m_player.m_sprite);
 
-	window.draw(map);
+	//m_miniMapTexture.
+	m_miniMapSprite.setTexture(m_miniMapTexture.getTexture());
+
+	window.draw(m_miniMapSprite);
 
 	//window.setView(m_minimapView);
 
