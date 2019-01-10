@@ -32,7 +32,7 @@ PhysicsBody::~PhysicsBody()
 
 void PhysicsBody::update(float dt)
 {
-	position += velocity; //Add velocity to our position
+	position += velocity * dt; //Add velocity to our position
 
 	switch (shape)
 	{

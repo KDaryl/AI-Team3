@@ -2,10 +2,10 @@
 
 Player::Player(float x, float y) :
 	m_position(x, y),
-	m_moveSpeed(.25f),
+	m_moveSpeed(.25),
 	m_turnSpeed(.125f),
 	m_friction(.9997f),
-	m_maxSpeed(.25f),
+	m_maxSpeed(240.0f),
 	m_angle(-90),
 	m_rangeCollider(0,0, 186, 255),
 	m_physicsBody(Type::Dynamic, Shape::Circle, this)
@@ -16,7 +16,7 @@ Player::Player(float x, float y) :
 	m_physicsBody.setCircleParameters(Vector2f(m_position.x, m_position.y), 30, 1.25f, false);
 	//m_physicsBody.setBoxParameters(Vector2f(m_position.x, m_position.y), Vector2f(62, 85), 1, false);
 	m_physicsBody.setFriction(m_friction);
-	m_physicsBody.setRestitution(0.25f);
+	m_physicsBody.setRestitution(0.1f);
 
 	//Add our body to our physics world
 	physics::world->addPhysicsBody(m_physicsBody);
@@ -78,9 +78,9 @@ void Player::handleInput(InputHandler & input)
 		auto rad = thor::toRadian(m_angle); //Convert angle to a radian
 		m_turnVector = Vector2f(cos(rad), sin(rad)); //Convert radian to a vector
 
-		m_turnVector = m_turnVector.normalise();
+		//m_turnVector = m_turnVector.normalise();
 
-		m_physicsBody.addForce(m_turnVector * m_moveSpeed * m_dt); //Add movement force to our physics body
+		m_physicsBody.addForce(m_turnVector * m_moveSpeed); //Add movement force to our physics body
 
 		//Play our moving animation
 		if (m_animator.isPlayingAnimation() && m_animator.getPlayingAnimation() != "Moving" || !m_animator.isPlayingAnimation())

@@ -147,21 +147,17 @@ void GameScene::draw(sf::RenderWindow & window)
 
 void GameScene::drawMinimap(sf::RenderWindow & window)
 {
+	//Set the minimap view
 	m_miniMapTexture.setView(m_miniMapView);
+	//Clear the minimap with black
 	m_miniMapTexture.clear(sf::Color::Black);
-		//m_miniMapTexture.setView(m_minimapView);
 
-	//Draw our bg sprite, everything else will be drawn over this
-	/*for (auto& bg : m_bgColliders)
-	{
-		m_bgSprite.setPosition(bg.left, bg.top);
-		m_miniMapTexture.draw(m_bgSprite);
-	}*/
+	//Draw the whole background image
 
 	//Draw all of our environment objects
 	for (auto& obj : m_environment)
 	{
-		m_miniMapTexture.draw(obj.m_sprite);
+		//m_miniMapTexture.draw(obj.m_sprite);
 	}
 
 	m_miniMapTexture.draw(m_player.m_sprite);
@@ -170,24 +166,6 @@ void GameScene::drawMinimap(sf::RenderWindow & window)
 	m_miniMapSprite.setTexture(m_miniMapTexture.getTexture());
 
 	window.draw(m_miniMapSprite);
-
-	//window.setView(m_minimapView);
-
-	////Draw our bg sprite, everything else will be drawn over this
-	//for (auto& bg : m_bgColliders)
-	//{
-	//	m_bgSprite.setPosition(bg.left, bg.top);
-	//	window.draw(m_bgSprite);
-	//}
-
-	////Draw all of our environment objects
-	//for (auto& obj : m_environment)
-	//{
-	//	obj.draw(window);
-	//}
-
-	////Draw out players marker point (just the player for now)
-	//m_player.draw(window);
 }
 
 void GameScene::handleInput(InputHandler & input)

@@ -24,8 +24,6 @@ void PhysicsHandler::update(float dt)
 		//Update the body
 		body->update(dt);
 	}
-
-	checkCollision(); //Check for collisions
 }
 
 void PhysicsHandler::checkCollision()
@@ -43,6 +41,11 @@ void PhysicsHandler::checkCollision()
 
 					//Create the manifold here
 					Manifold m = Manifold(body, other);
+
+					//Flip both bodies Y velocity
+					body->velocity.y = -body->velocity.y;
+					other->velocity.y = -other->velocity.y;
+
 					//If The body we want to check is colliding off something, check what shape it is
 					if (body->shape == Shape::Box)
 					{
@@ -58,6 +61,7 @@ void PhysicsHandler::checkCollision()
 							//If the collision boxes have collided, resolve collision
 							resolveCollision(m);
 						}
+
 					}
 					else
 					{
@@ -134,8 +138,12 @@ void PhysicsHandler::positionalCorrection(Manifold& m)
 	float percent = 0.2f; //Usually 20 to 80 percent
 	float slop = 0.01f; //Usually 0.01 to 0.1
 	Vector2f correction = m.normal * (max(m.penetration - slop, 0.0f) / (m.A->inv_mass + m.B->inv_mass) * percent);
-	m.A->position -= correction * m.A->inv_mass;
-	m.B->position += correction * m.B->inv_mass;
+	m.A->position -= correction * m.A->inv_mass * (physics::dt * 3);
+	m.B->position += correction * m.B->inv_mass * (physics::dt * 3);
+
+	//Flip both bodies Y velocity
+	m.A->velocity.y = -m.A->velocity.y;
+	m.B->velocity.y = -m.B->velocity.y;
 }
 
 void PhysicsHandler::addPhysicsBody(PhysicsBody & body)
