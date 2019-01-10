@@ -32,6 +32,8 @@ public:
 	void setFriction(float f);
 	void setRestitution(float resti);
 	void setInitialRotation(float angle);
+	void addForce(Vector2f force);
+	void addAngularForce(Vector2f force);
 	//Set the scalar for gravity
 	void setGravityScalar(float val);
 	//Sets up a box shape physics shape
@@ -40,9 +42,9 @@ public:
 	void setCircleParameters(Vector2f startPos, float radius, float mass, bool useGravity);
 
 	//Public variables
-	Vector2f position, velocity, size;
+	Vector2f position, velocity, size, acceleration;
 	float radius, e, mass, gravityScalar, friction; //Radius, restitution, mass, gravity scalar & friction
-	float acceleration, inv_mass;
+	float inv_mass;
 	//Angular components
 	float orientation, angularVelocity, torque;
 	bool useGravity; //Boolean to use gravity or not

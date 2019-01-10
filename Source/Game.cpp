@@ -26,21 +26,22 @@ void Game::init()
 void Game::run()
 {
 	sf::Clock clock;
-	sf::Int32 lag = 0;
+	float lag = 0;
+	float physStep = 1 / 60.f;
 	while (m_window.isOpen())
 	{
 		processEvents();
 		sf::Time dt = clock.restart();
-		lag += dt.asMilliseconds();
 		auto dtToSec = dt.asSeconds(); //Convert dt to seconds so we can avoid multiple calls to a method
-
-		while (lag > MS_PER_UPDATE)
-		{
-			physics::world->update(dtToSec); //Update our physics
-			update(dtToSec);
-			lag -= MS_PER_UPDATE;
-		}
+		lag += dtToSec; //Add to our lag 
 		physics::world->update(dtToSec); //Update our physics
+		//If lag accumalated is greater than physicsStep
+		while (lag > physStep)
+		{
+			physics::dt = lag;
+			physics::world->checkCollision();
+			lag -= physStep;
+		}
 		update(dtToSec);
 		render();
 	}
@@ -82,7 +83,7 @@ void Game::render()
 	m_sceneManager.draw(m_window); //Draw our current scene
 
 	//Draw our physics colliders for debugging
-	//physics::world->draw(m_window);
+	physics::world->draw(m_window);
 
 	m_window.display(); //Display all drawn items
 }

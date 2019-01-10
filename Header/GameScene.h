@@ -20,10 +20,15 @@ public:
 	void setTexture(ResourceManager& resources);
 private:
 	Player m_player;
-	sf::View m_followView, m_minimapView;
+	sf::View m_followView;
 
 	//LevelLoader
 	LevelLoader m_levelLoader;
+
+	//Minimap
+	sf::Sprite m_miniMapSprite;
+	sf::View m_miniMapView;
+	sf::RenderTexture m_miniMapTexture;
 
 	//Environment variables
 	sf::Sprite m_bgSprite;

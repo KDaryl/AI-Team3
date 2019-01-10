@@ -11,12 +11,12 @@ PhysicsHandler::~PhysicsHandler()
 
 void PhysicsHandler::update(float dt)
 {
-	checkCollision(); //Check for collisions
-
+	physics::dt = dt; //Set DT
 
 	//Loop through our bodies and update them
 	for (auto& body : physics::world->bodies)
 	{
+		//Only update the body if it is not a static
 		//If our body uses gravity, add gravity to our bodies velocity
 		if (body->useGravity)
 			body->applyGravity(physics::world->gravity * dt);
@@ -38,8 +38,10 @@ void PhysicsHandler::checkCollision()
 			{
 				if (body != other) //If the bodies are not the same, check for collision
 				{
+
 					//Create the manifold here
 					Manifold m = Manifold(body, other);
+
 					//If The body we want to check is colliding off something, check what shape it is
 					if (body->shape == Shape::Box)
 					{
@@ -55,6 +57,7 @@ void PhysicsHandler::checkCollision()
 							//If the collision boxes have collided, resolve collision
 							resolveCollision(m);
 						}
+
 					}
 					else
 					{
@@ -111,16 +114,23 @@ void PhysicsHandler::resolveCollision(Manifold& m)
 	float j = -(1 + e) * velAlongNormal;
 	j /= m.A->inv_mass + m.B->inv_mass;
 
+	if (j > 0 && j < 75.f)
+		j = 75.f;
+	else if (j < 0 && j > -75.f)
+		j = -75.f;
+
 	//Apply impulse
 	Vector2f impulse = normal * j;
 
-	//Since we want smalle robjects to bounce more off bigger objects
+	//Since we want smaller objects to bounce more off bigger objects
 	//We need to get a ratio of the impulse to apply to each object
 	float mass_sum = m.A->mass + m.B->mass;
 	float ratio = m.A->mass / mass_sum;
-	m.A->velocity -= impulse * ratio;
+	m.A->addForce(impulse * ratio);
 	ratio = m.B->mass / mass_sum;
-	m.B->velocity += impulse * ratio;
+	m.B->addForce(impulse * ratio);
+
+	std::cout << "VelAN: " << velAlongNormal << ", e: " << e << ", j: " << j << ", impulse: " << impulse << ", normal: " << normal << ", Mass Sum: " << mass_sum << ", ratio: " << ratio << std::endl;
 
 	//Correct the position of the objects (reduce jitter, and fix sinking objects)
 	positionalCorrection(m);
@@ -128,11 +138,11 @@ void PhysicsHandler::resolveCollision(Manifold& m)
 
 void PhysicsHandler::positionalCorrection(Manifold& m)
 {
-	float percent = 0.2f; //Usually 20 to 80 percent
-	float slop = 0.01f; //Usually 0.01 to 0.1
+	float percent = 0.4f; //Usually 20 to 80 percent
+	float slop = 0.1f; //Usually 0.01 to 0.1
 	Vector2f correction = m.normal * (max(m.penetration - slop, 0.0f) / (m.A->inv_mass + m.B->inv_mass) * percent);
-	m.A->position -= correction * m.A->inv_mass;
-	m.B->position += correction * m.B->inv_mass;
+	m.A->position -= correction * m.A->inv_mass * (physics::dt * 3);
+	m.B->position += correction * m.B->inv_mass * (physics::dt * 3);
 }
 
 void PhysicsHandler::addPhysicsBody(PhysicsBody & body)
@@ -237,6 +247,7 @@ bool PhysicsHandler::CirclevsCircle(Manifold& m)
 		return true;
 	}
 }
+
 bool PhysicsHandler::AABBvsCircle(Manifold& m)
 {
 	CollisionBox* a = m.A->bCollider;
@@ -294,19 +305,19 @@ bool PhysicsHandler::AABBvsCircle(Manifold& m)
 		return false;
 
 	// Avoided sqrt until we needed
-	d = sqrt(d);
+	d = normal.magnitude();
 
 	// Collision normal needs to be flipped to point outside if circle was
 	// inside the AABB
 	if (inside)
 	{
-		m.normal.x = -n.x;
-		m.normal.y = -n.y;
+		m.normal.x = -normal.x;
+		m.normal.y = -normal.y;
 		m.penetration = r - d;
 	}
 	else
 	{
-		m.normal = n;
+		m.normal = normal;
 		m.penetration = r - d;
 	}
 

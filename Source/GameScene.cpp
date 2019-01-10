@@ -5,9 +5,6 @@ GameScene::GameScene() :
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
 	m_followView.zoom(1.0f);
-	m_minimapView.setSize(sf::Vector2f(1280 * 5, 720 * 5));
-	m_minimapView.setCenter(sf::Vector2f(1280 * 5 / 2, 720 * 5 / 2));
-	m_minimapView.setViewport(sf::FloatRect(0.005, 0.01, .25f, .25f));
 
 	//Setup our BG colliders
 	for (int i = 0; i < 5; i++) //5 rows
@@ -18,6 +15,14 @@ GameScene::GameScene() :
 		}
 	}
 
+	m_miniMapTexture.create(11520, 6480);
+	m_miniMapSprite.setTexture(m_miniMapTexture.getTexture());
+	m_miniMapSprite.setOrigin(0, m_miniMapSprite.getGlobalBounds().height);
+	m_miniMapSprite.setPosition(m_player.m_position.x, m_player.m_position.y);
+	m_miniMapSprite.setScale(sf::Vector2f(.025, -.025));
+	m_miniMapView = m_miniMapTexture.getView();
+	m_miniMapView.zoom(.25f);
+	m_miniMapTexture.setView(m_miniMapView);
 	loadMap();
 }
 
@@ -73,7 +78,7 @@ void GameScene::createBoundary(json bounds, Environment & object)
 			auto posAfter = tf.transformPoint(sf::Vector2f(pos.x, pos.y));
 			pos = Vector2f(posAfter.x, posAfter.y);
 		}
-		body->setBoxParameters(pos, size, 0, false); //Set the paaremeters of the body
+		body->setBoxParameters(pos, size, 0, false); //Set the parameters of the body
 		body->setInitialRotation(object.angle); //Set the initial rotation of the body
 		physics::world->addPhysicsBody(*body); //Add body to the physics simulation
 	}
@@ -91,7 +96,8 @@ void GameScene::update(double dt)
 	//Set the views position to follow the player (player will be centered)
 	m_followView.setCenter(m_player.m_position.x, m_player.m_position.y);
 	m_viewRect = sf::FloatRect(m_player.m_position.x - 640, m_player.m_position.y - 360, 1280, 720);
-
+	m_miniMapSprite.setPosition(m_player.m_position.x - 630, m_player.m_position.y - 350);
+	m_miniMapView.setCenter(m_player.m_position.x, m_player.m_position.y);
 	m_player.update(dt);
 }
 
@@ -141,23 +147,25 @@ void GameScene::draw(sf::RenderWindow & window)
 
 void GameScene::drawMinimap(sf::RenderWindow & window)
 {
-	window.setView(m_minimapView);
+	//Set the minimap view
+	m_miniMapTexture.setView(m_miniMapView);
+	//Clear the minimap with black
+	m_miniMapTexture.clear(sf::Color::Black);
 
-	//Draw our bg sprite, everything else will be drawn over this
-	for (auto& bg : m_bgColliders)
-	{
-		m_bgSprite.setPosition(bg.left, bg.top);
-		window.draw(m_bgSprite);
-	}
+	//Draw the whole background image
 
 	//Draw all of our environment objects
 	for (auto& obj : m_environment)
 	{
-		obj.draw(window);
+		//m_miniMapTexture.draw(obj.m_sprite);
 	}
 
-	//Draw out players marker point (just the player for now)
-	m_player.draw(window);
+	m_miniMapTexture.draw(m_player.m_sprite);
+
+	//m_miniMapTexture.
+	m_miniMapSprite.setTexture(m_miniMapTexture.getTexture());
+
+	window.draw(m_miniMapSprite);
 }
 
 void GameScene::handleInput(InputHandler & input)

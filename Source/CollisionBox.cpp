@@ -15,7 +15,7 @@ CollisionBox::CollisionBox(float x, float y, float w, float h) :
 	w(w),
 	h(h),
 	min(position.x - w / 2, position.y - h / 2),
-	max(position.x + w, position.y + h)
+	max(min.x + w, min.y + h)
 {
 	setBox();
 }
@@ -32,14 +32,23 @@ void CollisionBox::setBox()
 	rect.setSize(sf::Vector2f(w, h));
 	rect.setOrigin(rect.getGlobalBounds().width / 2, rect.getGlobalBounds().height / 2);
 	rect.setPosition(position.x, position.y);
+
+	//Set Min and Max
+	min = Vector2f(rect.getGlobalBounds().left, rect.getGlobalBounds().top); //Set the min position
+	max = Vector2f(min.x + w, min.y + h); //Set the max
 }
 
 void CollisionBox::rotate(float angle)
 {
-	rect.rotate(angle); //Add angle to the rotation of the collision box
-	rect.setPosition(position.x, position.y);
-	min = Vector2f(rect.getGlobalBounds().left, rect.getGlobalBounds().top); //Set the min position
-	max = Vector2f(min.x + w, min.y + h); //Set the max
+	auto oldW = w, oldH = h;
+
+	if (angle == 90 || angle == -90)
+	{
+		h = oldW, w = oldH;
+	}
+
+	//Setup the box again with new values
+	setBox(); 
 }
 
 void CollisionBox::setSize(float _w, float _h)

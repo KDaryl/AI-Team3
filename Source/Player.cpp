@@ -2,10 +2,10 @@
 
 Player::Player(float x, float y) :
 	m_position(x, y),
-	m_moveSpeed(.35f),
+	m_moveSpeed(.25),
 	m_turnSpeed(.125f),
-	m_friction(.9997f),
-	m_maxSpeed(0.35f),
+	m_friction(.9990f),
+	m_maxSpeed(240.0f),
 	m_angle(-90),
 	m_rangeCollider(0,0, 186, 255),
 	m_physicsBody(Type::Dynamic, Shape::Circle, this)
@@ -13,9 +13,10 @@ Player::Player(float x, float y) :
 	setupAnimations(); //Setup our animations
 
 	//Set our box parameters to our position and size and to NOT use gravity
-	m_physicsBody.setCircleParameters(Vector2f(m_position.x, m_position.y), 30, 1, false);
+	m_physicsBody.setCircleParameters(Vector2f(m_position.x, m_position.y), 30, 1.25f, false);
 	//m_physicsBody.setBoxParameters(Vector2f(m_position.x, m_position.y), Vector2f(62, 85), 1, false);
 	m_physicsBody.setFriction(m_friction);
+	m_physicsBody.setRestitution(0.1f);
 
 	//Add our body to our physics world
 	physics::world->addPhysicsBody(m_physicsBody);
@@ -28,6 +29,10 @@ void Player::update(double dt)
 	m_animator.animate(m_sprite); //Animate our sprite
 
 	m_position = m_physicsBody.position; //Set our position to our physics body position
+
+	//If our speed has gone past our max speed, clamp our speed to our max speed
+	if (m_physicsBody.velocity.magnitude() > m_maxSpeed)
+		m_physicsBody.velocity = m_physicsBody.velocity.normalise() * m_maxSpeed;
 
 	//Set the position and rotation of our sprites and colliders
 	m_sprite.setPosition(m_position.x, m_position.y);
@@ -73,14 +78,7 @@ void Player::handleInput(InputHandler & input)
 		auto rad = thor::toRadian(m_angle); //Convert angle to a radian
 		m_turnVector = Vector2f(cos(rad), sin(rad)); //Convert radian to a vector
 
-		m_turnVector = m_turnVector.normalise();
-
-		//std::cout << m_physicsBody.velocity.magnitude() << std::endl;
-		m_physicsBody.velocity += m_turnVector * m_moveSpeed * m_dt; //Calculate our speed
-
-		//If our speed has gone past our max speed, clamp our speed to our max speed
-		if (m_physicsBody.velocity.magnitude() > m_maxSpeed)
-			m_physicsBody.velocity = m_physicsBody.velocity.normalise() * m_maxSpeed;
+		m_physicsBody.addForce(m_turnVector * m_moveSpeed); //Add movement force to our physics body
 
 		//Play our moving animation
 		if (m_animator.isPlayingAnimation() && m_animator.getPlayingAnimation() != "Moving" || !m_animator.isPlayingAnimation())

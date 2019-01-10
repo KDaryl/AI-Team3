@@ -1,6 +1,9 @@
 #pragma once
+#define _USE_MATH_DEFINES
+
 #include <iostream>
 #include <string>
+#include <math.h>
 #include "SFML/Graphics.hpp"
 
 class Vector2f
@@ -24,6 +27,7 @@ public:
 	void operator*=(float val); //Multiplication equals operator
 	Vector2f operator-(const Vector2f &v); //Minus operator
 	Vector2f operator*(float val); //Multiplication operator
+	Vector2f operator*(Vector2f v); //Multiplication operator
 	friend std::ostream & operator << (std::ostream &out, const Vector2f &v); //Cout operator to easily debug vectors
 
 	//Vector operations
@@ -32,8 +36,11 @@ public:
 	float sqrdMagnitude();
 	float dotProduct(Vector2f v);
 	float crossProduct(Vector2f v);
+	float angle();
 	Vector2f crossProduct(float s);
 	Vector2f normalise();
+	Vector2f rotate(float degrees);
+	Vector2f vectorFromAngle(float degrees);
 	void zeroVector(); //Reset vector to 0,0
 
 	//Public variables
