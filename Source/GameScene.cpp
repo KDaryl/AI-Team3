@@ -1,7 +1,8 @@
 #include "GameScene.h"
 
 GameScene::GameScene() :
-	m_player(5760, 6476)
+	m_player(3913, 1687)
+	//m_player(5840, 6163)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
 	m_followView.zoom(1.0f);
@@ -157,7 +158,7 @@ void GameScene::drawMinimap(sf::RenderWindow & window)
 	//Draw all of our environment objects
 	for (auto& obj : m_environment)
 	{
-		//m_miniMapTexture.draw(obj.m_sprite);
+		m_miniMapTexture.draw(obj.m_sprite);
 	}
 
 	m_miniMapTexture.draw(m_player.m_sprite);
