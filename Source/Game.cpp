@@ -34,12 +34,11 @@ void Game::run()
 		sf::Time dt = clock.restart();
 		auto dtToSec = dt.asSeconds(); //Convert dt to seconds so we can avoid multiple calls to a method
 		lag += dtToSec; //Add to our lag 
-
+		physics::world->update(dtToSec); //Update our physics
 		//If lag accumalated is greater than physicsStep
 		while (lag > physStep)
 		{
-			physics::world->update(lag); //Update our physics
-
+			physics::dt = lag;
 			physics::world->checkCollision();
 			lag -= physStep;
 		}

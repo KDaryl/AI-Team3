@@ -33,6 +33,7 @@ public:
 	void setRestitution(float resti);
 	void setInitialRotation(float angle);
 	void addForce(Vector2f force);
+	void addAngularForce(Vector2f force);
 	//Set the scalar for gravity
 	void setGravityScalar(float val);
 	//Sets up a box shape physics shape

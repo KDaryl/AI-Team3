@@ -32,6 +32,9 @@ PhysicsBody::~PhysicsBody()
 
 void PhysicsBody::update(float dt)
 {
+	if (velocity.magnitude() < 0.01)
+		velocity.zeroVector();
+
 	position += velocity * dt; //Add velocity to our position
 
 	switch (shape)
@@ -44,6 +47,8 @@ void PhysicsBody::update(float dt)
 			cCollider->setPosition(position);
 		break;
 	}
+
+	velocity *= friction;
 }
 
 void PhysicsBody::draw(sf::RenderWindow & window)

@@ -42,10 +42,6 @@ void PhysicsHandler::checkCollision()
 					//Create the manifold here
 					Manifold m = Manifold(body, other);
 
-					//Flip both bodies Y velocity
-					body->velocity.y = -body->velocity.y;
-					other->velocity.y = -other->velocity.y;
-
 					//If The body we want to check is colliding off something, check what shape it is
 					if (body->shape == Shape::Box)
 					{
@@ -118,16 +114,23 @@ void PhysicsHandler::resolveCollision(Manifold& m)
 	float j = -(1 + e) * velAlongNormal;
 	j /= m.A->inv_mass + m.B->inv_mass;
 
+	if (j > 0 && j < 75.f)
+		j = 75.f;
+	else if (j < 0 && j > -75.f)
+		j = -75.f;
+
 	//Apply impulse
 	Vector2f impulse = normal * j;
 
-	//Since we want smalle robjects to bounce more off bigger objects
+	//Since we want smaller objects to bounce more off bigger objects
 	//We need to get a ratio of the impulse to apply to each object
 	float mass_sum = m.A->mass + m.B->mass;
 	float ratio = m.A->mass / mass_sum;
-	m.A->velocity -= impulse * ratio;
+	m.A->addForce(impulse * ratio);
 	ratio = m.B->mass / mass_sum;
-	m.B->velocity += impulse * ratio;
+	m.B->addForce(impulse * ratio);
+
+	std::cout << "VelAN: " << velAlongNormal << ", e: " << e << ", j: " << j << ", impulse: " << impulse << ", normal: " << normal << ", Mass Sum: " << mass_sum << ", ratio: " << ratio << std::endl;
 
 	//Correct the position of the objects (reduce jitter, and fix sinking objects)
 	positionalCorrection(m);
@@ -135,15 +138,11 @@ void PhysicsHandler::resolveCollision(Manifold& m)
 
 void PhysicsHandler::positionalCorrection(Manifold& m)
 {
-	float percent = 0.2f; //Usually 20 to 80 percent
-	float slop = 0.01f; //Usually 0.01 to 0.1
+	float percent = 0.4f; //Usually 20 to 80 percent
+	float slop = 0.1f; //Usually 0.01 to 0.1
 	Vector2f correction = m.normal * (max(m.penetration - slop, 0.0f) / (m.A->inv_mass + m.B->inv_mass) * percent);
 	m.A->position -= correction * m.A->inv_mass * (physics::dt * 3);
 	m.B->position += correction * m.B->inv_mass * (physics::dt * 3);
-
-	//Flip both bodies Y velocity
-	m.A->velocity.y = -m.A->velocity.y;
-	m.B->velocity.y = -m.B->velocity.y;
 }
 
 void PhysicsHandler::addPhysicsBody(PhysicsBody & body)
@@ -186,13 +185,13 @@ bool PhysicsHandler::AABBvsAABB(Manifold& m)
 		if (y_overlap > 0)
 		{
 			// Find out which axis is axis of least penetration
-			if (x_overlap < y_overlap)
+			if (x_overlap > y_overlap)
 			{
 				// Point towards B knowing that n points from A to B
 				if (n.x < 0)
 					m.normal = Vector2f(-1, 0);
 				else
-					m.normal = Vector2f(1, 0);
+					m.normal = Vector2f(0, 0);
 				m.penetration = x_overlap;
 				return true;
 			}
@@ -248,6 +247,7 @@ bool PhysicsHandler::CirclevsCircle(Manifold& m)
 		return true;
 	}
 }
+
 bool PhysicsHandler::AABBvsCircle(Manifold& m)
 {
 	CollisionBox* a = m.A->bCollider;
@@ -305,19 +305,19 @@ bool PhysicsHandler::AABBvsCircle(Manifold& m)
 		return false;
 
 	// Avoided sqrt until we needed
-	d = sqrt(d);
+	d = normal.magnitude();
 
 	// Collision normal needs to be flipped to point outside if circle was
 	// inside the AABB
 	if (inside)
 	{
-		m.normal.x = -n.x;
-		m.normal.y = -n.y;
+		m.normal.x = -normal.x;
+		m.normal.y = -normal.y;
 		m.penetration = r - d;
 	}
 	else
 	{
-		m.normal = n;
+		m.normal = normal;
 		m.penetration = r - d;
 	}
 

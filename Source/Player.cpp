@@ -4,7 +4,7 @@ Player::Player(float x, float y) :
 	m_position(x, y),
 	m_moveSpeed(.25),
 	m_turnSpeed(.125f),
-	m_friction(.9997f),
+	m_friction(.9990f),
 	m_maxSpeed(240.0f),
 	m_angle(-90),
 	m_rangeCollider(0,0, 186, 255),
@@ -77,8 +77,6 @@ void Player::handleInput(InputHandler & input)
 	{
 		auto rad = thor::toRadian(m_angle); //Convert angle to a radian
 		m_turnVector = Vector2f(cos(rad), sin(rad)); //Convert radian to a vector
-
-		//m_turnVector = m_turnVector.normalise();
 
 		m_physicsBody.addForce(m_turnVector * m_moveSpeed); //Add movement force to our physics body
 
