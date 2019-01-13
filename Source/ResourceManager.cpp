@@ -8,6 +8,8 @@ ResourceManager::ResourceManager()
 
 	//Load game related textures (player, ai, worker etc.)
 	loadTexture("Player", "Ships/Player.png", true);
+	loadTexture("Sweeper", "Ships/Sweeper Bot.png", true);
+	loadTexture("Worker", "Ships/Worker.png", true);
 
 	//Load environment Textures (corridors, walls, backgrounds etc)
 	loadTexture("Starfield BG", "Environment/Starfield BG.png", true);

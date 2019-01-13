@@ -37,6 +37,12 @@
     <Filter Include="Header Files\Physics Header">
       <UniqueIdentifier>{f9f02c3b-0394-4d6e-8e32-e38c28a852f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\AI Headers">
+      <UniqueIdentifier>{24f78f1b-d82e-43b1-85e5-d1675db8f690}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AI Source">
+      <UniqueIdentifier>{8d5ce8e5-fe9f-4ccc-b0dd-7d1f9b488089}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Game.h">
@@ -87,6 +93,24 @@
     <ClInclude Include="Header\LevelLoader.h">
       <Filter>Header Files\Helper Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Header\AI.h">
+      <Filter>Header Files\AI Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Seek.h">
+      <Filter>Header Files\AI Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Flee.h">
+      <Filter>Header Files\AI Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Flock.h">
+      <Filter>Header Files\AI Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Swarm.h">
+      <Filter>Header Files\AI Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Wander.h">
+      <Filter>Header Files\AI Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -136,6 +160,24 @@
     </ClCompile>
     <ClCompile Include="Source\LevelLoader.cpp">
       <Filter>Source Files\Helper Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\AI.cpp">
+      <Filter>Source Files\AI Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Seek.cpp">
+      <Filter>Source Files\AI Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Flee.cpp">
+      <Filter>Source Files\AI Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Flock.cpp">
+      <Filter>Source Files\AI Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Swarm.cpp">
+      <Filter>Source Files\AI Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Wander.cpp">
+      <Filter>Source Files\AI Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -4,6 +4,9 @@
 #include "Player.h"
 #include "Door.h"
 #include "Environment.h" //For corridors, rooms
+#include "AI.h"
+#include "Seek.h"
+#include "Flee.h"
 
 class GameScene : public Scene
 {
@@ -21,6 +24,10 @@ public:
 private:
 	Player m_player;
 	sf::View m_followView;
+
+	//AI
+	Seek m_seekAI;
+	Flee m_fleeAI;
 
 	//LevelLoader
 	LevelLoader m_levelLoader;

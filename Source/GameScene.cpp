@@ -1,7 +1,10 @@
 #include "GameScene.h"
 
 GameScene::GameScene() :
-	m_player(5760, 6476)
+	m_player(5760, 6476),
+	//starting pos and maxSpeed
+	m_seekAI(Vector2f(5760, 6576), 0.1),
+	m_fleeAI(Vector2f(5760, 6576), 0.1)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
 	m_followView.zoom(1.0f);
@@ -99,6 +102,9 @@ void GameScene::update(double dt)
 	m_miniMapSprite.setPosition(m_player.m_position.x - 630, m_player.m_position.y - 350);
 	m_miniMapView.setCenter(m_player.m_position.x, m_player.m_position.y);
 	m_player.update(dt);
+	//update to seek player position
+	m_seekAI.update(Vector2f(m_player.m_position.x, m_player.m_position.y));
+	m_fleeAI.update(Vector2f(m_player.m_position.x, m_player.m_position.y));
 }
 
 void GameScene::draw(sf::RenderWindow & window)
@@ -138,6 +144,9 @@ void GameScene::draw(sf::RenderWindow & window)
 
 	//Draw the player
 	m_player.draw(window);
+	//draw the ai
+	m_seekAI.render(window);
+	m_fleeAI.render(window);
 
 	drawMinimap(window); //Draw the mini map
 
@@ -176,7 +185,9 @@ void GameScene::handleInput(InputHandler & input)
 void GameScene::setTexture(ResourceManager & resources)
 {
 	m_player.setTexture(resources);
-
+	//as AI is a base class the specific texture will need to be told here
+	m_seekAI.setTexture(resources, "Sweeper", Vector2f(18, 9.5));
+	m_fleeAI.setTexture(resources, "Sweeper", Vector2f(18, 9.5));
 	m_bgSprite.setTexture(resources.getTexture("Starfield BG"));
 
 	for (auto& object : m_doors)
