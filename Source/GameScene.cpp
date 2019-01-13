@@ -1,7 +1,7 @@
 #include "GameScene.h"
 
 GameScene::GameScene() :
-	m_player(3913, 1687)
+	m_player(2000, 6167)
 	//m_player(5840, 6163)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
@@ -10,7 +10,7 @@ GameScene::GameScene() :
 	//Setup our BG colliders
 	for (int i = 0; i < 5; i++) //5 rows
 	{
-		for (int j = 0; j < 5; j++) //5 Columns
+		for (int j = 0; j < 5; j++) //5 Columns 
 		{
 			m_bgColliders.push_back(sf::FloatRect(-3840 + (j * 3840), -2160 + (i * 2160), 3840, 2160));
 		}
@@ -22,7 +22,8 @@ GameScene::GameScene() :
 	m_miniMapSprite.setPosition(m_player.m_position.x, m_player.m_position.y);
 	m_miniMapSprite.setScale(sf::Vector2f(.025, -.025));
 	m_miniMapView = m_miniMapTexture.getView();
-	m_miniMapView.zoom(.25f);
+	//m_miniMapView.zoom(.25f);
+	m_miniMapView.zoom(.75f);
 	m_miniMapTexture.setView(m_miniMapView);
 	loadMap();
 }

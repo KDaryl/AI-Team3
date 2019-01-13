@@ -9,7 +9,7 @@
 //	"ROE" : Room One Exit
 //	"CTE" : Corner Two Exits
 //	"BRFE" : Big Room Four Exits
-//	"2E" : Two Exit room
+//	"2ER" : Two Exit room
 //	"SC" : Straight Corridor
 //	"CFJ" : Corridor 4 Junction
 //	"3ER" : Three exit room
