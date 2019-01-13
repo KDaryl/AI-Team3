@@ -18,7 +18,7 @@ public:
 	{
 		if (mClock.getElapsedTime().asSeconds() >= 1.f)
 		{
-			mFps = mFrame / 2;
+			mFps = mFrame;
 			mFrame = 0;
 			mClock.restart();
 

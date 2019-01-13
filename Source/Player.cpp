@@ -34,8 +34,6 @@ void Player::update(double dt)
 	if (m_physicsBody.velocity.magnitude() > m_maxSpeed)
 		m_physicsBody.velocity = m_physicsBody.velocity.normalise() * m_maxSpeed;
 
-	std::cout << m_physicsBody.velocity.magnitude() << std::endl;
-
 	//Set the position and rotation of our sprites and colliders
 	m_sprite.setPosition(m_position.x, m_position.y);
 	m_sprite.setRotation(m_angle + 90); //Add offset of 90 due to the sprite being faced the wrong way
