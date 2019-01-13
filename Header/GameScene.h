@@ -28,6 +28,8 @@ private:
 
 	//Minimap
 	sf::Sprite m_miniMapSprite;
+	sf::Sprite m_fullMapSprite;
+	sf::RectangleShape m_miniMapRect;
 	sf::View m_miniMapView;
 	sf::RenderTexture m_miniMapTexture;
 

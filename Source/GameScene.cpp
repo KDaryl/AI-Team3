@@ -98,8 +98,9 @@ void GameScene::update(double dt)
 	m_followView.setCenter(m_player.m_position.x, m_player.m_position.y);
 	m_viewRect = sf::FloatRect(m_player.m_position.x - 640, m_player.m_position.y - 360, 1280, 720);
 	m_miniMapSprite.setPosition(m_player.m_position.x - 630, m_player.m_position.y - 350);
-	//m_miniMapSprite.setScale(.25f, -.25f);
 	m_miniMapView.setCenter(m_player.m_position.x, m_player.m_position.y);
+
+	//Update Player
 	m_player.update(dt);
 }
 
@@ -118,15 +119,8 @@ void GameScene::draw(sf::RenderWindow & window)
 		}
 	}
 
-	//Draw our environment, rooms, corridors
-	for (auto& object : m_environment)
-	{
-		//If the object is in view, then draw it
-		if (object.collider().intersects(m_viewRect))
-		{
-			object.draw(window);
-		}
-	}
+	//Draw the map
+	window.draw(m_fullMapSprite);
 
 	//Draw our Doors
 	for (auto& object : m_doors)
@@ -156,12 +150,7 @@ void GameScene::drawMinimap(sf::RenderWindow & window)
 	m_miniMapTexture.clear(sf::Color::Black);
 
 	//Draw the whole background image
-
-	//Draw all of our environment objects
-	for (auto& obj : m_environment)
-	{
-		m_miniMapTexture.draw(obj.m_sprite);
-	}
+	m_miniMapTexture.draw(m_fullMapSprite);
 
 	m_miniMapTexture.draw(m_player.m_sprite);
 
@@ -186,6 +175,8 @@ void GameScene::setTexture(ResourceManager & resources)
 	{
 		object.setTexture(resources);
 	}
+
+	m_fullMapSprite.setTexture(resources.getTexture("Full Map"));
 
 	//Get the boundaries information from the Json data
 	json bounds = m_levelLoader.data["Boundaries"];
