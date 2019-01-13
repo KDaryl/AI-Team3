@@ -18,6 +18,7 @@ public:
 	void drawMinimap(sf::RenderWindow& window);
 	void handleInput(InputHandler& input);
 	void setTexture(ResourceManager& resources);
+
 private:
 	Player m_player;
 	sf::View m_followView;

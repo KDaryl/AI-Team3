@@ -9,7 +9,10 @@ class ResourceManager
 public:
 	ResourceManager();
 	~ResourceManager() {};
+	void loadTextures();
 	void loadTexture(std::string name, std::string fileName, bool smooth = false);
+
+	bool finishedLoading = false;
 
 	//Getters
 	sf::Texture& getTexture(std::string textureName);

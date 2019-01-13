@@ -41,6 +41,12 @@ private:
 	void render();
 	void handleInput(); //Handles any input for our game
 
+	//Thread while data is loaded
+	void loadingScreen();
+	sf::Thread m_loadingThread;
+	sf::Sprite m_loadingSprite; //Sprite for our loading screen
+	thor::Animator<sf::Sprite, std::string> m_loadAnimator; //Animator
+
 	sf::RenderWindow m_window; //Render window
 	InputHandler m_inputHandler;
 

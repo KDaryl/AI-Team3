@@ -1,8 +1,8 @@
 #include "GameScene.h"
 
 GameScene::GameScene() :
-	m_player(2000, 6167)
-	//m_player(5840, 6163)
+	//m_player(2000, 6167)
+	m_player(5840, 6163)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
 	m_followView.zoom(1.0f);
@@ -20,10 +20,9 @@ GameScene::GameScene() :
 	m_miniMapSprite.setTexture(m_miniMapTexture.getTexture());
 	m_miniMapSprite.setOrigin(0, m_miniMapSprite.getGlobalBounds().height);
 	m_miniMapSprite.setPosition(m_player.m_position.x, m_player.m_position.y);
-	m_miniMapSprite.setScale(sf::Vector2f(.025, -.025));
+	m_miniMapSprite.setScale(sf::Vector2f(.025f, -.025f));
 	m_miniMapView = m_miniMapTexture.getView();
-	//m_miniMapView.zoom(.25f);
-	m_miniMapView.zoom(.75f);
+	m_miniMapView.zoom(.25f);
 	m_miniMapTexture.setView(m_miniMapView);
 	loadMap();
 }
@@ -99,6 +98,7 @@ void GameScene::update(double dt)
 	m_followView.setCenter(m_player.m_position.x, m_player.m_position.y);
 	m_viewRect = sf::FloatRect(m_player.m_position.x - 640, m_player.m_position.y - 360, 1280, 720);
 	m_miniMapSprite.setPosition(m_player.m_position.x - 630, m_player.m_position.y - 350);
+	//m_miniMapSprite.setScale(.25f, -.25f);
 	m_miniMapView.setCenter(m_player.m_position.x, m_player.m_position.y);
 	m_player.update(dt);
 }
@@ -151,6 +151,7 @@ void GameScene::drawMinimap(sf::RenderWindow & window)
 {
 	//Set the minimap view
 	m_miniMapTexture.setView(m_miniMapView);
+
 	//Clear the minimap with black
 	m_miniMapTexture.clear(sf::Color::Black);
 
