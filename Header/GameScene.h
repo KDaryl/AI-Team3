@@ -9,6 +9,7 @@
 #include "Flee.h"
 #include "Wander.h"
 #include "Grid.h" //For the grid of the map
+#include "MiniMap.h" //For the minimap
 
 class GameScene : public Scene
 {
@@ -40,11 +41,8 @@ private:
 	LevelLoader m_levelLoader;
 
 	//Minimap
-	sf::Sprite m_miniMapSprite;
 	sf::Sprite m_fullMapSprite;
-	sf::RectangleShape m_miniMapRect;
-	sf::View m_miniMapView;
-	sf::RenderTexture m_miniMapTexture;
+	MiniMap m_minimap;
 
 	//Environment variables
 	sf::Sprite m_bgSprite;
