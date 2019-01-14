@@ -7,6 +7,7 @@
 #include "AI.h"
 #include "Seek.h"
 #include "Flee.h"
+#include "Wander.h"
 
 class GameScene : public Scene
 {
@@ -28,7 +29,7 @@ private:
 	//AI
 	Seek m_seekAI;
 	Flee m_fleeAI;
-
+	Wander m_wanderAI;
 	//LevelLoader
 	LevelLoader m_levelLoader;
 
