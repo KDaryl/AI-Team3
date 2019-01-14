@@ -4,7 +4,8 @@ GameScene::GameScene() :
 	m_player(5840, 6163),
 	m_seekAI(Vector2f(5760, 6576), 0.1),
 	m_fleeAI(Vector2f(5760, 6576), 0.1),
-	m_wanderAI(Vector2f(5760, 6576),0.1)
+	m_wanderAI(Vector2f(5760, 6576),0.1),
+	m_minimap(m_player)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
 	m_followView.zoom(1.0f);
@@ -18,14 +19,6 @@ GameScene::GameScene() :
 		}
 	}
 
-	m_miniMapTexture.create(11520, 6480);
-	m_miniMapSprite.setTexture(m_miniMapTexture.getTexture());
-	m_miniMapSprite.setOrigin(0, m_miniMapSprite.getGlobalBounds().height);
-	m_miniMapSprite.setPosition(m_player.m_position.x, m_player.m_position.y);
-	m_miniMapSprite.setScale(sf::Vector2f(.025f, -.025f));
-	m_miniMapView = m_miniMapTexture.getView();
-	m_miniMapView.zoom(.25f);
-	m_miniMapTexture.setView(m_miniMapView);
 	loadMap();
 }
 
@@ -122,8 +115,6 @@ void GameScene::createBoundary(json bounds, Environment & object)
 				}
 			}
 		}
-
-		m_safeAreas.push_back(safeArea);
 	}
 }
 
@@ -139,8 +130,9 @@ void GameScene::update(double dt)
 	//Set the views position to follow the player (player will be centered)
 	m_followView.setCenter(m_player.m_position.x, m_player.m_position.y);
 	m_viewRect = sf::FloatRect(m_player.m_position.x - 640, m_player.m_position.y - 360, 1280, 720);
-	m_miniMapSprite.setPosition(m_player.m_position.x - 630, m_player.m_position.y - 350);
-	m_miniMapView.setCenter(m_player.m_position.x, m_player.m_position.y);
+	
+	//Update minimap
+	m_minimap.update(); 
 
 	//Update Player
 	m_player.update(dt);
@@ -191,14 +183,7 @@ void GameScene::draw(sf::RenderWindow & window)
 
 	//Draw our physics colliders for debugging
 	if (m_drawPhysics)
-	{
-		for (auto& area : m_safeAreas)
-		{
-			area.draw(window);
-		}
-
 		physics::world->draw(window);
-	}
 
 	drawMinimap(window); //Draw the mini map
 
@@ -208,21 +193,9 @@ void GameScene::draw(sf::RenderWindow & window)
 
 void GameScene::drawMinimap(sf::RenderWindow & window)
 {
-	//Set the minimap view
-	m_miniMapTexture.setView(m_miniMapView);
-
-	//Clear the minimap with black
-	m_miniMapTexture.clear(sf::Color::Black);
-
-	//Draw the whole background image
-	m_miniMapTexture.draw(m_fullMapSprite);
-
-	m_miniMapTexture.draw(m_player.m_sprite);
-
-	//m_miniMapTexture.
-	m_miniMapSprite.setTexture(m_miniMapTexture.getTexture());
-
-	window.draw(m_miniMapSprite);
+	m_minimap.draw(m_fullMapSprite);
+	m_minimap.draw(m_player.m_sprite);
+	m_minimap.display(window);
 }
 
 void GameScene::handleInput(InputHandler & input)

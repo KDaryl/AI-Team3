@@ -114,6 +114,9 @@
     <ClInclude Include="Header\Grid.h">
       <Filter>Header Files\Game Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Header\MiniMap.h">
+      <Filter>Header Files\Game Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -183,6 +186,9 @@
       <Filter>Source Files\AI Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Grid.cpp">
+      <Filter>Source Files\Game Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MiniMap.cpp">
       <Filter>Source Files\Game Source</Filter>
     </ClCompile>
   </ItemGroup>
