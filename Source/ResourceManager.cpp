@@ -19,6 +19,8 @@ void ResourceManager::loadTextures()
 
 	//Load game related textures (player, ai, worker etc.)
 	loadTexture("Player", "Ships/Player.png", true);
+	loadTexture("Sweeper", "Ships/Sweeper Bot.png", true);
+	loadTexture("Worker", "Ships/Worker.png", true);
 
 	//Load minimap textures
 	loadTexture("Full Map", "Environment/Full Map.png", true);

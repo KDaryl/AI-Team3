@@ -39,6 +39,7 @@ void Player::update(double dt)
 	m_sprite.setRotation(m_angle + 90); //Add offset of 90 due to the sprite being faced the wrong way
 	m_rangeCollider.left = m_position.x - m_rangeCollider.width / 2;
 	m_rangeCollider.top = m_position.y - m_rangeCollider.height / 2;
+	//std::cout << m_position.x << m_position.y << std::endl;
 }
 
 void Player::draw(sf::RenderWindow & win)

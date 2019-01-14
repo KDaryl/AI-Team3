@@ -19,7 +19,7 @@ public:
 	void draw(sf::RenderWindow& win);
 	void handleInput(InputHandler& input);
 	void setTexture(ResourceManager& resources);
-
+	
 	//Public variables
 	Vector2f m_position;
 	Vector2f m_velocity;
