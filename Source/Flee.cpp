@@ -52,7 +52,7 @@ void Flee::update(Vector2f t)
 	//m_rangeCollider.left = m_position.x - m_rangeCollider.width / 2;
 	//m_rangeCollider.top = m_position.y - m_rangeCollider.height / 2;
 
-	std::cout << m_position.x << m_position.y << std::endl;
+	//std::cout << m_position.x << m_position.y << std::endl;
 }
 
 void Flee::render(sf::RenderWindow & window)

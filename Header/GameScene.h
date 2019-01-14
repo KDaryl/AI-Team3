@@ -8,6 +8,7 @@
 #include "Seek.h"
 #include "Flee.h"
 #include "Wander.h"
+#include "Grid.h" //For the grid of the map
 
 class GameScene : public Scene
 {
@@ -26,6 +27,10 @@ public:
 private:
 	Player m_player;
 	sf::View m_followView;
+
+	//Grid
+	Grid m_grid;
+	bool m_drawGrid, m_drawPhysics;
 
 	//AI
 	Seek m_seekAI;

@@ -51,6 +51,8 @@ void Game::run()
 		auto dtToSec = dt.asSeconds(); //Convert dt to seconds so we can avoid multiple calls to a method
 		lag += dtToSec; //Add to our lag 
 		physics::world->update(dtToSec); //Update our physics
+		physics::world->checkCollision();
+
 		//If lag accumalated is greater than physicsStep
 		while (lag > physStep)
 		{
@@ -97,9 +99,6 @@ void Game::render()
 	m_window.clear(sf::Color::Blue); //Clear all previously drawn items
 
 	m_sceneManager.draw(m_window); //Draw our current scene
-
-	//Draw our physics colliders for debugging
-	physics::world->draw(m_window);
 
 	m_window.display(); //Display all drawn items
 }

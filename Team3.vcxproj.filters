@@ -111,6 +111,9 @@
     <ClInclude Include="Header\Wander.h">
       <Filter>Header Files\AI Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Grid.h">
+      <Filter>Header Files\Game Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -178,6 +181,9 @@
     </ClCompile>
     <ClCompile Include="Source\Wander.cpp">
       <Filter>Source Files\AI Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Grid.cpp">
+      <Filter>Source Files\Game Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

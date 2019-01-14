@@ -144,6 +144,14 @@ void GameScene::draw(sf::RenderWindow & window)
 	m_seekAI.render(window);
 	m_fleeAI.render(window);
 	m_wanderAI.render(window);
+	
+	//The Grid
+	if(m_drawGrid)
+		m_grid.draw(window);
+
+	//Draw our physics colliders for debugging
+	if(m_drawPhysics)
+		physics::world->draw(window);
 
 	drawMinimap(window); //Draw the mini map
 
@@ -173,6 +181,12 @@ void GameScene::drawMinimap(sf::RenderWindow & window)
 void GameScene::handleInput(InputHandler & input)
 {
 	m_player.handleInput(input);
+
+	//Keybindings for turning Grid and Collision boxes On/OFF
+	if (input.isButtonPressed("Shift"))
+		m_drawGrid = !m_drawGrid;
+	if (input.isButtonPressed("Tab"))
+		m_drawPhysics = !m_drawPhysics;
 }
 
 void GameScene::setTexture(ResourceManager & resources)
