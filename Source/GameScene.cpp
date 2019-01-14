@@ -67,7 +67,7 @@ void GameScene::loadMap()
 void GameScene::createBoundary(json bounds, Environment & object)
 {
 	//Loop through the bounds and look for the boundaries tagged with objects tag
-	for (auto& bound : bounds[object.tag])
+	for (auto& bound : bounds[object.tag]["Walls"])
 	{
 		auto body = new PhysicsBody(Type::Static, Shape::Box, this); //Create the body
 		auto size = Vector2f(bound["W"], bound["H"]);
@@ -84,6 +84,46 @@ void GameScene::createBoundary(json bounds, Environment & object)
 		body->setBoxParameters(pos, size, 0, false); //Set the parameters of the body
 		body->setInitialRotation(object.angle); //Set the initial rotation of the body
 		physics::world->addPhysicsBody(*body); //Add body to the physics simulation
+	}
+
+	//Loop through the safe Areas for the object
+	for (auto& bound : bounds[object.tag]["Safe Areas"])
+	{
+		auto size = Vector2f(bound["W"], bound["H"]);
+		auto pos = Vector2f(bound["X"], bound["Y"]); //Center of the collision box
+		pos.x += object.m_position.x;
+		pos.y += object.m_position.y;
+		CollisionBox safeArea(pos.x, pos.y, size.x, size.y); //Create the collision box
+
+		if (object.angle != 0) //If the object is rotated, rotate our collision box
+		{
+			sf::Transform tf;//Rotate position around the center of the objects position
+			tf.rotate(object.angle, sf::Vector2f(object.m_position.x, object.m_position.y));
+			auto posAfter = tf.transformPoint(sf::Vector2f(pos.x, pos.y));
+			pos = Vector2f(posAfter.x, posAfter.y); //Set the new position
+			safeArea.setSize(pos.x, pos.y, size.x, size.y);
+			safeArea.rotate(object.angle);
+		}
+
+		//Loop through all of the Big Cells and see where our object is
+		for (auto& cells :	m_grid.m_splitGridcells)
+		{		
+			//If the Safe Area intersects with with the grid, go mark the cells it collides with as not a wall
+			if (safeArea.rect.getGlobalBounds().intersects(cells.second.rect))
+			{
+				std::string gridP = std::to_string(cells.second.gridPosition.x) + "," + std::to_string(cells.second.gridPosition.y);
+
+				for (auto& smallCell : m_grid.m_splitCells[gridP])
+				{
+					if (smallCell->rect.intersects(safeArea.rect.getGlobalBounds()))
+					{
+						smallCell->isWall = false;
+					}
+				}
+			}
+		}
+
+		m_safeAreas.push_back(safeArea);
 	}
 }
 
@@ -150,8 +190,15 @@ void GameScene::draw(sf::RenderWindow & window)
 		m_grid.draw(window);
 
 	//Draw our physics colliders for debugging
-	if(m_drawPhysics)
+	if (m_drawPhysics)
+	{
+		for (auto& area : m_safeAreas)
+		{
+			area.draw(window);
+		}
+
 		physics::world->draw(window);
+	}
 
 	drawMinimap(window); //Draw the mini map
 

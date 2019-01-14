@@ -139,7 +139,9 @@ void Grid::draw(sf::RenderWindow & window)
 	{
 		m_rectangle.setPosition(cell.second.position.x, cell.second.position.y);
 		window.draw(m_rectangle);
-		m_text.setString(std::to_string((cell.second.gridPosition.x)) + "," + std::to_string((cell.second.gridPosition.y)));
+		m_text.setString(std::to_string((cell.second.gridPosition.x)) + "," + std::to_string((cell.second.gridPosition.y)) 
+		+ "\n" + (cell.second.isWall ? "WALL" : ""));
+		m_text.setOrigin(m_text.getGlobalBounds().width / 2, m_text.getGlobalBounds().height / 2 - 10);
 		m_text.setPosition(cell.second.position.x, cell.second.position.y);
 		window.draw(m_text);
 	}

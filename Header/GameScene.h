@@ -24,6 +24,9 @@ public:
 	void handleInput(InputHandler& input);
 	void setTexture(ResourceManager& resources);
 
+	//Temporary
+	std::vector<CollisionBox> m_safeAreas;
+
 private:
 	Player m_player;
 	sf::View m_followView;
