@@ -4,6 +4,11 @@
 #include "Player.h"
 #include "Door.h"
 #include "Environment.h" //For corridors, rooms
+#include "AI.h"
+#include "Seek.h"
+#include "Flee.h"
+#include "Wander.h"
+#include "Grid.h" //For the grid of the map
 
 class GameScene : public Scene
 {
@@ -18,15 +23,26 @@ public:
 	void drawMinimap(sf::RenderWindow& window);
 	void handleInput(InputHandler& input);
 	void setTexture(ResourceManager& resources);
+
 private:
 	Player m_player;
 	sf::View m_followView;
 
+	//Grid
+	Grid m_grid;
+	bool m_drawGrid, m_drawPhysics;
+
+	//AI
+	Seek m_seekAI;
+	Flee m_fleeAI;
+	Wander m_wanderAI;
 	//LevelLoader
 	LevelLoader m_levelLoader;
 
 	//Minimap
 	sf::Sprite m_miniMapSprite;
+	sf::Sprite m_fullMapSprite;
+	sf::RectangleShape m_miniMapRect;
 	sf::View m_miniMapView;
 	sf::RenderTexture m_miniMapTexture;
 

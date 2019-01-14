@@ -1,7 +1,10 @@
 #include "GameScene.h"
 
 GameScene::GameScene() :
-	m_player(5760, 6476)
+	m_player(5840, 6163),
+	m_seekAI(Vector2f(5760, 6576), 0.1),
+	m_fleeAI(Vector2f(5760, 6576), 0.1),
+	m_wanderAI(Vector2f(5760, 6576),0.1)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
 	m_followView.zoom(1.0f);
@@ -9,7 +12,7 @@ GameScene::GameScene() :
 	//Setup our BG colliders
 	for (int i = 0; i < 5; i++) //5 rows
 	{
-		for (int j = 0; j < 5; j++) //5 Columns
+		for (int j = 0; j < 5; j++) //5 Columns 
 		{
 			m_bgColliders.push_back(sf::FloatRect(-3840 + (j * 3840), -2160 + (i * 2160), 3840, 2160));
 		}
@@ -19,7 +22,7 @@ GameScene::GameScene() :
 	m_miniMapSprite.setTexture(m_miniMapTexture.getTexture());
 	m_miniMapSprite.setOrigin(0, m_miniMapSprite.getGlobalBounds().height);
 	m_miniMapSprite.setPosition(m_player.m_position.x, m_player.m_position.y);
-	m_miniMapSprite.setScale(sf::Vector2f(.025, -.025));
+	m_miniMapSprite.setScale(sf::Vector2f(.025f, -.025f));
 	m_miniMapView = m_miniMapTexture.getView();
 	m_miniMapView.zoom(.25f);
 	m_miniMapTexture.setView(m_miniMapView);
@@ -98,7 +101,13 @@ void GameScene::update(double dt)
 	m_viewRect = sf::FloatRect(m_player.m_position.x - 640, m_player.m_position.y - 360, 1280, 720);
 	m_miniMapSprite.setPosition(m_player.m_position.x - 630, m_player.m_position.y - 350);
 	m_miniMapView.setCenter(m_player.m_position.x, m_player.m_position.y);
+
+	//Update Player
 	m_player.update(dt);
+	//update to seek player position
+	m_seekAI.update(Vector2f(m_player.m_position.x, m_player.m_position.y));
+	m_fleeAI.update(Vector2f(m_player.m_position.x, m_player.m_position.y));
+	m_wanderAI.update(Vector2f(m_player.m_position.x, m_player.m_position.y));
 }
 
 void GameScene::draw(sf::RenderWindow & window)
@@ -116,15 +125,8 @@ void GameScene::draw(sf::RenderWindow & window)
 		}
 	}
 
-	//Draw our environment, rooms, corridors
-	for (auto& object : m_environment)
-	{
-		//If the object is in view, then draw it
-		if (object.collider().intersects(m_viewRect))
-		{
-			object.draw(window);
-		}
-	}
+	//Draw the map
+	window.draw(m_fullMapSprite);
 
 	//Draw our Doors
 	for (auto& object : m_doors)
@@ -138,6 +140,18 @@ void GameScene::draw(sf::RenderWindow & window)
 
 	//Draw the player
 	m_player.draw(window);
+	//draw the ai
+	m_seekAI.render(window);
+	m_fleeAI.render(window);
+	m_wanderAI.render(window);
+	
+	//The Grid
+	if(m_drawGrid)
+		m_grid.draw(window);
+
+	//Draw our physics colliders for debugging
+	if(m_drawPhysics)
+		physics::world->draw(window);
 
 	drawMinimap(window); //Draw the mini map
 
@@ -149,16 +163,12 @@ void GameScene::drawMinimap(sf::RenderWindow & window)
 {
 	//Set the minimap view
 	m_miniMapTexture.setView(m_miniMapView);
+
 	//Clear the minimap with black
 	m_miniMapTexture.clear(sf::Color::Black);
 
 	//Draw the whole background image
-
-	//Draw all of our environment objects
-	for (auto& obj : m_environment)
-	{
-		//m_miniMapTexture.draw(obj.m_sprite);
-	}
+	m_miniMapTexture.draw(m_fullMapSprite);
 
 	m_miniMapTexture.draw(m_player.m_sprite);
 
@@ -171,18 +181,29 @@ void GameScene::drawMinimap(sf::RenderWindow & window)
 void GameScene::handleInput(InputHandler & input)
 {
 	m_player.handleInput(input);
+
+	//Keybindings for turning Grid and Collision boxes On/OFF
+	if (input.isButtonPressed("Shift"))
+		m_drawGrid = !m_drawGrid;
+	if (input.isButtonPressed("Tab"))
+		m_drawPhysics = !m_drawPhysics;
 }
 
 void GameScene::setTexture(ResourceManager & resources)
 {
 	m_player.setTexture(resources);
-
+	//as AI is a base class the specific texture will need to be told here
+	m_seekAI.setTexture(resources, "Sweeper", Vector2f(18, 9.5));
+	m_fleeAI.setTexture(resources, "Sweeper", Vector2f(18, 9.5));
+	m_wanderAI.setTexture(resources, "Sweeper", Vector2f(18, 9.5));
 	m_bgSprite.setTexture(resources.getTexture("Starfield BG"));
 
 	for (auto& object : m_doors)
 	{
 		object.setTexture(resources);
 	}
+
+	m_fullMapSprite.setTexture(resources.getTexture("Full Map"));
 
 	//Get the boundaries information from the Json data
 	json bounds = m_levelLoader.data["Boundaries"];
