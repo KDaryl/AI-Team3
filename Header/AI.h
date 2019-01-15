@@ -3,10 +3,11 @@
 #include <iostream>
 #include "ResourceManager.h"
 #include "Vector2f.h"
+#include "Thor/Math.hpp"
 
 //For physics, we include these for every physics object
 #include "PhysicsHandler.h"
-using namespace physics;
+//using namespace physics;
 
 class AI
 {
@@ -14,7 +15,7 @@ public:
 	AI();
 	~AI();
 
-	Vector2f truncate(Vector2f v, float max);
+	static Vector2f truncate(Vector2f v, float max);
 	void setAngle(Vector2f& v, float f);
 	
 	//pure virtual functions
@@ -26,6 +27,8 @@ public:
 	Vector2f getVelocity();
 	float getNewOrientationByVelocity(float currentOrientation, Vector2f currentVelocity);
 	float getNewOrientationByPosition(float currentOrientation, Vector2f currentVelocity);
+	static float getOrientation(float currentAngle, Vector2f vel);
+	
 	
 	//setters
 	void setTexture(ResourceManager& resources, std::string name, Vector2f center);

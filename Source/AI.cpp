@@ -16,7 +16,7 @@ AI::~AI()
 Vector2f AI::truncate(Vector2f v, float max)
 {
 	float i = 0;
-	i = max / vectorLength(v);
+	i = max / v.magnitude();
 	i = i < 1.0 ? i : 1.0;
 	v *= i;
 	return v;
@@ -34,6 +34,10 @@ float AI::getNewOrientationByPosition(float currentOrientation, Vector2f current
 	{
 		return currentOrientation;
 	}
+}
+float AI::getOrientation(float currentAngle, Vector2f vel)
+{
+	return vel.magnitude() > 0 ? atan2(vel.y, vel.x) * 57.2958 : currentAngle;
 }
 float AI::getNewOrientationByVelocity(float currentOrientation, Vector2f currentVelocity)
 {

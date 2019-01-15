@@ -44,12 +44,16 @@ class Grid
 public:
 	Grid();
 
-	void BFS(Cell& from, Cell& goal, std::vector<Cell*>& cells);
+	std::vector<Vector2f> BFS(Cell& from, Cell& goal, std::vector<Cell*>& cells);
 
 	void draw(sf::RenderWindow& window);
 
+	std::string convertToString(sf::Vector2i pos);
+	std::string convertToString(int x, int y);
+
 	std::map<std::string, Cell> m_splitGridcells; //The 16 squares that split the overall grid
-	std::map<std::string, std::vector<Cell*>> m_splitCells; //The map of Vector of cells for each split grid 
+	std::map<std::string, std::vector<Cell*>> m_splitCells; //The map of Vector of cells for each split grid
+	std::vector<Cell*> m_cellsPtrs; //CVector of pointers to all the cells
 	std::map<std::string, Cell> m_cells; //Every cell in the map
 private:
 	Vector2f m_cellSize; //Size of each grid cell

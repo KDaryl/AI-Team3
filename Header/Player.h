@@ -23,7 +23,7 @@ public:
 	//Public variables
 	Vector2f m_position;
 	Vector2f m_velocity;
-	sf::FloatRect m_rangeCollider;
+	CollisionCircle m_rangeCollider;
 	sf::Sprite m_sprite;
 	PhysicsBody m_physicsBody;
 private:

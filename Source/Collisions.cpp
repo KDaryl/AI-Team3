@@ -21,6 +21,5 @@ bool Collisions::AABBvsAABB(CollisionBox a, CollisionBox b)
 bool Collisions::CircleVsCircle(CollisionCircle a, CollisionCircle b)
 {
 	float r = a.r + b.r;
-	r *= r;
-	return r < std::powf(a.position.x + b.position.x, 2) + std::powf(a.position.y + b.position.y, 2);
+	return r > a.position.distance(b.position);
 }

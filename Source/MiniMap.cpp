@@ -2,7 +2,8 @@
 
 MiniMap::MiniMap(Player& player) :
 	m_playerPtr(&player),
-	m_cleared(false)
+	m_cleared(false),
+	m_viewDetector(0, 0, 2880, 1620)
 {
 	m_rt.create(11520, 6480);
 	m_sprite.setTexture(m_rt.getTexture());
@@ -21,6 +22,9 @@ MiniMap::MiniMap(Player& player) :
 
 void MiniMap::update()
 {
+	m_viewDetector.left = m_playerPtr->m_position.x - m_viewDetector.width / 2;
+	m_viewDetector.top = m_playerPtr->m_position.y - m_viewDetector.height / 2;
+
 	m_sprite.setPosition(m_playerPtr->m_position.x - 630, m_playerPtr->m_position.y - 350);
 	m_view.setCenter(m_playerPtr->m_position.x, m_playerPtr->m_position.y);
 	m_rect.setPosition(m_playerPtr->m_position.x - 630, m_playerPtr->m_position.y - 350);

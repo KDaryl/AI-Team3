@@ -146,6 +146,7 @@
     <ClInclude Include="Header\Swarm.h" />
     <ClInclude Include="Header\Vector2f.h" />
     <ClInclude Include="Header\Wander.h" />
+    <ClInclude Include="Header\Worker.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\AI.cpp" />
@@ -172,6 +173,7 @@
     <ClCompile Include="Source\Swarm.cpp" />
     <ClCompile Include="Source\Vector2f.cpp" />
     <ClCompile Include="Source\Wander.cpp" />
+    <ClCompile Include="Source\Worker.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

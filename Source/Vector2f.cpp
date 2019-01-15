@@ -73,6 +73,12 @@ void Vector2f::operator/=(const Vector2f & v)
 	y /= v.y;
 }
 
+void Vector2f::operator/=(const float & val)
+{
+	x /= val;
+	y /= val;
+}
+
 void Vector2f::operator*=(float val)
 {
 	x *= val;
@@ -104,6 +110,12 @@ std::ostream & operator<<(std::ostream & out, const Vector2f & v)
 float Vector2f::distance(Vector2f & v1, Vector2f & v2)
 {
 	auto minus = v1 - v2;
+	return minus.magnitude();
+}
+
+float Vector2f::distance(Vector2f & v2)
+{
+	auto minus = *this - v2;
 	return minus.magnitude();
 }
 

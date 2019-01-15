@@ -130,8 +130,6 @@ void PhysicsHandler::resolveCollision(Manifold& m)
 	ratio = m.B->mass / mass_sum;
 	m.B->addForce(impulse * ratio);
 
-	std::cout << "VelAN: " << velAlongNormal << ", e: " << e << ", j: " << j << ", impulse: " << impulse << ", normal: " << normal << ", Mass Sum: " << mass_sum << ", ratio: " << ratio << std::endl;
-
 	//Correct the position of the objects (reduce jitter, and fix sinking objects)
 	positionalCorrection(m);
 }

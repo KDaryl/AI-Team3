@@ -7,7 +7,7 @@ Player::Player(float x, float y) :
 	m_friction(.9990f),
 	m_maxSpeed(240.0f),
 	m_angle(-90),
-	m_rangeCollider(0,0, 186, 255),
+	m_rangeCollider(x, y, 45),
 	m_physicsBody(Type::Dynamic, Shape::Circle, this)
 {
 	setupAnimations(); //Setup our animations
@@ -37,9 +37,7 @@ void Player::update(double dt)
 	//Set the position and rotation of our sprites and colliders
 	m_sprite.setPosition(m_position.x, m_position.y);
 	m_sprite.setRotation(m_angle + 90); //Add offset of 90 due to the sprite being faced the wrong way
-	m_rangeCollider.left = m_position.x - m_rangeCollider.width / 2;
-	m_rangeCollider.top = m_position.y - m_rangeCollider.height / 2;
-	//std::cout << m_position.x << m_position.y << std::endl;
+	m_rangeCollider.setPosition(m_position);
 }
 
 void Player::draw(sf::RenderWindow & win)

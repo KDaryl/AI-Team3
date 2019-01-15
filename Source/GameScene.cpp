@@ -35,7 +35,7 @@ void GameScene::loadMap()
 		env.setRotation(piece["Angle"]); //Set the angle
 		env.setScale(piece["Scale"][0], piece["Scale"][1]);
 		//Create the environment and add it to our vector
-		m_environment.push_back(env);
+		m_mapPieces.push_back(env);
 	}
 
 	//Load our doors
@@ -51,10 +51,13 @@ void GameScene::loadMap()
 	{
 		auto env = Environment(area["X"], area["Y"], "Worker Area");
 		m_environment.push_back(env);
+		m_workerAI.push_back(Worker(Vector2f(area["X"], area["Y"]), &m_grid));
 	}
 	//Load our spawn point
-	for(auto& spawn : m_levelLoader.data["Spawn Point"])
+	for (auto& spawn : m_levelLoader.data["Spawn Point"])
+	{
 		m_environment.push_back(Environment(spawn["X"], spawn["Y"], "Spawn Point"));
+	}
 }
 
 void GameScene::createBoundary(json bounds, Environment & object)
@@ -136,10 +139,27 @@ void GameScene::update(double dt)
 
 	//Update Player
 	m_player.update(dt);
+
 	//update to seek player position
 	m_seekAI.update(Vector2f(m_player.m_position.x, m_player.m_position.y));
 	m_fleeAI.update(Vector2f(m_player.m_position.x, m_player.m_position.y));
 	m_wanderAI.update(Vector2f(m_player.m_position.x, m_player.m_position.y));
+	
+	//Update workers
+	for (auto& worker : m_workerAI)
+	{
+		worker.update(dt);
+
+		//If the circles collide set the worker to follow the Sweeper Bot
+		if (Collisions::CircleVsCircle(worker.rangeCollider(), m_player.m_rangeCollider))
+		{
+			//If the worker is not captured, set it as captured
+			if (!worker.captured())
+			{
+				worker.captureWorker(false, m_player.m_position);
+			}
+		}
+	}
 }
 
 void GameScene::draw(sf::RenderWindow & window)
@@ -170,8 +190,25 @@ void GameScene::draw(sf::RenderWindow & window)
 		}
 	}
 
+	//Draw environment
+	for (auto& object : m_environment)
+	{
+		//If the object is in view, then draw it
+		if (object.collider().intersects(m_viewRect))
+		{
+			object.draw(window);
+		}
+	}
+
+	//Draw workers
+	for (auto& worker : m_workerAI)
+	{
+		worker.draw(window);
+	}
+
 	//Draw the player
 	m_player.draw(window);
+
 	//draw the ai
 	m_seekAI.render(window);
 	m_fleeAI.render(window);
@@ -194,6 +231,17 @@ void GameScene::draw(sf::RenderWindow & window)
 void GameScene::drawMinimap(sf::RenderWindow & window)
 {
 	m_minimap.draw(m_fullMapSprite);
+
+	//Draw environment
+	for (auto& object : m_environment)
+	{
+		//If the object is in view, then draw it
+		if (object.collider().intersects(m_minimap.getViewDetector()))
+		{
+			m_minimap.draw(object.m_sprite);
+		}
+	}
+
 	m_minimap.draw(m_player.m_sprite);
 	m_minimap.display(window);
 }
@@ -228,13 +276,26 @@ void GameScene::setTexture(ResourceManager & resources)
 	//Get the boundaries information from the Json data
 	json bounds = m_levelLoader.data["Boundaries"];
 
-	//Set our environment textures and create our Boundaries for each piece
+	//Set our environment textures 
 	for (auto& object : m_environment)
+	{
+		//Set the texture of the object
+		object.setTexture(resources, object.tag);
+	}
+
+	//Set our map piece textures and create our Boundaries for each piece
+	for (auto& object : m_mapPieces)
 	{
 		//Set the texture of the object
 		object.setTexture(resources, object.tag);
 
 		//Create the boundaries for the object
 		createBoundary(bounds, object);
+	}
+
+	//Set workers textures
+	for (auto& worker : m_workerAI)
+	{
+		worker.setTexture(resources);
 	}
 }

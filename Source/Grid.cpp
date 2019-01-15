@@ -54,6 +54,7 @@ Grid::Grid() :
 				}
 			}
 			m_cells[name] = c; //Create the cell and add it to the map
+			m_cellsPtrs.push_back(&m_cells[name]); //Add it to our pointers
 		}
 	}
 
@@ -73,10 +74,9 @@ Grid::Grid() :
 	}
 }
 
-void Grid::BFS(Cell & from, Cell & goal, std::vector<Cell*>& cells)
+std::vector<Vector2f> Grid::BFS(Cell & from, Cell & goal, std::vector<Cell*>& cells)
 {
-
-	//If we are not continuing from a previous BFS then reset tiles and start the queue out
+	m_bfsQueue.clear(); //Clear the queue
 	//Reset tiles
 	for (auto& tile : cells)
 	{
@@ -88,9 +88,10 @@ void Grid::BFS(Cell & from, Cell & goal, std::vector<Cell*>& cells)
 		}
 	}
 
-	m_bfsQueue.push_back(&from);
+	from.visited = true; //Set start cell as visited
+	m_bfsQueue.push_back(&from); //Add start cell to the queue
 
-	while (!m_bfsQueue.empty())
+	while (!m_bfsQueue.empty() && m_bfsQueue.front() != &goal) //Loop while we have not found the goal and the queue is not empty
 	{
 
 		auto gPos = m_bfsQueue.front()->gridPosition; //Get the integer values of the grid position
@@ -98,11 +99,11 @@ void Grid::BFS(Cell & from, Cell & goal, std::vector<Cell*>& cells)
 		auto originalCost = m_bfsQueue.front()->cost; //Get the cost from the previous tile
 
 		//Generate the positions for all adjacent tiles
-		std::vector<Vector2f> adj = {
-			Vector2f(cPos.x - 1, cPos.y),
-			Vector2f(cPos.x + 1, cPos.y),
-			Vector2f(cPos.x, cPos.y - 1),
-			Vector2f(cPos.x, cPos.y + 1)
+		std::vector<sf::Vector2i> adj = {
+			sf::Vector2i(cPos.x - 1, cPos.y),
+			sf::Vector2i(cPos.x + 1, cPos.y),
+			sf::Vector2i(cPos.x, cPos.y - 1),
+			sf::Vector2i(cPos.x, cPos.y + 1)
 		};
 
 		//Loop through all possible adjacent cells
@@ -110,7 +111,7 @@ void Grid::BFS(Cell & from, Cell & goal, std::vector<Cell*>& cells)
 		{
 			if (val.x >= 0 && val.x < 72 && val.y >= 0 && val.y < 41)
 			{
-				auto gridS = std::to_string(val.x) + "," + std::to_string(val.y);
+				auto gridS = convertToString(val); //Convert it to a grid position in string
 
 				//If this cell is not visited and its not a wall, add it to the queue
 				if (!m_cells[gridS].isWall && !m_cells[gridS].visited)
@@ -126,10 +127,21 @@ void Grid::BFS(Cell & from, Cell & goal, std::vector<Cell*>& cells)
 		m_bfsQueue.pop_front(); //Pop at the end
 	}
 
-	if (m_bfsQueue.empty()) //If BFS completed, set our path, and return it
-	{
+	std::vector<Vector2f> path;
+	Cell* prev = &goal;
 
+	path.push_back(prev->position);
+	prev = prev->previous;
+
+	while (nullptr != prev && prev != &from)
+	{
+		path.push_back(prev->position);
+		prev = prev->previous;
 	}
+
+	std::reverse(path.begin(), path.end());
+
+	return path; //Return the path
 }
 
 void Grid::draw(sf::RenderWindow & window)
@@ -142,10 +154,20 @@ void Grid::draw(sf::RenderWindow & window)
 		{
 			m_rectangle.setPosition(cell.second.position.x, cell.second.position.y);
 			window.draw(m_rectangle);
-			/*m_text.setString(std::to_string((cell.second.gridPosition.x)) + "," + std::to_string((cell.second.gridPosition.y)));
-			m_text.setOrigin(m_text.getGlobalBounds().width / 2, m_text.getGlobalBounds().height / 2 - 10);
-			m_text.setPosition(cell.second.position.x, cell.second.position.y);
-			window.draw(m_text);*/
+			//m_text.setString(std::to_string((cell.second.gridPosition.x)) + "," + std::to_string((cell.second.gridPosition.y)));
+			//m_text.setOrigin(m_text.getGlobalBounds().width / 2, m_text.getGlobalBounds().height / 2 - 10);
+			//m_text.setPosition(cell.second.position.x, cell.second.position.y);
+			//window.draw(m_text);
 		}
 	}
+}
+
+std::string Grid::convertToString(sf::Vector2i pos)
+{
+	return std::to_string(pos.x) + "," + std::to_string(pos.y);
+}
+
+std::string Grid::convertToString(int x, int y)
+{
+	return std::to_string(x) + "," + std::to_string(y);
 }
