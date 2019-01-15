@@ -14,7 +14,6 @@ PlayerBullet::PlayerBullet() :
 	m_body.bitmasks.push_back(1); //Avoid collisions with anything on layer 1 (player)
 	m_body.bitmasks.push_back(2); //Avoid collisions with anything on layer 2 (itself, dont want to collide with other bullets)
 	m_body.isSensor = true; //Is a sensor, means it will avouid collision resolution (wont bounce)
-	m_body.objectData = this;
 }
 
 void PlayerBullet::update(double dt)
@@ -109,6 +108,7 @@ void PlayerBullet::setTexture(ResourceManager & resources)
 	m_animator.addAnimation("Move", move, sf::seconds(1));
 	m_animator.addAnimation("Dead", dead, sf::seconds(0.2f));
 
+	m_body.objectData = this;
 	//Add our physics body
 	physics::world->addPhysicsBody(m_body);
 }

@@ -7,6 +7,8 @@ Player::Player(float x, float y) :
 	m_friction(.9990f),
 	m_maxSpeed(240.0f),
 	m_angle(-90),
+	m_fireRate(.5f),
+	m_timeToFire(m_fireRate),
 	m_rangeCollider(x, y, 45),
 	m_physicsBody(Type::Dynamic, Shape::Circle, this)
 {
@@ -25,16 +27,18 @@ Player::Player(float x, float y) :
 
 	//Pool 10 bullets
 	for(int i = 0; i < 10; i++)
-		m_bullets.push_back(new PlayerBullet());
+		m_bullets.push_back(PlayerBullet());
 }
 
 void Player::update(double dt)
 {
 	m_prevPos = m_physicsBody.position;
 
+	m_timeToFire += dt; //Add to our fireTime
+
 	//Update bullets
 	for (auto& bullet : m_bullets)
-		bullet->update(dt);
+		bullet.update(dt);
 
 	m_dt = dt; //Set dt as we will use it in other places
 	m_animator.update(sf::seconds(dt)); //Update our animator
@@ -56,7 +60,7 @@ void Player::draw(sf::RenderWindow & win, float a)
 {
 	//Draw bullets
 	for (auto& bullet : m_bullets)
-		bullet->draw(win);
+		bullet.draw(win);
 
 	//Draw Player
 	win.draw(m_sprite);
@@ -69,15 +73,17 @@ void Player::handleInput(InputHandler & input)
 	m_isMoving = false, m_turningLeft = false, m_turningRight = false;
 	m_turnVector.zeroVector(); //Reset our turn vector
 
-	if (input.isButtonPressed("Space")) //If space was pressed, spawn a bullet
+	//If space was pressed and our gun is not recharging, spawn a bullet
+	if (input.isButtonDown("Space") && m_timeToFire >= m_fireRate)
 	{
+		m_timeToFire = 0; //Reset our time to fire
+
 		for (auto& bullet : m_bullets)
 		{
 			//If the bullet is not alive and currently colliding
-			if (bullet->alive == false && bullet->collided == false)
+			if (bullet.alive == false && bullet.collided == false)
 			{
-				std::cout << "Spawned bullet" << std::endl;
-				bullet->spawn(m_position, m_angle);
+				bullet.spawn(m_position, m_angle);
 				break;
 			}
 		}
@@ -137,7 +143,7 @@ void Player::setTexture(ResourceManager & resources)
 
 	//Set the bullet textures
 	for (auto& bullet : m_bullets)
-		bullet->setTexture(resources);
+		bullet.setTexture(resources);
 }
 
 void Player::setupAnimations()

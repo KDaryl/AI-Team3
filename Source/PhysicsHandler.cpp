@@ -99,40 +99,44 @@ void PhysicsHandler::checkSensorCollision(Manifold & m)
 
 void PhysicsHandler::checkNonSensorCollision(Manifold & m)
 {
-	//If The body we want to check is colliding off something, check what shape it is
-	if (m.A->shape == Shape::Box)
+	//Do an efficient collision check before doing expensive calls to CircleVsBox and AABBvsAABB
+	if (simpleAABBvsAABB(m))
 	{
-		//If the other body is a box, and they collide
-		if (m.B->shape == Shape::Box && AABBvsAABB(m))
+		//If The body we want to check is colliding off something, check what shape it is
+		if (m.A->shape == Shape::Box)
 		{
-			//If the collision boxes have collided, resolve collision
-			resolveCollision(m);
-		}
-		//Else check AABBvsCircle, needs to be implemented
-		if (m.B->shape == Shape::Circle && AABBvsCircle(m))
-		{
-			//If the collision boxes have collided, resolve collision
-			resolveCollision(m);
-		}
+			//If the other body is a box, and they collide
+			if (m.B->shape == Shape::Box && AABBvsAABB(m))
+			{
+				//If the collision boxes have collided, resolve collision
+				resolveCollision(m);
+			}
+			//Else check AABBvsCircle, needs to be implemented
+			if (m.B->shape == Shape::Circle && AABBvsCircle(m))
+			{
+				//If the collision boxes have collided, resolve collision
+				resolveCollision(m);
+			}
 
-	}
-	else
-	{
-		//Check circle vs circle collision
-		if (m.B->shape == Shape::Circle && CirclevsCircle(m))
-		{
-			//If the collision circles have collided, resolve collision
-			resolveCollision(m);
 		}
-		//Swap around manifold
-		m = Manifold(m.B, m.A);
-
-		//Else check circle vs AABB collision
-		if (m.A->shape == Shape::Box && AABBvsCircle(m))
+		else
 		{
+			//Check circle vs circle collision
+			if (m.B->shape == Shape::Circle && CirclevsCircle(m))
+			{
+				//If the collision circles have collided, resolve collision
+				resolveCollision(m);
+			}
+			//Swap around manifold
+			m = Manifold(m.B, m.A);
 
-			//If the collision box and Circle have collided, resolve collision
-			resolveCollision(m);
+			//Else check circle vs AABB collision
+			if (m.A->shape == Shape::Box && AABBvsCircle(m))
+			{
+
+				//If the collision box and Circle have collided, resolve collision
+				resolveCollision(m);
+			}
 		}
 	}
 }
@@ -192,7 +196,6 @@ void PhysicsHandler::resolveSensorCollision(Manifold & m)
 	//Destroy bullets
 	if ((m.A->tag == "Player Bullet" || m.B->tag == "Player Bullet"))
 	{
-		std::cout << "Bullet Hit Something" << std::endl;
 		PlayerBullet& pb = *static_cast<PlayerBullet*>(static_cast<void*>(m.A->tag == "Player Bullet" ? m.A->objectData : m.B->objectData));
 		pb.hasCollided();
 	}
