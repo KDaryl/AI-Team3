@@ -2,8 +2,8 @@
 
 Player::Player(float x, float y) :
 	m_position(x, y),
-	m_moveSpeed(.25),
-	m_turnSpeed(.125f),
+	m_moveSpeed(150.f), //Can move 150 pixels per second
+	m_turnSpeed(85.f), //Can turn 85 degrees per second
 	m_friction(.9990f),
 	m_maxSpeed(240.0f),
 	m_angle(-90),
@@ -63,12 +63,12 @@ void Player::handleInput(InputHandler & input)
 	//If turning left
 	if (input.isButtonDown("A") || input.isButtonDown("Left"))
 	{
-		turnDir -= m_turnSpeed;
+		turnDir -= m_turnSpeed * m_dt;
 	}
 	//If turning Right
 	if (input.isButtonDown("D") || input.isButtonDown("Right"))
 	{
-		turnDir += m_turnSpeed;
+		turnDir += m_turnSpeed * m_dt;
 	}
 
 	m_angle += turnDir; //Add our extra turn to our angle variable
@@ -79,7 +79,7 @@ void Player::handleInput(InputHandler & input)
 		auto rad = thor::toRadian(m_angle); //Convert angle to a radian
 		m_turnVector = Vector2f(cos(rad), sin(rad)); //Convert radian to a vector
 
-		m_physicsBody.addForce(m_turnVector * m_moveSpeed); //Add movement force to our physics body
+		m_physicsBody.addForce(m_turnVector * m_moveSpeed * m_dt); //Add movement force to our physics body
 
 		//Play our moving animation
 		if (m_animator.isPlayingAnimation() && m_animator.getPlayingAnimation() != "Moving" || !m_animator.isPlayingAnimation())

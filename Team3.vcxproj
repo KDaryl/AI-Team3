@@ -130,9 +130,11 @@
     <ClInclude Include="Header\Environment.h" />
     <ClInclude Include="Header\Game.h" />
     <ClInclude Include="Header\GameScene.h" />
+    <ClInclude Include="Header\Grid.h" />
     <ClInclude Include="Header\InputHandler.h" />
     <ClInclude Include="Header\LevelLoader.h" />
     <ClInclude Include="Header\Nest.h" />
+    <ClInclude Include="Header\MiniMap.h" />
     <ClInclude Include="Header\PhysicsBody.h" />
     <ClInclude Include="Header\PhysicsHandler.h" />
     <ClInclude Include="Header\Player.h" />
@@ -153,10 +155,12 @@
     <ClCompile Include="Source\Environment.cpp" />
     <ClCompile Include="Source\Game.cpp" />
     <ClCompile Include="Source\GameScene.cpp" />
+    <ClCompile Include="Source\Grid.cpp" />
     <ClCompile Include="Source\InputHandler.cpp" />
     <ClCompile Include="Source\LevelLoader.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Nest.cpp" />
+    <ClCompile Include="Source\MiniMap.cpp" />
     <ClCompile Include="Source\PhysicsBody.cpp" />
     <ClCompile Include="Source\PhysicsHandler.cpp" />
     <ClCompile Include="Source\Player.cpp" />

@@ -6,6 +6,8 @@
 #include "Environment.h" //For corridors, rooms
 #include "AI.h"
 #include "Sweeper.h"
+#include "Grid.h" //For the grid of the map
+#include "MiniMap.h" //For the minimap
 
 class GameScene : public Scene
 {
@@ -20,9 +22,14 @@ public:
 	void drawMinimap(sf::RenderWindow& window);
 	void handleInput(InputHandler& input);
 	void setTexture(ResourceManager& resources);
+
 private:
 	Player m_player;
 	sf::View m_followView;
+
+	//Grid
+	Grid m_grid;
+	bool m_drawGrid, m_drawPhysics;
 
 	//AI
 	Sweeper m_sweeperBot;
@@ -31,9 +38,8 @@ private:
 	LevelLoader m_levelLoader;
 
 	//Minimap
-	sf::Sprite m_miniMapSprite;
-	sf::View m_miniMapView;
-	sf::RenderTexture m_miniMapTexture;
+	sf::Sprite m_fullMapSprite;
+	MiniMap m_minimap;
 
 	//Environment variables
 	sf::Sprite m_bgSprite;
@@ -42,4 +48,3 @@ private:
 	std::vector<Environment> m_environment; //Our vector for our environment, this will be our corridors and rooms
 	std::vector<Door> m_doors; //Our vector of door,s there will be many doors throughout the map
 };
-

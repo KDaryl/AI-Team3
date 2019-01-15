@@ -15,9 +15,10 @@ public:
 	void setCurrentScene(std::string sceneName);
 	void setTextures();
 
+	ResourceManager m_resources; //Our resources
 private:
 	Scene * m_current;
 	std::map<std::string, Scene*> m_scenes; //The map of scenes
-	ResourceManager m_resources; //Our resources
+
 };
 

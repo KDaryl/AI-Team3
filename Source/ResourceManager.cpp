@@ -2,6 +2,17 @@
 
 ResourceManager::ResourceManager()
 {
+	loadTexture("Loading Screen", "Loading Screen/Loading Screen.png");
+
+	//60 Frames
+	/*for (int i = 0; i < 60; i++)
+	{
+		loadTexture("Loading Screen " + std::to_string(i), "Loading Screen/Loading Screen" + std::to_string(i) + ".png");
+	}*/
+}
+
+void ResourceManager::loadTextures()
+{
 	//For good practice, we should use the name of the files as the id for the texture
 	//For example, "Player" should be the id for "Player.png", this makes it easy to debug
 	//And set textures
@@ -10,6 +21,9 @@ ResourceManager::ResourceManager()
 	loadTexture("Player", "Ships/Player.png", true);
 	loadTexture("Sweeper", "Ships/Sweeper Bot.png", true);
 	loadTexture("Worker", "Ships/Worker.png", true);
+
+	//Load minimap textures
+	loadTexture("Full Map", "Environment/Full Map.png", true);
 
 	//Load environment Textures (corridors, walls, backgrounds etc)
 	loadTexture("Starfield BG", "Environment/Starfield BG.png", true);
@@ -28,6 +42,8 @@ ResourceManager::ResourceManager()
 	//Others
 	loadTexture("Door", "Environment/Door.png", true);
 	loadTexture("Spawn Point", "Environment/Spawn Point.png", true);
+
+	finishedLoading = true;
 }
 
 void ResourceManager::loadTexture(std::string name, std::string fileName, bool smooth)
