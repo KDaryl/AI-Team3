@@ -5,6 +5,7 @@
 #include "Door.h"
 #include "Environment.h" //For corridors, rooms
 #include "AI.h"
+#include "Worker.h" //Worker Ai
 #include "Sweeper.h"
 #include "Grid.h" //For the grid of the map
 #include "MiniMap.h" //For the minimap
@@ -32,6 +33,8 @@ private:
 	bool m_drawGrid, m_drawPhysics;
 
 	//AI
+	std::vector<Worker> m_workerAI; //All of our worker Ai's
+
 	Sweeper m_sweeperBot;
 
 	//LevelLoader
@@ -45,6 +48,8 @@ private:
 	sf::Sprite m_bgSprite;
 	std::vector<sf::FloatRect> m_bgColliders; //Our colliders for our BG, this will determine wheter to draw the bg sprite or not
 	sf::FloatRect m_viewRect; //Rectangle for our view, we will use this to determine wheter to draw something or not
-	std::vector<Environment> m_environment; //Our vector for our environment, this will be our corridors and rooms
+	std::vector<Environment> m_mapPieces; //Our vector for our map pieces, this will be our corridors and rooms
+	std::vector<Environment> m_environment; //Our vector for our environment, this will be our spawn areas, our interior pices and such
+	//std::vector<Environment> m_otherPieces; //Pices like worker areas, spawn areas and such
 	std::vector<Door> m_doors; //Our vector of door,s there will be many doors throughout the map
 };

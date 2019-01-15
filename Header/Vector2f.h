@@ -24,6 +24,7 @@ public:
 	void operator+=(const Vector2f &v); //Plus equals operator
 	void operator-=(const Vector2f &v); //Minus equals operator
 	void operator/=(const Vector2f &v); //Division equals operator
+	void operator/=(const float &val); //Division equals operator
 	void operator*=(float val); //Multiplication equals operator
 	Vector2f operator-(const Vector2f &v); //Minus operator
 	Vector2f operator*(float val); //Multiplication operator
@@ -32,6 +33,7 @@ public:
 
 	//Vector operations
 	float distance(Vector2f& v1, Vector2f& v2);
+	float distance(Vector2f& v2);
 	float magnitude();
 	float sqrdMagnitude();
 	float dotProduct(Vector2f v);

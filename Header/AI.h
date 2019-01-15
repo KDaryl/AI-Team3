@@ -3,11 +3,12 @@
 #include <iostream>
 #include "ResourceManager.h"
 #include "Vector2f.h"
+#include "Thor/Math.hpp"
 #include "Player.h"
 
 //For physics, we include these for every physics object
 #include "PhysicsHandler.h"
-using namespace physics;
+//using namespace physics;
 
 class AI
 {
@@ -15,8 +16,8 @@ public:
 	AI();
 	~AI();
 
-	//pure virtual functions 
-    virtual void update(float dt) = 0;
+	//pure virtual functions
+  virtual void update(float dt) = 0;
 	virtual void render(sf::RenderWindow& window) = 0;
 
 	Vector2f truncate(Vector2f v, float max);
@@ -26,7 +27,9 @@ public:
 	Vector2f getVelocity();
 	float getNewOrientationByVelocity(float currentOrientation, Vector2f currentVelocity);
 	float getNewOrientationByPosition(float currentOrientation, Vector2f currentVelocity);
-	
+	static float getOrientation(float currentAngle, Vector2f vel);
+
+
 	//setters
 	void setTexture(ResourceManager& resources, std::string name, Vector2f center);
 	void setTarget(Vector2f target);
@@ -40,13 +43,13 @@ public:
 	void flock();
 
 protected:
-	//player pointer 
+	//player pointer
 	Player* m_player;
 
 	//draw ship
 	sf::Sprite m_sprite;
 	sf::Texture m_texture;
-	
+
 	//vectors
 	Vector2f m_position;
 	Vector2f m_velocity;
@@ -54,7 +57,7 @@ protected:
 	Vector2f m_desiredVelocity;
 	Vector2f m_steering;
 	sf::FloatRect m_rangeCollider;
-	
+
 	//collisions
 	PhysicsBody m_physicsBody;
 

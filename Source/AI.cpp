@@ -35,6 +35,10 @@ float AI::getNewOrientationByPosition(float currentOrientation, Vector2f current
 		return currentOrientation;
 	}
 }
+float AI::getOrientation(float currentAngle, Vector2f vel)
+{
+	return vel.magnitude() > 0 ? atan2(vel.y, vel.x) * 57.2958 : currentAngle;
+}
 float AI::getNewOrientationByVelocity(float currentOrientation, Vector2f currentVelocity)
 {
 	// Note atan2 returns an angle in radians which you 

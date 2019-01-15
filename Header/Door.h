@@ -23,6 +23,7 @@ public:
 
 	//Getters
 	sf::FloatRect collider() { return m_sprite.getGlobalBounds(); }
+	CollisionCircle m_rangeCollider;
 private:
 	bool m_closing;
 	Vector2f m_position;
