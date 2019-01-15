@@ -5,9 +5,7 @@
 #include "Door.h"
 #include "Environment.h" //For corridors, rooms
 #include "AI.h"
-#include "Seek.h"
-#include "Flee.h"
-#include "Wander.h"
+#include "Sweeper.h"
 #include "Grid.h" //For the grid of the map
 #include "MiniMap.h" //For the minimap
 
@@ -34,9 +32,8 @@ private:
 	bool m_drawGrid, m_drawPhysics;
 
 	//AI
-	Seek m_seekAI;
-	Flee m_fleeAI;
-	Wander m_wanderAI;
+	Sweeper m_sweeperBot;
+
 	//LevelLoader
 	LevelLoader m_levelLoader;
 
@@ -51,4 +48,3 @@ private:
 	std::vector<Environment> m_environment; //Our vector for our environment, this will be our corridors and rooms
 	std::vector<Door> m_doors; //Our vector of door,s there will be many doors throughout the map
 };
-

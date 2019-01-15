@@ -128,24 +128,23 @@
     <ClInclude Include="Header\Collisions.h" />
     <ClInclude Include="Header\Door.h" />
     <ClInclude Include="Header\Environment.h" />
-    <ClInclude Include="Header\Flee.h" />
-    <ClInclude Include="Header\Flock.h" />
     <ClInclude Include="Header\Game.h" />
     <ClInclude Include="Header\GameScene.h" />
     <ClInclude Include="Header\Grid.h" />
     <ClInclude Include="Header\InputHandler.h" />
     <ClInclude Include="Header\LevelLoader.h" />
+    <ClInclude Include="Header\Nest.h" />
     <ClInclude Include="Header\MiniMap.h" />
     <ClInclude Include="Header\PhysicsBody.h" />
     <ClInclude Include="Header\PhysicsHandler.h" />
     <ClInclude Include="Header\Player.h" />
+    <ClInclude Include="Header\Predator.h" />
     <ClInclude Include="Header\ResourceManager.h" />
     <ClInclude Include="Header\Scene.h" />
     <ClInclude Include="Header\SceneManager.h" />
-    <ClInclude Include="Header\Seek.h" />
-    <ClInclude Include="Header\Swarm.h" />
+    <ClInclude Include="Header\Sweeper.h" />
     <ClInclude Include="Header\Vector2f.h" />
-    <ClInclude Include="Header\Wander.h" />
+    <ClInclude Include="Header\Worker.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\AI.cpp" />
@@ -154,24 +153,23 @@
     <ClCompile Include="Source\Collisions.cpp" />
     <ClCompile Include="Source\Door.cpp" />
     <ClCompile Include="Source\Environment.cpp" />
-    <ClCompile Include="Source\Flee.cpp" />
-    <ClCompile Include="Source\Flock.cpp" />
     <ClCompile Include="Source\Game.cpp" />
     <ClCompile Include="Source\GameScene.cpp" />
     <ClCompile Include="Source\Grid.cpp" />
     <ClCompile Include="Source\InputHandler.cpp" />
     <ClCompile Include="Source\LevelLoader.cpp" />
     <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Nest.cpp" />
     <ClCompile Include="Source\MiniMap.cpp" />
     <ClCompile Include="Source\PhysicsBody.cpp" />
     <ClCompile Include="Source\PhysicsHandler.cpp" />
     <ClCompile Include="Source\Player.cpp" />
+    <ClCompile Include="Source\Predator.cpp" />
     <ClCompile Include="Source\ResourceManager.cpp" />
     <ClCompile Include="Source\SceneManager.cpp" />
-    <ClCompile Include="Source\Seek.cpp" />
-    <ClCompile Include="Source\Swarm.cpp" />
+    <ClCompile Include="Source\Sweeper.cpp" />
     <ClCompile Include="Source\Vector2f.cpp" />
-    <ClCompile Include="Source\Wander.cpp" />
+    <ClCompile Include="Source\Worker.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
