@@ -5,9 +5,7 @@
 #include "Door.h"
 #include "Environment.h" //For corridors, rooms
 #include "AI.h"
-#include "Seek.h"
-#include "Flee.h"
-#include "Wander.h"
+#include "Sweeper.h"
 
 class GameScene : public Scene
 {
@@ -27,9 +25,8 @@ private:
 	sf::View m_followView;
 
 	//AI
-	Seek m_seekAI;
-	Flee m_fleeAI;
-	Wander m_wanderAI;
+	Sweeper m_sweeperBot;
+
 	//LevelLoader
 	LevelLoader m_levelLoader;
 

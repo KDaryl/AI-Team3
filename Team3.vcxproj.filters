@@ -96,19 +96,16 @@
     <ClInclude Include="Header\AI.h">
       <Filter>Header Files\AI Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Seek.h">
+    <ClInclude Include="Header\Nest.h">
       <Filter>Header Files\AI Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Flee.h">
+    <ClInclude Include="Header\Predator.h">
       <Filter>Header Files\AI Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Flock.h">
+    <ClInclude Include="Header\Sweeper.h">
       <Filter>Header Files\AI Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Swarm.h">
-      <Filter>Header Files\AI Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\Wander.h">
+    <ClInclude Include="Header\Worker.h">
       <Filter>Header Files\AI Headers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -164,19 +161,16 @@
     <ClCompile Include="Source\AI.cpp">
       <Filter>Source Files\AI Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Seek.cpp">
+    <ClCompile Include="Source\Nest.cpp">
       <Filter>Source Files\AI Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Flee.cpp">
+    <ClCompile Include="Source\Predator.cpp">
       <Filter>Source Files\AI Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Flock.cpp">
+    <ClCompile Include="Source\Sweeper.cpp">
       <Filter>Source Files\AI Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Swarm.cpp">
-      <Filter>Source Files\AI Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Wander.cpp">
+    <ClCompile Include="Source\Worker.cpp">
       <Filter>Source Files\AI Source</Filter>
     </ClCompile>
   </ItemGroup>
