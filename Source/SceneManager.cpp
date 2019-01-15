@@ -16,11 +16,11 @@ void SceneManager::update(double dt)
 	}
 }
 
-void SceneManager::draw(sf::RenderWindow & window)
+void SceneManager::draw(sf::RenderWindow & window, float a)
 {
 	if (nullptr != m_current)
 	{
-		m_current->draw(window);
+		m_current->draw(window, a);
 	}
 }
 

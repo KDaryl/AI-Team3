@@ -20,7 +20,7 @@ public:
   virtual void update(float dt) = 0;
 	virtual void render(sf::RenderWindow& window) = 0;
 
-	Vector2f truncate(Vector2f v, float max);
+	static Vector2f truncate(Vector2f v, float max);
 
 	//getters
 	sf::Sprite& getSprite();

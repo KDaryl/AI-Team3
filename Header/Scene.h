@@ -13,7 +13,7 @@ public:
 	~Scene() {};
 
 	virtual void update(double dt) = 0;
-	virtual void draw(sf::RenderWindow& window) = 0;
+	virtual void draw(sf::RenderWindow& window, float a) = 0;
 	virtual void handleInput(InputHandler& input) = 0;
 	virtual void setTexture(ResourceManager& resources) = 0;
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include "PhysicsBody.h"
+#include "PlayerBullet.h"
 
 class PhysicsHandler
 {
@@ -22,14 +23,18 @@ public:
 
 	static void update(float dt);
 	static void checkCollision();
+	static void checkSensorCollision(Manifold& m);
+	static void checkNonSensorCollision(Manifold& m);
 	static void draw(sf::RenderWindow& window);
 	static void resolveCollision(Manifold& m);
+	static void resolveSensorCollision(Manifold& m);
 	static void positionalCorrection(Manifold& m);
 	
 
 	static void addPhysicsBody(PhysicsBody& body);
 	static void deletePhysicsBody(PhysicsBody& body);
 
+	static bool simpleAABBvsAABB(Manifold& m);
 	static bool AABBvsAABB(Manifold& m);
 	static bool CirclevsCircle(Manifold& m);
 	static bool AABBvsCircle(Manifold& m);

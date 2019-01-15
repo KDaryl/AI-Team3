@@ -53,6 +53,10 @@ void Game::run()
 		physics::world->update(dtToSec); //Update our physics
 		physics::world->checkCollision();
 
+		//Clamp lag so we dont go into the spiral of death
+		if (lag > 0.2f)
+			lag = 0.2f;
+
 		//If lag accumalated is greater than physicsStep
 		while (lag > physStep)
 		{
@@ -62,6 +66,9 @@ void Game::run()
 		}
 		update(dtToSec);
 		render();
+
+		//Set alpha
+		m_alpha = lag / dtToSec;
 	}
 }
 
@@ -98,7 +105,7 @@ void Game::render()
 {
 	m_window.clear(sf::Color::Blue); //Clear all previously drawn items
 
-	m_sceneManager.draw(m_window); //Draw our current scene
+	m_sceneManager.draw(m_window, m_alpha); //Draw our current scene
 
 	m_window.display(); //Display all drawn items
 }

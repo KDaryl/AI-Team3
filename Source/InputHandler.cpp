@@ -15,6 +15,7 @@ InputHandler::InputHandler()
 	m_current["Right"] = false;
 	m_current["Down"] = false;
 	m_current["Shift"] = false;
+	m_current["Space"] = false;
 	m_current["Tab"] = false;
 	m_current["LEFT_MOUSE"] = false;
 	m_current["RIGHT_MOUSE"] = false;
@@ -52,6 +53,7 @@ void InputHandler::update(sf::RenderWindow& win)
 	m_current["Right"] = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
 	m_current["Down"] = sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
 	m_current["Shift"] = sf::Keyboard::isKeyPressed(sf::Keyboard::LShift);
+	m_current["Space"] = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
 	m_current["Tab"] = sf::Keyboard::isKeyPressed(sf::Keyboard::Tab);
 	m_current["LEFT_MOUSE"] = sf::Mouse::isButtonPressed(sf::Mouse::Button::Left); //Get left mouse click 
 	m_current["RIGHT_MOUSE"] = sf::Mouse::isButtonPressed(sf::Mouse::Button::Right); //Get right mouse click 

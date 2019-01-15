@@ -54,5 +54,6 @@ private:
 	SceneManager m_sceneManager;
 	GameScene m_gameScene;
 
+	float m_alpha; //For linear interpolation
 	FPS m_fps; //Our FPS Counter
 };

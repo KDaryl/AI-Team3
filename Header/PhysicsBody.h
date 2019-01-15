@@ -33,7 +33,7 @@ public:
 	void setRestitution(float resti);
 	void setInitialRotation(float angle);
 	void addForce(Vector2f force);
-	void addAngularForce(Vector2f force);
+
 	//Set the scalar for gravity
 	void setGravityScalar(float val);
 	//Sets up a box shape physics shape
@@ -42,6 +42,8 @@ public:
 	void setCircleParameters(Vector2f startPos, float radius, float mass, bool useGravity);
 
 	//Public variables
+	std::string tag = "";
+	bool isSensor = false; //Bool to hold wheter the body should bounce off other objects, this will be useful for trigger events
 	Vector2f position, velocity, size, acceleration;
 	float radius, e, mass, gravityScalar, friction; //Radius, restitution, mass, gravity scalar & friction
 	float inv_mass;
@@ -54,4 +56,6 @@ public:
 	CollisionBox * bCollider; 
 	CollisionCircle * cCollider;
 	void* objectData; //This is a pointer to an object that this physics object belongs to
+	int mask; //The layer we are on
+	std::vector<int> bitmasks; //we add masks to our bitmask that we want to avoid collisions with
 };

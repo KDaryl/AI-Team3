@@ -137,6 +137,7 @@
     <ClInclude Include="Header\MiniMap.h" />
     <ClInclude Include="Header\PhysicsBody.h" />
     <ClInclude Include="Header\PhysicsHandler.h" />
+    <ClInclude Include="Header\PlayerBullet.h" />
     <ClInclude Include="Header\Player.h" />
     <ClInclude Include="Header\Predator.h" />
     <ClInclude Include="Header\ResourceManager.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Source\MiniMap.cpp" />
     <ClCompile Include="Source\PhysicsBody.cpp" />
     <ClCompile Include="Source\PhysicsHandler.cpp" />
+    <ClCompile Include="Source\PlayerBullet.cpp" />
     <ClCompile Include="Source\Player.cpp" />
     <ClCompile Include="Source\Predator.cpp" />
     <ClCompile Include="Source\ResourceManager.cpp" />

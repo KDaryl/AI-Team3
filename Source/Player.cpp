@@ -17,13 +17,25 @@ Player::Player(float x, float y) :
 	//m_physicsBody.setBoxParameters(Vector2f(m_position.x, m_position.y), Vector2f(62, 85), 1, false);
 	m_physicsBody.setFriction(m_friction);
 	m_physicsBody.setRestitution(0.1f);
+	m_physicsBody.mask = 1; //Set layer to 1, we can add 1 to other bitmasks on othe rbodies to filter out collisions with the player
+	m_physicsBody.tag = "Player";
 
 	//Add our body to our physics world
 	physics::world->addPhysicsBody(m_physicsBody);
+
+	//Pool 10 bullets
+	for(int i = 0; i < 10; i++)
+		m_bullets.push_back(new PlayerBullet());
 }
 
 void Player::update(double dt)
 {
+	m_prevPos = m_physicsBody.position;
+
+	//Update bullets
+	for (auto& bullet : m_bullets)
+		bullet->update(dt);
+
 	m_dt = dt; //Set dt as we will use it in other places
 	m_animator.update(sf::seconds(dt)); //Update our animator
 	m_animator.animate(m_sprite); //Animate our sprite
@@ -40,8 +52,13 @@ void Player::update(double dt)
 	m_rangeCollider.setPosition(m_position);
 }
 
-void Player::draw(sf::RenderWindow & win)
+void Player::draw(sf::RenderWindow & win, float a)
 {
+	//Draw bullets
+	for (auto& bullet : m_bullets)
+		bullet->draw(win);
+
+	//Draw Player
 	win.draw(m_sprite);
 }
 
@@ -51,6 +68,20 @@ void Player::handleInput(InputHandler & input)
 	//Reset our movement variables
 	m_isMoving = false, m_turningLeft = false, m_turningRight = false;
 	m_turnVector.zeroVector(); //Reset our turn vector
+
+	if (input.isButtonPressed("Space")) //If space was pressed, spawn a bullet
+	{
+		for (auto& bullet : m_bullets)
+		{
+			//If the bullet is not alive and currently colliding
+			if (bullet->alive == false && bullet->collided == false)
+			{
+				std::cout << "Spawned bullet" << std::endl;
+				bullet->spawn(m_position, m_angle);
+				break;
+			}
+		}
+	}
 
 	//If moving in its current direction
 	if (input.isButtonDown("W") || input.isButtonDown("Up"))
@@ -103,6 +134,10 @@ void Player::setTexture(ResourceManager & resources)
 	m_sprite.setOrigin(sf::Vector2f(31, 53));
 	
 	m_animator.playAnimation("Idle", true);
+
+	//Set the bullet textures
+	for (auto& bullet : m_bullets)
+		bullet->setTexture(resources);
 }
 
 void Player::setupAnimations()
