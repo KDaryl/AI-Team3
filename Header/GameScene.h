@@ -5,10 +5,8 @@
 #include "Door.h"
 #include "Environment.h" //For corridors, rooms
 #include "AI.h"
-#include "Seek.h"
-#include "Flee.h"
-#include "Wander.h"
 #include "Worker.h" //Worker Ai
+#include "Sweeper.h"
 #include "Grid.h" //For the grid of the map
 #include "MiniMap.h" //For the minimap
 
@@ -35,11 +33,9 @@ private:
 	bool m_drawGrid, m_drawPhysics;
 
 	//AI
-	Seek m_seekAI;
-	Flee m_fleeAI;
-	Wander m_wanderAI;
 	std::vector<Worker> m_workerAI; //All of our worker Ai's
 
+	Sweeper m_sweeperBot;
 
 	//LevelLoader
 	LevelLoader m_levelLoader;
@@ -57,4 +53,3 @@ private:
 	//std::vector<Environment> m_otherPieces; //Pices like worker areas, spawn areas and such
 	std::vector<Door> m_doors; //Our vector of door,s there will be many doors throughout the map
 };
-

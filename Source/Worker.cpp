@@ -71,12 +71,12 @@ void Worker::update(double dt)
 
 				m_target = *m_seekPath.begin(); //Set target to first element of the seek path
 
-				m_currentWander = 0;	
+				m_currentWander = 0;
 			}
 		}
 
 		//If seeking returns true, it means we have reached our destination
-		seek(m_target, dt); //Seek to target	
+		seek(m_target, dt); //Seek to target
 	}
 
 	else if (m_state == WorkerState::Captured) //If captured, seek to capture's position
@@ -139,7 +139,7 @@ bool Worker::seek(Vector2f pos, double dt)
 		steering = AI::truncate(steering, m_turnSpeed);
 		steering /= m_body.mass;
 		steering = AI::truncate(velocity + steering, m_maxSpeed);
-		
+
 		m_body.addForce(steering * dt);
 
 		m_angle = AI::getOrientation(m_angle, m_body.velocity);

@@ -1,10 +1,9 @@
 #include "GameScene.h"
 
 GameScene::GameScene() :
+	//player pointer maxSpeed and position
+	m_sweeperBot(&m_player, 100, Vector2f(5760,6476)),
 	m_player(5840, 6163),
-	m_seekAI(Vector2f(5760, 6576), 0.1),
-	m_fleeAI(Vector2f(5760, 6576), 0.1),
-	m_wanderAI(Vector2f(5760, 6576),0.1),
 	m_minimap(m_player)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
@@ -13,7 +12,7 @@ GameScene::GameScene() :
 	//Setup our BG colliders
 	for (int i = 0; i < 5; i++) //5 rows
 	{
-		for (int j = 0; j < 5; j++) //5 Columns 
+		for (int j = 0; j < 5; j++) //5 Columns
 		{
 			m_bgColliders.push_back(sf::FloatRect(-3840 + (j * 3840), -2160 + (i * 2160), 3840, 2160));
 		}
@@ -103,7 +102,7 @@ void GameScene::createBoundary(json bounds, Environment & object)
 
 		//Loop through all of the Big Cells and see where our object is
 		for (auto& cells :	m_grid.m_splitGridcells)
-		{		
+		{
 			//If the Safe Area intersects with with the grid, go mark the cells it collides with as not a wall
 			if (safeArea.rect.getGlobalBounds().intersects(cells.second.rect))
 			{
@@ -133,18 +132,13 @@ void GameScene::update(double dt)
 	//Set the views position to follow the player (player will be centered)
 	m_followView.setCenter(m_player.m_position.x, m_player.m_position.y);
 	m_viewRect = sf::FloatRect(m_player.m_position.x - 640, m_player.m_position.y - 360, 1280, 720);
-	
+
 	//Update minimap
-	m_minimap.update(); 
+	m_minimap.update();
 
 	//Update Player
 	m_player.update(dt);
 
-	//update to seek player position
-	m_seekAI.update(Vector2f(m_player.m_position.x, m_player.m_position.y));
-	m_fleeAI.update(Vector2f(m_player.m_position.x, m_player.m_position.y));
-	m_wanderAI.update(Vector2f(m_player.m_position.x, m_player.m_position.y));
-	
 	//Update workers
 	for (auto& worker : m_workerAI)
 	{
@@ -160,6 +154,8 @@ void GameScene::update(double dt)
 			}
 		}
 	}
+	//update ai
+	m_sweeperBot.update(dt);
 }
 
 void GameScene::draw(sf::RenderWindow & window)
@@ -210,10 +206,8 @@ void GameScene::draw(sf::RenderWindow & window)
 	m_player.draw(window);
 
 	//draw the ai
-	m_seekAI.render(window);
-	m_fleeAI.render(window);
-	m_wanderAI.render(window);
-	
+	m_sweeperBot.render(window);
+
 	//The Grid
 	if(m_drawGrid)
 		m_grid.draw(window);
@@ -261,9 +255,8 @@ void GameScene::setTexture(ResourceManager & resources)
 {
 	m_player.setTexture(resources);
 	//as AI is a base class the specific texture will need to be told here
-	m_seekAI.setTexture(resources, "Sweeper", Vector2f(18, 9.5));
-	m_fleeAI.setTexture(resources, "Sweeper", Vector2f(18, 9.5));
-	m_wanderAI.setTexture(resources, "Sweeper", Vector2f(18, 9.5));
+	m_sweeperBot.setTexture(resources, "Sweeper", Vector2f(18, 9.5));
+
 	m_bgSprite.setTexture(resources.getTexture("Starfield BG"));
 
 	for (auto& object : m_doors)
@@ -276,7 +269,7 @@ void GameScene::setTexture(ResourceManager & resources)
 	//Get the boundaries information from the Json data
 	json bounds = m_levelLoader.data["Boundaries"];
 
-	//Set our environment textures 
+	//Set our environment textures
 	for (auto& object : m_environment)
 	{
 		//Set the texture of the object

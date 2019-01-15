@@ -15,7 +15,7 @@ public:
 	bool seek(Vector2f pos, double dt); //Returns a bool that indicates if we have reached the target or not
 
 	//This will capture the worker, if it is captured by a sweeper, the worker will respawn at the sweepers location when it is destroyed
-	void captureWorker(bool isPlayer, Vector2f& position); 
+	void captureWorker(bool isPlayer, Vector2f& position);
 	void freeWorker(); //Worke rstops following captor
 	void setTexture(ResourceManager& resources);
 
@@ -60,7 +60,7 @@ private:
 	float m_wanderChange, m_currentWander;
 
 	//Animation and Sprite variables
-	thor::Animator<sf::Sprite, std::string> m_animator; 
+	thor::Animator<sf::Sprite, std::string> m_animator;
 	sf::Sprite m_sprite;
 	bool m_moving;
 };

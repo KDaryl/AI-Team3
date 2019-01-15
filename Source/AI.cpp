@@ -25,7 +25,7 @@ float AI::getNewOrientationByPosition(float currentOrientation, Vector2f current
 {
 	// Note atan2 returns an angle in radians which you 
 	// may want to convert to degrees.
-	if (vectorLength(currentVelocity) > 0)
+	if (currentVelocity.magnitude() > 0)
 	{
 		const auto radAngle = atan2(-m_sprite.getPosition().y, m_sprite.getPosition().x);
 		return (radAngle)* (180 / M_PI);
@@ -43,7 +43,7 @@ float AI::getNewOrientationByVelocity(float currentOrientation, Vector2f current
 {
 	// Note atan2 returns an angle in radians which you 
 	// may want to convert to degrees.
-	if (vectorLength(currentVelocity) > 0)
+	if (currentVelocity.magnitude() > 0)
 	{
 		return (atan2(-currentVelocity.x, currentVelocity.y))* (180.0f / M_PI) + 180;
 	}
@@ -54,7 +54,7 @@ float AI::getNewOrientationByVelocity(float currentOrientation, Vector2f current
 }
 void AI::setAngle(Vector2f & v, float f)
 {
-	float len = vectorLength(v);
+	float len = v.magnitude();
 	v.x = cos(f * (M_PI / 180.0f)) * len;
 	v.y = sin(f* (M_PI / 180.0f)) * len;
 }
@@ -77,21 +77,65 @@ void AI::setTexture(ResourceManager & resources, std::string name, Vector2f cent
 	m_sprite.setOrigin(sf::Vector2f(center.x,center.y));
 }
 
-float AI::vectorLength(Vector2f v)
+void AI::setTarget(Vector2f target)
 {
-	float magnitudeV = sqrt((v.x * v.x) + (v.y * v.y));
-	return magnitudeV;
+	m_target = target;
 }
 
-Vector2f AI::vectorNormalise(Vector2f v)
+void AI::seek()
 {
-	float mag = vectorLength(v);
-	if (mag != 0)
-	{
-		return Vector2f(v.x / mag, v.y / mag);
-	}
-	else
-	{
-		return Vector2f(v.x, v.y);
-	}
+	m_velocity = m_velocity.normalise();
+	m_velocity = sf::Vector2f(m_velocity.x * m_maxSpeed, m_velocity.y * m_maxSpeed);
+	m_desiredVelocity = m_target - m_position;
+	m_desiredVelocity = m_desiredVelocity.normalise() * m_maxSpeed;
+	m_steering = m_desiredVelocity - m_velocity;
+
+	m_steering = truncate(m_steering, 10.0f);
+	m_steering = m_steering / m_mass;
+	m_velocity = truncate(m_velocity + m_steering, m_maxSpeed);
+}
+
+void AI::flee()
+{
+	m_velocity = m_velocity.normalise();
+	m_velocity = sf::Vector2f(m_velocity.x * m_maxSpeed, m_velocity.y * m_maxSpeed);
+	m_desiredVelocity = m_position - m_target;
+	m_desiredVelocity = m_desiredVelocity.normalise() * m_maxSpeed;
+	m_steering = m_desiredVelocity - m_velocity;
+
+	m_steering = truncate(m_steering, 10.0f);
+	m_steering = m_steering / m_mass;
+	m_velocity = truncate(m_velocity + m_steering, m_maxSpeed);
+}
+
+void AI::wander()
+{
+	// Calculate the circle center
+	m_circleCenter = m_velocity;
+
+	m_circleCenter = m_circleCenter.normalise();
+	m_circleCenter *= CIRCLE_DISTANCE;
+
+	// Randomly change the vector direction
+	// by making it change its current angle
+	m_displacement = Vector2f(0, -1);
+	// Calculate the displacement force
+	m_displacement *= CIRCLE_RADIUS;
+
+	setAngle(m_displacement, m_wanderAngle);
+	//
+	// Change wanderAngle just a bit, so it
+	// won't have the same value in the
+	// next game frame.
+	m_randomNum = rand() % 10;
+	m_wanderAngle += (((m_randomNum / 10) + 0.05)  * ANGLE_CHANGE) - (ANGLE_CHANGE * .5);
+	//std::cout << m_wanderAngle << std::endl;
+	// Finally calculate and return the wander force
+
+	m_wanderForce = m_circleCenter + m_displacement;
+
+	// Calculate the wander force#
+	m_steering = m_wanderForce;
+	m_steering = truncate(m_steering, 10.0f);
+	m_velocity = truncate(m_velocity + m_steering, m_maxSpeed);
 }
