@@ -9,7 +9,7 @@ public:
 	~SceneManager();
 
 	void update(double dt);
-	void draw(sf::RenderWindow& window);
+	void draw(sf::RenderWindow& window, float a);
 	void handleInput(InputHandler& input);
 	void addScene(std::string name, Scene* scene);
 	void setCurrentScene(std::string sceneName);

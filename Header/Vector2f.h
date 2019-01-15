@@ -21,6 +21,7 @@ public:
 	bool operator!=(const Vector2f &v);//Equals operator
 	Vector2f operator/(const float val); //Division operator
 	Vector2f operator+(const Vector2f &v); //Plus operator
+	Vector2f operator+(const float &val); //Plus operator
 	void operator+=(const Vector2f &v); //Plus equals operator
 	void operator-=(const Vector2f &v); //Minus equals operator
 	void operator/=(const Vector2f &v); //Division equals operator

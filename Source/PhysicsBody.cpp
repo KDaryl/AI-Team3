@@ -8,13 +8,18 @@ PhysicsBody::PhysicsBody(Type _type, Shape _shape, void* data) :
 	mass(1),
 	friction(1),
 	gravityScalar(1),
+	mask(0), //The layer im on
 	objectData(data)
 {
 	//Set up our collider usign our shape provided
 	if (shape == Shape::Box)
 		bCollider = new CollisionBox();
 	else
+	{
+		bCollider = new CollisionBox();
 		cCollider = new CollisionCircle();
+	}
+
 
 	//Setting our inverse mass
 	if (mass == 0)
@@ -45,6 +50,7 @@ void PhysicsBody::update(float dt)
 		break;
 		case Shape::Circle:
 			cCollider->setPosition(position);
+			bCollider->setPosition(position);
 		break;
 	}
 
@@ -131,6 +137,7 @@ void PhysicsBody::setCircleParameters(Vector2f startPos, float _radius, float _m
 	position = startPos;
 	radius = _radius;
 	cCollider->setSize(startPos.x, startPos.y, radius);//Set radius and position of the circle collider
+	bCollider->setSize(startPos.x, startPos.y, radius / 2, radius / 2);
 	useGravity = _useGravity;
 	mass = _mass;
 	//Setting our inverse mass

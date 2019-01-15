@@ -158,7 +158,7 @@ void GameScene::update(double dt)
 	m_sweeperBot.update(dt);
 }
 
-void GameScene::draw(sf::RenderWindow & window)
+void GameScene::draw(sf::RenderWindow & window, float a)
 {
 	//Set the windows view
 	window.setView(m_followView);
@@ -203,7 +203,7 @@ void GameScene::draw(sf::RenderWindow & window)
 	}
 
 	//Draw the player
-	m_player.draw(window);
+	m_player.draw(window, a);
 
 	//draw the ai
 	m_sweeperBot.render(window);

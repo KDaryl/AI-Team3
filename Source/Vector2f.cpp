@@ -54,6 +54,11 @@ Vector2f Vector2f::operator+(const Vector2f & v)
 	return Vector2f(x + v.x, y + v.y);
 }
 
+Vector2f Vector2f::operator+(const float & val)
+{
+	return Vector2f(x + val, y + val);
+}
+
 void Vector2f::operator+=(const Vector2f & v)
 {
 	//Add values to our x and y

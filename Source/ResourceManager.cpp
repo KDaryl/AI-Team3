@@ -3,12 +3,6 @@
 ResourceManager::ResourceManager()
 {
 	loadTexture("Loading Screen", "Loading Screen/Loading Screen.png");
-
-	//60 Frames
-	/*for (int i = 0; i < 60; i++)
-	{
-		loadTexture("Loading Screen " + std::to_string(i), "Loading Screen/Loading Screen" + std::to_string(i) + ".png");
-	}*/
 }
 
 void ResourceManager::loadTextures()
@@ -19,6 +13,7 @@ void ResourceManager::loadTextures()
 
 	//Load game related textures (player, ai, worker etc.)
 	loadTexture("Player", "Ships/Player.png", true);
+	loadTexture("Player Bullet", "Ships/Player Bullet.png", true);
 	loadTexture("Sweeper", "Ships/Sweeper Bot.png", true);
 	loadTexture("Worker", "Ships/Worker.png", true);
 

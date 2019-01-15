@@ -19,7 +19,7 @@ public:
 	void loadMap();
 	void createBoundary(json bounds, Environment& object);
 	void update(double dt);
-	void draw(sf::RenderWindow& window);
+	void draw(sf::RenderWindow& window, float a);
 	void drawMinimap(sf::RenderWindow& window);
 	void handleInput(InputHandler& input);
 	void setTexture(ResourceManager& resources);

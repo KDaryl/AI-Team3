@@ -1,4 +1,5 @@
 #include "PhysicsHandler.h"
+//#include "Player.h"
 #include <algorithm>
 
 PhysicsHandler::PhysicsHandler()
@@ -38,45 +39,103 @@ void PhysicsHandler::checkCollision()
 			{
 				if (body != other) //If the bodies are not the same, check for collision
 				{
-
 					//Create the manifold here
 					Manifold m = Manifold(body, other);
 
-					//If The body we want to check is colliding off something, check what shape it is
-					if (body->shape == Shape::Box)
-					{
-						//If the other body is a box, and they collide
-						if (other->shape == Shape::Box && AABBvsAABB(m))
-						{
-							//If the collision boxes have collided, resolve collision
-							resolveCollision(m);
-						}
-						//Else check AABBvsCircle, needs to be implemented
-						if (other->shape == Shape::Circle && AABBvsCircle(m))
-						{
-							//If the collision boxes have collided, resolve collision
-							resolveCollision(m);
-						}
-
-					}
-					else
-					{
-						//Check circle vs circle collision
-						if (other->shape == Shape::Circle && CirclevsCircle(m))
-						{
-							//If the collision circles have collided, resolve collision
-							resolveCollision(m);
-						}
-						//Create the manifold here
-						Manifold m = Manifold(other, body);
-
-						//Else check circle vs AABB collision
-						if (other->shape == Shape::Box && AABBvsCircle(m))
-						{
-							resolveCollision(m);
-						}
-					}
+					//If eithe rbody is a senosor, do snesor collision checking otherwise do normal collision checking
+					(body->isSensor || other->isSensor) ? checkSensorCollision(m) : checkNonSensorCollision(m);			
 				}
+			}
+		}
+	}
+}
+
+void PhysicsHandler::checkSensorCollision(Manifold & m)
+{
+	//First check if they are avoiding each other 
+	for (auto& mask : m.A->bitmasks)
+	{
+		if (mask == m.B->mask)
+		{
+			return; //Leave method
+		}
+	}
+
+	for (auto& mask : m.B->bitmasks)
+	{
+		if (mask == m.A->mask)
+		{
+			return; //Leave method
+		}
+	}
+
+	 //Do simple collision checking first with simple Box to Box
+	if (simpleAABBvsAABB(m))
+	{
+		if (m.A->shape == Shape::Circle && m.B->shape == Shape::Circle)
+		{
+			if (CirclevsCircle(m))
+			{
+				resolveSensorCollision(m);
+			}
+		}
+		else if (m.A->shape == Shape::Box && m.B->shape == Shape::Circle)
+		{
+			if (AABBvsCircle(m))
+			{
+				resolveSensorCollision(m);
+			}
+		}
+		else
+		{
+			m = Manifold(m.B, m.A); //Swap bodies around
+			if (AABBvsCircle(m))
+			{
+				resolveSensorCollision(m);
+			}
+		}
+	}
+}
+
+void PhysicsHandler::checkNonSensorCollision(Manifold & m)
+{
+	//Do an efficient collision check before doing expensive calls to CircleVsBox and AABBvsAABB
+	if (simpleAABBvsAABB(m))
+	{
+		//If The body we want to check is colliding off something, check what shape it is
+		if (m.A->shape == Shape::Box)
+		{
+			//If the other body is a box, and they collide
+			if (m.B->shape == Shape::Box && AABBvsAABB(m))
+			{
+				//If the collision boxes have collided, resolve collision
+				resolveCollision(m);
+			}
+			//Else check AABBvsCircle, needs to be implemented
+			if (m.B->shape == Shape::Circle && AABBvsCircle(m))
+			{
+				//If the collision boxes have collided, resolve collision
+				resolveCollision(m);
+			}
+
+		}
+		else
+		{
+			//Check circle vs circle collision
+			if (m.B->shape == Shape::Circle && CirclevsCircle(m))
+			{
+				//If the collision circles have collided, resolve collision
+				resolveCollision(m);
+			}
+			//Swap around manifold
+			m = Manifold(m.B, m.A);
+
+			//Else check circle vs AABB collision
+			if (m.A->shape == Shape::Box && AABBvsCircle(m))
+			{
+
+				//If the collision box and Circle have collided, resolve collision
+				resolveCollision(m);
 			}
 		}
 	}
@@ -94,8 +153,6 @@ void PhysicsHandler::draw(sf::RenderWindow & window)
 
 void PhysicsHandler::resolveCollision(Manifold& m)
 {
-	std::cout << "Resolving Collision" << std::endl;
-
 	//Calculate relative velocity
 	Vector2f rv = m.B->velocity - m.A->velocity;
 	auto normal = rv.normalise(); //Get the normal
@@ -134,6 +191,17 @@ void PhysicsHandler::resolveCollision(Manifold& m)
 	positionalCorrection(m);
 }
 
+void PhysicsHandler::resolveSensorCollision(Manifold & m)
+{
+	//Destroy bullets
+	if ((m.A->tag == "Player Bullet" || m.B->tag == "Player Bullet"))
+	{
+		PlayerBullet& pb = *static_cast<PlayerBullet*>(static_cast<void*>(m.A->tag == "Player Bullet" ? m.A->objectData : m.B->objectData));
+		pb.hasCollided();
+	}
+
+}
+
 void PhysicsHandler::positionalCorrection(Manifold& m)
 {
 	float percent = 0.4f; //Usually 20 to 80 percent
@@ -152,6 +220,18 @@ void PhysicsHandler::deletePhysicsBody(PhysicsBody & body)
 {
 	physics::world->bodies.erase(std::remove_if(physics::world->bodies.begin(), physics::world->bodies.end(),
 		[body](PhysicsBody* i) {return i && (*i == body); }));
+}
+
+bool PhysicsHandler::simpleAABBvsAABB(Manifold & m)
+{
+	// Exit with no intersection if found separated along an axis
+	if (m.A->bCollider->max.x < m.B->bCollider->min.x || m.A->bCollider->min.x > m.B->bCollider->max.x)
+		return false;
+	if (m.A->bCollider->max.y < m.B->bCollider->min.y || m.A->bCollider->min.y > m.B->bCollider->max.y)
+		return false;
+
+	// No separating axis found, therefor there is at least one overlapping axis
+	return true;
 }
 
 bool PhysicsHandler::AABBvsAABB(Manifold& m)
