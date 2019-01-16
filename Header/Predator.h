@@ -1,5 +1,5 @@
 #pragma once
-#include "AI.h"
+#include "EnemyBullet.h"
 
 class Predator
 {
@@ -51,6 +51,10 @@ private:
 	CollisionCircle m_rangeCollider;
 
 	std::vector<boolVecPair> m_seekPath; //Positions to move to
+
+	//Bullet variables
+	std::vector<EnemyBullet> m_bullets;
+	float m_fireRate, m_timeToFire;
 
 	//Movement variables
 	sf::Vector2i m_gridPosition;

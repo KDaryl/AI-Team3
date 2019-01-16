@@ -13,13 +13,22 @@ Predator::Predator(Vector2f& playerPos, Grid* grid) :
 	m_angle(0),
 	m_gridRect(),
 	m_alive(false),
+	m_fireRate(1),
+	m_timeToFire(m_fireRate),
 	m_rangeCollider(m_position.x, m_position.y, 40),
 	m_body(Type::Static, Shape::Circle, this)
 {
 	m_body.setFriction(0.985f);
 	m_body.setRestitution(.1f);
+	m_body.mask = 3;
+	m_body.bitmasks.push_back(3);
 	m_body.setCircleParameters(m_position, 40, 1.25f, false);
 	m_body.tag = "Predator";
+
+	for (int i = 0; i < 2; i++)
+	{
+		m_bullets.push_back(EnemyBullet());
+	}
 }
 
 Predator::~Predator()
@@ -30,6 +39,8 @@ void Predator::update(double dt)
 {
 	if (m_alive)
 	{
+		m_timeToFire += dt; //Add to our time to fire
+
 		m_playerPosPair.pos = *m_playerPosPtr; //Update our player pos pair
 
 		//If seeking, check if we are in range of the player, if so, attack, else path find to player
@@ -92,10 +103,22 @@ void Predator::update(double dt)
 		m_gridRect.top = m_position.y - m_gridRect.height / 2;
 		m_rangeCollider.setPosition(m_position);
 	}
+
+	//Update any live bullets
+	for (auto& bullet : m_bullets)
+	{
+		bullet.update(dt);
+	}
 }
 
 void Predator::draw(sf::RenderWindow & window)
 {
+	//Draw any live bullets
+	for (auto& bullet : m_bullets)
+	{
+		bullet.draw(window);
+	}
+
 	if (m_alive)
 	{
 		window.draw(m_sprite);
@@ -135,6 +158,23 @@ bool Predator::seek(boolVecPair& p, double dt)
 void Predator::lookAtPlayer(double dt)
 {
 	m_angle = (*m_playerPosPtr - m_position).angle();
+
+	if (m_timeToFire >= m_fireRate)
+	{
+
+
+		//Spawn a bullet
+		for (auto& bullet : m_bullets)
+		{
+			//If the bullet is not alive and currently colliding
+			if (bullet.alive == false && bullet.collided == false)
+			{
+				m_timeToFire = 0; //Reset time to fire
+				bullet.spawn(m_position, m_angle);
+				break;
+			}
+		}
+	}
 }
 
 void Predator::spawn(Vector2f spawnPos)
@@ -152,6 +192,12 @@ void Predator::setTexture(ResourceManager & resources)
 {
 	m_sprite.setTexture(resources.getTexture("Predator"));
 	m_sprite.setOrigin(m_sprite.getLocalBounds().width / 2, m_sprite.getLocalBounds().height / 2);
+
+	//Set bullet textures
+	for (auto& bullet : m_bullets)
+	{
+		bullet.setTexture(resources);
+	}
 
 	m_body.objectData = this; //Set object data here
 	physics::world->addPhysicsBody(m_body); //Add to physics here, as we cannot modify the physics during a physics update

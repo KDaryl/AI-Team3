@@ -80,13 +80,12 @@ void Player::handleInput(InputHandler & input)
 	//If space was pressed and our gun is not recharging, spawn a bullet
 	if (input.isButtonDown("Space") && m_timeToFire >= m_fireRate)
 	{
-		m_timeToFire = 0; //Reset our time to fire
-
 		for (auto& bullet : m_bullets)
 		{
 			//If the bullet is not alive and currently colliding
 			if (bullet.alive == false && bullet.collided == false)
 			{
+				m_timeToFire = 0; //Reset our time to fire
 				bullet.spawn(m_position, m_angle);
 				break;
 			}

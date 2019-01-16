@@ -316,4 +316,6 @@ void GameScene::setTexture(ResourceManager & resources)
 	{
 		pred.setTexture(resources);
 	}
+
+	m_predatorAI.at(0).spawn(Vector2f(5840, 4887));
 }
