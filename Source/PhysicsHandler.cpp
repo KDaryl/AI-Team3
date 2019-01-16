@@ -1,5 +1,6 @@
 #include "PhysicsHandler.h"
-//#include "Player.h"
+#include "Player.h"
+#include "Predator.h"
 #include <algorithm>
 
 PhysicsHandler::PhysicsHandler()
@@ -200,6 +201,13 @@ void PhysicsHandler::resolveSensorCollision(Manifold & m)
 		pb.hasCollided();
 	}
 
+
+	//Destroy bullets
+	if ((m.A->tag == "Predator Bullet" || m.B->tag == "Predator Bullet"))
+	{
+		EnemyBullet& pb = *static_cast<EnemyBullet*>(static_cast<void*>(m.A->tag == "Predator Bullet" ? m.A->objectData : m.B->objectData));
+		pb.hasCollided();
+	}
 }
 
 void PhysicsHandler::positionalCorrection(Manifold& m)

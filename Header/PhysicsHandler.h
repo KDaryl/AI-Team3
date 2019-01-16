@@ -1,6 +1,5 @@
 #pragma once
 #include "PhysicsBody.h"
-#include "PlayerBullet.h"
 
 class PhysicsHandler
 {

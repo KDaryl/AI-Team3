@@ -30,11 +30,11 @@ void CollisionBox::setBox()
 	rect.setOutlineThickness(2.5f);
 	rect.setOutlineColor(sf::Color::Red);
 	rect.setSize(sf::Vector2f(w, h));
-	rect.setOrigin(rect.getGlobalBounds().width / 2, rect.getGlobalBounds().height / 2);
+	rect.setOrigin(rect.getLocalBounds().width / 2, rect.getLocalBounds().height / 2);
 	rect.setPosition(position.x, position.y);
 
 	//Set Min and Max
-	min = Vector2f(rect.getGlobalBounds().left, rect.getGlobalBounds().top); //Set the min position
+	min = Vector2f(rect.getLocalBounds().left, rect.getLocalBounds().top); //Set the min position
 	max = Vector2f(min.x + w, min.y + h); //Set the max
 }
 
@@ -71,7 +71,7 @@ void CollisionBox::setPosition(float x, float y)
 {
 	position = Vector2f(x, y); //Set the position
 	rect.setPosition(position.x, position.y); //Set rect position
-	min = Vector2f(rect.getGlobalBounds().left, rect.getGlobalBounds().top); //Set the min position
+	min = Vector2f(rect.getLocalBounds().left, rect.getLocalBounds().top); //Set the min position
 	max = Vector2f(min.x + w, min.y + h); //Set the max
 }
 
@@ -79,7 +79,7 @@ void CollisionBox::setPosition(Vector2f pos)
 {
 	position = pos;
 	rect.setPosition(position.x, position.y); //Set rect position
-	min = Vector2f(rect.getGlobalBounds().left, rect.getGlobalBounds().top); //Set the min position
+	min = Vector2f(rect.getLocalBounds().left, rect.getLocalBounds().top); //Set the min position
 	max = Vector2f(min.x + w, min.y + h); //Set the max
 }
 

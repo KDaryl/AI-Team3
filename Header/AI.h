@@ -4,6 +4,9 @@
 #include "ResourceManager.h"
 #include "Vector2f.h"
 #include "Thor/Math.hpp"
+#include "Grid.h" //For path finding
+#include "Thor/Animations.hpp"
+#include <random>
 #include "Player.h"
 
 //For physics, we include these for every physics object

@@ -127,6 +127,7 @@
     <ClInclude Include="Header\CollisionCircle.h" />
     <ClInclude Include="Header\Collisions.h" />
     <ClInclude Include="Header\Door.h" />
+    <ClInclude Include="Header\EnemyBullet.h" />
     <ClInclude Include="Header\Environment.h" />
     <ClInclude Include="Header\Game.h" />
     <ClInclude Include="Header\GameScene.h" />
@@ -153,6 +154,7 @@
     <ClCompile Include="Source\CollisionCircle.cpp" />
     <ClCompile Include="Source\Collisions.cpp" />
     <ClCompile Include="Source\Door.cpp" />
+    <ClCompile Include="Source\EnemyBullet.cpp" />
     <ClCompile Include="Source\Environment.cpp" />
     <ClCompile Include="Source\Game.cpp" />
     <ClCompile Include="Source\GameScene.cpp" />

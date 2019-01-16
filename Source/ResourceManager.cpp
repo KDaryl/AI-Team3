@@ -16,6 +16,9 @@ void ResourceManager::loadTextures()
 	loadTexture("Player Bullet", "Ships/Player Bullet.png", true);
 	loadTexture("Sweeper", "Ships/Sweeper Bot.png", true);
 	loadTexture("Worker", "Ships/Worker.png", true);
+	loadTexture("Predator", "Ships/Predator.png", true);
+	loadTexture("Predator Bullet", "Ships/Enemy Bullet.png", true);
+	loadTexture("Alien Nest", "Ships/Alien Nest.png", true);
 
 	//Load minimap textures
 	loadTexture("Full Map", "Environment/Full Map.png", true);

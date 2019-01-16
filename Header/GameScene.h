@@ -7,6 +7,7 @@
 #include "AI.h"
 #include "Worker.h" //Worker Ai
 #include "Sweeper.h"
+#include "Predator.h" //Predator ships
 #include "Grid.h" //For the grid of the map
 #include "MiniMap.h" //For the minimap
 
@@ -34,6 +35,7 @@ private:
 
 	//AI
 	std::vector<Worker> m_workerAI; //All of our worker Ai's
+	std::vector<Predator> m_predatorAI; //All of our predator Ai's
 
 	Sweeper m_sweeperBot;
 
