@@ -1,9 +1,5 @@
 #pragma once
 #include "AI.h"
-#include "Thor/Animations.hpp"
-#include "Grid.h" //For path finding
-#include <random>
-
 
 class Worker
 {

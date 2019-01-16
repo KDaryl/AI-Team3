@@ -10,6 +10,7 @@ Player::Player(float x, float y) :
 	m_fireRate(.5f),
 	m_timeToFire(m_fireRate),
 	m_rangeCollider(x, y, 45),
+	m_gridRect(x - 31, y - 45, 1, 1),
 	m_physicsBody(Type::Dynamic, Shape::Circle, this)
 {
 	setupAnimations(); //Setup our animations
@@ -54,6 +55,9 @@ void Player::update(double dt)
 	m_sprite.setPosition(m_position.x, m_position.y);
 	m_sprite.setRotation(m_angle + 90); //Add offset of 90 due to the sprite being faced the wrong way
 	m_rangeCollider.setPosition(m_position);
+	//Update grid rectangle so we can check what grid we are in
+	m_gridRect.left = m_position.x - m_gridRect.width / 2;
+	m_gridRect.top = m_position.y - m_gridRect.height / 2;
 }
 
 void Player::draw(sf::RenderWindow & win, float a)

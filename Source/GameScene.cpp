@@ -18,6 +18,13 @@ GameScene::GameScene() :
 		}
 	}
 
+	//Can have 4 predators alive at once, we create them here and then spawn/kill
+	//Make it  more efficient than deleting and creating 
+	for (int i = 0; i < 4; i++)
+	{
+		m_predatorAI.push_back(Predator(m_player.m_position, &m_grid));
+	}
+
 	loadMap();
 }
 
@@ -136,6 +143,12 @@ void GameScene::update(double dt)
 	//Update minimap
 	m_minimap.update();
 
+	//Update predators
+	for (auto& pred : m_predatorAI)
+	{
+		pred.update(dt);
+	}
+
 	//Update Player
 	m_player.update(dt);
 
@@ -200,6 +213,12 @@ void GameScene::draw(sf::RenderWindow & window, float a)
 	for (auto& worker : m_workerAI)
 	{
 		worker.draw(window);
+	}
+
+	//Draw predators
+	for (auto& pred : m_predatorAI)
+	{
+		pred.draw(window);
 	}
 
 	//Draw the player
@@ -290,5 +309,11 @@ void GameScene::setTexture(ResourceManager & resources)
 	for (auto& worker : m_workerAI)
 	{
 		worker.setTexture(resources);
+	}
+
+	//Set texture for predators
+	for (auto& pred : m_predatorAI)
+	{
+		pred.setTexture(resources);
 	}
 }

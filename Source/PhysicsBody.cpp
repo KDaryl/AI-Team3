@@ -66,6 +66,7 @@ void PhysicsBody::draw(sf::RenderWindow & window)
 		break;
 	case Shape::Circle:
 		cCollider->draw(window);
+		bCollider->draw(window);
 		break;
 	}
 }
@@ -137,7 +138,7 @@ void PhysicsBody::setCircleParameters(Vector2f startPos, float _radius, float _m
 	position = startPos;
 	radius = _radius;
 	cCollider->setSize(startPos.x, startPos.y, radius);//Set radius and position of the circle collider
-	bCollider->setSize(startPos.x, startPos.y, radius / 2, radius / 2);
+	bCollider->setSize(startPos.x, startPos.y, radius * 2, radius * 2);
 	useGravity = _useGravity;
 	mass = _mass;
 	//Setting our inverse mass

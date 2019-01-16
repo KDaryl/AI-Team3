@@ -146,7 +146,7 @@ float Vector2f::crossProduct(Vector2f v)
 
 float Vector2f::angle()
 {
-	return toDeg(atan2f(-y, x));
+	return toDeg(atan2f(y, x));
 }
 
 Vector2f Vector2f::crossProduct(float s)

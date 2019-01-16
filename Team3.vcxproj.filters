@@ -120,6 +120,9 @@
     <ClInclude Include="Header\PlayerBullet.h">
       <Filter>Header Files\Game Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Header\EnemyBullet.h">
+      <Filter>Header Files\AI Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -196,6 +199,9 @@
     </ClCompile>
     <ClCompile Include="Source\PlayerBullet.cpp">
       <Filter>Source Files\Game Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EnemyBullet.cpp">
+      <Filter>Source Files\AI Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

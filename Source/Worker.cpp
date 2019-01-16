@@ -13,7 +13,7 @@ Worker::Worker(Vector2f startPos, Grid* grid) :
 	m_angle(-90),
 	m_wanderChange(4), //Wander to new position every 2 seconds
 	m_currentWander(m_wanderChange), //Current time spent moving to wander position
-	m_gridRect(startPos.x - 20, startPos.y - 20, 40, 40),
+	m_gridRect(startPos.x - 20, startPos.y - 20, 1, 1),
 	m_body(Type::Dynamic, Shape::Circle, this),
 	m_rangeCollider(startPos.x, startPos.y, 20),
 	m_captured(false)

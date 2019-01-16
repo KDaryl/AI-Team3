@@ -24,7 +24,7 @@ void CollisionCircle::setCircle()
 	circle.setOutlineThickness(2.5f);
 	circle.setOutlineColor(sf::Color::Red);
 	circle.setRadius(r);
-	circle.setOrigin(circle.getGlobalBounds().width / 2, circle.getGlobalBounds().height / 2);
+	circle.setOrigin(circle.getLocalBounds().width / 2, circle.getLocalBounds().height / 2);
 	circle.setPosition(position.x, position.y);
 }
 
