@@ -3,7 +3,8 @@
 Hud::Hud(Player& player) :
 	m_playerPtr(&player),
 	m_cleared(false),
-	m_viewDetector(0, 0, 2880, 1620)
+	m_viewDetector(0, 0, 2880, 1620),
+	m_maxWorkers(1)
 {
 	m_rt.create(11520, 6480);
 	m_sprite.setTexture(m_rt.getTexture());
@@ -90,7 +91,7 @@ void Hud::setTexture(ResourceManager & resources)
 void Hud::updateHud()
 {
 	m_hpPercent = (float)m_playerPtr->health / m_playerPtr->maxHealth; //Health Percentage
-	m_workerPercent = (float)m_playerPtr->workersCollected / 14; // Worker percentage
+	m_workerPercent = (float)m_playerPtr->workersCollected / m_maxWorkers; // Worker percentage
 
 	m_hpBarFull.setTextureRect(sf::IntRect(0,0, 152 * m_hpPercent, 12));
 	m_workerBarFull.setTextureRect(sf::IntRect(0, 0, 152 * m_workerPercent, 12));

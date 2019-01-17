@@ -16,7 +16,8 @@ Worker::Worker(Vector2f startPos, Grid* grid) :
 	m_gridRect(startPos.x - 20, startPos.y - 20, 1, 1),
 	m_body(Type::Dynamic, Shape::Circle, this),
 	m_rangeCollider(startPos.x, startPos.y, 20),
-	m_captured(false)
+	m_captured(false),
+	m_playerCaptured(false)
 {
 
 	m_body.setCircleParameters(m_startPos, 10, .5, false);

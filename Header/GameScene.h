@@ -34,6 +34,10 @@ private:
 	bool m_drawGrid, m_drawPhysics;
 
 	//AI
+	struct removeCapturedWorker
+	{
+		bool operator() (Worker& w) { return w.isCapturedByPlayer(); }
+	};
 	std::vector<Worker> m_workerAI; //All of our worker Ai's
 	std::vector<Predator> m_predatorAI; //All of our predator Ai's
 

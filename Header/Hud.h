@@ -14,6 +14,8 @@ public:
 	void setTexture(ResourceManager& resources); //Setting hud textures
 	void updateHud(); //Call this when the player takes damage or picks up a worker
 
+	void setMaxWorkers(int num) { m_maxWorkers = num; };
+
 	sf::View& getView() { return m_view; }
 	sf::FloatRect& getViewDetector() { return m_viewDetector; }
 private:
@@ -28,4 +30,5 @@ private:
 	//Other hud elements
 	sf::Sprite m_hudBg, m_hpBarEmpty, m_hpBarFull, m_workerBarEmpty, m_workerBarFull;
 	float m_workerPercent, m_hpPercent; //Percentage of workers collected, and percentage of player health left
+	int m_maxWorkers;
 };

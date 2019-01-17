@@ -52,13 +52,17 @@ void GameScene::loadMap()
 		m_doors.push_back(d);
 	}
 
+	int workers = 0;
 	//Load worker Areas
 	for (auto& area : m_levelLoader.data["Worker Areas"])
 	{
 		auto env = Environment(area["X"], area["Y"], "Worker Area");
 		m_environment.push_back(env);
 		m_workerAI.push_back(Worker(Vector2f(area["X"], area["Y"]), &m_grid));
+		workers++;
 	}
+	m_hud.setMaxWorkers(workers);
+
 	//Load our spawn point
 	for (auto& spawn : m_levelLoader.data["Spawn Point"])
 	{
@@ -160,13 +164,18 @@ void GameScene::update(double dt)
 		//If the circles collide set the worker to follow the Sweeper Bot
 		if (Collisions::CircleVsCircle(worker.rangeCollider(), m_player.m_rangeCollider))
 		{
-			//If the worker is not captured, set it as captured
+			//If the worker is not currently captured by a sweeper bot, set it as captured by the player
 			if (!worker.captured())
 			{
-				worker.captureWorker(false, m_player.m_position);
+				worker.captureWorker(true, m_player.m_position);
+				m_player.workersCollected++; //Add to the workers collected
 			}
 		}
 	}
+
+	//Remove player captured workers from the vector
+	m_workerAI.erase(std::remove_if(m_workerAI.begin(), m_workerAI.end(), removeCapturedWorker()),m_workerAI.end());
+
 	//update ai
 	m_sweeperBot.update(dt);
 }
