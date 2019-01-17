@@ -123,6 +123,9 @@
     <ClInclude Include="Header\Hud.h">
       <Filter>Header Files\Game Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Header\NestMissile.h">
+      <Filter>Header Files\AI Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -202,6 +205,9 @@
     </ClCompile>
     <ClCompile Include="Source\Hud.cpp">
       <Filter>Source Files\Game Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\NestMissile.cpp">
+      <Filter>Source Files\AI Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

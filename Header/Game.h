@@ -4,6 +4,12 @@
 #include "SceneManager.h"
 using namespace physics;
 
+/**
+*	Game.h
+*	This is where our game will begin, from here we run the main game loop
+*	and can set the framrate if we wish to do so.
+*/
+
 //FPS Counter
 class FPS
 {

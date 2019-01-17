@@ -11,7 +11,8 @@ public:
 	void draw(sf::RenderWindow& win, float a);
 	void handleInput(InputHandler& input);
 	void setTexture(ResourceManager& resources);
-	
+	void addDelHealth(int val); //Decrements or adds a value to the players health
+
 	//Public variables
 	Vector2f m_position, m_prevPos;
 	Vector2f m_velocity;
