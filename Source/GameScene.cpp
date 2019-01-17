@@ -4,7 +4,7 @@ GameScene::GameScene() :
 	//player pointer maxSpeed and position
 	m_sweeperBot(&m_player, 100, Vector2f(5760,6476)),
 	m_player(5840, 6163),
-	m_minimap(m_player)
+	m_hud(m_player)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
 	m_followView.zoom(1.0f);
@@ -52,13 +52,17 @@ void GameScene::loadMap()
 		m_doors.push_back(d);
 	}
 
+	int workers = 0;
 	//Load worker Areas
 	for (auto& area : m_levelLoader.data["Worker Areas"])
 	{
 		auto env = Environment(area["X"], area["Y"], "Worker Area");
 		m_environment.push_back(env);
 		m_workerAI.push_back(Worker(Vector2f(area["X"], area["Y"]), &m_grid));
+		workers++;
 	}
+	m_hud.setMaxWorkers(workers);
+
 	//Load our spawn point
 	for (auto& spawn : m_levelLoader.data["Spawn Point"])
 	{
@@ -141,7 +145,7 @@ void GameScene::update(double dt)
 	m_viewRect = sf::FloatRect(m_player.m_position.x - 640, m_player.m_position.y - 360, 1280, 720);
 
 	//Update minimap
-	m_minimap.update();
+	m_hud.update();
 
 	//Update predators
 	for (auto& pred : m_predatorAI)
@@ -160,13 +164,18 @@ void GameScene::update(double dt)
 		//If the circles collide set the worker to follow the Sweeper Bot
 		if (Collisions::CircleVsCircle(worker.rangeCollider(), m_player.m_rangeCollider))
 		{
-			//If the worker is not captured, set it as captured
+			//If the worker is not currently captured by a sweeper bot, set it as captured by the player
 			if (!worker.captured())
 			{
-				worker.captureWorker(false, m_player.m_position);
+				worker.captureWorker(true, m_player.m_position);
+				m_player.workersCollected++; //Add to the workers collected
 			}
 		}
 	}
+
+	//Remove player captured workers from the vector
+	m_workerAI.erase(std::remove_if(m_workerAI.begin(), m_workerAI.end(), removeCapturedWorker()),m_workerAI.end());
+
 	//update ai
 	m_sweeperBot.update(dt);
 }
@@ -243,20 +252,20 @@ void GameScene::draw(sf::RenderWindow & window, float a)
 
 void GameScene::drawMinimap(sf::RenderWindow & window)
 {
-	m_minimap.draw(m_fullMapSprite);
+	m_hud.draw(m_fullMapSprite);
 
 	//Draw environment
 	for (auto& object : m_environment)
 	{
 		//If the object is in view, then draw it
-		if (object.collider().intersects(m_minimap.getViewDetector()))
+		if (object.collider().intersects(m_hud.getViewDetector()))
 		{
-			m_minimap.draw(object.m_sprite);
+			m_hud.draw(object.m_sprite);
 		}
 	}
 
-	m_minimap.draw(m_player.m_sprite);
-	m_minimap.display(window);
+	m_hud.draw(m_player.m_sprite);
+	m_hud.display(window);
 }
 
 void GameScene::handleInput(InputHandler & input)
@@ -316,6 +325,8 @@ void GameScene::setTexture(ResourceManager & resources)
 	{
 		pred.setTexture(resources);
 	}
+
+	m_hud.setTexture(resources);
 
 	m_predatorAI.at(0).spawn(Vector2f(5840, 4887));
 }

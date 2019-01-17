@@ -201,12 +201,24 @@ void PhysicsHandler::resolveSensorCollision(Manifold & m)
 		pb.hasCollided();
 	}
 
-
 	//Destroy bullets
 	if ((m.A->tag == "Predator Bullet" || m.B->tag == "Predator Bullet"))
 	{
 		EnemyBullet& pb = *static_cast<EnemyBullet*>(static_cast<void*>(m.A->tag == "Predator Bullet" ? m.A->objectData : m.B->objectData));
 		pb.hasCollided();
+	}
+
+	//If an enemy bullet has hit the player, minus health from the player
+	if ((m.A->tag == "Predator Bullet" || m.B->tag == "Predator Bullet") &&
+		(m.A->tag == "Player" || m.B->tag == "Player"))
+	{
+		Player& p = *static_cast<Player*>(static_cast<void*>(m.A->tag == "Player" ? m.A->objectData : m.B->objectData));
+		if (p.health > 0)
+		{
+			p.health -= 10;
+			if(p.health < 0)
+				p.health = 0;
+		}
 	}
 }
 
