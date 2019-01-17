@@ -144,7 +144,7 @@ void NestMissile::spawn(Vector2f position, float angle)
 
 void NestMissile::setTexture(ResourceManager & resources)
 {
-	m_sprite.setTexture(resources.getTexture("Predator Bullet"));
+	m_sprite.setTexture(resources.getTexture("Nest Missile"));
 	m_sprite.setOrigin(37.5f, 37.5f); //Center sprite
 
 	thor::FrameAnimation move, dead; //Our animations
@@ -201,7 +201,6 @@ bool NestMissile::seek(boolVecPair & p, double dt)
 	else
 	{
 		p.visited = true;
-		//m_body.velocity.zeroVector(); //Reset velocity on the worker
 		return true; //Reached Target
 	}
 }
