@@ -4,7 +4,8 @@ GameScene::GameScene() :
 	//player pointer maxSpeed and position
 	m_sweeperBot(&m_player, 100, Vector2f(5760,6476)),
 	m_player(5840, 6163),
-	m_hud(m_player)
+	m_hud(m_player),
+	m_testMiss(m_player.m_position, &m_grid)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
 	m_followView.zoom(1.0f);
@@ -134,6 +135,8 @@ void GameScene::createBoundary(json bounds, Environment & object)
 
 void GameScene::update(double dt)
 {
+	m_testMiss.update(dt);
+
 	//Update the doors on the map
 	for (auto& object : m_doors)
 	{
@@ -143,6 +146,9 @@ void GameScene::update(double dt)
 	//Set the views position to follow the player (player will be centered)
 	m_followView.setCenter(m_player.m_position.x, m_player.m_position.y);
 	m_viewRect = sf::FloatRect(m_player.m_position.x - 640, m_player.m_position.y - 360, 1280, 720);
+
+	//m_followView.setCenter(m_testMiss.m_position.x, m_testMiss.m_position.y);
+	//m_viewRect = sf::FloatRect(m_testMiss.m_position.x - 640, m_testMiss.m_position.y - 360, 1280, 720);
 
 	//Update minimap
 	m_hud.update();
@@ -217,6 +223,8 @@ void GameScene::draw(sf::RenderWindow & window, float a)
 			object.draw(window);
 		}
 	}
+
+	m_testMiss.draw(window);
 
 	//Draw workers
 	for (auto& worker : m_workerAI)
@@ -329,4 +337,7 @@ void GameScene::setTexture(ResourceManager & resources)
 	m_hud.setTexture(resources);
 
 	m_predatorAI.at(0).spawn(Vector2f(5840, 4887));
+
+	m_testMiss.setTexture(resources);
+	m_testMiss.spawn(Vector2f(2600, 4800), 0);
 }
