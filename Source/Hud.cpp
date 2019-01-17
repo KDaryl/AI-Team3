@@ -131,19 +131,6 @@ void Hud::handleInput(InputHandler & input)
 {
 	auto zoomCopy = m_currentZoom;
 
-	//If left mouse is clicked
-	if (input.isButtonPressed("LEFT_MOUSE"))
-	{
-		auto mouseR = sf::FloatRect((m_playerPtr->m_position.x - 640) + input.getMousePos().x, (m_playerPtr->m_position.y - 360) + input.getMousePos().y, 1,1);
-
-		//If the player clicked on the minimap
-		if (m_rect.getGlobalBounds().intersects(mouseR))
-		{
-			//Convert mouse to world coordinates as we want to get a waypoint to somewhere in the world, not on the view
-			auto worldPos = m_rt.mapPixelToCoords(sf::Vector2i(input.getMousePos().x, input.getMousePos().y), m_view);
-		}
-	}
-
 	//Increase minimap zoom
 	if (input.isButtonDown("E"))
 	{
