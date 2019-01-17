@@ -18,6 +18,9 @@ public:
 	CollisionCircle m_rangeCollider;
 	sf::Sprite m_sprite;
 	PhysicsBody m_physicsBody;
+	int health;
+	int workersCollected;
+	int maxHealth;
 private:
 
 	//Shooting Variables

@@ -9,7 +9,7 @@
 #include "Sweeper.h"
 #include "Predator.h" //Predator ships
 #include "Grid.h" //For the grid of the map
-#include "MiniMap.h" //For the minimap
+#include "Hud.h" //For the hud
 
 class GameScene : public Scene
 {
@@ -44,7 +44,7 @@ private:
 
 	//Minimap
 	sf::Sprite m_fullMapSprite;
-	MiniMap m_minimap;
+	Hud m_hud;
 
 	//Environment variables
 	sf::Sprite m_bgSprite;

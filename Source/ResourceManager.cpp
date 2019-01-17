@@ -23,6 +23,11 @@ void ResourceManager::loadTextures()
 	//Load minimap textures
 	loadTexture("Full Map", "Environment/Full Map.png", true);
 
+	//Hud Textures
+	loadTexture("HUD", "HUD/HUD BG.png", true);
+	loadTexture("HUD Bar Empty", "HUD/Bar Empty.png", true);
+	loadTexture("HUD Bar Full", "HUD/Bar Full.png", true);
+
 	//Load environment Textures (corridors, walls, backgrounds etc)
 	loadTexture("Starfield BG", "Environment/Starfield BG.png", true);
 	loadTexture("SC", "Environment/Straight Corridor.png", true);

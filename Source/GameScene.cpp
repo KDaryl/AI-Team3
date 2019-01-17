@@ -4,7 +4,7 @@ GameScene::GameScene() :
 	//player pointer maxSpeed and position
 	m_sweeperBot(&m_player, 100, Vector2f(5760,6476)),
 	m_player(5840, 6163),
-	m_minimap(m_player)
+	m_hud(m_player)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
 	m_followView.zoom(1.0f);
@@ -141,7 +141,7 @@ void GameScene::update(double dt)
 	m_viewRect = sf::FloatRect(m_player.m_position.x - 640, m_player.m_position.y - 360, 1280, 720);
 
 	//Update minimap
-	m_minimap.update();
+	m_hud.update();
 
 	//Update predators
 	for (auto& pred : m_predatorAI)
@@ -243,20 +243,20 @@ void GameScene::draw(sf::RenderWindow & window, float a)
 
 void GameScene::drawMinimap(sf::RenderWindow & window)
 {
-	m_minimap.draw(m_fullMapSprite);
+	m_hud.draw(m_fullMapSprite);
 
 	//Draw environment
 	for (auto& object : m_environment)
 	{
 		//If the object is in view, then draw it
-		if (object.collider().intersects(m_minimap.getViewDetector()))
+		if (object.collider().intersects(m_hud.getViewDetector()))
 		{
-			m_minimap.draw(object.m_sprite);
+			m_hud.draw(object.m_sprite);
 		}
 	}
 
-	m_minimap.draw(m_player.m_sprite);
-	m_minimap.display(window);
+	m_hud.draw(m_player.m_sprite);
+	m_hud.display(window);
 }
 
 void GameScene::handleInput(InputHandler & input)
@@ -316,6 +316,8 @@ void GameScene::setTexture(ResourceManager & resources)
 	{
 		pred.setTexture(resources);
 	}
+
+	m_hud.setTexture(resources);
 
 	m_predatorAI.at(0).spawn(Vector2f(5840, 4887));
 }

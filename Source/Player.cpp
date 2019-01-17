@@ -11,13 +11,15 @@ Player::Player(float x, float y) :
 	m_timeToFire(m_fireRate),
 	m_rangeCollider(x, y, 45),
 	m_gridRect(x - 31, y - 45, 1, 1),
+	health(100), //Start with 100 health, can be ugraded
+	maxHealth(health),
+	workersCollected(0), //Amount of workers the player has picked up
 	m_physicsBody(Type::Dynamic, Shape::Circle, this)
 {
 	setupAnimations(); //Setup our animations
 
 	//Set our box parameters to our position and size and to NOT use gravity
 	m_physicsBody.setCircleParameters(Vector2f(m_position.x, m_position.y), 30, 1.25f, false);
-	//m_physicsBody.setBoxParameters(Vector2f(m_position.x, m_position.y), Vector2f(62, 85), 1, false);
 	m_physicsBody.setFriction(m_friction);
 	m_physicsBody.setRestitution(0.1f);
 	m_physicsBody.mask = 1; //Set layer to 1, we can add 1 to other bitmasks on othe rbodies to filter out collisions with the player
