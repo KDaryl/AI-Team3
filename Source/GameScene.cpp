@@ -4,7 +4,7 @@ GameScene::GameScene() :
 	//player pointer maxSpeed and position
 	m_sweeperBot(&m_player, 100, Vector2f(5760,6476)),
 	m_player(5840, 6163),
-	m_hud(m_player)
+	m_hud(m_player, m_grid) //Our hud (minimap, health, workers collected)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
 	m_followView.zoom(1.0f);
@@ -145,7 +145,7 @@ void GameScene::update(double dt)
 	m_viewRect = sf::FloatRect(m_player.m_position.x - 640, m_player.m_position.y - 360, 1280, 720);
 
 	//Update minimap
-	m_hud.update();
+	m_hud.update(dt);
 
 	//Update predators
 	for (auto& pred : m_predatorAI)
@@ -272,6 +272,8 @@ void GameScene::drawMinimap(sf::RenderWindow & window)
 void GameScene::handleInput(InputHandler & input)
 {
 	m_player.handleInput(input);
+
+	m_hud.handleInput(input);
 
 	//Keybindings for turning Grid and Collision boxes On/OFF
 	if (input.isButtonPressed("Shift"))
