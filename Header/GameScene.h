@@ -25,8 +25,6 @@ public:
 	void handleInput(InputHandler& input);
 	void setTexture(ResourceManager& resources);
 
-	NestMissile m_testMiss;
-
 private:
 	Player m_player;
 	sf::View m_followView;
