@@ -10,6 +10,9 @@
 #include "Player.h"
 #include <vector>
 
+/**
+* Base AI class which other ai classes use 
+*/
 
 //For physics, we include these for every physics object
 #include "PhysicsHandler.h"
@@ -21,8 +24,10 @@ public:
 	AI();
 	~AI();
 
-	//pure virtual functions
-  virtual void update(float dt) = 0;
+	/**
+	* Pure virtual functions for the AI
+	*/
+    virtual void update(float dt) = 0;
 	virtual void render(sf::RenderWindow& window) = 0;
 
 	static Vector2f truncate(Vector2f v, float max);

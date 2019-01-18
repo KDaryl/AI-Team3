@@ -1,6 +1,9 @@
 #pragma once
 #include "Vector2f.h"
 
+/**
+* Class used to make a collision AABB box around certain bodies 
+*/
 class CollisionBox
 {
 public:
