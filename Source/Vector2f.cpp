@@ -126,12 +126,12 @@ float Vector2f::distance(Vector2f & v2)
 
 float Vector2f::magnitude()
 {
-	return sqrtf(powf(x, 2) + powf(y, 2));;
+	return sqrtf((x * x) + (y * y));;
 }
 
 float Vector2f::sqrdMagnitude()
 {
-	return powf(x, 2) + powf(y, 2);
+	return (x * x) + (y * y);
 }
 
 float Vector2f::dotProduct(Vector2f v)

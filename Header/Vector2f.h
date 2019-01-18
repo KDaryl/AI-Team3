@@ -6,6 +6,9 @@
 #include <math.h>
 #include "SFML/Graphics.hpp"
 
+/**
+* Description: Vector2f class, will be used over the sfml vector class as this includes more functionality (dot product, cross product, normalise etc.)
+*/
 class Vector2f
 {
 public:

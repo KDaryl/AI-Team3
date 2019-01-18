@@ -24,6 +24,7 @@ public:
 	bool seek(boolVecPair& p, double dt); //Returns a bool that indicates if we have reached the target or not
 	void lookAtPlayer(double dt);
 	void spawn(Vector2f spawnPos);
+	void decrementHealth(int val);
 
 
 	//getters 
@@ -31,6 +32,7 @@ public:
 	void setTexture(ResourceManager& resources);
 	void die(); //Predator dies
 
+	bool& isSpawned() { return m_alive; }
 	Vector2f m_position;
 	Vector2f m_velocity;
 	int m_id = 0;
@@ -52,6 +54,7 @@ public:
 
 
 private:
+	int health = 50; //Predator starts with 50 health
 	bool m_alive;
 
 	struct removeVisited
@@ -91,6 +94,7 @@ private:
 
 	sf::FloatRect m_gridRect;
 
-	sf::Sprite m_sprite;
+	thor::Animator<sf::Sprite, std::string> m_animator;
+	sf::Sprite m_sprite, m_deathSprite;
 };
 

@@ -48,7 +48,7 @@ void NestMissile::update(double dt)
 
 
 		//If we are not in range of the player
-		if (m_position.distance(*m_playerPosPtr) > 320)
+		if (m_position.distance(*m_playerPosPtr) > 640)
 		{
 			//If our path is empty do a BFS to the player from our grid position
 			if (m_seekPath.size() == 0)
@@ -67,6 +67,11 @@ void NestMissile::update(double dt)
 				m_target = &m_seekPath.at(0);
 			}
 		}
+		else
+		{
+			m_target = &m_playerPosPair;
+		}
+
 		//Seek to the set target
 		if (seek(*m_target, dt))
 		{
@@ -134,7 +139,7 @@ void NestMissile::spawn(Vector2f position, float angle)
 
 	m_body.type = Type::Dynamic; //make the body dynamic as it can move now
 
-										   //Play our moving animation
+	//Play our moving animation
 	if (m_animator.isPlayingAnimation() && m_animator.getPlayingAnimation() != "Move" || !m_animator.isPlayingAnimation())
 	{
 		m_animator.stopAnimation(); //Stop playing current animation

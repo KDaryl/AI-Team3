@@ -1,5 +1,8 @@
 #include "Predator.h"
 
+/**
+* Description: Predator constructor, setting initial values for the predator
+*/
 Predator::Predator(Vector2f& playerPos, Grid* grid, int idIn) :
 	m_gridPtr(grid),
 	m_playerPosPtr(&playerPos),
@@ -39,6 +42,10 @@ Predator::~Predator()
 {
 }
 
+/**
+* Description: Updates the predator, if he is alive and out of range of the player, he does a pathfind to him,
+* if hes in range of the player he looks at the player and fires a bullet
+*/
 void Predator::update(double dt)
 {
 	if (m_alive)
@@ -107,6 +114,12 @@ void Predator::update(double dt)
 		m_gridRect.top = m_position.y - m_gridRect.height / 2;
 		m_rangeCollider.setPosition(m_position);
 	}
+	//If dead
+	else
+	{
+		m_animator.update(sf::seconds(dt));
+		m_animator.animate(m_deathSprite);
+	}
 
 	//Update any live bullets
 	for (auto& bullet : m_bullets)
@@ -115,6 +128,9 @@ void Predator::update(double dt)
 	}
 }
 
+/**
+* Description: Draws the predators sprites
+*/
 void Predator::draw(sf::RenderWindow & window)
 {
 	//Draw any live bullets
@@ -127,9 +143,16 @@ void Predator::draw(sf::RenderWindow & window)
 	{
 		window.draw(m_sprite);
 	}
+	else
+	{
+		window.draw(m_deathSprite);
+	}
 
 }
 
+/**
+* Description: Seeks to the location in the boolVecPair and if it reaches the position, it marks it as true
+*/
 bool Predator::seek(boolVecPair& p, double dt)
 {
 	//If target is outside the follow distance, then seek
@@ -155,19 +178,19 @@ bool Predator::seek(boolVecPair& p, double dt)
 	else
 	{
 		p.visited = true;
-		//m_body.velocity.zeroVector(); //Reset velocity on the worker
 		return true; //Reached Target
 	}
 }
 
+/**
+* Description: Looks towards the player and if the predator can fire, it will spawn a bullet
+*/
 void Predator::lookAtPlayer(double dt)
 {
 	m_angle = (*m_playerPosPtr - m_position).angle();
 
 	if (m_timeToFire >= m_fireRate)
 	{
-
-
 		//Spawn a bullet
 		for (auto& bullet : m_bullets)
 		{
@@ -182,8 +205,12 @@ void Predator::lookAtPlayer(double dt)
 	}
 }
 
+/**
+* Description: Spawns the predator at the specified location (the nests position)
+*/
 void Predator::spawn(Vector2f spawnPos)
 {
+	health = 50;//Reset health
 	m_alive = true;
 	m_body.type = Type::Dynamic; //Sawp to dynamic
 	m_body.position = spawnPos;
@@ -193,10 +220,29 @@ void Predator::spawn(Vector2f spawnPos)
 	m_gridRect.top = m_position.y - m_gridRect.height / 2;
 }
 
+/**
+* Description: Adds/Subtracts a value from health, if health reaches 0 call die() method
+*/
+void Predator::decrementHealth(int val)
+{
+	health += val;
+	if (health <= 0 && m_alive)
+	{ 
+		health = 0;
+		die();
+	}
+}
+
+/**
+* Description: Sets the textures of the predator
+*/
 void Predator::setTexture(ResourceManager & resources)
 {
+	thor::FrameAnimation death; //Our animations
 	m_sprite.setTexture(resources.getTexture("Predator"));
 	m_sprite.setOrigin(m_sprite.getLocalBounds().width / 2, m_sprite.getLocalBounds().height / 2);
+	m_deathSprite.setTexture(resources.getTexture("Predator Death"));
+	m_deathSprite.setOrigin(75, 75);
 
 	//Set bullet textures
 	for (auto& bullet : m_bullets)
@@ -204,15 +250,30 @@ void Predator::setTexture(ResourceManager & resources)
 		bullet.setTexture(resources);
 	}
 
+	//Setup the death animation
+	for (int i = 0; i < 40; i++)
+	{
+		death.addFrame(0.1f, sf::IntRect((i * 150), 0, 150, 150));
+	}
+
+	m_animator.addAnimation("Death", death, sf::seconds(0.25f)); 
+
 	m_body.objectData = this; //Set object data here
 	physics::world->addPhysicsBody(m_body); //Add to physics here, as we cannot modify the physics during a physics update
 }
 
+/**
+* Description: Kills the predator (plays a death animation)
+*/
 void Predator::die()
 {
 	m_body.position.zeroVector();
 	m_body.velocity.zeroVector();
+	m_alive = false;
 	m_body.type = Type::Static; //Swap to static, as we dont need collision detection anymore when dead
+	m_deathSprite.setPosition(m_position.x, m_position.y);
+	m_deathSprite.setRotation(m_sprite.getRotation());
+	m_animator.playAnimation("Death", false); //Play death animation
 }
 
 

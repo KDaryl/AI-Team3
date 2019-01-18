@@ -118,6 +118,8 @@ void Worker::update(double dt)
 	m_gridRect.left = m_position.x - m_gridRect.width / 2;
 	m_gridRect.top = m_position.y - m_gridRect.height / 2;
 	m_rangeCollider.setPosition(m_position); //Set range Collider
+	//Set our collider
+	m_collider = sf::FloatRect(m_position.x - m_sprite.getGlobalBounds().width / 2, m_position.y - m_sprite.getGlobalBounds().height / 2, m_sprite.getGlobalBounds().width, m_sprite.getGlobalBounds().height);
 }
 
 void Worker::draw(sf::RenderWindow & window)
@@ -162,6 +164,7 @@ void Worker::captureWorker(bool isPlayer, Vector2f & position)
 	if (isPlayer)
 	{
 		m_playerCaptured = true;
+		physics::world->deletePhysicsBody(m_body);
 	}
 	else
 	{

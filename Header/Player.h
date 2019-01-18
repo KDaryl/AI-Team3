@@ -1,6 +1,11 @@
 #pragma once
 #include "PlayerBullet.h"
 
+/**
+* Class : Player
+* Description: The player is controlled by the user using the Arrow keys or W,A,S and D keys.
+* the player can shoot using the spacebar.
+*/
 class Player
 {
 public:
@@ -13,6 +18,8 @@ public:
 	void setTexture(ResourceManager& resources);
 	void setAudioRef(ResourceManager& resources);
 	void addDelHealth(int val); //Decrements or adds a value to the players health
+	void die(); //Kill the player
+
 	sf::Event e;
 	//Public variables
 	Vector2f m_position, m_prevPos;
@@ -25,7 +32,8 @@ public:
 	int workersCollected;
 	int maxHealth;
 private:
-
+	bool alive;
+	sf::Sprite m_deathSprite;
 	//Shooting Variables
 	//Player bullets, we pool them to avoid nunecessary creation/deletion
 	std::vector<PlayerBullet> m_bullets;

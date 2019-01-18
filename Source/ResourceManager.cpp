@@ -1,5 +1,8 @@
 #include "ResourceManager.h"
 
+/**
+* Description: Resource manager constructor
+*/
 ResourceManager::ResourceManager()
 {
 	loadTexture("Loading Screen", "Loading Screen/Loading Screen.png");
@@ -14,6 +17,9 @@ ResourceManager::ResourceManager()
 	}
 }
 
+/**
+* Description: Method is called when its time load all the textures of the game
+*/
 void ResourceManager::loadTextures()
 {
 	//For good practice, we should use the name of the files as the id for the texture
@@ -35,6 +41,9 @@ void ResourceManager::loadTextures()
 	loadTexture("Predator Bullet", "Ships/Enemy Bullet.png", true);
 	loadTexture("Alien Nest", "Ships/Alien Nest.png", true);
 	loadTexture("Nest Missile", "Ships/Nest Missile.png", true);
+	loadTexture("Player Death", "Ships/Player Death.png", true);
+	loadTexture("Predator Death", "Ships/Predator Death.png", true);
+	loadTexture("Sweeper Bot Death", "Ships/Sweeper Bot Death.png", true);
 
 	//Load minimap textures
 	loadTexture("Full Map", "Environment/Full Map.png", true);
@@ -65,6 +74,10 @@ void ResourceManager::loadTextures()
 	finishedLoading = true;
 }
 
+/**
+* Description: Loads a texture by using the file name, it sets the texture as smooth if the smooth bool is true and
+* adds the texture to our texture map using the name field
+*/
 void ResourceManager::loadTexture(std::string name, std::string fileName, bool smooth)
 {
 	sf::Texture texture;
@@ -76,6 +89,9 @@ void ResourceManager::loadTexture(std::string name, std::string fileName, bool s
 	m_textureMap[name] = texture;
 }
 
+/**
+* Description: Returns a texture that is held in the map by "textureName" the parameter
+*/
 void ResourceManager::loadAudio(std::string name, std::string fileName)
 {
 	//load into soundbuffer

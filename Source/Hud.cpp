@@ -1,10 +1,16 @@
 #include "Hud.h"
 
-Hud::Hud(Player& player) :
+Hud::Hud(Player& player, Grid& grid) :
 	m_playerPtr(&player),
+	m_gridPtr(&grid),
 	m_cleared(false),
 	m_viewDetector(0, 0, 2880, 1620),
-	m_maxWorkers(1)
+	m_maxWorkers(1),
+	m_currentZoom(.25f),
+	m_maxZoom(1.0f),
+	m_zoomSpeed(.5f),
+	m_zoomPercentage(0.25f),
+	m_wayPointSet(false)
 {
 	m_rt.create(11520, 6480);
 	m_sprite.setTexture(m_rt.getTexture());
@@ -12,7 +18,7 @@ Hud::Hud(Player& player) :
 	m_sprite.setPosition(m_playerPtr->m_position.x, m_playerPtr->m_position.y);
 	m_sprite.setScale(sf::Vector2f(.025f, -.025f));
 	m_view = m_rt.getView();
-	m_view.zoom(.25f);
+	m_view.zoom(m_currentZoom);
 	m_rt.setView(m_view);
 
 	m_rect.setSize(sf::Vector2f(288, 162)); //.025% of size of the map (same size as minimap)
@@ -23,8 +29,9 @@ Hud::Hud(Player& player) :
 	updateHud();
 }
 
-void Hud::update()
+void Hud::update(double dt)
 {
+	m_dt = dt;
 	updateHud(); //Update HUD elements
 
 	m_viewDetector.left = m_playerPtr->m_position.x - m_viewDetector.width / 2;
@@ -40,6 +47,9 @@ void Hud::update()
 	m_hpBarFull.setPosition((m_playerPtr->m_position.x - 640) + 223, (m_playerPtr->m_position.y - 360) + 190);
 	m_workerBarEmpty.setPosition((m_playerPtr->m_position.x - 640) + 223, (m_playerPtr->m_position.y - 360) + 210);
 	m_workerBarFull.setPosition((m_playerPtr->m_position.x - 640) + 223, (m_playerPtr->m_position.y - 360) + 210);
+
+	//Update our waypoint
+	updateWaypoint(dt);
 }
 
 void Hud::draw(sf::Drawable & item)
@@ -57,6 +67,8 @@ void Hud::draw(sf::Drawable & item)
 
 void Hud::display(sf::RenderWindow & win)
 {
+	m_defaultView = win.getView();
+
 	m_sprite.setTexture(m_rt.getTexture());
 	win.draw(m_rect);
 	win.draw(m_sprite);
@@ -66,7 +78,25 @@ void Hud::display(sf::RenderWindow & win)
 	win.draw(m_workerBarEmpty);
 	win.draw(m_workerBarFull);
 
+	//Draw waypoint if set
+	if (m_wayPointSet)
+	{
+	}
+
 	m_cleared = false;
+}
+
+void Hud::updateWaypoint(double dt)
+{
+	//Check if player has reached certain parts of the waypoint
+	if (m_wayPointSet)
+	{
+		//If our path to the waypont is empty and the player is out of range of the point then get a path
+		if (m_wayPointPath.size() == 0 && m_playerPtr->m_position.distance(m_waypointTarget) > 320)
+		{
+
+		}
+	}
 }
 
 void Hud::setTexture(ResourceManager & resources)
@@ -95,4 +125,42 @@ void Hud::updateHud()
 
 	m_hpBarFull.setTextureRect(sf::IntRect(0,0, 152 * m_hpPercent, 12));
 	m_workerBarFull.setTextureRect(sf::IntRect(0, 0, 152 * m_workerPercent, 12));
+}
+
+void Hud::handleInput(InputHandler & input)
+{
+	auto zoomCopy = m_currentZoom;
+
+	//Increase minimap zoom
+	if (input.isButtonDown("E"))
+	{
+		zoomCopy -= m_zoomSpeed * m_dt; //Zoom out
+	}
+
+	//Decrease minimap zoom
+	else if (input.isButtonDown("Q"))
+	{
+		zoomCopy += m_zoomSpeed * m_dt; //Zoom out
+	}
+
+	//If we have zoomed in or out then 
+	if (zoomCopy != m_currentZoom)
+	{
+		if (zoomCopy < .10f)
+			zoomCopy = .10f;
+		else if (zoomCopy > 1)
+			zoomCopy = 1;
+
+
+		m_zoomPercentage =  zoomCopy / m_maxZoom; //Get zoom percentage
+
+		m_currentZoom = zoomCopy;
+
+		auto zoomVec = sf::Vector2f(11520, 6480) * m_currentZoom;
+		m_view.setSize(zoomVec);
+		m_viewDetector.width = 11520 * zoomVec.x;
+		m_viewDetector.height = 6480 * zoomVec.y;
+
+		m_rt.setView(m_view);
+	}
 }

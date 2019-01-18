@@ -2,9 +2,9 @@
 
 GameScene::GameScene() :
 	//player pointer maxSpeed and position
-	//m_player(5840, 6163),
-	m_player(5864,2971),
-	m_hud(m_player)
+	m_sweeperBot(&m_player, 100, Vector2f(5760,6476)),
+	m_player(5840, 6163),
+	m_hud(m_player, m_grid) //Our hud (minimap, health, workers collected)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
 	m_followView.zoom(1.0f);
@@ -70,7 +70,15 @@ void GameScene::loadMap()
 		m_workerAI.push_back(Worker(Vector2f(area["X"], area["Y"]), &m_grid));
 		workers++;
 	}
+
 	m_hud.setMaxWorkers(workers);
+
+	//Create our nests
+	for (auto& nest : m_levelLoader.data["Nests"])
+	{
+		Vector2f pos = Vector2f(nest["X"], nest["Y"]);
+		m_nests.push_back(Nest(m_player, m_grid, pos, m_predatorAI));
+	}
 
 	//Load our spawn point
 	for (auto& spawn : m_levelLoader.data["Spawn Point"])
@@ -154,8 +162,14 @@ void GameScene::update(double dt)
 	m_viewRect = sf::FloatRect(m_player.m_position.x - 640, m_player.m_position.y - 360, 1280, 720);
 
 	//Update minimap
-	m_hud.update();
-	//std::cout << m_player.m_position.x << m_player.m_position.y << std::endl;
+	m_hud.update(dt);
+
+	//Update nests
+	for (auto& nest : m_nests)
+	{
+		nest.update(dt, m_nests);
+	}
+
 	//Update predators
 	for (auto& pred : m_predatorAI)
 	{
@@ -189,7 +203,7 @@ void GameScene::update(double dt)
 		sweep.update(dt);
 	}
 	//Remove player captured workers from the vector
-	m_workerAI.erase(std::remove_if(m_workerAI.begin(), m_workerAI.end(), removeCapturedWorker()),m_workerAI.end());
+	m_workerAI.erase(std::remove_if(m_workerAI.begin(), m_workerAI.end(), removeCapturedWorker()), m_workerAI.end());
 
 
 }
@@ -235,7 +249,15 @@ void GameScene::draw(sf::RenderWindow & window, float a)
 	//Draw workers
 	for (auto& worker : m_workerAI)
 	{
-		worker.draw(window);
+		if(worker.collider().intersects(m_viewRect))
+			worker.draw(window);
+	}
+
+	//Draw nests
+	for (auto& nest : m_nests)
+	{
+		if(nest.collider().intersects(m_viewRect))
+			nest.draw(window);
 	}
 
 	//Draw predators
@@ -263,9 +285,6 @@ void GameScene::draw(sf::RenderWindow & window, float a)
 		physics::world->draw(window);
 
 	drawMinimap(window); //Draw the mini map
-
-	//Set the windows view
-	window.setView(m_followView);
 }
 
 void GameScene::drawMinimap(sf::RenderWindow & window)
@@ -289,6 +308,8 @@ void GameScene::drawMinimap(sf::RenderWindow & window)
 void GameScene::handleInput(InputHandler & input)
 {
 	m_player.handleInput(input);
+
+	m_hud.handleInput(input);
 
 	//Keybindings for turning Grid and Collision boxes On/OFF
 	if (input.isButtonPressed("Shift"))
@@ -345,15 +366,19 @@ void GameScene::setTexture(ResourceManager & resources)
 		pred.setTexture(resources);
 	}
 
+
+	//Set textures for the nests
+	for (auto& nest : m_nests)
+	{
+		nest.setTexture(resources);
+	}
+
+	m_hud.setTexture(resources);
+
 	//Set texture for sweepers
 	for (auto& sweep : m_sweeperAI)
 	{
 		sweep.setTexture(resources);
 	}
-
-	m_hud.setTexture(resources);
-	//5840, 4887
-	m_predatorAI.at(0).spawn(Vector2f(5764, 2971));
-	m_predatorAI.at(1).spawn(Vector2f(5964, 2971));
 
 }
