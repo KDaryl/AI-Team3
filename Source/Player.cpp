@@ -42,6 +42,11 @@ Player::Player(float x, float y) :
 */
 void Player::update(double dt)
 {
+	ourResources->stopAudio("Move", "Music");
+	m_prevPos = m_physicsBody.position;
+
+	m_timeToFire += dt; //Add to our fireTime
+
 	//Update bullets
 	for (auto& bullet : m_bullets)
 		bullet.update(dt);
@@ -121,15 +126,17 @@ void Player::handleInput(InputHandler & input)
 					m_timeToFire = 0; //Reset our time to fire
 					bullet.spawn(m_position, m_angle);
 					break;
-				}
-			}
+          ourResources->playAudio("Shoot", "sound", false);
+          m_timeToFire = 0; //Reset our time to fire
+          bullet.spawn(m_position, m_angle);
+          break;
+		  	}
+				
 		}
 
-		//If moving in its current direction
-		if (input.isButtonDown("W") || input.isButtonDown("Up"))
-		{
-			m_isMoving = true;
-
+    if (input.isButtonDown("W") || input.isButtonDown("Up"))
+    {
+		m_isMoving = true;
 		}
 		//If turning left
 		if (input.isButtonDown("A") || input.isButtonDown("Left"))
@@ -192,6 +199,11 @@ void Player::setTexture(ResourceManager & resources)
 * Description: Adds a value to the players health (we want to increase on pickup of workers/powerups)
 * and decrease when hit by enemy missiles (predator, Nest)
 */
+void Player::setAudioRef(ResourceManager & resources)
+{
+	ourResources = &resources;
+}
+
 void Player::addDelHealth(int val)
 {
 	health += val;

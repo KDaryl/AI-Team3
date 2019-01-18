@@ -3,11 +3,15 @@
 /**
 * Description: Predator constructor, setting initial values for the predator
 */
-Predator::Predator(Vector2f& playerPos, Grid* grid) :
+Predator::Predator(Vector2f& playerPos, Grid* grid, int idIn) :
 	m_gridPtr(grid),
 	m_playerPosPtr(&playerPos),
+	m_flockVector(0,0),
+	m_flockVelocity(0,0),
+	m_id(idIn),
 	m_playerPosPair(playerPos, false),
 	m_position(0, 0),
+	m_velocity(0,0),
 	m_target(nullptr),
 	m_state(PredatorState::Seek),
 	m_moveSpeed(150.f),
@@ -154,14 +158,15 @@ bool Predator::seek(boolVecPair& p, double dt)
 	//If target is outside the follow distance, then seek
 	if (p.pos.distance(p.pos, m_position) > 40.0f)
 	{
-		Vector2f velocity = m_body.velocity.normalise();
-		velocity *= m_moveSpeed * dt;
+		m_velocity = m_body.velocity.normalise();
+		m_velocity += m_flockVelocity;
+		m_velocity *= m_moveSpeed * dt;
 		Vector2f desiredVelocity = (p.pos - m_position).normalise() * m_turnSpeed * dt;
-		Vector2f steering = desiredVelocity - velocity;
+		Vector2f steering = desiredVelocity - m_velocity;
 
 		steering = AI::truncate(steering, m_turnSpeed);
 		steering /= m_body.mass;
-		steering = AI::truncate(velocity + steering, m_maxSpeed);
+		steering = AI::truncate(m_velocity + steering, m_maxSpeed);
 
 		//Dont need to multiplty by dt as we already have in the previous calculation
 		m_body.addForce(steering); 
@@ -269,4 +274,129 @@ void Predator::die()
 	m_deathSprite.setPosition(m_position.x, m_position.y);
 	m_deathSprite.setRotation(m_sprite.getRotation());
 	m_animator.playAnimation("Death", false); //Play death animation
+}
+
+
+void Predator::flock(std::vector<Predator>* p, int currentP)
+{
+	m_flockVelocity = Vector2f(0, 0);
+
+	Vector2f sep = separation(p, currentP);
+	Vector2f ali = alignment(p, currentP);
+	Vector2f coh = cohesion(p, currentP);
+
+	m_flockVelocity.x += (ali.x * aliWeight) + (coh.x * cohWeight) + (sep.x * sepWeight);
+	m_flockVelocity.y += (ali.y * aliWeight) + (coh.y * cohWeight) + (sep.y * sepWeight);
+
+	m_flockVelocity.normalise();
+}
+
+Vector2f Predator::separation(std::vector<Predator>* p, int currentP)
+{
+	m_neighbours = 0;
+	m_flockVector = Vector2f(0,0);
+
+	//for every predator 
+	for (int i = 0; i < p->size(); i++)
+	{
+	
+		//if the predator we are comparing to is not the current one 
+		if (p->at(i).m_id != p->at(currentP).m_id && p->at(i).m_alive == true)
+		{
+			float dis = p->at(i).m_position.distance(p->at(i).m_position, p->at(currentP).m_position);
+			//if the distance between the predators is less than some value
+			if (dis < distanceBetweenMax)
+			{
+				//float dis = p->at(i).m_position.distance(p->at(i).m_position, p->at(currentP).m_position);
+				//std::cout << "distance between " << dis << std::endl;
+				//add the velocity of the compared predator to a vector and increase our neighbors
+				m_flockVector.x += p->at(i).m_position.x - p->at(currentP).m_position.x;
+				m_flockVector.y += p->at(i).m_position.y - p->at(currentP).m_position.y;
+				m_neighbours++;
+			}
+
+		}
+	}
+	//if there are no neighbors no need to do anything
+	if (m_neighbours == 0)
+	{
+		return Vector2f(0, 0);
+	}
+
+	m_flockVector.x /= m_neighbours;
+	m_flockVector.y /= m_neighbours;
+	//steer away from neighbors
+	m_flockVector.x *= -1;
+	m_flockVector.y *= -1;
+	m_flockVector.normalise();
+	return m_flockVector;
+}
+
+Vector2f Predator::alignment(std::vector<Predator>* p, int currentP)
+{
+	m_neighbours = 0;
+	m_flockVector = Vector2f(0, 0);
+
+//	for every predator 
+	for(int i = 0; i < p->size(); i++)
+	{
+		//if the predator we are comparing to is not the current one 
+		if (p->at(i).m_id != p->at(currentP).m_id && p->at(i).m_alive == true)
+		{ 
+		//	if the distance between the predators is less than some value
+			if (p->at(i).m_position.distance(p->at(i).m_position, p->at(currentP).m_position) < distanceBetweenMax)
+			{
+			//	add the velocity of the compared predator to a vector and increase our neighbors
+				m_flockVector.x += p->at(i).m_velocity.x;
+				m_flockVector.y += p->at(i).m_velocity.y;
+				m_neighbours++;
+			}
+
+		}
+	}
+	//if there are no neighbors no need to do anything
+	if (m_neighbours == 0)
+	{
+		return Vector2f(0, 0);
+	}
+	
+	m_flockVector.x /= m_neighbours;
+	m_flockVector.y /= m_neighbours;
+	m_flockVector.normalise();
+	return m_flockVector;
+}
+
+Vector2f Predator::cohesion(std::vector<Predator>* p, int currentP)
+{
+	m_neighbours = 0;
+	m_flockVector = Vector2f(0, 0);
+
+	//for every predator 
+	for (int i = 0; i < p->size(); i++)
+	{
+	//	if the predator we are comparing to is not the current one 
+		if (p->at(i).m_id != p->at(currentP).m_id && p->at(i).m_alive == true)
+		{
+		//	if the distance between the predators is less than some value
+			if (p->at(i).m_position.distance(p->at(i).m_position, p->at(currentP).m_position) < distanceBetweenMax)
+			{
+			//	add the velocity of the compared predator to a vector and increase our neighbors
+				m_flockVector.x += p->at(i).m_position.x;
+				m_flockVector.y += p->at(i).m_position.y;
+				m_neighbours++;
+			}
+
+		}
+	}
+	//if there are no neighbors no need to do anything
+	if (m_neighbours == 0)
+	{
+		return Vector2f(0, 0);
+	}
+
+	m_flockVector.x /= m_neighbours;
+	m_flockVector.y /= m_neighbours;
+	m_flockVector = Vector2f(m_flockVector.x - p->at(currentP).m_position.x , m_flockVector.y - p->at(currentP).m_position.y);
+	m_flockVector.normalise();
+	return m_flockVector;
 }

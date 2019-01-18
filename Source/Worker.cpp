@@ -124,7 +124,10 @@ void Worker::update(double dt)
 
 void Worker::draw(sf::RenderWindow & window)
 {
-	window.draw(m_sprite);
+	if (m_captured == false)
+	{
+		window.draw(m_sprite);
+	}
 }
 
 bool Worker::seek(Vector2f pos, double dt)

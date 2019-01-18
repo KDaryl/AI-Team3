@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Predator.h"
 #include "Nest.h"
+#include "Sweeper.h"
 #include <algorithm>
 
 PhysicsHandler::PhysicsHandler() :
@@ -262,6 +263,22 @@ void PhysicsHandler::resolveSensorCollision(Manifold & m)
 	{
 		Player& p = *static_cast<Player*>(static_cast<void*>(m.A->tag == "Player" ? m.A->objectData : m.B->objectData));
 		p.addDelHealth(-5);
+	}
+
+	//kill predator when shot
+	if ((m.A->tag == "Player Bullet" || m.B->tag == "Player Bullet") &&
+		(m.A->tag == "Predator" || m.B->tag == "Predator"))
+	{
+		Predator& p = *static_cast<Predator*>(static_cast<void*>(m.A->tag == "Predator" ? m.A->objectData : m.B->objectData));
+		p.die();
+	}
+
+	//kill sweeper when shot
+	if ((m.A->tag == "Player Bullet" || m.B->tag == "Player Bullet") &&
+		(m.A->tag == "Sweeper" || m.B->tag == "Sweeper"))
+	{
+		Sweeper& p = *static_cast<Sweeper*>(static_cast<void*>(m.A->tag == "Sweeper" ? m.A->objectData : m.B->objectData));
+		p.die();
 	}
 
 	//If a Nest missile hit the player, decrement the players health

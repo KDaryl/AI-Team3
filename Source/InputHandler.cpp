@@ -68,3 +68,4 @@ bool InputHandler::isButtonDown(std::string button)
 {
 	return m_current[button];
 }
+

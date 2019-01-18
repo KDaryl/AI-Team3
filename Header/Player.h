@@ -16,15 +16,18 @@ public:
 	void draw(sf::RenderWindow& win, float a);
 	void handleInput(InputHandler& input);
 	void setTexture(ResourceManager& resources);
+	void setAudioRef(ResourceManager& resources);
 	void addDelHealth(int val); //Decrements or adds a value to the players health
 	void die(); //Kill the player
 
+	sf::Event e;
 	//Public variables
 	Vector2f m_position, m_prevPos;
 	Vector2f m_velocity;
 	CollisionCircle m_rangeCollider;
 	sf::Sprite m_sprite;
 	PhysicsBody m_physicsBody;
+	ResourceManager* ourResources;
 	int health;
 	int workersCollected;
 	int maxHealth;

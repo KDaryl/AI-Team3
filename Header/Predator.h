@@ -16,7 +16,7 @@ public:
 		bool visited = false;
 	};
 
-	Predator(Vector2f& playerPos, Grid* grid);
+	Predator(Vector2f& playerPos, Grid* grid, int idIn);
 	~Predator();
 
 	void update(double dt);
@@ -26,11 +26,33 @@ public:
 	void spawn(Vector2f spawnPos);
 	void decrementHealth(int val);
 
+
+	//getters 
+	float getMoveSpeed() { return m_moveSpeed; }
 	void setTexture(ResourceManager& resources);
 	void die(); //Predator dies
 
 	bool& isSpawned() { return m_alive; }
 	Vector2f m_position;
+	Vector2f m_velocity;
+	int m_id = 0;
+
+	////flock functions 
+	void flock(std::vector<Predator>* p, int currentP);
+	Vector2f separation(std::vector<Predator>* p, int currentP);
+	Vector2f alignment(std::vector<Predator>* p, int currentP);
+	Vector2f cohesion(std::vector<Predator>* p, int currentP);
+
+	//flock variables
+	float distanceBetweenMax = 300;
+	float aliWeight = 0.5;
+	float sepWeight = 0.5;
+	float cohWeight = 0.5;
+	int m_neighbours = 0;
+	Vector2f m_flockVelocity;
+	Vector2f m_flockVector;
+
+
 private:
 	int health = 50; //Predator starts with 50 health
 	bool m_alive;
