@@ -31,7 +31,9 @@ Sweeper::Sweeper(Vector2f& playerPos, Grid* grid, Vector2f pos, std::vector<Work
 Sweeper::~Sweeper()
 {
 }
-
+/**
+*function used to update the sweeper bots 
+*/
 void Sweeper::update(float dt)
 {
 	if (m_alive)
@@ -111,6 +113,9 @@ void Sweeper::update(float dt)
 
 
 }
+/**
+*function used to draw the sweeper bots
+*/
 void Sweeper::render(sf::RenderWindow& window)
 {
 	if (m_alive)
@@ -118,7 +123,9 @@ void Sweeper::render(sf::RenderWindow& window)
 		window.draw(m_sprite);
 	}
 }
-
+/**
+*function used to seek towards the workers 
+*/
 bool Sweeper::seek(boolVecPair& p, double dt)
 {
 	//If target is outside the follow distance, then seek
@@ -155,6 +162,9 @@ bool Sweeper::seek(boolVecPair& p, double dt)
 		return true; //Reached Target
 	}
 }
+/**
+*function used to flee from the player 
+*/
 bool Sweeper::fleePlayer(boolVecPair& p, double dt)
 {
 	//If target is outside the follow distance, then seek
@@ -184,8 +194,9 @@ bool Sweeper::fleePlayer(boolVecPair& p, double dt)
 		return true; //Reached Target
 	}
 }
-
-
+/**
+*function used to set the texture of the sprite 
+*/
 void Sweeper::setTexture(ResourceManager & resources)
 {
 	m_sprite.setTexture(resources.getTexture("Sweeper"));
@@ -194,7 +205,9 @@ void Sweeper::setTexture(ResourceManager & resources)
 	m_body.objectData = this; //Set object data here
 	physics::world->addPhysicsBody(m_body); //Add to physics here, as we cannot modify the physics during a physics update
 }
-
+/**
+*function used to kill the sweeper
+*/
 void Sweeper::die()
 {
 	//for (int i = 0; i < m_capturedWorkers->size(); i++)

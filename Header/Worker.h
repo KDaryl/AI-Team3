@@ -1,6 +1,9 @@
 #pragma once
 #include "AI.h"
-
+/**
+* Worker AI
+* the purpose of this class is to drop powerups when captured by the player and to also be captured by the sweeper 
+*/
 class Worker
 {
 public:

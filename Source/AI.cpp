@@ -12,7 +12,9 @@ AI::AI():
 AI::~AI()
 {
 }
-
+/**
+* function to truncate a vector to some value between 0 and 1 
+*/
 Vector2f AI::truncate(Vector2f v, float max)
 {
 	float i = 0;
@@ -21,6 +23,9 @@ Vector2f AI::truncate(Vector2f v, float max)
 	v *= i;
 	return v;
 }
+/**
+* function used to get the orientation using the sprites position 
+*/
 float AI::getNewOrientationByPosition(float currentOrientation, Vector2f currentVelocity)
 {
 	// Note atan2 returns an angle in radians which you 
@@ -35,10 +40,16 @@ float AI::getNewOrientationByPosition(float currentOrientation, Vector2f current
 		return currentOrientation;
 	}
 }
+/**
+*function used to get the orientation using the sprites velocity  
+*/
 float AI::getOrientation(float currentAngle, Vector2f vel)
 {
 	return vel.magnitude() > 0 ? atan2(vel.y, vel.x) * 57.2958 : currentAngle;
 }
+/**
+*function used to get the orientation using the sprites velocity
+*/
 float AI::getNewOrientationByVelocity(float currentOrientation, Vector2f currentVelocity)
 {
 	// Note atan2 returns an angle in radians which you 
@@ -52,23 +63,32 @@ float AI::getNewOrientationByVelocity(float currentOrientation, Vector2f current
 		return currentOrientation;
 	}
 }
+/**
+* function used to set the angle of vector 
+*/
 void AI::setAngle(Vector2f & v, float f)
 {
 	float len = v.magnitude();
 	v.x = cos(f * (M_PI / 180.0f)) * len;
 	v.y = sin(f* (M_PI / 180.0f)) * len;
 }
-
+/**
+*function used to return the sprite 
+*/
 sf::Sprite & AI::getSprite()
 {
 	return m_sprite;
 }
-
+/**
+*function used to return the velocity 
+*/
 Vector2f AI::getVelocity()
 {
 	return m_velocity;
 }
-
+/**
+*function used to set the texture of the sprite
+*/
 void AI::setTexture(ResourceManager & resources, std::string name, Vector2f center)
 {
 	m_sprite.setTexture(resources.getTexture(name));
@@ -76,12 +96,16 @@ void AI::setTexture(ResourceManager & resources, std::string name, Vector2f cent
 	//Set center of sprite
 	m_sprite.setOrigin(sf::Vector2f(center.x,center.y));
 }
-
+/**
+*function used to set the target the ai uses for calculations 
+*/
 void AI::setTarget(Vector2f target)
 {
 	m_target = target;
 }
-
+/**
+*function used to calculate the seek behaviour 
+*/
 void AI::seek()
 {
 	m_velocity = m_velocity.normalise();
@@ -94,7 +118,9 @@ void AI::seek()
 	m_steering = m_steering / m_mass;
 	m_velocity = truncate(m_velocity + m_steering, m_maxSpeed);
 }
-
+/**
+*function used to calculate the flee behaviour
+*/
 void AI::flee()
 {
 	m_velocity = m_velocity.normalise();
@@ -107,7 +133,9 @@ void AI::flee()
 	m_steering = m_steering / m_mass;
 	m_velocity = truncate(m_velocity + m_steering, m_maxSpeed);
 }
-
+/**
+*function used to calculate the wander behaviour
+*/
 void AI::wander()
 {
 	// Calculate the circle center

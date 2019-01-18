@@ -2,7 +2,10 @@
 #include "AI.h"
 #include "Worker.h"
 #include <algorithm>
-
+/**
+* Sweeper bot AI 
+* the function of this AI is to wander around the ship capturing workers and fleeing from the player when he comes too close 
+*/
 class Sweeper : public AI
 {
 public:

@@ -42,7 +42,9 @@ Worker::Worker(Vector2f startPos, Grid* grid) :
 		}
 	}
 }
-
+/**
+*function used to update the workers 
+*/
 void Worker::update(double dt)
 {
 	m_moving = false; //Set moving to false at the start of every update
@@ -121,7 +123,9 @@ void Worker::update(double dt)
 	//Set our collider
 	m_collider = sf::FloatRect(m_position.x - m_sprite.getGlobalBounds().width / 2, m_position.y - m_sprite.getGlobalBounds().height / 2, m_sprite.getGlobalBounds().width, m_sprite.getGlobalBounds().height);
 }
-
+/**
+*function used to draw the workers
+*/
 void Worker::draw(sf::RenderWindow & window)
 {
 	if (m_captured == false)
@@ -130,6 +134,9 @@ void Worker::draw(sf::RenderWindow & window)
 	}
 }
 
+/**
+*function used to wander around the room
+*/
 bool Worker::seek(Vector2f pos, double dt)
 {
 	//If target is outside the follow distance, then seek
@@ -158,7 +165,9 @@ bool Worker::seek(Vector2f pos, double dt)
 		return true; //Reached Target
 	}
 }
-
+/**
+*function used to capture the worker 
+*/
 void Worker::captureWorker(bool isPlayer, Vector2f & position)
 {
 	if (isPlayer)
@@ -174,7 +183,9 @@ void Worker::captureWorker(bool isPlayer, Vector2f & position)
 		capturePos = &position; //Point to that position, this way we can follow it easily
 	}
 }
-
+/**
+*function used to free the captured workers
+*/
 void Worker::freeWorker()
 {
 	m_startPos = m_position; //Set start to where the position of the worke ris currently
@@ -186,6 +197,9 @@ void Worker::freeWorker()
 	m_state = WorkerState::Wander;
 }
 
+/**
+*function used to set the texture of the sprite
+*/
 void Worker::setTexture(ResourceManager & resources)
 {
 	auto width = (238 / 6); //Width of 1 frame
@@ -210,7 +224,9 @@ void Worker::setTexture(ResourceManager & resources)
 
 	physics::world->addPhysicsBody(m_body); //Add to physics here, as we cannot modify the physics during a phjysics update
 }
-
+/**
+*function used to calculate a random integer
+*/
 int Worker::randInt(int min, int max)
 {
 	std::random_device rd;  //Will be used to obtain a seed for the random number engine
