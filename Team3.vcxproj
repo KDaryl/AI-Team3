@@ -136,6 +136,7 @@
     <ClInclude Include="Header\LevelLoader.h" />
     <ClInclude Include="Header\Nest.h" />
     <ClInclude Include="Header\Hud.h" />
+    <ClInclude Include="Header\NestMissile.h" />
     <ClInclude Include="Header\PhysicsBody.h" />
     <ClInclude Include="Header\PhysicsHandler.h" />
     <ClInclude Include="Header\PlayerBullet.h" />
@@ -164,6 +165,7 @@
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Nest.cpp" />
     <ClCompile Include="Source\Hud.cpp" />
+    <ClCompile Include="Source\NestMissile.cpp" />
     <ClCompile Include="Source\PhysicsBody.cpp" />
     <ClCompile Include="Source\PhysicsHandler.cpp" />
     <ClCompile Include="Source\PlayerBullet.cpp" />

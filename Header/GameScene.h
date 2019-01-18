@@ -4,10 +4,10 @@
 #include "Player.h"
 #include "Door.h"
 #include "Environment.h" //For corridors, rooms
-#include "AI.h"
 #include "Worker.h" //Worker Ai
 #include "Sweeper.h"
 #include "Predator.h" //Predator ships
+#include "Nest.h" //Nest AI
 #include "Grid.h" //For the grid of the map
 #include "Hud.h" //For the hud
 
@@ -24,7 +24,6 @@ public:
 	void drawMinimap(sf::RenderWindow& window);
 	void handleInput(InputHandler& input);
 	void setTexture(ResourceManager& resources);
-
 private:
 	Player m_player;
 	sf::View m_followView;

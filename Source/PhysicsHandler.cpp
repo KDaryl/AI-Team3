@@ -1,6 +1,7 @@
 #include "PhysicsHandler.h"
 #include "Player.h"
 #include "Predator.h"
+#include "Nest.h"
 #include <algorithm>
 
 PhysicsHandler::PhysicsHandler()
@@ -208,17 +209,28 @@ void PhysicsHandler::resolveSensorCollision(Manifold & m)
 		pb.hasCollided();
 	}
 
+	//Nest missile
+	if ((m.A->tag == "Nest Missile" || m.B->tag == "Nest Missile"))
+	{
+		NestMissile& nm = *static_cast<NestMissile*>(static_cast<void*>(m.A->tag == "Nest Missile" ? m.A->objectData : m.B->objectData));
+		nm.hasCollided();
+	}
+
 	//If an enemy bullet has hit the player, minus health from the player
 	if ((m.A->tag == "Predator Bullet" || m.B->tag == "Predator Bullet") &&
 		(m.A->tag == "Player" || m.B->tag == "Player"))
 	{
 		Player& p = *static_cast<Player*>(static_cast<void*>(m.A->tag == "Player" ? m.A->objectData : m.B->objectData));
-		if (p.health > 0)
-		{
-			p.health -= 10;
-			if(p.health < 0)
-				p.health = 0;
-		}
+		p.addDelHealth(-5);
+	}
+
+	//If a Nest missile hit the player, decrement the players health
+	if ((m.A->tag == "Nest Missile" || m.B->tag == "Nest Missile") &&
+		(m.A->tag == "Player" || m.B->tag == "Player"))
+	{
+		NestMissile& nm = *static_cast<NestMissile*>(static_cast<void*>(m.A->tag == "Nest Missile" ? m.A->objectData : m.B->objectData));
+		Player& p = *static_cast<Player*>(static_cast<void*>(m.A->tag == "Player" ? m.A->objectData : m.B->objectData));
+		p.addDelHealth(-nm.damage);
 	}
 }
 

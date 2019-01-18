@@ -161,7 +161,7 @@ void GameScene::update(double dt)
 	{
 		worker.update(dt);
 
-		//If the circles collide set the worker to follow the Sweeper Bot
+		//If the circles collide (worker and player) pick them up
 		if (Collisions::CircleVsCircle(worker.rangeCollider(), m_player.m_rangeCollider))
 		{
 			//If the worker is not currently captured by a sweeper bot, set it as captured by the player
@@ -169,6 +169,7 @@ void GameScene::update(double dt)
 			{
 				worker.captureWorker(true, m_player.m_position);
 				m_player.workersCollected++; //Add to the workers collected
+				m_player.addDelHealth(25); //Add health to the player
 			}
 		}
 	}

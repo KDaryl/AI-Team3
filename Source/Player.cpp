@@ -151,6 +151,16 @@ void Player::setTexture(ResourceManager & resources)
 		bullet.setTexture(resources);
 }
 
+void Player::addDelHealth(int val)
+{
+	health += val;
+
+	if (health < 0)
+		health = 0;
+	else if (health > maxHealth)
+		health = maxHealth;
+}
+
 void Player::setupAnimations()
 {
 	thor::FrameAnimation move, idle; //Our animations
