@@ -3,6 +3,15 @@
 ResourceManager::ResourceManager()
 {
 	loadTexture("Loading Screen", "Loading Screen/Loading Screen.png");
+	//start all volumes at 100
+	for (auto& key : m_soundMap)
+	{
+		m_soundMap[key.first].setVolume(100);
+	}
+	for (auto& key : m_musicMap)
+	{
+		m_musicMap[key.first].setVolume(100);
+	}
 }
 
 void ResourceManager::loadTextures()
@@ -10,6 +19,12 @@ void ResourceManager::loadTextures()
 	//For good practice, we should use the name of the files as the id for the texture
 	//For example, "Player" should be the id for "Player.png", this makes it easy to debug
 	//And set textures
+
+	//Load music
+	m_musicMap["GameMusic"].openFromFile("./Resources/Audio/BackgroundMusic.ogg");
+	//Load Sounds
+	loadAudio("Move", "Audio/playerMove.wav");
+	loadAudio("Shoot", "Audio/shot.wav");
 
 	//Load game related textures (player, ai, worker etc.)
 	loadTexture("Player", "Ships/Player.png", true);
@@ -61,7 +76,52 @@ void ResourceManager::loadTexture(std::string name, std::string fileName, bool s
 	m_textureMap[name] = texture;
 }
 
+void ResourceManager::loadAudio(std::string name, std::string fileName)
+{
+	//load into soundbuffer
+	if (!m_soundBufferMap[name].loadFromFile(m_filePath + fileName))
+	{
+		std::cout << "Cant find file" << std::endl;
+	}
+	m_soundMap[name].setBuffer(m_soundBufferMap[name]);
+}
+
+void ResourceManager::playAudio(std::string name, std::string type, bool loop)
+{
+	if (type == "Music")
+	{
+		m_musicMap[name].stop();
+		m_musicMap[name].setLoop(loop);
+		m_musicMap[name].play();
+	}
+	else
+	{
+		m_soundMap[name].stop();
+		m_soundMap[name].setLoop(loop);
+		m_soundMap[name].play();
+	}
+}
+
+void ResourceManager::stopAudio(std::string name, std::string type)
+{
+	if (type == "sound")
+	{
+		m_musicMap[name].setLoop(false);
+		m_musicMap[name].stop();
+	}
+}
+
 sf::Texture & ResourceManager::getTexture(std::string textureName)
 {
 	return m_textureMap[textureName];
+}
+
+sf::Music & ResourceManager::getMusic(std::string musicName)
+{
+	return m_musicMap[musicName];
+}
+
+sf::Sound & ResourceManager::getSound(std::string soundName)
+{
+	return m_soundMap[soundName];
 }

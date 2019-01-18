@@ -2,13 +2,15 @@
 
 GameScene::GameScene() :
 	//player pointer maxSpeed and position
-	m_sweeperBot(&m_player, 100, Vector2f(5760,6476)),
-	m_player(5840, 6163),
+	//m_player(5840, 6163),
+	m_player(5864,2971),
 	m_hud(m_player)
 {
 	m_followView.setSize(sf::Vector2f(1280, 720));
 	m_followView.zoom(1.0f);
 
+
+	
 	//Setup our BG colliders
 	for (int i = 0; i < 5; i++) //5 rows
 	{
@@ -24,6 +26,13 @@ GameScene::GameScene() :
 	{
 		m_predatorAI.push_back(Predator(m_player.m_position, &m_grid, i));
 	}
+
+	for (int i = 0; i < 1; i++)
+	{
+		m_sweeperAI.push_back(Sweeper(m_player.m_position, &m_grid, Vector2f(5864, 2971), &m_workerAI));
+	}
+
+
 
 	loadMap();
 }
@@ -146,10 +155,11 @@ void GameScene::update(double dt)
 
 	//Update minimap
 	m_hud.update();
-
+	//std::cout << m_player.m_position.x << m_player.m_position.y << std::endl;
 	//Update predators
 	for (auto& pred : m_predatorAI)
 	{
+		pred.flock(&m_predatorAI, pred.m_id);
 		pred.update(dt);
 	}
 
@@ -173,12 +183,15 @@ void GameScene::update(double dt)
 			}
 		}
 	}
-
+	//Update sweeper bots
+	for (auto& sweep : m_sweeperAI)
+	{
+		sweep.update(dt);
+	}
 	//Remove player captured workers from the vector
 	m_workerAI.erase(std::remove_if(m_workerAI.begin(), m_workerAI.end(), removeCapturedWorker()),m_workerAI.end());
 
-	//update ai
-	m_sweeperBot.update(dt);
+
 }
 
 void GameScene::draw(sf::RenderWindow & window, float a)
@@ -231,11 +244,15 @@ void GameScene::draw(sf::RenderWindow & window, float a)
 		pred.draw(window);
 	}
 
+	//Draw predators
+	for (auto& sweep : m_sweeperAI)
+	{
+		sweep.render(window);
+	}
+
 	//Draw the player
 	m_player.draw(window, a);
 
-	//draw the ai
-	m_sweeperBot.render(window);
 
 	//The Grid
 	if(m_drawGrid)
@@ -281,10 +298,11 @@ void GameScene::handleInput(InputHandler & input)
 }
 
 void GameScene::setTexture(ResourceManager & resources)
-{
+{	
+	m_player.setAudioRef(resources);
+	resources.playAudio("GameMusic", "Music", true);
+
 	m_player.setTexture(resources);
-	//as AI is a base class the specific texture will need to be told here
-	m_sweeperBot.setTexture(resources, "Sweeper", Vector2f(18, 9.5));
 
 	m_bgSprite.setTexture(resources.getTexture("Starfield BG"));
 
@@ -327,7 +345,15 @@ void GameScene::setTexture(ResourceManager & resources)
 		pred.setTexture(resources);
 	}
 
-	m_hud.setTexture(resources);
+	//Set texture for sweepers
+	for (auto& sweep : m_sweeperAI)
+	{
+		sweep.setTexture(resources);
+	}
 
-	m_predatorAI.at(0).spawn(Vector2f(5840, 4887));
+	m_hud.setTexture(resources);
+	//5840, 4887
+	m_predatorAI.at(0).spawn(Vector2f(5764, 2971));
+	m_predatorAI.at(1).spawn(Vector2f(5964, 2971));
+
 }

@@ -11,6 +11,8 @@
 #include "Grid.h" //For the grid of the map
 #include "Hud.h" //For the hud
 
+
+
 class GameScene : public Scene
 {
 public:
@@ -27,7 +29,6 @@ public:
 private:
 	Player m_player;
 	sf::View m_followView;
-
 	//Grid
 	Grid m_grid;
 	bool m_drawGrid, m_drawPhysics;
@@ -39,8 +40,7 @@ private:
 	};
 	std::vector<Worker> m_workerAI; //All of our worker Ai's
 	std::vector<Predator> m_predatorAI; //All of our predator Ai's
-
-	Sweeper m_sweeperBot;
+	std::vector<Sweeper> m_sweeperAI;
 
 	//LevelLoader
 	LevelLoader m_levelLoader;

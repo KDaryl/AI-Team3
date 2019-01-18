@@ -35,6 +35,7 @@ Player::Player(float x, float y) :
 
 void Player::update(double dt)
 {
+	ourResources->stopAudio("Move", "Music");
 	m_prevPos = m_physicsBody.position;
 
 	m_timeToFire += dt; //Add to our fireTime
@@ -87,14 +88,21 @@ void Player::handleInput(InputHandler & input)
 			//If the bullet is not alive and currently colliding
 			if (bullet.alive == false && bullet.collided == false)
 			{
+				ourResources->playAudio("Shoot", "sound", false);
 				m_timeToFire = 0; //Reset our time to fire
 				bullet.spawn(m_position, m_angle);
 				break;
 			}
+				
 		}
 	}
 
 	//If moving in its current direction
+	//if (input.isButtonPressed("W") || input.isButtonPressed("Up"))
+	//{
+	//	ourResources->playAudio("Move", "sound", true);
+	//}
+
 	if (input.isButtonDown("W") || input.isButtonDown("Up"))
 	{
 		m_isMoving = true;
@@ -150,6 +158,12 @@ void Player::setTexture(ResourceManager & resources)
 	for (auto& bullet : m_bullets)
 		bullet.setTexture(resources);
 }
+
+void Player::setAudioRef(ResourceManager & resources)
+{
+	ourResources = &resources;
+}
+
 
 void Player::addDelHealth(int val)
 {

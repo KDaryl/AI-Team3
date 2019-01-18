@@ -43,10 +43,11 @@ public:
 
 	//flock variables
 	float distanceBetweenMax = 300;
-	float aliWeight = 1;
-	float sepWeight = 1;
-	float cohWeight = 1;
+	float aliWeight = 0.5;
+	float sepWeight = 0.5;
+	float cohWeight = 0.5;
 	int m_neighbours = 0;
+	Vector2f m_flockVelocity;
 	Vector2f m_flockVector;
 
 
