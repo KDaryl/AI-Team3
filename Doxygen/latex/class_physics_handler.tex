@@ -1,0 +1,160 @@
+\hypertarget{class_physics_handler}{}\section{Physics\+Handler Class Reference}
+\label{class_physics_handler}\index{PhysicsHandler@{PhysicsHandler}}
+
+
+{\ttfamily \#include $<$Physics\+Handler.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_physics_handler_a8107082a913d552fc7e513eced1e2765}{Physics\+Handler}} ()
+\item 
+\mbox{\hyperlink{class_physics_handler_ac58b90a4a8c5e83624547946b5f47725}{$\sim$\+Physics\+Handler}} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_physics_handler_aae72efd60617fe4f99f0973245834419}{update}} (float dt)
+\item 
+static void \mbox{\hyperlink{class_physics_handler_a59608df05a59b284957c2a06a3714a90}{check\+Collision}} ()
+\item 
+static void \mbox{\hyperlink{class_physics_handler_a1f62975783786feee0c95d8ad4aa741f}{check\+Sensor\+Collision}} (\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&m)
+\item 
+static void \mbox{\hyperlink{class_physics_handler_ae602274d78112796fa9ef3466485d9fd}{check\+Non\+Sensor\+Collision}} (\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&m)
+\item 
+static void \mbox{\hyperlink{class_physics_handler_a4d9a53f320f6a6136b3e8cfb7388310d}{draw}} (sf\+::\+Render\+Window \&window)
+\item 
+static void \mbox{\hyperlink{class_physics_handler_a43422655392a4b669bd57445d049531b}{resolve\+Collision}} (\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&m)
+\item 
+static void \mbox{\hyperlink{class_physics_handler_a21e6ab8bd30b5659639e1ba8cecc9410}{resolve\+Sensor\+Collision}} (\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&m)
+\item 
+static void \mbox{\hyperlink{class_physics_handler_a936a971e834ed56067bfa1910fb1ae87}{positional\+Correction}} (\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&m)
+\item 
+static void \mbox{\hyperlink{class_physics_handler_a4453d3ae6415361558c0bd8e298209b5}{add\+Physics\+Body}} (\mbox{\hyperlink{class_physics_body}{Physics\+Body}} \&body)
+\item 
+static void \mbox{\hyperlink{class_physics_handler_a8d7629bae0011da602423f003015b3ba}{delete\+Physics\+Body}} (\mbox{\hyperlink{class_physics_body}{Physics\+Body}} \&body)
+\item 
+static bool \mbox{\hyperlink{class_physics_handler_aefa13520fd0f2a95d03e729aac275c86}{simple\+A\+A\+B\+Bvs\+A\+A\+BB}} (\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&m)
+\item 
+static bool \mbox{\hyperlink{class_physics_handler_a6e468ad8e5d6f5c5a895ea76a107333f}{A\+A\+B\+Bvs\+A\+A\+BB}} (\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&m)
+\item 
+static bool \mbox{\hyperlink{class_physics_handler_a994d8fc01e32b5fe76bfd32b2645082b}{Circlevs\+Circle}} (\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&m)
+\item 
+static bool \mbox{\hyperlink{class_physics_handler_a68b7c4ba8a3c7188f6e4c5cb61eb431d}{A\+A\+B\+Bvs\+Circle}} (\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&m)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description\+: This is the container for the physics, in here we will check for collisions and resolve them 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_physics_handler_a8107082a913d552fc7e513eced1e2765}\label{class_physics_handler_a8107082a913d552fc7e513eced1e2765}} 
+\index{PhysicsHandler@{PhysicsHandler}!PhysicsHandler@{PhysicsHandler}}
+\index{PhysicsHandler@{PhysicsHandler}!PhysicsHandler@{PhysicsHandler}}
+\subsubsection{\texorpdfstring{PhysicsHandler()}{PhysicsHandler()}}
+{\footnotesize\ttfamily Physics\+Handler\+::\+Physics\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_physics_handler_ac58b90a4a8c5e83624547946b5f47725}\label{class_physics_handler_ac58b90a4a8c5e83624547946b5f47725}} 
+\index{PhysicsHandler@{PhysicsHandler}!````~PhysicsHandler@{$\sim$PhysicsHandler}}
+\index{````~PhysicsHandler@{$\sim$PhysicsHandler}!PhysicsHandler@{PhysicsHandler}}
+\subsubsection{\texorpdfstring{$\sim$PhysicsHandler()}{~PhysicsHandler()}}
+{\footnotesize\ttfamily Physics\+Handler\+::$\sim$\+Physics\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_physics_handler_a6e468ad8e5d6f5c5a895ea76a107333f}\label{class_physics_handler_a6e468ad8e5d6f5c5a895ea76a107333f}} 
+\index{PhysicsHandler@{PhysicsHandler}!AABBvsAABB@{AABBvsAABB}}
+\index{AABBvsAABB@{AABBvsAABB}!PhysicsHandler@{PhysicsHandler}}
+\subsubsection{\texorpdfstring{AABBvsAABB()}{AABBvsAABB()}}
+{\footnotesize\ttfamily bool Physics\+Handler\+::\+A\+A\+B\+Bvs\+A\+A\+BB (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&}]{m }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Description\+: Overlap Box to Box collision \mbox{\Hypertarget{class_physics_handler_a68b7c4ba8a3c7188f6e4c5cb61eb431d}\label{class_physics_handler_a68b7c4ba8a3c7188f6e4c5cb61eb431d}} 
+\index{PhysicsHandler@{PhysicsHandler}!AABBvsCircle@{AABBvsCircle}}
+\index{AABBvsCircle@{AABBvsCircle}!PhysicsHandler@{PhysicsHandler}}
+\subsubsection{\texorpdfstring{AABBvsCircle()}{AABBvsCircle()}}
+{\footnotesize\ttfamily bool Physics\+Handler\+::\+A\+A\+B\+Bvs\+Circle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&}]{m }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Description\+: Checks if a circle is colliding with a box \mbox{\Hypertarget{class_physics_handler_a4453d3ae6415361558c0bd8e298209b5}\label{class_physics_handler_a4453d3ae6415361558c0bd8e298209b5}} 
+\index{PhysicsHandler@{PhysicsHandler}!addPhysicsBody@{addPhysicsBody}}
+\index{addPhysicsBody@{addPhysicsBody}!PhysicsHandler@{PhysicsHandler}}
+\subsubsection{\texorpdfstring{addPhysicsBody()}{addPhysicsBody()}}
+{\footnotesize\ttfamily void Physics\+Handler\+::add\+Physics\+Body (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_physics_body}{Physics\+Body}} \&}]{body }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Description\+: Adds a physics body to the bodies vector \mbox{\Hypertarget{class_physics_handler_a59608df05a59b284957c2a06a3714a90}\label{class_physics_handler_a59608df05a59b284957c2a06a3714a90}} 
+\index{PhysicsHandler@{PhysicsHandler}!checkCollision@{checkCollision}}
+\index{checkCollision@{checkCollision}!PhysicsHandler@{PhysicsHandler}}
+\subsubsection{\texorpdfstring{checkCollision()}{checkCollision()}}
+{\footnotesize\ttfamily void Physics\+Handler\+::check\+Collision (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Description\+: Calls the appropriate collisions checking method based on the type of body (non-\/sensor and sensor) \mbox{\Hypertarget{class_physics_handler_ae602274d78112796fa9ef3466485d9fd}\label{class_physics_handler_ae602274d78112796fa9ef3466485d9fd}} 
+\index{PhysicsHandler@{PhysicsHandler}!checkNonSensorCollision@{checkNonSensorCollision}}
+\index{checkNonSensorCollision@{checkNonSensorCollision}!PhysicsHandler@{PhysicsHandler}}
+\subsubsection{\texorpdfstring{checkNonSensorCollision()}{checkNonSensorCollision()}}
+{\footnotesize\ttfamily void Physics\+Handler\+::check\+Non\+Sensor\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&}]{m }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Description\+: Checks if two non sensor bodies has collided \mbox{\Hypertarget{class_physics_handler_a1f62975783786feee0c95d8ad4aa741f}\label{class_physics_handler_a1f62975783786feee0c95d8ad4aa741f}} 
+\index{PhysicsHandler@{PhysicsHandler}!checkSensorCollision@{checkSensorCollision}}
+\index{checkSensorCollision@{checkSensorCollision}!PhysicsHandler@{PhysicsHandler}}
+\subsubsection{\texorpdfstring{checkSensorCollision()}{checkSensorCollision()}}
+{\footnotesize\ttfamily void Physics\+Handler\+::check\+Sensor\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&}]{m }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Description\+: Checks if a sensor body has a collided with something \mbox{\Hypertarget{class_physics_handler_a994d8fc01e32b5fe76bfd32b2645082b}\label{class_physics_handler_a994d8fc01e32b5fe76bfd32b2645082b}} 
+\index{PhysicsHandler@{PhysicsHandler}!CirclevsCircle@{CirclevsCircle}}
+\index{CirclevsCircle@{CirclevsCircle}!PhysicsHandler@{PhysicsHandler}}
+\subsubsection{\texorpdfstring{CirclevsCircle()}{CirclevsCircle()}}
+{\footnotesize\ttfamily bool Physics\+Handler\+::\+Circlevs\+Circle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&}]{m }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Description\+: Circle to Circle collision detection, checks if two circles are colliding \mbox{\Hypertarget{class_physics_handler_a8d7629bae0011da602423f003015b3ba}\label{class_physics_handler_a8d7629bae0011da602423f003015b3ba}} 
+\index{PhysicsHandler@{PhysicsHandler}!deletePhysicsBody@{deletePhysicsBody}}
+\index{deletePhysicsBody@{deletePhysicsBody}!PhysicsHandler@{PhysicsHandler}}
+\subsubsection{\texorpdfstring{deletePhysicsBody()}{deletePhysicsBody()}}
+{\footnotesize\ttfamily void Physics\+Handler\+::delete\+Physics\+Body (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_physics_body}{Physics\+Body}} \&}]{body }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Description\+: Removes a physic body from the bodies vector \mbox{\Hypertarget{class_physics_handler_a4d9a53f320f6a6136b3e8cfb7388310d}\label{class_physics_handler_a4d9a53f320f6a6136b3e8cfb7388310d}} 
+\index{PhysicsHandler@{PhysicsHandler}!draw@{draw}}
+\index{draw@{draw}!PhysicsHandler@{PhysicsHandler}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Physics\+Handler\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Description\+: Draws each physics body (debugging purposes) \mbox{\Hypertarget{class_physics_handler_a936a971e834ed56067bfa1910fb1ae87}\label{class_physics_handler_a936a971e834ed56067bfa1910fb1ae87}} 
+\index{PhysicsHandler@{PhysicsHandler}!positionalCorrection@{positionalCorrection}}
+\index{positionalCorrection@{positionalCorrection}!PhysicsHandler@{PhysicsHandler}}
+\subsubsection{\texorpdfstring{positionalCorrection()}{positionalCorrection()}}
+{\footnotesize\ttfamily void Physics\+Handler\+::positional\+Correction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&}]{m }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Description\+: Needs to help avoid sinking objects so position correction pushes objects away to avoid this \mbox{\Hypertarget{class_physics_handler_a43422655392a4b669bd57445d049531b}\label{class_physics_handler_a43422655392a4b669bd57445d049531b}} 
+\index{PhysicsHandler@{PhysicsHandler}!resolveCollision@{resolveCollision}}
+\index{resolveCollision@{resolveCollision}!PhysicsHandler@{PhysicsHandler}}
+\subsubsection{\texorpdfstring{resolveCollision()}{resolveCollision()}}
+{\footnotesize\ttfamily void Physics\+Handler\+::resolve\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&}]{m }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Description\+: Resolves non sensor body collisions \mbox{\Hypertarget{class_physics_handler_a21e6ab8bd30b5659639e1ba8cecc9410}\label{class_physics_handler_a21e6ab8bd30b5659639e1ba8cecc9410}} 
+\index{PhysicsHandler@{PhysicsHandler}!resolveSensorCollision@{resolveSensorCollision}}
+\index{resolveSensorCollision@{resolveSensorCollision}!PhysicsHandler@{PhysicsHandler}}
+\subsubsection{\texorpdfstring{resolveSensorCollision()}{resolveSensorCollision()}}
+{\footnotesize\ttfamily void Physics\+Handler\+::resolve\+Sensor\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&}]{m }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Description\+: Resolves any sensor body collisions (this is useful for trigger events) \mbox{\Hypertarget{class_physics_handler_aefa13520fd0f2a95d03e729aac275c86}\label{class_physics_handler_aefa13520fd0f2a95d03e729aac275c86}} 
+\index{PhysicsHandler@{PhysicsHandler}!simpleAABBvsAABB@{simpleAABBvsAABB}}
+\index{simpleAABBvsAABB@{simpleAABBvsAABB}!PhysicsHandler@{PhysicsHandler}}
+\subsubsection{\texorpdfstring{simpleAABBvsAABB()}{simpleAABBvsAABB()}}
+{\footnotesize\ttfamily bool Physics\+Handler\+::simple\+A\+A\+B\+Bvs\+A\+A\+BB (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_physics_handler_1_1_manifold}{Manifold}} \&}]{m }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Description\+: Simple box to box collisions checking, this is done to see if there is a potential collision before we do the more expensive collision detection \mbox{\Hypertarget{class_physics_handler_aae72efd60617fe4f99f0973245834419}\label{class_physics_handler_aae72efd60617fe4f99f0973245834419}} 
+\index{PhysicsHandler@{PhysicsHandler}!update@{update}}
+\index{update@{update}!PhysicsHandler@{PhysicsHandler}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Physics\+Handler\+::update (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Description\+: Update sthe bodies and applies gravity if it is set to be affected by it 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_physics_handler_8h}{Physics\+Handler.\+h}}\item 
+Source/\mbox{\hyperlink{_physics_handler_8cpp}{Physics\+Handler.\+cpp}}\end{DoxyCompactItemize}

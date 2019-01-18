@@ -4,9 +4,9 @@
 #include "ResourceManager.h"
 #include "Player.h"
 
-///
-///Description: Simple door class that opens and closes when a player is in/out of range
-///
+/**
+* Description: simple door class that openswhen a player is nearby
+*/
 
 class Door
 {

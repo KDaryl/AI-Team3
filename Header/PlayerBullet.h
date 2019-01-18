@@ -7,6 +7,9 @@
 //For physics
 #include "PhysicsHandler.h"
 
+/**
+* Description: Player bullet, these are spawned when the player presses or holds the spacebar
+*/
 class PlayerBullet
 {
 public:

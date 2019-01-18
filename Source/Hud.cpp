@@ -29,6 +29,9 @@ Hud::Hud(Player& player, Grid& grid) :
 	updateHud();
 }
 
+/**
+* Description: Updates the hud, show sthe players health and the amount of workers gathered
+*/
 void Hud::update(double dt)
 {
 	m_dt = dt;
@@ -86,6 +89,9 @@ void Hud::display(sf::RenderWindow & win)
 	m_cleared = false;
 }
 
+/**
+* Description: updates the waypoint
+*/
 void Hud::updateWaypoint(double dt)
 {
 	//Check if player has reached certain parts of the waypoint
@@ -118,6 +124,9 @@ void Hud::setTexture(ResourceManager & resources)
 	m_workerBarFull.setTextureRect(sf::IntRect(0, 0, m_workerBarFull.getLocalBounds().width * m_workerPercent, m_workerBarFull.getLocalBounds().height));
 }
 
+/**
+* Description: sets how much of the bar to show (the red progress bar) for the health and workers gathered
+*/
 void Hud::updateHud()
 {
 	m_hpPercent = (float)m_playerPtr->health / m_playerPtr->maxHealth; //Health Percentage
@@ -127,6 +136,9 @@ void Hud::updateHud()
 	m_workerBarFull.setTextureRect(sf::IntRect(0, 0, 152 * m_workerPercent, 12));
 }
 
+/**
+* Description: Handle sinput to zoom in and out of the minimap
+*/
 void Hud::handleInput(InputHandler & input)
 {
 	auto zoomCopy = m_currentZoom;

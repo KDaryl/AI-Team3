@@ -15,6 +15,9 @@ EnemyBullet::EnemyBullet() :
 	m_body.isSensor = true; //Is a sensor, means it will avouid collision resolution (wont bounce)
 }
 
+/**
+* Description: Updates the enemy bullet
+*/
 void EnemyBullet::update(double dt)
 {
 	//Update animator
@@ -50,6 +53,9 @@ void EnemyBullet::update(double dt)
 	}
 }
 
+/**
+* Description: Draws the bullet
+*/
 void EnemyBullet::draw(sf::RenderWindow & window)
 {
 	//Only draw if the animations are playing
@@ -59,6 +65,9 @@ void EnemyBullet::draw(sf::RenderWindow & window)
 	}
 }
 
+/**
+* Description: Spawns the bullet at the position adn at the angle passed
+*/
 void EnemyBullet::spawn(Vector2f position, float angle)
 {
 	alive = true;
@@ -112,6 +121,9 @@ void EnemyBullet::setTexture(ResourceManager & resources)
 	physics::world->addPhysicsBody(m_body);
 }
 
+/**
+* Description: Sets the bullet as collided 
+*/
 void EnemyBullet::hasCollided()
 {
 	alive = false;

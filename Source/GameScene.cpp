@@ -26,13 +26,6 @@ GameScene::GameScene() :
 		m_predatorAI.push_back(Predator(m_player.m_position, &m_grid, i));
 	}
 
-	for (int i = 0; i < 1; i++)
-	{
-		m_sweeperAI.push_back(Sweeper(m_player.m_position, &m_grid, Vector2f(5864, 2971), &m_workerAI));
-	}
-
-
-
 	loadMap();
 }
 
@@ -69,6 +62,11 @@ void GameScene::loadMap()
 		m_workerAI.push_back(Worker(Vector2f(area["X"], area["Y"]), &m_grid));
 		workers++;
 	}
+	for (auto& sweeper : m_levelLoader.data["Sweepers"])
+	{
+		m_sweeperAI.push_back(Sweeper(m_player.m_position, &m_grid, Vector2f(sweeper["X"], sweeper["Y"]), &m_workerAI));
+	}
+
 
 	m_hud.setMaxWorkers(workers);
 

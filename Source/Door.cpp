@@ -22,6 +22,9 @@ Door::~Door()
 {
 }
 
+/**
+* Description: door opens if the player is in range
+*/
 void Door::update(double dt)
 {
 	m_animator.update(sf::seconds(dt));

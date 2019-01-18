@@ -1,0 +1,102 @@
+\hypertarget{class_scene_manager}{}\section{Scene\+Manager Class Reference}
+\label{class_scene_manager}\index{SceneManager@{SceneManager}}
+
+
+{\ttfamily \#include $<$Scene\+Manager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_scene_manager_a52085e6737c23b491c228e86781af808}{Scene\+Manager}} ()
+\item 
+\mbox{\hyperlink{class_scene_manager_a2bb376a85d29e85f47753e26c7539229}{$\sim$\+Scene\+Manager}} ()
+\item 
+void \mbox{\hyperlink{class_scene_manager_ac919b175f2a4b00c4f69e40ab43b1468}{update}} (double dt)
+\item 
+void \mbox{\hyperlink{class_scene_manager_aeae169a2ae06250127fe6ff28cdbeebe}{draw}} (sf\+::\+Render\+Window \&window, float a)
+\item 
+void \mbox{\hyperlink{class_scene_manager_a404e7ccdd4fe5f8eef2348d7557a4805}{handle\+Input}} (\mbox{\hyperlink{class_input_handler}{Input\+Handler}} \&input)
+\item 
+void \mbox{\hyperlink{class_scene_manager_acb8e176697ea223d4fd8c2718056206e}{add\+Scene}} (std\+::string name, \mbox{\hyperlink{class_scene}{Scene}} $\ast$scene)
+\item 
+void \mbox{\hyperlink{class_scene_manager_ab56b68e45ceb0feec829c0a070da1ab7}{set\+Current\+Scene}} (std\+::string scene\+Name)
+\item 
+void \mbox{\hyperlink{class_scene_manager_a8deb97f7f4c212314c66b96baf325cf5}{set\+Textures}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \mbox{\hyperlink{class_scene_manager_a27175bd685421567da69acbd44484e73}{m\+\_\+resources}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description\+: This handles setting scenes and swapping between scenes 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_scene_manager_a52085e6737c23b491c228e86781af808}\label{class_scene_manager_a52085e6737c23b491c228e86781af808}} 
+\index{SceneManager@{SceneManager}!SceneManager@{SceneManager}}
+\index{SceneManager@{SceneManager}!SceneManager@{SceneManager}}
+\subsubsection{\texorpdfstring{SceneManager()}{SceneManager()}}
+{\footnotesize\ttfamily Scene\+Manager\+::\+Scene\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_scene_manager_a2bb376a85d29e85f47753e26c7539229}\label{class_scene_manager_a2bb376a85d29e85f47753e26c7539229}} 
+\index{SceneManager@{SceneManager}!````~SceneManager@{$\sim$SceneManager}}
+\index{````~SceneManager@{$\sim$SceneManager}!SceneManager@{SceneManager}}
+\subsubsection{\texorpdfstring{$\sim$SceneManager()}{~SceneManager()}}
+{\footnotesize\ttfamily Scene\+Manager\+::$\sim$\+Scene\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_scene_manager_acb8e176697ea223d4fd8c2718056206e}\label{class_scene_manager_acb8e176697ea223d4fd8c2718056206e}} 
+\index{SceneManager@{SceneManager}!addScene@{addScene}}
+\index{addScene@{addScene}!SceneManager@{SceneManager}}
+\subsubsection{\texorpdfstring{addScene()}{addScene()}}
+{\footnotesize\ttfamily void Scene\+Manager\+::add\+Scene (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{\mbox{\hyperlink{class_scene}{Scene}} $\ast$}]{scene }\end{DoxyParamCaption})}
+
+Description\+: Adds a scene to the scene manager \mbox{\Hypertarget{class_scene_manager_aeae169a2ae06250127fe6ff28cdbeebe}\label{class_scene_manager_aeae169a2ae06250127fe6ff28cdbeebe}} 
+\index{SceneManager@{SceneManager}!draw@{draw}}
+\index{draw@{draw}!SceneManager@{SceneManager}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Scene\+Manager\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{float}]{a }\end{DoxyParamCaption})}
+
+Description\+: draws the current scene \mbox{\Hypertarget{class_scene_manager_a404e7ccdd4fe5f8eef2348d7557a4805}\label{class_scene_manager_a404e7ccdd4fe5f8eef2348d7557a4805}} 
+\index{SceneManager@{SceneManager}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!SceneManager@{SceneManager}}
+\subsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Scene\+Manager\+::handle\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_input_handler}{Input\+Handler}} \&}]{input }\end{DoxyParamCaption})}
+
+Description\+: Here we call handle input for the scene and pass over the input handler \mbox{\Hypertarget{class_scene_manager_ab56b68e45ceb0feec829c0a070da1ab7}\label{class_scene_manager_ab56b68e45ceb0feec829c0a070da1ab7}} 
+\index{SceneManager@{SceneManager}!setCurrentScene@{setCurrentScene}}
+\index{setCurrentScene@{setCurrentScene}!SceneManager@{SceneManager}}
+\subsubsection{\texorpdfstring{setCurrentScene()}{setCurrentScene()}}
+{\footnotesize\ttfamily void Scene\+Manager\+::set\+Current\+Scene (\begin{DoxyParamCaption}\item[{std\+::string}]{scene\+Name }\end{DoxyParamCaption})}
+
+Description\+: Sets the current scene \mbox{\Hypertarget{class_scene_manager_a8deb97f7f4c212314c66b96baf325cf5}\label{class_scene_manager_a8deb97f7f4c212314c66b96baf325cf5}} 
+\index{SceneManager@{SceneManager}!setTextures@{setTextures}}
+\index{setTextures@{setTextures}!SceneManager@{SceneManager}}
+\subsubsection{\texorpdfstring{setTextures()}{setTextures()}}
+{\footnotesize\ttfamily void Scene\+Manager\+::set\+Textures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Description\+: Passes over the resource manage rto every scene \mbox{\Hypertarget{class_scene_manager_ac919b175f2a4b00c4f69e40ab43b1468}\label{class_scene_manager_ac919b175f2a4b00c4f69e40ab43b1468}} 
+\index{SceneManager@{SceneManager}!update@{update}}
+\index{update@{update}!SceneManager@{SceneManager}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Scene\+Manager\+::update (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})}
+
+Description\+: Updates current scene 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_scene_manager_a27175bd685421567da69acbd44484e73}\label{class_scene_manager_a27175bd685421567da69acbd44484e73}} 
+\index{SceneManager@{SceneManager}!m\_resources@{m\_resources}}
+\index{m\_resources@{m\_resources}!SceneManager@{SceneManager}}
+\subsubsection{\texorpdfstring{m\_resources}{m\_resources}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} Scene\+Manager\+::m\+\_\+resources}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_scene_manager_8h}{Scene\+Manager.\+h}}\item 
+Source/\mbox{\hyperlink{_scene_manager_8cpp}{Scene\+Manager.\+cpp}}\end{DoxyCompactItemize}

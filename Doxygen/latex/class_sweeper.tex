@@ -1,0 +1,154 @@
+\hypertarget{class_sweeper}{}\section{Sweeper Class Reference}
+\label{class_sweeper}\index{Sweeper@{Sweeper}}
+
+
+{\ttfamily \#include $<$Sweeper.\+h$>$}
+
+Inheritance diagram for Sweeper\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sweeper}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_sweeper_1_1bool_vec_pair}{bool\+Vec\+Pair}}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sweeper_a0abeb1949c394caaf87dc35f8577b381}{Sweeper}} (\mbox{\hyperlink{class_vector2f}{Vector2f}} \&player\+Pos, \mbox{\hyperlink{class_grid}{Grid}} $\ast$grid, \mbox{\hyperlink{class_vector2f}{Vector2f}} pos, std\+::vector$<$ \mbox{\hyperlink{class_worker}{Worker}} $>$ $\ast$workers)
+\item 
+\mbox{\hyperlink{class_sweeper_a3099037dc68c87b680a8b235fb61848c}{$\sim$\+Sweeper}} ()
+\item 
+void \mbox{\hyperlink{class_sweeper_aa186e2bb4c00d8f00c6a947cfd7b4a08}{update}} (float dt)
+\item 
+void \mbox{\hyperlink{class_sweeper_a8308b5cec3c19e0292947081100d777b}{render}} (sf\+::\+Render\+Window \&window)
+\item 
+bool \mbox{\hyperlink{class_sweeper_a385f654eafc2891bcff50e46e586abd8}{seek}} (\mbox{\hyperlink{struct_sweeper_1_1bool_vec_pair}{bool\+Vec\+Pair}} \&p, double dt)
+\item 
+bool \mbox{\hyperlink{class_sweeper_a449bae50886a8b27fceed990054693e5}{flee\+Player}} (\mbox{\hyperlink{struct_sweeper_1_1bool_vec_pair}{bool\+Vec\+Pair}} \&p, double dt)
+\item 
+void \mbox{\hyperlink{class_sweeper_a5ef8f36cd096c86448db221b8d26298f}{die}} ()
+\item 
+float \mbox{\hyperlink{class_sweeper_a2bbd96a95a34c2612b559224bd99a2a0}{get\+Move\+Speed}} ()
+\item 
+void \mbox{\hyperlink{class_sweeper_ae4cd1dcb134140b6a357c3e61b96d326}{set\+Texture}} (\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&resources)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_sweeper_a2de9bfbe25a8e7a4c0520c74a325e037}{m\+\_\+position}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_sweeper_aeda6c4d7941d3715a6c5ff55c8688fa5}{m\+\_\+velocity}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_worker}{Worker}} $>$ $\ast$ \mbox{\hyperlink{class_sweeper_a30fbaca5409925343d7e5e1feaf13c68}{m\+\_\+seek\+Workers}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_worker}{Worker}} $\ast$ $>$ \mbox{\hyperlink{class_sweeper_ad78cc8acbe42fb51ac5e9a52a3820c68}{m\+\_\+captured\+Workers}}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_sweeper}{Sweeper}} bot \mbox{\hyperlink{class_a_i}{AI}} the function of this \mbox{\hyperlink{class_a_i}{AI}} is to wander around the ship capturing workers and fleeing from the player when he comes too close 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_sweeper_a0abeb1949c394caaf87dc35f8577b381}\label{class_sweeper_a0abeb1949c394caaf87dc35f8577b381}} 
+\index{Sweeper@{Sweeper}!Sweeper@{Sweeper}}
+\index{Sweeper@{Sweeper}!Sweeper@{Sweeper}}
+\subsubsection{\texorpdfstring{Sweeper()}{Sweeper()}}
+{\footnotesize\ttfamily Sweeper\+::\+Sweeper (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}} \&}]{player\+Pos,  }\item[{\mbox{\hyperlink{class_grid}{Grid}} $\ast$}]{grid,  }\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{pos,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_worker}{Worker}} $>$ $\ast$}]{workers }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_sweeper_a3099037dc68c87b680a8b235fb61848c}\label{class_sweeper_a3099037dc68c87b680a8b235fb61848c}} 
+\index{Sweeper@{Sweeper}!````~Sweeper@{$\sim$Sweeper}}
+\index{````~Sweeper@{$\sim$Sweeper}!Sweeper@{Sweeper}}
+\subsubsection{\texorpdfstring{$\sim$Sweeper()}{~Sweeper()}}
+{\footnotesize\ttfamily Sweeper\+::$\sim$\+Sweeper (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sweeper_a5ef8f36cd096c86448db221b8d26298f}\label{class_sweeper_a5ef8f36cd096c86448db221b8d26298f}} 
+\index{Sweeper@{Sweeper}!die@{die}}
+\index{die@{die}!Sweeper@{Sweeper}}
+\subsubsection{\texorpdfstring{die()}{die()}}
+{\footnotesize\ttfamily void Sweeper\+::die (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+function used to kill the sweeper \mbox{\Hypertarget{class_sweeper_a449bae50886a8b27fceed990054693e5}\label{class_sweeper_a449bae50886a8b27fceed990054693e5}} 
+\index{Sweeper@{Sweeper}!fleePlayer@{fleePlayer}}
+\index{fleePlayer@{fleePlayer}!Sweeper@{Sweeper}}
+\subsubsection{\texorpdfstring{fleePlayer()}{fleePlayer()}}
+{\footnotesize\ttfamily bool Sweeper\+::flee\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sweeper_1_1bool_vec_pair}{bool\+Vec\+Pair}} \&}]{p,  }\item[{double}]{dt }\end{DoxyParamCaption})}
+
+function used to flee from the player \mbox{\Hypertarget{class_sweeper_a2bbd96a95a34c2612b559224bd99a2a0}\label{class_sweeper_a2bbd96a95a34c2612b559224bd99a2a0}} 
+\index{Sweeper@{Sweeper}!getMoveSpeed@{getMoveSpeed}}
+\index{getMoveSpeed@{getMoveSpeed}!Sweeper@{Sweeper}}
+\subsubsection{\texorpdfstring{getMoveSpeed()}{getMoveSpeed()}}
+{\footnotesize\ttfamily float Sweeper\+::get\+Move\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_sweeper_a8308b5cec3c19e0292947081100d777b}\label{class_sweeper_a8308b5cec3c19e0292947081100d777b}} 
+\index{Sweeper@{Sweeper}!render@{render}}
+\index{render@{render}!Sweeper@{Sweeper}}
+\subsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void Sweeper\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+function used to draw the sweeper bots 
+
+Implements \mbox{\hyperlink{class_a_i_a7d2082a5c1692991512725797346705f}{AI}}.
+
+\mbox{\Hypertarget{class_sweeper_a385f654eafc2891bcff50e46e586abd8}\label{class_sweeper_a385f654eafc2891bcff50e46e586abd8}} 
+\index{Sweeper@{Sweeper}!seek@{seek}}
+\index{seek@{seek}!Sweeper@{Sweeper}}
+\subsubsection{\texorpdfstring{seek()}{seek()}}
+{\footnotesize\ttfamily bool Sweeper\+::seek (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sweeper_1_1bool_vec_pair}{bool\+Vec\+Pair}} \&}]{p,  }\item[{double}]{dt }\end{DoxyParamCaption})}
+
+function used to seek towards the workers \mbox{\Hypertarget{class_sweeper_ae4cd1dcb134140b6a357c3e61b96d326}\label{class_sweeper_ae4cd1dcb134140b6a357c3e61b96d326}} 
+\index{Sweeper@{Sweeper}!setTexture@{setTexture}}
+\index{setTexture@{setTexture}!Sweeper@{Sweeper}}
+\subsubsection{\texorpdfstring{setTexture()}{setTexture()}}
+{\footnotesize\ttfamily void Sweeper\+::set\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&}]{resources }\end{DoxyParamCaption})}
+
+function used to set the texture of the sprite \mbox{\Hypertarget{class_sweeper_aa186e2bb4c00d8f00c6a947cfd7b4a08}\label{class_sweeper_aa186e2bb4c00d8f00c6a947cfd7b4a08}} 
+\index{Sweeper@{Sweeper}!update@{update}}
+\index{update@{update}!Sweeper@{Sweeper}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Sweeper\+::update (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+function used to update the sweeper bots 
+
+Implements \mbox{\hyperlink{class_a_i_a6a845cbba63ca3eaab42771f10175e7f}{AI}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_sweeper_ad78cc8acbe42fb51ac5e9a52a3820c68}\label{class_sweeper_ad78cc8acbe42fb51ac5e9a52a3820c68}} 
+\index{Sweeper@{Sweeper}!m\_capturedWorkers@{m\_capturedWorkers}}
+\index{m\_capturedWorkers@{m\_capturedWorkers}!Sweeper@{Sweeper}}
+\subsubsection{\texorpdfstring{m\_capturedWorkers}{m\_capturedWorkers}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_worker}{Worker}}$\ast$$>$ Sweeper\+::m\+\_\+captured\+Workers}
+
+\mbox{\Hypertarget{class_sweeper_a2de9bfbe25a8e7a4c0520c74a325e037}\label{class_sweeper_a2de9bfbe25a8e7a4c0520c74a325e037}} 
+\index{Sweeper@{Sweeper}!m\_position@{m\_position}}
+\index{m\_position@{m\_position}!Sweeper@{Sweeper}}
+\subsubsection{\texorpdfstring{m\_position}{m\_position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Sweeper\+::m\+\_\+position}
+
+\mbox{\Hypertarget{class_sweeper_a30fbaca5409925343d7e5e1feaf13c68}\label{class_sweeper_a30fbaca5409925343d7e5e1feaf13c68}} 
+\index{Sweeper@{Sweeper}!m\_seekWorkers@{m\_seekWorkers}}
+\index{m\_seekWorkers@{m\_seekWorkers}!Sweeper@{Sweeper}}
+\subsubsection{\texorpdfstring{m\_seekWorkers}{m\_seekWorkers}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_worker}{Worker}}$>$$\ast$ Sweeper\+::m\+\_\+seek\+Workers}
+
+\mbox{\Hypertarget{class_sweeper_aeda6c4d7941d3715a6c5ff55c8688fa5}\label{class_sweeper_aeda6c4d7941d3715a6c5ff55c8688fa5}} 
+\index{Sweeper@{Sweeper}!m\_velocity@{m\_velocity}}
+\index{m\_velocity@{m\_velocity}!Sweeper@{Sweeper}}
+\subsubsection{\texorpdfstring{m\_velocity}{m\_velocity}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Sweeper\+::m\+\_\+velocity}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_sweeper_8h}{Sweeper.\+h}}\item 
+Source/\mbox{\hyperlink{_sweeper_8cpp}{Sweeper.\+cpp}}\end{DoxyCompactItemize}

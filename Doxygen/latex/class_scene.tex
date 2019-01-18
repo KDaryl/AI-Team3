@@ -1,0 +1,93 @@
+\hypertarget{class_scene}{}\section{Scene Class Reference}
+\label{class_scene}\index{Scene@{Scene}}
+
+
+{\ttfamily \#include $<$Scene.\+h$>$}
+
+Inheritance diagram for Scene\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_scene}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_scene_ad10176d75a9cc0da56626f682d083507}{Scene}} ()
+\item 
+\mbox{\hyperlink{class_scene_a3b8cec2e32546713915f8c6303c951f1}{$\sim$\+Scene}} ()
+\item 
+virtual void \mbox{\hyperlink{class_scene_aa02448b66cad257124a21a7b101d2167}{update}} (double dt)=0
+\item 
+virtual void \mbox{\hyperlink{class_scene_aac0c632404668d9bf71755aaa9c35d51}{draw}} (sf\+::\+Render\+Window \&window, float a)=0
+\item 
+virtual void \mbox{\hyperlink{class_scene_a8eb235117c46a566f8321ab91b2928d4}{handle\+Input}} (\mbox{\hyperlink{class_input_handler}{Input\+Handler}} \&input)=0
+\item 
+virtual void \mbox{\hyperlink{class_scene_a72d2dc07bca5b96ebcf88d97356b5b34}{set\+Texture}} (\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&resources)=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description\+: Base scene class, to be inherited by other other scene classes 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_scene_ad10176d75a9cc0da56626f682d083507}\label{class_scene_ad10176d75a9cc0da56626f682d083507}} 
+\index{Scene@{Scene}!Scene@{Scene}}
+\index{Scene@{Scene}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{Scene()}{Scene()}}
+{\footnotesize\ttfamily Scene\+::\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_scene_a3b8cec2e32546713915f8c6303c951f1}\label{class_scene_a3b8cec2e32546713915f8c6303c951f1}} 
+\index{Scene@{Scene}!````~Scene@{$\sim$Scene}}
+\index{````~Scene@{$\sim$Scene}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{$\sim$Scene()}{~Scene()}}
+{\footnotesize\ttfamily Scene\+::$\sim$\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_scene_aac0c632404668d9bf71755aaa9c35d51}\label{class_scene_aac0c632404668d9bf71755aaa9c35d51}} 
+\index{Scene@{Scene}!draw@{draw}}
+\index{draw@{draw}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily virtual void Scene\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{float}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_game_scene_a78f6d778b147a819ec89f77f3f9a5bc9}{Game\+Scene}}.
+
+\mbox{\Hypertarget{class_scene_a8eb235117c46a566f8321ab91b2928d4}\label{class_scene_a8eb235117c46a566f8321ab91b2928d4}} 
+\index{Scene@{Scene}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily virtual void Scene\+::handle\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_input_handler}{Input\+Handler}} \&}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_game_scene_a10042b36b1b586825ff8a37c47e38899}{Game\+Scene}}.
+
+\mbox{\Hypertarget{class_scene_a72d2dc07bca5b96ebcf88d97356b5b34}\label{class_scene_a72d2dc07bca5b96ebcf88d97356b5b34}} 
+\index{Scene@{Scene}!setTexture@{setTexture}}
+\index{setTexture@{setTexture}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{setTexture()}{setTexture()}}
+{\footnotesize\ttfamily virtual void Scene\+::set\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&}]{resources }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_game_scene_a8b0c074db0d7a7f89f029dd6d88d65e8}{Game\+Scene}}.
+
+\mbox{\Hypertarget{class_scene_aa02448b66cad257124a21a7b101d2167}\label{class_scene_aa02448b66cad257124a21a7b101d2167}} 
+\index{Scene@{Scene}!update@{update}}
+\index{update@{update}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void Scene\+::update (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_game_scene_a93d66fe7579e20d9476bc2cf51f73d82}{Game\+Scene}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_scene_8h}{Scene.\+h}}\end{DoxyCompactItemize}

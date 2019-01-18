@@ -3,9 +3,9 @@
 #include "InputHandler.h"
 #include "ResourceManager.h"
 
-/// <summary>
-/// This class will be inherited by any other scene classes, like Main Menu, game, options etc.
-/// </summary>
+/**
+* Description: Base scene class, to be inherited by other other scene classes
+*/
 class Scene
 {
 public:

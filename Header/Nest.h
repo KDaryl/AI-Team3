@@ -3,7 +3,7 @@
 #include "NestMissile.h"
 
 /**
-* Description: The nest spawns pred
+* Description: The nest spawns predators and shoots players that are nearby
 */
 class Nest
 {

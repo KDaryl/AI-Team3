@@ -2,6 +2,9 @@
 #include "ResourceManager.h"
 #include "GameScene.h"
 
+/**
+* Description: This handles setting scenes and swapping between scenes
+*/
 class SceneManager
 {
 public:

@@ -3,6 +3,9 @@
 #include "Player.h"
 #include "Grid.h"
 
+/**
+* Description: Hud for the game, including worker bar, health bar and minimap, you can zoom in and out using Q and E
+*/
 class Hud
 {
 public:

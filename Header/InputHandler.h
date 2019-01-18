@@ -7,6 +7,10 @@
 
 typedef std::map<std::string, bool> Input; //Use input as an alias for our map of buttons
 
+/**
+* Description: This is where we will check for input handling
+*/
+
 class InputHandler
 {
 public:

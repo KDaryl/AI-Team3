@@ -82,15 +82,17 @@ void Nest::update(double dt, std::vector<Nest>& otherNests)
 
 void Nest::draw(sf::RenderWindow & window)
 {
-	//Draw our missile
-	m_missile.draw(window);
-
 	if (m_alive)
 	{
 		window.draw(m_sprite);
 	}
+
+	m_missile.draw(window);
 }
 
+/**
+* Description: Kills the nest
+*/
 void Nest::die()
 {
 	m_alive = false;
@@ -113,6 +115,9 @@ void Nest::setTexture(ResourceManager & resources)
 	physics::world->addPhysicsBody(m_body);
 }
 
+/**
+* Description: Here we add or decrement the health of the nest
+*/
 void Nest::addDecHealth(int val)
 {
 	//Add value to our health

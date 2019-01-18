@@ -1,0 +1,334 @@
+\hypertarget{class_physics_body}{}\section{Physics\+Body Class Reference}
+\label{class_physics_body}\index{PhysicsBody@{PhysicsBody}}
+
+
+{\ttfamily \#include $<$Physics\+Body.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_physics_body_a129ea9472bad343856460345704d9c5e}{Physics\+Body}} (\mbox{\hyperlink{_physics_body_8h_a1d1cfd8ffb84e947f82999c682b666a7}{Type}} \mbox{\hyperlink{class_physics_body_aec0c643403d115034db77f9556ebb774}{type}}, \mbox{\hyperlink{_physics_body_8h_a55b506070847a13554f8b879c1bfb37c}{Shape}} \mbox{\hyperlink{class_physics_body_aa54a7af3e49e0aa6a4f0c9669baeb24b}{shape}}, void $\ast$data)
+\item 
+\mbox{\hyperlink{class_physics_body_a4d09ec1845ec536f78d1c2f2fa9d789f}{$\sim$\+Physics\+Body}} ()
+\item 
+void \mbox{\hyperlink{class_physics_body_abdba5d49a66c2fb3603ab001eafb9730}{update}} (float dt)
+\item 
+void \mbox{\hyperlink{class_physics_body_a459723ff043e74214d87cb91a57711a4}{draw}} (sf\+::\+Render\+Window \&window)
+\item 
+void \mbox{\hyperlink{class_physics_body_a7a513590168e6409fe9bee61f21b6689}{apply\+Gravity}} (float gravity)
+\item 
+bool \mbox{\hyperlink{class_physics_body_a62cc02d08a456fd3ab85a522f7ee1baa}{operator==}} (const \mbox{\hyperlink{class_physics_body}{Physics\+Body}} \&b)
+\item 
+void \mbox{\hyperlink{class_physics_body_ae9fdcc15def9e51ca02f4dd130fb6595}{set\+Velocity}} (\mbox{\hyperlink{class_vector2f}{Vector2f}} vel)
+\item 
+void \mbox{\hyperlink{class_physics_body_aa86a8fad1fc91b29d52ca15e1bb3a9bf}{set\+Friction}} (float f)
+\item 
+void \mbox{\hyperlink{class_physics_body_a97101a5b106a3092eef1340eae81870a}{set\+Restitution}} (float resti)
+\item 
+void \mbox{\hyperlink{class_physics_body_a648b50e017040632c5298edc65cdc729}{set\+Initial\+Rotation}} (float angle)
+\item 
+void \mbox{\hyperlink{class_physics_body_a920691097ccaf25b2dea6a4fb53d9921}{add\+Force}} (\mbox{\hyperlink{class_vector2f}{Vector2f}} force)
+\item 
+void \mbox{\hyperlink{class_physics_body_a5975792465241daa038ff58f351a3bd0}{set\+Gravity\+Scalar}} (float val)
+\item 
+void \mbox{\hyperlink{class_physics_body_a2b5292f24a3ecd363230b5a13524c1de}{set\+Box\+Parameters}} (\mbox{\hyperlink{class_vector2f}{Vector2f}} start\+Pos, \mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_physics_body_a3bb57b0ab32d6865a3e01f7a72291e38}{size}}, float \mbox{\hyperlink{class_physics_body_ad8617ab5d898b415d5fc0dc67d5ae78a}{mass}}, bool \mbox{\hyperlink{class_physics_body_a69b18d144228eccd2a82c86fcdebe9b5}{use\+Gravity}})
+\item 
+void \mbox{\hyperlink{class_physics_body_a8c100c20b5a7777ba0d22886ecf878fe}{set\+Circle\+Parameters}} (\mbox{\hyperlink{class_vector2f}{Vector2f}} start\+Pos, float \mbox{\hyperlink{class_physics_body_aa1942a3f85f7678d83a0670e73d9e9a5}{radius}}, float \mbox{\hyperlink{class_physics_body_ad8617ab5d898b415d5fc0dc67d5ae78a}{mass}}, bool \mbox{\hyperlink{class_physics_body_a69b18d144228eccd2a82c86fcdebe9b5}{use\+Gravity}})
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_physics_body_a1885d18cacc5d8ac866a4d62612a169c}{tag}} = \char`\"{}\char`\"{}
+\item 
+bool \mbox{\hyperlink{class_physics_body_adf84f20d337a9611bae830e2261b2d37}{is\+Sensor}} = false
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_physics_body_a31e35fb660f35dc92680698f3f4a7370}{position}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_physics_body_a8a2c10fcb6da06fc46270a570b1fadf7}{velocity}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_physics_body_a3bb57b0ab32d6865a3e01f7a72291e38}{size}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_physics_body_aa7bce22d92646ebfb7bfd218b9b31435}{acceleration}}
+\item 
+float \mbox{\hyperlink{class_physics_body_aa1942a3f85f7678d83a0670e73d9e9a5}{radius}}
+\item 
+float \mbox{\hyperlink{class_physics_body_a16280661c0d94d4e2394083b085aeeb4}{e}}
+\item 
+float \mbox{\hyperlink{class_physics_body_ad8617ab5d898b415d5fc0dc67d5ae78a}{mass}}
+\item 
+float \mbox{\hyperlink{class_physics_body_acc74712fb2d68c81878f95faca5fbb62}{gravity\+Scalar}}
+\item 
+float \mbox{\hyperlink{class_physics_body_ab3e6147de0da0c9f2f7caf07e2787878}{friction}}
+\item 
+float \mbox{\hyperlink{class_physics_body_a4dc0e4096eb52bc8fa4fac85d5b0fe09}{inv\+\_\+mass}}
+\item 
+float \mbox{\hyperlink{class_physics_body_a487c045e84ff4fc66cd653febeb01d8b}{orientation}}
+\item 
+float \mbox{\hyperlink{class_physics_body_a132ee8b8b787694def109f1f2ae6a943}{angular\+Velocity}}
+\item 
+float \mbox{\hyperlink{class_physics_body_a504b14e16e214adf0021311a40f68dfb}{torque}}
+\item 
+bool \mbox{\hyperlink{class_physics_body_a69b18d144228eccd2a82c86fcdebe9b5}{use\+Gravity}}
+\item 
+\mbox{\hyperlink{_physics_body_8h_a55b506070847a13554f8b879c1bfb37c}{Shape}} \mbox{\hyperlink{class_physics_body_aa54a7af3e49e0aa6a4f0c9669baeb24b}{shape}}
+\item 
+\mbox{\hyperlink{_physics_body_8h_a1d1cfd8ffb84e947f82999c682b666a7}{Type}} \mbox{\hyperlink{class_physics_body_aec0c643403d115034db77f9556ebb774}{type}}
+\item 
+\mbox{\hyperlink{class_collision_box}{Collision\+Box}} $\ast$ \mbox{\hyperlink{class_physics_body_a2e644dd99d939f7af5de4ab63c4c81ee}{b\+Collider}}
+\item 
+\mbox{\hyperlink{class_collision_circle}{Collision\+Circle}} $\ast$ \mbox{\hyperlink{class_physics_body_a8bab8d599fc696a85012b4ce0f52d6c1}{c\+Collider}}
+\item 
+void $\ast$ \mbox{\hyperlink{class_physics_body_a0bad7a41147e44610ace7dcb18aea582}{object\+Data}}
+\item 
+int \mbox{\hyperlink{class_physics_body_a381dfd66c0454ac81cf17ad002f64a93}{mask}}
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{class_physics_body_a2cc8c6425619a9c056f2f962c5ddb040}{bitmasks}}
+\item 
+bool \mbox{\hyperlink{class_physics_body_a6d39988426d9664ee5903245c43b8778}{collision\+Resolved}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description\+: Physic body, this is the main class for moveable objects, classes that wish to move will have a physicbody variable 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_physics_body_a129ea9472bad343856460345704d9c5e}\label{class_physics_body_a129ea9472bad343856460345704d9c5e}} 
+\index{PhysicsBody@{PhysicsBody}!PhysicsBody@{PhysicsBody}}
+\index{PhysicsBody@{PhysicsBody}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{PhysicsBody()}{PhysicsBody()}}
+{\footnotesize\ttfamily Physics\+Body\+::\+Physics\+Body (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_physics_body_8h_a1d1cfd8ffb84e947f82999c682b666a7}{Type}}}]{\+\_\+type,  }\item[{\mbox{\hyperlink{_physics_body_8h_a55b506070847a13554f8b879c1bfb37c}{Shape}}}]{\+\_\+shape,  }\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
+
+Description\+: Physic\+Body contructor \mbox{\Hypertarget{class_physics_body_a4d09ec1845ec536f78d1c2f2fa9d789f}\label{class_physics_body_a4d09ec1845ec536f78d1c2f2fa9d789f}} 
+\index{PhysicsBody@{PhysicsBody}!````~PhysicsBody@{$\sim$PhysicsBody}}
+\index{````~PhysicsBody@{$\sim$PhysicsBody}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{$\sim$PhysicsBody()}{~PhysicsBody()}}
+{\footnotesize\ttfamily Physics\+Body\+::$\sim$\+Physics\+Body (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_physics_body_a920691097ccaf25b2dea6a4fb53d9921}\label{class_physics_body_a920691097ccaf25b2dea6a4fb53d9921}} 
+\index{PhysicsBody@{PhysicsBody}!addForce@{addForce}}
+\index{addForce@{addForce}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{addForce()}{addForce()}}
+{\footnotesize\ttfamily void Physics\+Body\+::add\+Force (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{force }\end{DoxyParamCaption})}
+
+Description\+: Adds a force to the velocity \mbox{\Hypertarget{class_physics_body_a7a513590168e6409fe9bee61f21b6689}\label{class_physics_body_a7a513590168e6409fe9bee61f21b6689}} 
+\index{PhysicsBody@{PhysicsBody}!applyGravity@{applyGravity}}
+\index{applyGravity@{applyGravity}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{applyGravity()}{applyGravity()}}
+{\footnotesize\ttfamily void Physics\+Body\+::apply\+Gravity (\begin{DoxyParamCaption}\item[{float}]{gravity }\end{DoxyParamCaption})}
+
+Description\+: Applies gravity to the physics body \mbox{\Hypertarget{class_physics_body_a459723ff043e74214d87cb91a57711a4}\label{class_physics_body_a459723ff043e74214d87cb91a57711a4}} 
+\index{PhysicsBody@{PhysicsBody}!draw@{draw}}
+\index{draw@{draw}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Physics\+Body\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+Description\+: Draws the physics bodies colliders \mbox{\Hypertarget{class_physics_body_a62cc02d08a456fd3ab85a522f7ee1baa}\label{class_physics_body_a62cc02d08a456fd3ab85a522f7ee1baa}} 
+\index{PhysicsBody@{PhysicsBody}!operator==@{operator==}}
+\index{operator==@{operator==}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Physics\+Body\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_physics_body}{Physics\+Body}} \&}]{b }\end{DoxyParamCaption})}
+
+Description\+: Equality operator for comparisons \mbox{\Hypertarget{class_physics_body_a2b5292f24a3ecd363230b5a13524c1de}\label{class_physics_body_a2b5292f24a3ecd363230b5a13524c1de}} 
+\index{PhysicsBody@{PhysicsBody}!setBoxParameters@{setBoxParameters}}
+\index{setBoxParameters@{setBoxParameters}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{setBoxParameters()}{setBoxParameters()}}
+{\footnotesize\ttfamily void Physics\+Body\+::set\+Box\+Parameters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{start\+Pos,  }\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{\+\_\+size,  }\item[{float}]{\+\_\+mass,  }\item[{bool}]{\+\_\+use\+Gravity }\end{DoxyParamCaption})}
+
+Description\+: Sets the box collider properties \mbox{\Hypertarget{class_physics_body_a8c100c20b5a7777ba0d22886ecf878fe}\label{class_physics_body_a8c100c20b5a7777ba0d22886ecf878fe}} 
+\index{PhysicsBody@{PhysicsBody}!setCircleParameters@{setCircleParameters}}
+\index{setCircleParameters@{setCircleParameters}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{setCircleParameters()}{setCircleParameters()}}
+{\footnotesize\ttfamily void Physics\+Body\+::set\+Circle\+Parameters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{start\+Pos,  }\item[{float}]{\+\_\+radius,  }\item[{float}]{\+\_\+mass,  }\item[{bool}]{\+\_\+use\+Gravity }\end{DoxyParamCaption})}
+
+Description\+: Sets the Circle collider properties \mbox{\Hypertarget{class_physics_body_aa86a8fad1fc91b29d52ca15e1bb3a9bf}\label{class_physics_body_aa86a8fad1fc91b29d52ca15e1bb3a9bf}} 
+\index{PhysicsBody@{PhysicsBody}!setFriction@{setFriction}}
+\index{setFriction@{setFriction}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{setFriction()}{setFriction()}}
+{\footnotesize\ttfamily void Physics\+Body\+::set\+Friction (\begin{DoxyParamCaption}\item[{float}]{f }\end{DoxyParamCaption})}
+
+Description\+: Sets the friction of the body \mbox{\Hypertarget{class_physics_body_a5975792465241daa038ff58f351a3bd0}\label{class_physics_body_a5975792465241daa038ff58f351a3bd0}} 
+\index{PhysicsBody@{PhysicsBody}!setGravityScalar@{setGravityScalar}}
+\index{setGravityScalar@{setGravityScalar}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{setGravityScalar()}{setGravityScalar()}}
+{\footnotesize\ttfamily void Physics\+Body\+::set\+Gravity\+Scalar (\begin{DoxyParamCaption}\item[{float}]{val }\end{DoxyParamCaption})}
+
+Description\+: Sets the gravity scalar \mbox{\Hypertarget{class_physics_body_a648b50e017040632c5298edc65cdc729}\label{class_physics_body_a648b50e017040632c5298edc65cdc729}} 
+\index{PhysicsBody@{PhysicsBody}!setInitialRotation@{setInitialRotation}}
+\index{setInitialRotation@{setInitialRotation}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{setInitialRotation()}{setInitialRotation()}}
+{\footnotesize\ttfamily void Physics\+Body\+::set\+Initial\+Rotation (\begin{DoxyParamCaption}\item[{float}]{angle }\end{DoxyParamCaption})}
+
+Description\+: Sets the initial rotation of the body \mbox{\Hypertarget{class_physics_body_a97101a5b106a3092eef1340eae81870a}\label{class_physics_body_a97101a5b106a3092eef1340eae81870a}} 
+\index{PhysicsBody@{PhysicsBody}!setRestitution@{setRestitution}}
+\index{setRestitution@{setRestitution}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{setRestitution()}{setRestitution()}}
+{\footnotesize\ttfamily void Physics\+Body\+::set\+Restitution (\begin{DoxyParamCaption}\item[{float}]{resti }\end{DoxyParamCaption})}
+
+Description\+: Sets the restitution of the body (how much of its velocity is lost on impact) \mbox{\Hypertarget{class_physics_body_ae9fdcc15def9e51ca02f4dd130fb6595}\label{class_physics_body_ae9fdcc15def9e51ca02f4dd130fb6595}} 
+\index{PhysicsBody@{PhysicsBody}!setVelocity@{setVelocity}}
+\index{setVelocity@{setVelocity}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{setVelocity()}{setVelocity()}}
+{\footnotesize\ttfamily void Physics\+Body\+::set\+Velocity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{vel }\end{DoxyParamCaption})}
+
+Description\+: Sets the bodies velocity \mbox{\Hypertarget{class_physics_body_abdba5d49a66c2fb3603ab001eafb9730}\label{class_physics_body_abdba5d49a66c2fb3603ab001eafb9730}} 
+\index{PhysicsBody@{PhysicsBody}!update@{update}}
+\index{update@{update}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Physics\+Body\+::update (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})}
+
+Description\+: Updates the physics bodies position 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_physics_body_aa7bce22d92646ebfb7bfd218b9b31435}\label{class_physics_body_aa7bce22d92646ebfb7bfd218b9b31435}} 
+\index{PhysicsBody@{PhysicsBody}!acceleration@{acceleration}}
+\index{acceleration@{acceleration}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{acceleration}{acceleration}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Physics\+Body\+::acceleration}
+
+\mbox{\Hypertarget{class_physics_body_a132ee8b8b787694def109f1f2ae6a943}\label{class_physics_body_a132ee8b8b787694def109f1f2ae6a943}} 
+\index{PhysicsBody@{PhysicsBody}!angularVelocity@{angularVelocity}}
+\index{angularVelocity@{angularVelocity}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{angularVelocity}{angularVelocity}}
+{\footnotesize\ttfamily float Physics\+Body\+::angular\+Velocity}
+
+\mbox{\Hypertarget{class_physics_body_a2e644dd99d939f7af5de4ab63c4c81ee}\label{class_physics_body_a2e644dd99d939f7af5de4ab63c4c81ee}} 
+\index{PhysicsBody@{PhysicsBody}!bCollider@{bCollider}}
+\index{bCollider@{bCollider}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{bCollider}{bCollider}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_collision_box}{Collision\+Box}}$\ast$ Physics\+Body\+::b\+Collider}
+
+\mbox{\Hypertarget{class_physics_body_a2cc8c6425619a9c056f2f962c5ddb040}\label{class_physics_body_a2cc8c6425619a9c056f2f962c5ddb040}} 
+\index{PhysicsBody@{PhysicsBody}!bitmasks@{bitmasks}}
+\index{bitmasks@{bitmasks}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{bitmasks}{bitmasks}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Physics\+Body\+::bitmasks}
+
+\mbox{\Hypertarget{class_physics_body_a8bab8d599fc696a85012b4ce0f52d6c1}\label{class_physics_body_a8bab8d599fc696a85012b4ce0f52d6c1}} 
+\index{PhysicsBody@{PhysicsBody}!cCollider@{cCollider}}
+\index{cCollider@{cCollider}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{cCollider}{cCollider}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_collision_circle}{Collision\+Circle}}$\ast$ Physics\+Body\+::c\+Collider}
+
+\mbox{\Hypertarget{class_physics_body_a6d39988426d9664ee5903245c43b8778}\label{class_physics_body_a6d39988426d9664ee5903245c43b8778}} 
+\index{PhysicsBody@{PhysicsBody}!collisionResolved@{collisionResolved}}
+\index{collisionResolved@{collisionResolved}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{collisionResolved}{collisionResolved}}
+{\footnotesize\ttfamily bool Physics\+Body\+::collision\+Resolved}
+
+\mbox{\Hypertarget{class_physics_body_a16280661c0d94d4e2394083b085aeeb4}\label{class_physics_body_a16280661c0d94d4e2394083b085aeeb4}} 
+\index{PhysicsBody@{PhysicsBody}!e@{e}}
+\index{e@{e}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{e}{e}}
+{\footnotesize\ttfamily float Physics\+Body\+::e}
+
+\mbox{\Hypertarget{class_physics_body_ab3e6147de0da0c9f2f7caf07e2787878}\label{class_physics_body_ab3e6147de0da0c9f2f7caf07e2787878}} 
+\index{PhysicsBody@{PhysicsBody}!friction@{friction}}
+\index{friction@{friction}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{friction}{friction}}
+{\footnotesize\ttfamily float Physics\+Body\+::friction}
+
+\mbox{\Hypertarget{class_physics_body_acc74712fb2d68c81878f95faca5fbb62}\label{class_physics_body_acc74712fb2d68c81878f95faca5fbb62}} 
+\index{PhysicsBody@{PhysicsBody}!gravityScalar@{gravityScalar}}
+\index{gravityScalar@{gravityScalar}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{gravityScalar}{gravityScalar}}
+{\footnotesize\ttfamily float Physics\+Body\+::gravity\+Scalar}
+
+\mbox{\Hypertarget{class_physics_body_a4dc0e4096eb52bc8fa4fac85d5b0fe09}\label{class_physics_body_a4dc0e4096eb52bc8fa4fac85d5b0fe09}} 
+\index{PhysicsBody@{PhysicsBody}!inv\_mass@{inv\_mass}}
+\index{inv\_mass@{inv\_mass}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{inv\_mass}{inv\_mass}}
+{\footnotesize\ttfamily float Physics\+Body\+::inv\+\_\+mass}
+
+\mbox{\Hypertarget{class_physics_body_adf84f20d337a9611bae830e2261b2d37}\label{class_physics_body_adf84f20d337a9611bae830e2261b2d37}} 
+\index{PhysicsBody@{PhysicsBody}!isSensor@{isSensor}}
+\index{isSensor@{isSensor}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{isSensor}{isSensor}}
+{\footnotesize\ttfamily bool Physics\+Body\+::is\+Sensor = false}
+
+\mbox{\Hypertarget{class_physics_body_a381dfd66c0454ac81cf17ad002f64a93}\label{class_physics_body_a381dfd66c0454ac81cf17ad002f64a93}} 
+\index{PhysicsBody@{PhysicsBody}!mask@{mask}}
+\index{mask@{mask}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{mask}{mask}}
+{\footnotesize\ttfamily int Physics\+Body\+::mask}
+
+\mbox{\Hypertarget{class_physics_body_ad8617ab5d898b415d5fc0dc67d5ae78a}\label{class_physics_body_ad8617ab5d898b415d5fc0dc67d5ae78a}} 
+\index{PhysicsBody@{PhysicsBody}!mass@{mass}}
+\index{mass@{mass}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{mass}{mass}}
+{\footnotesize\ttfamily float Physics\+Body\+::mass}
+
+\mbox{\Hypertarget{class_physics_body_a0bad7a41147e44610ace7dcb18aea582}\label{class_physics_body_a0bad7a41147e44610ace7dcb18aea582}} 
+\index{PhysicsBody@{PhysicsBody}!objectData@{objectData}}
+\index{objectData@{objectData}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{objectData}{objectData}}
+{\footnotesize\ttfamily void$\ast$ Physics\+Body\+::object\+Data}
+
+\mbox{\Hypertarget{class_physics_body_a487c045e84ff4fc66cd653febeb01d8b}\label{class_physics_body_a487c045e84ff4fc66cd653febeb01d8b}} 
+\index{PhysicsBody@{PhysicsBody}!orientation@{orientation}}
+\index{orientation@{orientation}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{orientation}{orientation}}
+{\footnotesize\ttfamily float Physics\+Body\+::orientation}
+
+\mbox{\Hypertarget{class_physics_body_a31e35fb660f35dc92680698f3f4a7370}\label{class_physics_body_a31e35fb660f35dc92680698f3f4a7370}} 
+\index{PhysicsBody@{PhysicsBody}!position@{position}}
+\index{position@{position}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Physics\+Body\+::position}
+
+\mbox{\Hypertarget{class_physics_body_aa1942a3f85f7678d83a0670e73d9e9a5}\label{class_physics_body_aa1942a3f85f7678d83a0670e73d9e9a5}} 
+\index{PhysicsBody@{PhysicsBody}!radius@{radius}}
+\index{radius@{radius}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{radius}{radius}}
+{\footnotesize\ttfamily float Physics\+Body\+::radius}
+
+\mbox{\Hypertarget{class_physics_body_aa54a7af3e49e0aa6a4f0c9669baeb24b}\label{class_physics_body_aa54a7af3e49e0aa6a4f0c9669baeb24b}} 
+\index{PhysicsBody@{PhysicsBody}!shape@{shape}}
+\index{shape@{shape}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{shape}{shape}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_physics_body_8h_a55b506070847a13554f8b879c1bfb37c}{Shape}} Physics\+Body\+::shape}
+
+\mbox{\Hypertarget{class_physics_body_a3bb57b0ab32d6865a3e01f7a72291e38}\label{class_physics_body_a3bb57b0ab32d6865a3e01f7a72291e38}} 
+\index{PhysicsBody@{PhysicsBody}!size@{size}}
+\index{size@{size}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Physics\+Body\+::size}
+
+\mbox{\Hypertarget{class_physics_body_a1885d18cacc5d8ac866a4d62612a169c}\label{class_physics_body_a1885d18cacc5d8ac866a4d62612a169c}} 
+\index{PhysicsBody@{PhysicsBody}!tag@{tag}}
+\index{tag@{tag}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{tag}{tag}}
+{\footnotesize\ttfamily std\+::string Physics\+Body\+::tag = \char`\"{}\char`\"{}}
+
+\mbox{\Hypertarget{class_physics_body_a504b14e16e214adf0021311a40f68dfb}\label{class_physics_body_a504b14e16e214adf0021311a40f68dfb}} 
+\index{PhysicsBody@{PhysicsBody}!torque@{torque}}
+\index{torque@{torque}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{torque}{torque}}
+{\footnotesize\ttfamily float Physics\+Body\+::torque}
+
+\mbox{\Hypertarget{class_physics_body_aec0c643403d115034db77f9556ebb774}\label{class_physics_body_aec0c643403d115034db77f9556ebb774}} 
+\index{PhysicsBody@{PhysicsBody}!type@{type}}
+\index{type@{type}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_physics_body_8h_a1d1cfd8ffb84e947f82999c682b666a7}{Type}} Physics\+Body\+::type}
+
+\mbox{\Hypertarget{class_physics_body_a69b18d144228eccd2a82c86fcdebe9b5}\label{class_physics_body_a69b18d144228eccd2a82c86fcdebe9b5}} 
+\index{PhysicsBody@{PhysicsBody}!useGravity@{useGravity}}
+\index{useGravity@{useGravity}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{useGravity}{useGravity}}
+{\footnotesize\ttfamily bool Physics\+Body\+::use\+Gravity}
+
+\mbox{\Hypertarget{class_physics_body_a8a2c10fcb6da06fc46270a570b1fadf7}\label{class_physics_body_a8a2c10fcb6da06fc46270a570b1fadf7}} 
+\index{PhysicsBody@{PhysicsBody}!velocity@{velocity}}
+\index{velocity@{velocity}!PhysicsBody@{PhysicsBody}}
+\subsubsection{\texorpdfstring{velocity}{velocity}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Physics\+Body\+::velocity}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_physics_body_8h}{Physics\+Body.\+h}}\item 
+Source/\mbox{\hyperlink{_physics_body_8cpp}{Physics\+Body.\+cpp}}\end{DoxyCompactItemize}

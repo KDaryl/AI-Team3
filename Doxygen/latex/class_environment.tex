@@ -1,0 +1,118 @@
+\hypertarget{class_environment}{}\section{Environment Class Reference}
+\label{class_environment}\index{Environment@{Environment}}
+
+
+{\ttfamily \#include $<$Environment.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_environment_a26ec69a91e421bfe6a12c7f17955fa9b}{Environment}} (float x, float y, std\+::string \+\_\+tag)
+\item 
+\mbox{\hyperlink{class_environment_a8e294735187880dd3d59be10c425b29d}{$\sim$\+Environment}} ()
+\item 
+void \mbox{\hyperlink{class_environment_adfbdb91f7ab45252711cb6b0d499a40d}{draw}} (sf\+::\+Render\+Window \&win)
+\item 
+void \mbox{\hyperlink{class_environment_a55ae46ea23667b1fc4de6bdc0935107e}{set\+Texture}} (\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&resources, std\+::string texture\+Name)
+\item 
+void \mbox{\hyperlink{class_environment_a4615c9f3ea54f3365edd07c6dd92c612}{set\+Rotation}} (float \mbox{\hyperlink{class_environment_af506dbb19e1fb357a88221c510d4e834}{angle}})
+\item 
+void \mbox{\hyperlink{class_environment_adf58bfd600005d72d6fdb2c5236440dc}{set\+Scale}} (float x, float y)
+\item 
+sf\+::\+Float\+Rect \mbox{\hyperlink{class_environment_a991c9538f0da2c606359517f83f3fa28}{collider}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_environment_a5858053529312140e8d7e8ab8b0f2dc0}{tag}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_environment_ac08b227b88843515dae0938715ddfd1e}{m\+\_\+position}}
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{class_environment_aea118013b2fe6baf3546bcce8c47bf79}{m\+\_\+sprite}}
+\item 
+float \mbox{\hyperlink{class_environment_af506dbb19e1fb357a88221c510d4e834}{angle}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description\+: This class is used for creating a piece of environment (worker areas, spawn areas) etc.. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_environment_a26ec69a91e421bfe6a12c7f17955fa9b}\label{class_environment_a26ec69a91e421bfe6a12c7f17955fa9b}} 
+\index{Environment@{Environment}!Environment@{Environment}}
+\index{Environment@{Environment}!Environment@{Environment}}
+\subsubsection{\texorpdfstring{Environment()}{Environment()}}
+{\footnotesize\ttfamily Environment\+::\+Environment (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{std\+::string}]{\+\_\+tag }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_environment_a8e294735187880dd3d59be10c425b29d}\label{class_environment_a8e294735187880dd3d59be10c425b29d}} 
+\index{Environment@{Environment}!````~Environment@{$\sim$Environment}}
+\index{````~Environment@{$\sim$Environment}!Environment@{Environment}}
+\subsubsection{\texorpdfstring{$\sim$Environment()}{~Environment()}}
+{\footnotesize\ttfamily Environment\+::$\sim$\+Environment (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_environment_a991c9538f0da2c606359517f83f3fa28}\label{class_environment_a991c9538f0da2c606359517f83f3fa28}} 
+\index{Environment@{Environment}!collider@{collider}}
+\index{collider@{collider}!Environment@{Environment}}
+\subsubsection{\texorpdfstring{collider()}{collider()}}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect Environment\+::collider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_environment_adfbdb91f7ab45252711cb6b0d499a40d}\label{class_environment_adfbdb91f7ab45252711cb6b0d499a40d}} 
+\index{Environment@{Environment}!draw@{draw}}
+\index{draw@{draw}!Environment@{Environment}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Environment\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{win }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_environment_a4615c9f3ea54f3365edd07c6dd92c612}\label{class_environment_a4615c9f3ea54f3365edd07c6dd92c612}} 
+\index{Environment@{Environment}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!Environment@{Environment}}
+\subsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily void Environment\+::set\+Rotation (\begin{DoxyParamCaption}\item[{float}]{\+\_\+angle }\end{DoxyParamCaption})}
+
+Description\+: Sets the rotation of the environment sprite \mbox{\Hypertarget{class_environment_adf58bfd600005d72d6fdb2c5236440dc}\label{class_environment_adf58bfd600005d72d6fdb2c5236440dc}} 
+\index{Environment@{Environment}!setScale@{setScale}}
+\index{setScale@{setScale}!Environment@{Environment}}
+\subsubsection{\texorpdfstring{setScale()}{setScale()}}
+{\footnotesize\ttfamily void Environment\+::set\+Scale (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+Description\+: Sets the scale of the environment sprite \mbox{\Hypertarget{class_environment_a55ae46ea23667b1fc4de6bdc0935107e}\label{class_environment_a55ae46ea23667b1fc4de6bdc0935107e}} 
+\index{Environment@{Environment}!setTexture@{setTexture}}
+\index{setTexture@{setTexture}!Environment@{Environment}}
+\subsubsection{\texorpdfstring{setTexture()}{setTexture()}}
+{\footnotesize\ttfamily void Environment\+::set\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&}]{resources,  }\item[{std\+::string}]{texture\+Name }\end{DoxyParamCaption})}
+
+Description\+: Sets the environment sprite 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_environment_af506dbb19e1fb357a88221c510d4e834}\label{class_environment_af506dbb19e1fb357a88221c510d4e834}} 
+\index{Environment@{Environment}!angle@{angle}}
+\index{angle@{angle}!Environment@{Environment}}
+\subsubsection{\texorpdfstring{angle}{angle}}
+{\footnotesize\ttfamily float Environment\+::angle}
+
+\mbox{\Hypertarget{class_environment_ac08b227b88843515dae0938715ddfd1e}\label{class_environment_ac08b227b88843515dae0938715ddfd1e}} 
+\index{Environment@{Environment}!m\_position@{m\_position}}
+\index{m\_position@{m\_position}!Environment@{Environment}}
+\subsubsection{\texorpdfstring{m\_position}{m\_position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Environment\+::m\+\_\+position}
+
+\mbox{\Hypertarget{class_environment_aea118013b2fe6baf3546bcce8c47bf79}\label{class_environment_aea118013b2fe6baf3546bcce8c47bf79}} 
+\index{Environment@{Environment}!m\_sprite@{m\_sprite}}
+\index{m\_sprite@{m\_sprite}!Environment@{Environment}}
+\subsubsection{\texorpdfstring{m\_sprite}{m\_sprite}}
+{\footnotesize\ttfamily sf\+::\+Sprite Environment\+::m\+\_\+sprite}
+
+\mbox{\Hypertarget{class_environment_a5858053529312140e8d7e8ab8b0f2dc0}\label{class_environment_a5858053529312140e8d7e8ab8b0f2dc0}} 
+\index{Environment@{Environment}!tag@{tag}}
+\index{tag@{tag}!Environment@{Environment}}
+\subsubsection{\texorpdfstring{tag}{tag}}
+{\footnotesize\ttfamily std\+::string Environment\+::tag}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_environment_8h}{Environment.\+h}}\item 
+Source/\mbox{\hyperlink{_environment_8cpp}{Environment.\+cpp}}\end{DoxyCompactItemize}

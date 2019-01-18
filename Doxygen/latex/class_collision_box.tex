@@ -1,0 +1,158 @@
+\hypertarget{class_collision_box}{}\section{Collision\+Box Class Reference}
+\label{class_collision_box}\index{CollisionBox@{CollisionBox}}
+
+
+{\ttfamily \#include $<$Collision\+Box.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_collision_box_a11e887724dd21a42caa87411018de342}{Collision\+Box}} ()
+\item 
+\mbox{\hyperlink{class_collision_box_a0a5bd8a87ad2d2efd445588e5b568edc}{Collision\+Box}} (float x, float y, float \mbox{\hyperlink{class_collision_box_ac04317c3ca9bc133a784f414066e569c}{w}}, float \mbox{\hyperlink{class_collision_box_ab46fbe0c72f6c67074798ec6c926bd6a}{h}})
+\item 
+\mbox{\hyperlink{class_collision_box_aeb743d5c3c5b54d2648281a4782f8a40}{$\sim$\+Collision\+Box}} ()
+\item 
+void \mbox{\hyperlink{class_collision_box_aca6fcbadbe589886e9170374420e02b8}{set\+Box}} ()
+\item 
+void \mbox{\hyperlink{class_collision_box_a20fa84f0bba29e6f80eeb0e087d54043}{rotate}} (float angle)
+\item 
+void \mbox{\hyperlink{class_collision_box_a548872339aca0b62d4f515ac7378e864}{set\+Size}} (float \mbox{\hyperlink{class_collision_box_ac04317c3ca9bc133a784f414066e569c}{w}}, float \mbox{\hyperlink{class_collision_box_ab46fbe0c72f6c67074798ec6c926bd6a}{h}})
+\item 
+void \mbox{\hyperlink{class_collision_box_a5f75f1544e0f08e1c218a1616150d1c8}{set\+Size}} (float x, float y, float \mbox{\hyperlink{class_collision_box_ac04317c3ca9bc133a784f414066e569c}{w}}, float \mbox{\hyperlink{class_collision_box_ab46fbe0c72f6c67074798ec6c926bd6a}{h}})
+\item 
+void \mbox{\hyperlink{class_collision_box_a24bf7c5f74f474eea1669f7422c5ecf7}{set\+Position}} (float x, float y)
+\item 
+void \mbox{\hyperlink{class_collision_box_a7a4b85f70e3d2d5ae5b8df7aade248fb}{set\+Position}} (\mbox{\hyperlink{class_vector2f}{Vector2f}} pos)
+\item 
+void \mbox{\hyperlink{class_collision_box_a6063d25f96262043ed68493a8f1152e6}{draw}} (sf\+::\+Render\+Window \&window)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_collision_box_aa2540a955bf4b7cefed5ec60b6e68b83}{position}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_collision_box_a0eda20217315eb03da92ddb623dad972}{min}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_collision_box_a46eadd8277c3ed86e7651a359a2cbefa}{max}}
+\item 
+float \mbox{\hyperlink{class_collision_box_ac04317c3ca9bc133a784f414066e569c}{w}}
+\item 
+float \mbox{\hyperlink{class_collision_box_ab46fbe0c72f6c67074798ec6c926bd6a}{h}}
+\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{class_collision_box_ad4578e9be636b6642146dd8c89f0f0fc}{rect}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class used to make a collision A\+A\+BB box around certain bodies 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_collision_box_a11e887724dd21a42caa87411018de342}\label{class_collision_box_a11e887724dd21a42caa87411018de342}} 
+\index{CollisionBox@{CollisionBox}!CollisionBox@{CollisionBox}}
+\index{CollisionBox@{CollisionBox}!CollisionBox@{CollisionBox}}
+\subsubsection{\texorpdfstring{CollisionBox()}{CollisionBox()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Collision\+Box\+::\+Collision\+Box (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_collision_box_a0a5bd8a87ad2d2efd445588e5b568edc}\label{class_collision_box_a0a5bd8a87ad2d2efd445588e5b568edc}} 
+\index{CollisionBox@{CollisionBox}!CollisionBox@{CollisionBox}}
+\index{CollisionBox@{CollisionBox}!CollisionBox@{CollisionBox}}
+\subsubsection{\texorpdfstring{CollisionBox()}{CollisionBox()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Collision\+Box\+::\+Collision\+Box (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{w,  }\item[{float}]{h }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_collision_box_aeb743d5c3c5b54d2648281a4782f8a40}\label{class_collision_box_aeb743d5c3c5b54d2648281a4782f8a40}} 
+\index{CollisionBox@{CollisionBox}!````~CollisionBox@{$\sim$CollisionBox}}
+\index{````~CollisionBox@{$\sim$CollisionBox}!CollisionBox@{CollisionBox}}
+\subsubsection{\texorpdfstring{$\sim$CollisionBox()}{~CollisionBox()}}
+{\footnotesize\ttfamily Collision\+Box\+::$\sim$\+Collision\+Box (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_collision_box_a6063d25f96262043ed68493a8f1152e6}\label{class_collision_box_a6063d25f96262043ed68493a8f1152e6}} 
+\index{CollisionBox@{CollisionBox}!draw@{draw}}
+\index{draw@{draw}!CollisionBox@{CollisionBox}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Collision\+Box\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_collision_box_a20fa84f0bba29e6f80eeb0e087d54043}\label{class_collision_box_a20fa84f0bba29e6f80eeb0e087d54043}} 
+\index{CollisionBox@{CollisionBox}!rotate@{rotate}}
+\index{rotate@{rotate}!CollisionBox@{CollisionBox}}
+\subsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily void Collision\+Box\+::rotate (\begin{DoxyParamCaption}\item[{float}]{angle }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_collision_box_aca6fcbadbe589886e9170374420e02b8}\label{class_collision_box_aca6fcbadbe589886e9170374420e02b8}} 
+\index{CollisionBox@{CollisionBox}!setBox@{setBox}}
+\index{setBox@{setBox}!CollisionBox@{CollisionBox}}
+\subsubsection{\texorpdfstring{setBox()}{setBox()}}
+{\footnotesize\ttfamily void Collision\+Box\+::set\+Box (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_collision_box_a24bf7c5f74f474eea1669f7422c5ecf7}\label{class_collision_box_a24bf7c5f74f474eea1669f7422c5ecf7}} 
+\index{CollisionBox@{CollisionBox}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!CollisionBox@{CollisionBox}}
+\subsubsection{\texorpdfstring{setPosition()}{setPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Collision\+Box\+::set\+Position (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_collision_box_a7a4b85f70e3d2d5ae5b8df7aade248fb}\label{class_collision_box_a7a4b85f70e3d2d5ae5b8df7aade248fb}} 
+\index{CollisionBox@{CollisionBox}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!CollisionBox@{CollisionBox}}
+\subsubsection{\texorpdfstring{setPosition()}{setPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Collision\+Box\+::set\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_collision_box_a548872339aca0b62d4f515ac7378e864}\label{class_collision_box_a548872339aca0b62d4f515ac7378e864}} 
+\index{CollisionBox@{CollisionBox}!setSize@{setSize}}
+\index{setSize@{setSize}!CollisionBox@{CollisionBox}}
+\subsubsection{\texorpdfstring{setSize()}{setSize()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Collision\+Box\+::set\+Size (\begin{DoxyParamCaption}\item[{float}]{w,  }\item[{float}]{h }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_collision_box_a5f75f1544e0f08e1c218a1616150d1c8}\label{class_collision_box_a5f75f1544e0f08e1c218a1616150d1c8}} 
+\index{CollisionBox@{CollisionBox}!setSize@{setSize}}
+\index{setSize@{setSize}!CollisionBox@{CollisionBox}}
+\subsubsection{\texorpdfstring{setSize()}{setSize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Collision\+Box\+::set\+Size (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{w,  }\item[{float}]{h }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_collision_box_ab46fbe0c72f6c67074798ec6c926bd6a}\label{class_collision_box_ab46fbe0c72f6c67074798ec6c926bd6a}} 
+\index{CollisionBox@{CollisionBox}!h@{h}}
+\index{h@{h}!CollisionBox@{CollisionBox}}
+\subsubsection{\texorpdfstring{h}{h}}
+{\footnotesize\ttfamily float Collision\+Box\+::h}
+
+\mbox{\Hypertarget{class_collision_box_a46eadd8277c3ed86e7651a359a2cbefa}\label{class_collision_box_a46eadd8277c3ed86e7651a359a2cbefa}} 
+\index{CollisionBox@{CollisionBox}!max@{max}}
+\index{max@{max}!CollisionBox@{CollisionBox}}
+\subsubsection{\texorpdfstring{max}{max}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Collision\+Box\+::max}
+
+\mbox{\Hypertarget{class_collision_box_a0eda20217315eb03da92ddb623dad972}\label{class_collision_box_a0eda20217315eb03da92ddb623dad972}} 
+\index{CollisionBox@{CollisionBox}!min@{min}}
+\index{min@{min}!CollisionBox@{CollisionBox}}
+\subsubsection{\texorpdfstring{min}{min}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Collision\+Box\+::min}
+
+\mbox{\Hypertarget{class_collision_box_aa2540a955bf4b7cefed5ec60b6e68b83}\label{class_collision_box_aa2540a955bf4b7cefed5ec60b6e68b83}} 
+\index{CollisionBox@{CollisionBox}!position@{position}}
+\index{position@{position}!CollisionBox@{CollisionBox}}
+\subsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Collision\+Box\+::position}
+
+\mbox{\Hypertarget{class_collision_box_ad4578e9be636b6642146dd8c89f0f0fc}\label{class_collision_box_ad4578e9be636b6642146dd8c89f0f0fc}} 
+\index{CollisionBox@{CollisionBox}!rect@{rect}}
+\index{rect@{rect}!CollisionBox@{CollisionBox}}
+\subsubsection{\texorpdfstring{rect}{rect}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Collision\+Box\+::rect}
+
+\mbox{\Hypertarget{class_collision_box_ac04317c3ca9bc133a784f414066e569c}\label{class_collision_box_ac04317c3ca9bc133a784f414066e569c}} 
+\index{CollisionBox@{CollisionBox}!w@{w}}
+\index{w@{w}!CollisionBox@{CollisionBox}}
+\subsubsection{\texorpdfstring{w}{w}}
+{\footnotesize\ttfamily float Collision\+Box\+::w}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_collision_box_8h}{Collision\+Box.\+h}}\item 
+Source/\mbox{\hyperlink{_collision_box_8cpp}{Collision\+Box.\+cpp}}\end{DoxyCompactItemize}
