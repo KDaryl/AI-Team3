@@ -16,6 +16,9 @@ PlayerBullet::PlayerBullet() :
 	m_body.isSensor = true; //Is a sensor, means it will avouid collision resolution (wont bounce)
 }
 
+/**
+* Description: Bullets moves at its spawned velocity and angle
+*/
 void PlayerBullet::update(double dt)
 {
 	//Update animator
@@ -60,6 +63,9 @@ void PlayerBullet::draw(sf::RenderWindow & window)
 	}
 }
 
+/**
+* Description: Spawn the bullet at a position and angle
+*/
 void PlayerBullet::spawn(Vector2f position, float angle)
 {
 	alive = true;
@@ -88,6 +94,9 @@ void PlayerBullet::spawn(Vector2f position, float angle)
 	}
 }
 
+/**
+* Description: Sets the textures for the player bullet
+*/
 void PlayerBullet::setTexture(ResourceManager & resources)
 {
 	m_sprite.setTexture(resources.getTexture("Player Bullet"));
@@ -113,6 +122,9 @@ void PlayerBullet::setTexture(ResourceManager & resources)
 	physics::world->addPhysicsBody(m_body);
 }
 
+/**
+* Description: Sets the bullet as collided
+*/
 void PlayerBullet::hasCollided()
 {
 	alive = false;

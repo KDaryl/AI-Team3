@@ -1,6 +1,9 @@
 #pragma once
 #include "AI.h"
 
+/**
+* Description: Here is the enst missile, it fires when a playe ris in range
+*/
 class NestMissile
 {
 public:

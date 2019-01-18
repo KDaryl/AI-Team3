@@ -18,7 +18,9 @@
 
 #include "Game.h"
 
-//runs game
+/**
+* Description: Here is the entry point of the game
+*/
 int main()
 {
 	Game game;

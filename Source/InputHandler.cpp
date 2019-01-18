@@ -31,6 +31,9 @@ InputHandler::~InputHandler()
 {
 }
 
+/**
+* Description: Checks what keys are pressed
+*/
 void InputHandler::update(sf::RenderWindow& win)
 {
 	m_previous = m_current; //Set our previous
@@ -59,11 +62,17 @@ void InputHandler::update(sf::RenderWindow& win)
 	m_current["RIGHT_MOUSE"] = sf::Mouse::isButtonPressed(sf::Mouse::Button::Right); //Get right mouse click 
 }
 
+/**
+* Description: checks if a button is pressed
+*/
 bool InputHandler::isButtonPressed(std::string button)
 {
 	return m_current[button] && !m_previous[button];
 }
 
+/**
+* Description: Checks if a button is held down
+*/
 bool InputHandler::isButtonDown(std::string button)
 {
 	return m_current[button];

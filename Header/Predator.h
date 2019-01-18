@@ -1,6 +1,9 @@
 #pragma once
 #include "EnemyBullet.h"
 
+/**
+* Description: Here is the predator, it seeks and flocks when around a player
+*/
 class Predator
 {
 public:

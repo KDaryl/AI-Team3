@@ -3,19 +3,9 @@
 #include "ResourceManager.h"
 #include "Vector2f.h"
 
-//For reference, dont uncomment
-//enum Tag
-//{
-//	"ROE" : Room One Exit
-//	"CTE" : Corner Two Exits
-//	"BRFE" : Big Room Four Exits
-//	"2ER" : Two Exit room
-//	"SC" : Straight Corridor
-//	"CFJ" : Corridor 4 Junction
-//	"3ER" : Three exit room
-//	"TLCR" : Top Left Corner room
-//}
-
+/**
+* Description: This class is used for creating a piece of environment (worker areas, spawn areas) etc..
+*/
 class Environment
 {
 public:

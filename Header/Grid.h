@@ -2,7 +2,9 @@
 #include "Vector2f.h"
 #include <list>
 
-//Cell Class
+/**
+* Description: Cell class, used for the grid
+*/
 class Cell
 {
 public:
@@ -39,6 +41,9 @@ public:
 	sf::FloatRect rect; //Rectangle of the cell, we can do simple AABB collision detection to see if the cell is colliding with something
 };
 
+/**
+* Description: Grid class for pathfinding
+*/
 class Grid
 {
 public:

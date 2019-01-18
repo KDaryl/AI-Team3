@@ -74,6 +74,9 @@ Grid::Grid() :
 	}
 }
 
+/**
+* Description: Here we pathfind and get a path from a cell to another and return it
+*/
 std::vector<Vector2f> Grid::BFS(Cell & from, Cell & goal, std::vector<Cell*>& cells)
 {
 	m_bfsQueue.clear(); //Clear the queue
@@ -144,6 +147,9 @@ std::vector<Vector2f> Grid::BFS(Cell & from, Cell & goal, std::vector<Cell*>& ce
 	return path; //Return the path
 }
 
+/**
+* Description: draws the cells in the game
+*/
 void Grid::draw(sf::RenderWindow & window)
 {
 	//Loop through the cells

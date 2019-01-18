@@ -23,6 +23,9 @@ NestMissile::NestMissile(Vector2f& playerPos, Grid* grid) :
 	m_body.isSensor = true; //Is a sensor, means it will avouid collision resolution (wont bounce)
 }
 
+/**
+* Description: Updates the nest missile and pathfinds to the player if he is out of range, else he seeks to the player
+*/
 void NestMissile::update(double dt)
 {
 	if (timeAlive >= ttl)
@@ -120,6 +123,9 @@ void NestMissile::draw(sf::RenderWindow & window)
 	}
 }
 
+/**
+* Description: spawns the missile at the position and angle passsed
+*/
 void NestMissile::spawn(Vector2f position, float angle)
 {
 	alive = true;
@@ -172,6 +178,10 @@ void NestMissile::setTexture(ResourceManager & resources)
 	physics::world->addPhysicsBody(m_body);
 }
 
+
+/**
+* Description: Sets the missile as collided
+*/
 void NestMissile::hasCollided()
 {
 	alive = false;
@@ -182,6 +192,9 @@ void NestMissile::hasCollided()
 	m_body.type = Type::Static; //Change to static as we dont want physics to take over
 }
 
+/**
+* Description: seeks to a position
+*/
 bool NestMissile::seek(boolVecPair & p, double dt)
 {
 	//If target is outside the follow distance, then seek
