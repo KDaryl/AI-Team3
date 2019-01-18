@@ -8,6 +8,8 @@
 #include "Thor/Animations.hpp"
 #include <random>
 #include "Player.h"
+#include <vector>
+
 
 //For physics, we include these for every physics object
 #include "PhysicsHandler.h"
@@ -42,8 +44,7 @@ public:
 	void seek();
 	void flee();
 	void wander();
-	void swarm();
-	void flock();
+
 
 protected:
 	//player pointer

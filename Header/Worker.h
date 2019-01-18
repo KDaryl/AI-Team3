@@ -14,7 +14,9 @@ public:
 	void captureWorker(bool isPlayer, Vector2f& position);
 	void freeWorker(); //Worke rstops following captor
 	void setTexture(ResourceManager& resources);
-
+	
+	//getters
+	Vector2f getPos() { return m_position; }
 	int randInt(int min, int max);
 
 	//Methods to change max speed and speed to follow capturer and to also reset if capturer is dead
