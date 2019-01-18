@@ -1,19 +1,27 @@
 #pragma once
 #include "Collisions.h"
-
-//Our types of Bodies that we can have
+/**
+* Description: Our types of Bodies that we can have
+*/
 enum Type
 {
 	Dynamic,
 	Static
 };
-//Our types of shapes our bodies can ahve, Circles or Boxes
+
+/**
+* Description: Our types of shapes our bodies can ahve, Circles or Boxes
+*/
 enum Shape
 {
 	Box,
 	Circle
 };
 
+/**
+* Description: Physic body, this is the main class for moveable objects, classes that wish to move
+* will have a physicbody variable
+*/
 class PhysicsBody
 {
 public:

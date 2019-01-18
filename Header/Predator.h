@@ -29,6 +29,7 @@ public:
 	void setTexture(ResourceManager& resources);
 	void die(); //Predator dies
 
+	bool& isSpawned() { return m_alive; }
 	Vector2f m_position;
 private:
 	int health = 50; //Predator starts with 50 health

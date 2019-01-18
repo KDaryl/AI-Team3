@@ -2,6 +2,9 @@
 #include "CollisionCircle.h"
 #include "CollisionBox.h"
 
+/**
+* Description: Simple collisions checking class
+*/
 class Collisions
 {
 public:

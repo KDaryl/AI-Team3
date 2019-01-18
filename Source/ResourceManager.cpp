@@ -1,10 +1,16 @@
 #include "ResourceManager.h"
 
+/**
+* Description: Resource manager constructor
+*/
 ResourceManager::ResourceManager()
 {
 	loadTexture("Loading Screen", "Loading Screen/Loading Screen.png");
 }
 
+/**
+* Description: Method is called when its time load all the textures of the game
+*/
 void ResourceManager::loadTextures()
 {
 	//For good practice, we should use the name of the files as the id for the texture
@@ -53,6 +59,10 @@ void ResourceManager::loadTextures()
 	finishedLoading = true;
 }
 
+/**
+* Description: Loads a texture by using the file name, it sets the texture as smooth if the smooth bool is true and
+* adds the texture to our texture map using the name field
+*/
 void ResourceManager::loadTexture(std::string name, std::string fileName, bool smooth)
 {
 	sf::Texture texture;
@@ -64,6 +74,9 @@ void ResourceManager::loadTexture(std::string name, std::string fileName, bool s
 	m_textureMap[name] = texture;
 }
 
+/**
+* Description: Returns a texture that is held in the map by "textureName" the parameter
+*/
 sf::Texture & ResourceManager::getTexture(std::string textureName)
 {
 	return m_textureMap[textureName];

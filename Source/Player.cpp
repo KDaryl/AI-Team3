@@ -1,5 +1,8 @@
 #include "Player.h"
 
+/**
+* Description: Player constructor, setting initial values for the player
+*/
 Player::Player(float x, float y) :
 	m_position(x, y),
 	m_moveSpeed(150.f), //Can move 150 pixels per second
@@ -34,6 +37,9 @@ Player::Player(float x, float y) :
 		m_bullets.push_back(PlayerBullet());
 }
 
+/**
+* Description: Updates the players position
+*/
 void Player::update(double dt)
 {
 	//Update bullets
@@ -72,6 +78,9 @@ void Player::update(double dt)
 	}
 }
 
+/**
+* Description: Draws the players sprites
+*/
 void Player::draw(sf::RenderWindow & win, float a)
 {
 	//Draw bullets
@@ -89,6 +98,9 @@ void Player::draw(sf::RenderWindow & win, float a)
 	}
 }
 
+/**
+* Description: Here we check the input handler and perform an action depednign on what buttons were pressed/held down
+*/
 void Player::handleInput(InputHandler & input)
 {
 	if (alive)
@@ -157,6 +169,9 @@ void Player::handleInput(InputHandler & input)
 	}
 }
 
+/**
+* Description: Sets the Textures for the player
+*/
 void Player::setTexture(ResourceManager & resources)
 {
 	m_sprite.setTexture(resources.getTexture("Player"));
@@ -173,6 +188,10 @@ void Player::setTexture(ResourceManager & resources)
 		bullet.setTexture(resources);
 }
 
+/**
+* Description: Adds a value to the players health (we want to increase on pickup of workers/powerups)
+* and decrease when hit by enemy missiles (predator, Nest)
+*/
 void Player::addDelHealth(int val)
 {
 	health += val;
@@ -186,6 +205,9 @@ void Player::addDelHealth(int val)
 		health = maxHealth;
 }
 
+/**
+* Description: This method is called when the players health reaches 0
+*/
 void Player::die()
 {
 	m_physicsBody.type = Type::Static;
@@ -202,6 +224,9 @@ void Player::die()
 	m_deathSprite.setRotation(m_sprite.getRotation());
 }
 
+/**
+* Description: Creates the animation frames for the player (idle, moving, death)
+*/
 void Player::setupAnimations()
 {
 	thor::FrameAnimation move, idle, death; //Our animations

@@ -1,5 +1,8 @@
 #include "PhysicsBody.h"
 
+/**
+* Description: PhysicBody contructor
+*/
 PhysicsBody::PhysicsBody(Type _type, Shape _shape, void* data) :
 	type(_type),
 	shape(_shape),
@@ -35,6 +38,9 @@ PhysicsBody::~PhysicsBody()
 {
 }
 
+/**
+* Description: Updates the physics bodies position
+*/
 void PhysicsBody::update(float dt)
 {
 	collisionResolved = false;
@@ -59,6 +65,9 @@ void PhysicsBody::update(float dt)
 	velocity *= friction;
 }
 
+/**
+* Description: Draws the physics bodies colliders
+*/
 void PhysicsBody::draw(sf::RenderWindow & window)
 {
 	switch (shape)
@@ -72,12 +81,17 @@ void PhysicsBody::draw(sf::RenderWindow & window)
 		break;
 	}
 }
-
+/**
+* Description: Applies gravity to the physics body
+*/
 void PhysicsBody::applyGravity(float gravity)
 {
 	velocity.y += (gravity * gravityScalar); //Add gravity to our velocity
 }
 
+/**
+* Description: Equality operator for comparisons
+*/
 bool PhysicsBody::operator==(const PhysicsBody & b)
 {
 	PhysicsBody a = b; //Assign b to a so we can convert from const to non const for comparisons
@@ -88,21 +102,33 @@ bool PhysicsBody::operator==(const PhysicsBody & b)
 	return false;
 }
 
+/**
+* Description: Sets the bodies velocity
+*/
 void PhysicsBody::setVelocity(Vector2f vel)
 {
 	velocity = vel;
 }
 
+/**
+* Description: Sets the friction of the body
+*/
 void PhysicsBody::setFriction(float f)
 {
 	friction = f;
 }
 
+/**
+* Description: Sets the restitution of the body (how much of its velocity is lost on impact)
+*/
 void PhysicsBody::setRestitution(float resti)
 {
 	e = resti;
 }
 
+/**
+* Description: Sets the initial rotation of the body
+*/
 void PhysicsBody::setInitialRotation(float angle)
 {
 	if (shape == Shape::Box)
@@ -111,16 +137,25 @@ void PhysicsBody::setInitialRotation(float angle)
 	}
 }
 
+/**
+* Description: Adds a force to the velocity
+*/
 void PhysicsBody::addForce(Vector2f force)
 {
 	velocity += force * mass;
 }
 
+/**
+* Description: Sets the gravity scalar
+*/
 void PhysicsBody::setGravityScalar(float val)
 {
 	gravityScalar = val;
 }
 
+/**
+* Description: Sets the box collider properties
+*/
 void PhysicsBody::setBoxParameters(Vector2f startPos, Vector2f _size, float _mass, bool _useGravity)
 {
 	position = startPos;
@@ -135,6 +170,9 @@ void PhysicsBody::setBoxParameters(Vector2f startPos, Vector2f _size, float _mas
 		inv_mass = 1 / mass;
 }
 
+/**
+* Description: Sets the Circle collider properties
+*/
 void PhysicsBody::setCircleParameters(Vector2f startPos, float _radius, float _mass, bool _useGravity)
 {
 	position = startPos;

@@ -4,7 +4,8 @@
 #include "Nest.h"
 #include <algorithm>
 
-PhysicsHandler::PhysicsHandler()
+PhysicsHandler::PhysicsHandler() :
+	deleteBody(false)
 {
 }
 
@@ -12,8 +13,23 @@ PhysicsHandler::~PhysicsHandler()
 {
 }
 
+/**
+* Description: Update sthe bodies and applies gravity if it is set to be affected by it
+*/
 void PhysicsHandler::update(float dt)
 {
+	if (physics::world->deleteBody)
+	{
+		for (auto& body : physics::world->bodiesToDelete)
+		{
+			physics::world->bodies.erase(std::remove_if(physics::world->bodies.begin(), physics::world->bodies.end(),
+				[body](PhysicsBody* i) {return i && (*i == *body); }));
+		}
+		physics::world->deleteBody = false;
+		physics::world->bodiesToDelete.clear();
+	}
+
+
 	physics::dt = dt; //Set DT
 
 	//Loop through our bodies and update them
@@ -29,6 +45,9 @@ void PhysicsHandler::update(float dt)
 	}
 }
 
+/**
+* Description: Calls the appropriate collisions checking method based on the type of body (non-sensor and sensor)
+*/
 void PhysicsHandler::checkCollision()
 {
 	//Collision Checking
@@ -52,6 +71,9 @@ void PhysicsHandler::checkCollision()
 	}
 }
 
+/**
+* Description: Checks if a sensor body has a collided with something
+*/
 void PhysicsHandler::checkSensorCollision(Manifold & m)
 {
 	if (m.A->collisionResolved || m.B->collisionResolved)
@@ -102,6 +124,9 @@ void PhysicsHandler::checkSensorCollision(Manifold & m)
 	}
 }
 
+/**
+* Description: Checks if two non sensor bodies has collided 
+*/
 void PhysicsHandler::checkNonSensorCollision(Manifold & m)
 {
 	//Do an efficient collision check before doing expensive calls to CircleVsBox and AABBvsAABB
@@ -146,6 +171,9 @@ void PhysicsHandler::checkNonSensorCollision(Manifold & m)
 	}
 }
 
+/** 
+* Description: Draws each physics body (debugging purposes)
+*/
 void PhysicsHandler::draw(sf::RenderWindow & window)
 {
 	//Loop through our bodies
@@ -156,6 +184,9 @@ void PhysicsHandler::draw(sf::RenderWindow & window)
 	}
 }
 
+/**
+* Description: Resolves non sensor body collisions
+*/
 void PhysicsHandler::resolveCollision(Manifold& m)
 {
 	//Calculate relative velocity
@@ -196,6 +227,9 @@ void PhysicsHandler::resolveCollision(Manifold& m)
 	positionalCorrection(m);
 }
 
+/**
+* Description: Resolves any sensor body collisions (this is useful for trigger events)
+*/
 void PhysicsHandler::resolveSensorCollision(Manifold & m)
 {
 	//Destroy bullets
@@ -246,8 +280,20 @@ void PhysicsHandler::resolveSensorCollision(Manifold & m)
 		pred.decrementHealth(-25); //Player bullet does 25 damage
 		m.A->tag == "Predator" ? m.A->collisionResolved = true : m.B->collisionResolved = true;
 	}
+
+	//If a player bullet hits a nest, take health off the nest
+	if ((m.A->tag == "Player Bullet" || m.B->tag == "Player Bullet") &&
+		(m.A->tag == "Nest" || m.B->tag == "Nest"))
+	{
+		Nest& nest = *static_cast<Nest*>(static_cast<void*>(m.A->tag == "Nest" ? m.A->objectData : m.B->objectData));
+		nest.addDecHealth(-25); //Player bullet does 25 damage
+		m.A->tag == "Nest" ? m.A->collisionResolved = true : m.B->collisionResolved = true;
+	}
 }
 
+/**
+* Description: Needs to help avoid sinking objects so position correction pushes objects away to avoid this
+*/
 void PhysicsHandler::positionalCorrection(Manifold& m)
 {
 	float percent = 0.4f; //Usually 20 to 80 percent
@@ -257,17 +303,28 @@ void PhysicsHandler::positionalCorrection(Manifold& m)
 	m.B->position += correction * m.B->inv_mass * (physics::dt * 3);
 }
 
+/**
+* Description: Adds a physics body to the bodies vector
+*/
 void PhysicsHandler::addPhysicsBody(PhysicsBody & body)
 {
 	physics::world->bodies.push_back(&body); //Add the body to the vector of physics bodies
 }
 
+/**
+* Description: Removes a physic body from the bodies vector
+*/
 void PhysicsHandler::deletePhysicsBody(PhysicsBody & body)
 {
-	physics::world->bodies.erase(std::remove_if(physics::world->bodies.begin(), physics::world->bodies.end(),
-		[body](PhysicsBody* i) {return i && (*i == body); }));
+	physics::world->bodiesToDelete.push_back(&body);
+
+	physics::world->deleteBody = true;
 }
 
+/**
+* Description: Simple box to box collisions checking, this is done to see if there is a potential
+* collision before we do the more expensive collision detection
+*/
 bool PhysicsHandler::simpleAABBvsAABB(Manifold & m)
 {
 	// Exit with no intersection if found separated along an axis
@@ -280,6 +337,9 @@ bool PhysicsHandler::simpleAABBvsAABB(Manifold & m)
 	return true;
 }
 
+/**
+* Description: Overlap Box to Box collision
+*/
 bool PhysicsHandler::AABBvsAABB(Manifold& m)
 {
 	CollisionBox* a = m.A->bCollider;
@@ -335,6 +395,9 @@ bool PhysicsHandler::AABBvsAABB(Manifold& m)
 	return false;
 }
 
+/**
+* Description: Circle to Circle collision detection, checks if two circles are colliding
+*/
 bool PhysicsHandler::CirclevsCircle(Manifold& m)
 {
 	CollisionCircle* a = m.A->cCollider;
@@ -372,6 +435,9 @@ bool PhysicsHandler::CirclevsCircle(Manifold& m)
 	}
 }
 
+/**
+* Description: Checks if a circle is colliding with a box
+*/
 bool PhysicsHandler::AABBvsCircle(Manifold& m)
 {
 	CollisionBox* a = m.A->bCollider;
@@ -448,16 +514,25 @@ bool PhysicsHandler::AABBvsCircle(Manifold& m)
 	return true;
 }
 
-
+/**
+* Description: Clamps a value between min and max
+*/
 float PhysicsHandler::clamp(float minNum, float maxNum, float num)
 {
 	return min(maxNum, max(num, minNum));
 }
+
+/**
+* Description: Returns the minimum value between a and b
+*/
 float PhysicsHandler::min(float a, float b)
 {
 	return a < b ? a : b;
 }
 
+/**
+* Description: returns the maximum number between a and b
+*/
 float PhysicsHandler::max(float a, float b)
 {
 	return a > b ? a : b;

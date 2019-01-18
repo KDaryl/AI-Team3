@@ -1,6 +1,11 @@
 #pragma once
 #include "PlayerBullet.h"
 
+/**
+* Class : Player
+* Description: The player is controlled by the user using the Arrow keys or W,A,S and D keys.
+* the player can shoot using the spacebar.
+*/
 class Player
 {
 public:

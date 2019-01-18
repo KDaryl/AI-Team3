@@ -39,6 +39,7 @@ private:
 	};
 	std::vector<Worker> m_workerAI; //All of our worker Ai's
 	std::vector<Predator> m_predatorAI; //All of our predator Ai's
+	std::vector<Nest> m_nests; //All of the alien nests
 
 	Sweeper m_sweeperBot;
 

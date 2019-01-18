@@ -4,7 +4,9 @@
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
-
+/**
+* Description: This loads and stores the data from a json file
+*/
 class LevelLoader
 {
 public:

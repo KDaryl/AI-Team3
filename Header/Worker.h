@@ -23,6 +23,7 @@ public:
 	bool& isCapturedByPlayer() { return m_playerCaptured; }
 	bool& captured() { return m_captured; }
 	CollisionCircle& rangeCollider() { return m_rangeCollider; }
+	sf::FloatRect& collider() { return m_collider; }
 private:
 	enum WorkerState //Local to Worker
 	{
@@ -51,6 +52,7 @@ private:
 	Grid* m_gridPtr;
 
 	sf::FloatRect m_gridRect;
+	sf::FloatRect m_collider;
 
 	//Wander variables
 	float m_wanderChange, m_currentWander;

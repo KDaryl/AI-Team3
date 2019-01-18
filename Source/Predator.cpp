@@ -1,5 +1,8 @@
 #include "Predator.h"
 
+/**
+* Description: Predator constructor, setting initial values for the predator
+*/
 Predator::Predator(Vector2f& playerPos, Grid* grid) :
 	m_gridPtr(grid),
 	m_playerPosPtr(&playerPos),
@@ -35,6 +38,10 @@ Predator::~Predator()
 {
 }
 
+/**
+* Description: Updates the predator, if he is alive and out of range of the player, he does a pathfind to him,
+* if hes in range of the player he looks at the player and fires a bullet
+*/
 void Predator::update(double dt)
 {
 	if (m_alive)
@@ -117,6 +124,9 @@ void Predator::update(double dt)
 	}
 }
 
+/**
+* Description: Draws the predators sprites
+*/
 void Predator::draw(sf::RenderWindow & window)
 {
 	//Draw any live bullets
@@ -136,6 +146,9 @@ void Predator::draw(sf::RenderWindow & window)
 
 }
 
+/**
+* Description: Seeks to the location in the boolVecPair and if it reaches the position, it marks it as true
+*/
 bool Predator::seek(boolVecPair& p, double dt)
 {
 	//If target is outside the follow distance, then seek
@@ -164,6 +177,9 @@ bool Predator::seek(boolVecPair& p, double dt)
 	}
 }
 
+/**
+* Description: Looks towards the player and if the predator can fire, it will spawn a bullet
+*/
 void Predator::lookAtPlayer(double dt)
 {
 	m_angle = (*m_playerPosPtr - m_position).angle();
@@ -184,6 +200,9 @@ void Predator::lookAtPlayer(double dt)
 	}
 }
 
+/**
+* Description: Spawns the predator at the specified location (the nests position)
+*/
 void Predator::spawn(Vector2f spawnPos)
 {
 	health = 50;//Reset health
@@ -196,6 +215,9 @@ void Predator::spawn(Vector2f spawnPos)
 	m_gridRect.top = m_position.y - m_gridRect.height / 2;
 }
 
+/**
+* Description: Adds/Subtracts a value from health, if health reaches 0 call die() method
+*/
 void Predator::decrementHealth(int val)
 {
 	health += val;
@@ -206,6 +228,9 @@ void Predator::decrementHealth(int val)
 	}
 }
 
+/**
+* Description: Sets the textures of the predator
+*/
 void Predator::setTexture(ResourceManager & resources)
 {
 	thor::FrameAnimation death; //Our animations
@@ -232,6 +257,9 @@ void Predator::setTexture(ResourceManager & resources)
 	physics::world->addPhysicsBody(m_body); //Add to physics here, as we cannot modify the physics during a physics update
 }
 
+/**
+* Description: Kills the predator (plays a death animation)
+*/
 void Predator::die()
 {
 	m_body.position.zeroVector();

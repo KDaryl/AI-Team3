@@ -1,6 +1,9 @@
 #pragma once
 #include "Vector2f.h"
 
+/**
+* Description: Collision Circle class
+*/
 class CollisionCircle
 {
 public:

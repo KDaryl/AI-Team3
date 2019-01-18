@@ -61,7 +61,15 @@ void GameScene::loadMap()
 		m_workerAI.push_back(Worker(Vector2f(area["X"], area["Y"]), &m_grid));
 		workers++;
 	}
+
 	m_hud.setMaxWorkers(workers);
+
+	//Create our nests
+	for (auto& nest : m_levelLoader.data["Nests"])
+	{
+		Vector2f pos = Vector2f(nest["X"], nest["Y"]);
+		m_nests.push_back(Nest(m_player, m_grid, pos, m_predatorAI));
+	}
 
 	//Load our spawn point
 	for (auto& spawn : m_levelLoader.data["Spawn Point"])
@@ -147,6 +155,12 @@ void GameScene::update(double dt)
 	//Update minimap
 	m_hud.update(dt);
 
+	//Update nests
+	for (auto& nest : m_nests)
+	{
+		nest.update(dt, m_nests);
+	}
+
 	//Update predators
 	for (auto& pred : m_predatorAI)
 	{
@@ -175,7 +189,7 @@ void GameScene::update(double dt)
 	}
 
 	//Remove player captured workers from the vector
-	m_workerAI.erase(std::remove_if(m_workerAI.begin(), m_workerAI.end(), removeCapturedWorker()),m_workerAI.end());
+	m_workerAI.erase(std::remove_if(m_workerAI.begin(), m_workerAI.end(), removeCapturedWorker()), m_workerAI.end());
 
 	//update ai
 	m_sweeperBot.update(dt);
@@ -222,7 +236,15 @@ void GameScene::draw(sf::RenderWindow & window, float a)
 	//Draw workers
 	for (auto& worker : m_workerAI)
 	{
-		worker.draw(window);
+		if(worker.collider().intersects(m_viewRect))
+			worker.draw(window);
+	}
+
+	//Draw nests
+	for (auto& nest : m_nests)
+	{
+		if(nest.collider().intersects(m_viewRect))
+			nest.draw(window);
 	}
 
 	//Draw predators
@@ -246,9 +268,6 @@ void GameScene::draw(sf::RenderWindow & window, float a)
 		physics::world->draw(window);
 
 	drawMinimap(window); //Draw the mini map
-
-	//Set the windows view
-	window.setView(m_followView);
 }
 
 void GameScene::drawMinimap(sf::RenderWindow & window)
@@ -329,7 +348,11 @@ void GameScene::setTexture(ResourceManager & resources)
 		pred.setTexture(resources);
 	}
 
-	m_hud.setTexture(resources);
+	//Set textures for the nests
+	for (auto& nest : m_nests)
+	{
+		nest.setTexture(resources);
+	}
 
-	m_predatorAI.at(0).spawn(Vector2f(5840, 4887));
+	m_hud.setTexture(resources);
 }

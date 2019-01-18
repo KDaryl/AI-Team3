@@ -2,8 +2,9 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 
-//This is a singleton class so there can only be one of it active
-
+/**
+* Description: Resource Manager, this is a central location for resources for the game
+*/
 class ResourceManager
 {
 public:
