@@ -37,6 +37,8 @@ PhysicsBody::~PhysicsBody()
 
 void PhysicsBody::update(float dt)
 {
+	collisionResolved = false;
+
 	if (velocity.magnitude() < 0.01)
 		velocity.zeroVector();
 

@@ -12,6 +12,7 @@ public:
 	void handleInput(InputHandler& input);
 	void setTexture(ResourceManager& resources);
 	void addDelHealth(int val); //Decrements or adds a value to the players health
+	void die(); //Kill the player
 
 	//Public variables
 	Vector2f m_position, m_prevPos;
@@ -23,7 +24,8 @@ public:
 	int workersCollected;
 	int maxHealth;
 private:
-
+	bool alive;
+	sf::Sprite m_deathSprite;
 	//Shooting Variables
 	//Player bullets, we pool them to avoid nunecessary creation/deletion
 	std::vector<PlayerBullet> m_bullets;

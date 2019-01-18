@@ -34,12 +34,12 @@ void PhysicsHandler::checkCollision()
 	//Collision Checking
 	for (auto& body : physics::world->bodies)
 	{
-		//If the body is not a staic, dont check for collisions
+		//If the body is not a staic, 
 		if (body->type != Type::Static)
 		{
 			for (auto& other : physics::world->bodies)
 			{
-				if (body != other) //If the bodies are not the same, check for collision
+				if (body != other) //If the bodies are not the same and , check for collision
 				{
 					//Create the manifold here
 					Manifold m = Manifold(body, other);
@@ -54,6 +54,9 @@ void PhysicsHandler::checkCollision()
 
 void PhysicsHandler::checkSensorCollision(Manifold & m)
 {
+	if (m.A->collisionResolved || m.B->collisionResolved)
+		return;
+
 	//First check if they are avoiding each other 
 	for (auto& mask : m.A->bitmasks)
 	{
@@ -200,6 +203,8 @@ void PhysicsHandler::resolveSensorCollision(Manifold & m)
 	{
 		PlayerBullet& pb = *static_cast<PlayerBullet*>(static_cast<void*>(m.A->tag == "Player Bullet" ? m.A->objectData : m.B->objectData));
 		pb.hasCollided();
+
+		m.A->tag == "Player Bullet" ? m.A->collisionResolved = true : m.B->collisionResolved = true;
 	}
 
 	//Destroy bullets
@@ -231,6 +236,15 @@ void PhysicsHandler::resolveSensorCollision(Manifold & m)
 		NestMissile& nm = *static_cast<NestMissile*>(static_cast<void*>(m.A->tag == "Nest Missile" ? m.A->objectData : m.B->objectData));
 		Player& p = *static_cast<Player*>(static_cast<void*>(m.A->tag == "Player" ? m.A->objectData : m.B->objectData));
 		p.addDelHealth(-nm.damage);
+	}
+
+	//If a player bullet hit a predator, take health off the predator
+	if ((m.A->tag == "Player Bullet" || m.B->tag == "Player Bullet") &&
+		(m.A->tag == "Predator" || m.B->tag == "Predator"))
+	{
+		Predator& pred = *static_cast<Predator*>(static_cast<void*>(m.A->tag == "Predator" ? m.A->objectData : m.B->objectData));
+		pred.decrementHealth(-25); //Player bullet does 25 damage
+		m.A->tag == "Predator" ? m.A->collisionResolved = true : m.B->collisionResolved = true;
 	}
 }
 

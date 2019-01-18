@@ -58,4 +58,5 @@ public:
 	void* objectData; //This is a pointer to an object that this physics object belongs to
 	int mask; //The layer we are on
 	std::vector<int> bitmasks; //we add masks to our bitmask that we want to avoid collisions with
+	bool collisionResolved; //Bool to hold whetevr collisions were resolved or not
 };
