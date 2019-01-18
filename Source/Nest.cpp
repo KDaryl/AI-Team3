@@ -4,6 +4,7 @@ Nest::Nest(Player& player, Grid& grid, Vector2f pos, std::vector<Predator>& pred
 	m_position(pos),
 	m_currentBuildTime(0),
 	m_alive(true),
+	m_isBuilding(false),
 	m_timeTillFire(m_fireRate),
 	m_predators(&preds), //Set predator pointer
 	m_missile(player.m_position, &grid), //Setup our missile
@@ -23,6 +24,9 @@ Nest::~Nest()
 
 void Nest::update(double dt, std::vector<Nest>& otherNests)
 {
+	//Draw our missile
+	m_missile.update(dt);
+
 	//If we are alive
 	if (m_alive)
 	{
@@ -49,12 +53,38 @@ void Nest::update(double dt, std::vector<Nest>& otherNests)
 		if (m_isBuilding)
 		{
 			m_currentBuildTime += dt;
+
+			//If we have reache dthe build time
+			if (m_currentBuildTime >= m_buildTime)
+			{
+				m_predToSpawn->spawn(m_position);
+				m_currentBuildTime = 0;
+				m_isBuilding = false;
+			}
+		}
+
+		m_timeTillFire += dt;
+
+		if (m_timeTillFire >= m_fireRate)
+		{
+
+			if (m_position.distance(m_playerPtr->m_position) < 640)
+			{
+				if (m_missile.alive == false)
+				{
+					m_missile.spawn(m_position, 0);
+					m_timeTillFire = 0;
+				}
+			}
 		}
 	}
 }
 
 void Nest::draw(sf::RenderWindow & window)
 {
+	//Draw our missile
+	m_missile.draw(window);
+
 	if (m_alive)
 	{
 		window.draw(m_sprite);
@@ -75,6 +105,9 @@ void Nest::setTexture(ResourceManager & resources)
 
 	//Set our collider
 	m_collider = sf::FloatRect(m_position.x - m_sprite.getGlobalBounds().width / 2, m_position.y - m_sprite.getGlobalBounds().height / 2, m_sprite.getGlobalBounds().width, m_sprite.getGlobalBounds().height);
+	
+	//set missile texture
+	m_missile.setTexture(resources);
 
 	m_body.objectData = this;
 	physics::world->addPhysicsBody(m_body);

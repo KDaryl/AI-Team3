@@ -15,7 +15,7 @@ public:
 	void setTexture(ResourceManager& resources);
 
 	void hasCollided();
-	const float ttl = 10; //The timeToLive is 10 seconds
+	const float ttl = 5; //The timeToLive is 5 seconds
 	const int damage = 50;
 	float timeAlive;
 	bool alive;

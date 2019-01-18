@@ -253,6 +253,7 @@ void PhysicsHandler::resolveSensorCollision(Manifold & m)
 	{
 		NestMissile& nm = *static_cast<NestMissile*>(static_cast<void*>(m.A->tag == "Nest Missile" ? m.A->objectData : m.B->objectData));
 		nm.hasCollided();
+		m.A->tag == "Nest Missile" ? m.A->collisionResolved = true : m.B->collisionResolved = true;
 	}
 
 	//If an enemy bullet has hit the player, minus health from the player
