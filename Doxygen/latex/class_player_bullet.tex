@@ -1,0 +1,102 @@
+\hypertarget{class_player_bullet}{}\section{Player\+Bullet Class Reference}
+\label{class_player_bullet}\index{PlayerBullet@{PlayerBullet}}
+
+
+{\ttfamily \#include $<$Player\+Bullet.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_bullet_aff2ce7ed2770a6450664f489c9513375}{Player\+Bullet}} ()
+\item 
+void \mbox{\hyperlink{class_player_bullet_add66f3caf483efe8879473f690d22b55}{update}} (double dt)
+\item 
+void \mbox{\hyperlink{class_player_bullet_ae599666f9f057599c6f7e45d1d025817}{draw}} (sf\+::\+Render\+Window \&window)
+\item 
+void \mbox{\hyperlink{class_player_bullet_ae14424d24491ecd17a07aa3ed1864135}{spawn}} (\mbox{\hyperlink{class_vector2f}{Vector2f}} position, float angle)
+\item 
+void \mbox{\hyperlink{class_player_bullet_a40c95b75eec29f424360a9b478910c71}{set\+Texture}} (\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&resources)
+\item 
+void \mbox{\hyperlink{class_player_bullet_ac36db806a8b41961134ad72d1e7136a5}{has\+Collided}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_player_bullet_a8fd39df74f1886467118c6b7b5caed39}{alive}}
+\item 
+bool \mbox{\hyperlink{class_player_bullet_a3b1de396870aea406eeb3302b7d57463}{collided}}
+\item 
+bool \mbox{\hyperlink{class_player_bullet_a831e4e774e0f022e7149de9d62a58e5a}{dead}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description\+: \mbox{\hyperlink{class_player}{Player}} bullet, these are spawned when the player presses or holds the spacebar 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_player_bullet_aff2ce7ed2770a6450664f489c9513375}\label{class_player_bullet_aff2ce7ed2770a6450664f489c9513375}} 
+\index{PlayerBullet@{PlayerBullet}!PlayerBullet@{PlayerBullet}}
+\index{PlayerBullet@{PlayerBullet}!PlayerBullet@{PlayerBullet}}
+\subsubsection{\texorpdfstring{PlayerBullet()}{PlayerBullet()}}
+{\footnotesize\ttfamily Player\+Bullet\+::\+Player\+Bullet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_player_bullet_ae599666f9f057599c6f7e45d1d025817}\label{class_player_bullet_ae599666f9f057599c6f7e45d1d025817}} 
+\index{PlayerBullet@{PlayerBullet}!draw@{draw}}
+\index{draw@{draw}!PlayerBullet@{PlayerBullet}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Player\+Bullet\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_player_bullet_ac36db806a8b41961134ad72d1e7136a5}\label{class_player_bullet_ac36db806a8b41961134ad72d1e7136a5}} 
+\index{PlayerBullet@{PlayerBullet}!hasCollided@{hasCollided}}
+\index{hasCollided@{hasCollided}!PlayerBullet@{PlayerBullet}}
+\subsubsection{\texorpdfstring{hasCollided()}{hasCollided()}}
+{\footnotesize\ttfamily void Player\+Bullet\+::has\+Collided (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Description\+: Sets the bullet as collided \mbox{\Hypertarget{class_player_bullet_a40c95b75eec29f424360a9b478910c71}\label{class_player_bullet_a40c95b75eec29f424360a9b478910c71}} 
+\index{PlayerBullet@{PlayerBullet}!setTexture@{setTexture}}
+\index{setTexture@{setTexture}!PlayerBullet@{PlayerBullet}}
+\subsubsection{\texorpdfstring{setTexture()}{setTexture()}}
+{\footnotesize\ttfamily void Player\+Bullet\+::set\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&}]{resources }\end{DoxyParamCaption})}
+
+Description\+: Sets the textures for the player bullet \mbox{\Hypertarget{class_player_bullet_ae14424d24491ecd17a07aa3ed1864135}\label{class_player_bullet_ae14424d24491ecd17a07aa3ed1864135}} 
+\index{PlayerBullet@{PlayerBullet}!spawn@{spawn}}
+\index{spawn@{spawn}!PlayerBullet@{PlayerBullet}}
+\subsubsection{\texorpdfstring{spawn()}{spawn()}}
+{\footnotesize\ttfamily void Player\+Bullet\+::spawn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{position,  }\item[{float}]{angle }\end{DoxyParamCaption})}
+
+Description\+: Spawn the bullet at a position and angle \mbox{\Hypertarget{class_player_bullet_add66f3caf483efe8879473f690d22b55}\label{class_player_bullet_add66f3caf483efe8879473f690d22b55}} 
+\index{PlayerBullet@{PlayerBullet}!update@{update}}
+\index{update@{update}!PlayerBullet@{PlayerBullet}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Player\+Bullet\+::update (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})}
+
+Description\+: Bullets moves at its spawned velocity and angle 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_player_bullet_a8fd39df74f1886467118c6b7b5caed39}\label{class_player_bullet_a8fd39df74f1886467118c6b7b5caed39}} 
+\index{PlayerBullet@{PlayerBullet}!alive@{alive}}
+\index{alive@{alive}!PlayerBullet@{PlayerBullet}}
+\subsubsection{\texorpdfstring{alive}{alive}}
+{\footnotesize\ttfamily bool Player\+Bullet\+::alive}
+
+\mbox{\Hypertarget{class_player_bullet_a3b1de396870aea406eeb3302b7d57463}\label{class_player_bullet_a3b1de396870aea406eeb3302b7d57463}} 
+\index{PlayerBullet@{PlayerBullet}!collided@{collided}}
+\index{collided@{collided}!PlayerBullet@{PlayerBullet}}
+\subsubsection{\texorpdfstring{collided}{collided}}
+{\footnotesize\ttfamily bool Player\+Bullet\+::collided}
+
+\mbox{\Hypertarget{class_player_bullet_a831e4e774e0f022e7149de9d62a58e5a}\label{class_player_bullet_a831e4e774e0f022e7149de9d62a58e5a}} 
+\index{PlayerBullet@{PlayerBullet}!dead@{dead}}
+\index{dead@{dead}!PlayerBullet@{PlayerBullet}}
+\subsubsection{\texorpdfstring{dead}{dead}}
+{\footnotesize\ttfamily bool Player\+Bullet\+::dead}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_player_bullet_8h}{Player\+Bullet.\+h}}\item 
+Source/\mbox{\hyperlink{_player_bullet_8cpp}{Player\+Bullet.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,118 @@
+\hypertarget{class_resource_manager}{}\section{Resource\+Manager Class Reference}
+\label{class_resource_manager}\index{ResourceManager@{ResourceManager}}
+
+
+{\ttfamily \#include $<$Resource\+Manager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_resource_manager_a3b32babd2e81909bbd90d7f2d566fadb}{Resource\+Manager}} ()
+\item 
+\mbox{\hyperlink{class_resource_manager_a671c186e4630599e7e36d000c53eaf80}{$\sim$\+Resource\+Manager}} ()
+\item 
+void \mbox{\hyperlink{class_resource_manager_a919e53911b0b9609d74a40403e89edb2}{load\+Textures}} ()
+\item 
+void \mbox{\hyperlink{class_resource_manager_a31e9d2aeda022c4cfd5282a0f3dbce68}{load\+Texture}} (std\+::string name, std\+::string file\+Name, bool smooth=false)
+\item 
+void \mbox{\hyperlink{class_resource_manager_a44a1cbc17989de53902b433e15c05b7f}{load\+Audio}} (std\+::string name, std\+::string file\+Name)
+\item 
+void \mbox{\hyperlink{class_resource_manager_aea954ee26cf7b874b32fcdcf4500d028}{play\+Audio}} (std\+::string name, std\+::string type, bool loop=false)
+\item 
+void \mbox{\hyperlink{class_resource_manager_ae9e9bbbf00d4644f60d88da0b122e279}{stop\+Audio}} (std\+::string name, std\+::string type)
+\item 
+sf\+::\+Texture \& \mbox{\hyperlink{class_resource_manager_abf59408987dd1e9a52bfbd917ad5fa80}{get\+Texture}} (std\+::string texture\+Name)
+\item 
+sf\+::\+Music \& \mbox{\hyperlink{class_resource_manager_a950ecbe357ba67d190c261b686fe72b2}{get\+Music}} (std\+::string music\+Name)
+\item 
+sf\+::\+Sound \& \mbox{\hyperlink{class_resource_manager_a329396127d82cab5247d91eefa2e5c8d}{get\+Sound}} (std\+::string sound\+Name)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_resource_manager_a6e46ce9f52aa0a19bfd9ee21aa259e8d}{finished\+Loading}} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description\+: Resource Manager, this is a central location for resources for the game 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_resource_manager_a3b32babd2e81909bbd90d7f2d566fadb}\label{class_resource_manager_a3b32babd2e81909bbd90d7f2d566fadb}} 
+\index{ResourceManager@{ResourceManager}!ResourceManager@{ResourceManager}}
+\index{ResourceManager@{ResourceManager}!ResourceManager@{ResourceManager}}
+\subsubsection{\texorpdfstring{ResourceManager()}{ResourceManager()}}
+{\footnotesize\ttfamily Resource\+Manager\+::\+Resource\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Description\+: Resource manager constructor \mbox{\Hypertarget{class_resource_manager_a671c186e4630599e7e36d000c53eaf80}\label{class_resource_manager_a671c186e4630599e7e36d000c53eaf80}} 
+\index{ResourceManager@{ResourceManager}!````~ResourceManager@{$\sim$ResourceManager}}
+\index{````~ResourceManager@{$\sim$ResourceManager}!ResourceManager@{ResourceManager}}
+\subsubsection{\texorpdfstring{$\sim$ResourceManager()}{~ResourceManager()}}
+{\footnotesize\ttfamily Resource\+Manager\+::$\sim$\+Resource\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_resource_manager_a950ecbe357ba67d190c261b686fe72b2}\label{class_resource_manager_a950ecbe357ba67d190c261b686fe72b2}} 
+\index{ResourceManager@{ResourceManager}!getMusic@{getMusic}}
+\index{getMusic@{getMusic}!ResourceManager@{ResourceManager}}
+\subsubsection{\texorpdfstring{getMusic()}{getMusic()}}
+{\footnotesize\ttfamily sf\+::\+Music \& Resource\+Manager\+::get\+Music (\begin{DoxyParamCaption}\item[{std\+::string}]{music\+Name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_manager_a329396127d82cab5247d91eefa2e5c8d}\label{class_resource_manager_a329396127d82cab5247d91eefa2e5c8d}} 
+\index{ResourceManager@{ResourceManager}!getSound@{getSound}}
+\index{getSound@{getSound}!ResourceManager@{ResourceManager}}
+\subsubsection{\texorpdfstring{getSound()}{getSound()}}
+{\footnotesize\ttfamily sf\+::\+Sound \& Resource\+Manager\+::get\+Sound (\begin{DoxyParamCaption}\item[{std\+::string}]{sound\+Name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_manager_abf59408987dd1e9a52bfbd917ad5fa80}\label{class_resource_manager_abf59408987dd1e9a52bfbd917ad5fa80}} 
+\index{ResourceManager@{ResourceManager}!getTexture@{getTexture}}
+\index{getTexture@{getTexture}!ResourceManager@{ResourceManager}}
+\subsubsection{\texorpdfstring{getTexture()}{getTexture()}}
+{\footnotesize\ttfamily sf\+::\+Texture \& Resource\+Manager\+::get\+Texture (\begin{DoxyParamCaption}\item[{std\+::string}]{texture\+Name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_manager_a44a1cbc17989de53902b433e15c05b7f}\label{class_resource_manager_a44a1cbc17989de53902b433e15c05b7f}} 
+\index{ResourceManager@{ResourceManager}!loadAudio@{loadAudio}}
+\index{loadAudio@{loadAudio}!ResourceManager@{ResourceManager}}
+\subsubsection{\texorpdfstring{loadAudio()}{loadAudio()}}
+{\footnotesize\ttfamily void Resource\+Manager\+::load\+Audio (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+Description\+: Returns a texture that is held in the map by \char`\"{}texture\+Name\char`\"{} the parameter \mbox{\Hypertarget{class_resource_manager_a31e9d2aeda022c4cfd5282a0f3dbce68}\label{class_resource_manager_a31e9d2aeda022c4cfd5282a0f3dbce68}} 
+\index{ResourceManager@{ResourceManager}!loadTexture@{loadTexture}}
+\index{loadTexture@{loadTexture}!ResourceManager@{ResourceManager}}
+\subsubsection{\texorpdfstring{loadTexture()}{loadTexture()}}
+{\footnotesize\ttfamily void Resource\+Manager\+::load\+Texture (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{std\+::string}]{file\+Name,  }\item[{bool}]{smooth = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Description\+: Loads a texture by using the file name, it sets the texture as smooth if the smooth bool is true and adds the texture to our texture map using the name field \mbox{\Hypertarget{class_resource_manager_a919e53911b0b9609d74a40403e89edb2}\label{class_resource_manager_a919e53911b0b9609d74a40403e89edb2}} 
+\index{ResourceManager@{ResourceManager}!loadTextures@{loadTextures}}
+\index{loadTextures@{loadTextures}!ResourceManager@{ResourceManager}}
+\subsubsection{\texorpdfstring{loadTextures()}{loadTextures()}}
+{\footnotesize\ttfamily void Resource\+Manager\+::load\+Textures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Description\+: Method is called when its time load all the textures of the game \mbox{\Hypertarget{class_resource_manager_aea954ee26cf7b874b32fcdcf4500d028}\label{class_resource_manager_aea954ee26cf7b874b32fcdcf4500d028}} 
+\index{ResourceManager@{ResourceManager}!playAudio@{playAudio}}
+\index{playAudio@{playAudio}!ResourceManager@{ResourceManager}}
+\subsubsection{\texorpdfstring{playAudio()}{playAudio()}}
+{\footnotesize\ttfamily void Resource\+Manager\+::play\+Audio (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{std\+::string}]{type,  }\item[{bool}]{loop = {\ttfamily false} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_manager_ae9e9bbbf00d4644f60d88da0b122e279}\label{class_resource_manager_ae9e9bbbf00d4644f60d88da0b122e279}} 
+\index{ResourceManager@{ResourceManager}!stopAudio@{stopAudio}}
+\index{stopAudio@{stopAudio}!ResourceManager@{ResourceManager}}
+\subsubsection{\texorpdfstring{stopAudio()}{stopAudio()}}
+{\footnotesize\ttfamily void Resource\+Manager\+::stop\+Audio (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{std\+::string}]{type }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_resource_manager_a6e46ce9f52aa0a19bfd9ee21aa259e8d}\label{class_resource_manager_a6e46ce9f52aa0a19bfd9ee21aa259e8d}} 
+\index{ResourceManager@{ResourceManager}!finishedLoading@{finishedLoading}}
+\index{finishedLoading@{finishedLoading}!ResourceManager@{ResourceManager}}
+\subsubsection{\texorpdfstring{finishedLoading}{finishedLoading}}
+{\footnotesize\ttfamily bool Resource\+Manager\+::finished\+Loading = false}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_resource_manager_8h}{Resource\+Manager.\+h}}\item 
+Source/\mbox{\hyperlink{_resource_manager_8cpp}{Resource\+Manager.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,190 @@
+\hypertarget{class_player}{}\section{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_a4c481b6493f9e0d550377c0d99763c82}{Player}} (float x, float y)
+\item 
+\mbox{\hyperlink{class_player_a749d2c00e1fe0f5c2746f7505a58c062}{$\sim$\+Player}} ()
+\item 
+void \mbox{\hyperlink{class_player_a9117f98ab1e6f0d58c099f3c721f4906}{update}} (double dt)
+\item 
+void \mbox{\hyperlink{class_player_a1c35f5008d1753ae66caec787a98171e}{draw}} (sf\+::\+Render\+Window \&win, float a)
+\item 
+void \mbox{\hyperlink{class_player_a9a2292e396c2b77758dde50adbed38d4}{handle\+Input}} (\mbox{\hyperlink{class_input_handler}{Input\+Handler}} \&input)
+\item 
+void \mbox{\hyperlink{class_player_ad473d94189017b621f4471ed2d3fb73d}{set\+Texture}} (\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&resources)
+\item 
+void \mbox{\hyperlink{class_player_a8ec53df67585a2b4fdb57359bff28c93}{set\+Audio\+Ref}} (\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&resources)
+\item 
+void \mbox{\hyperlink{class_player_ae05f7bcbebe0c8e284f9138db51be539}{add\+Del\+Health}} (int val)
+\item 
+void \mbox{\hyperlink{class_player_a1e4b3e6ef91fc400ff2c6c26b1370f8c}{die}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Event \mbox{\hyperlink{class_player_ae78c3b0c8074de09d30bbafa899c6c47}{e}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_player_a84084a5e97891280d56c093264e62720}{m\+\_\+position}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_player_a3d5f4aa30da7571cc93beef07c364539}{m\+\_\+prev\+Pos}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_player_a770194ea3e16274ea08fbcbc6d47e76f}{m\+\_\+velocity}}
+\item 
+\mbox{\hyperlink{class_collision_circle}{Collision\+Circle}} \mbox{\hyperlink{class_player_ae12b339db716d6dcf1f5e4400c28c532}{m\+\_\+range\+Collider}}
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{class_player_acea3e1bbd92be7a0fbf26764ec919b24}{m\+\_\+sprite}}
+\item 
+\mbox{\hyperlink{class_physics_body}{Physics\+Body}} \mbox{\hyperlink{class_player_a5f3088b84a4ba515a053122b9539ab24}{m\+\_\+physics\+Body}}
+\item 
+\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} $\ast$ \mbox{\hyperlink{class_player_ac84e59bad7aa8bf5d9146d1e6b0e8b60}{our\+Resources}}
+\item 
+int \mbox{\hyperlink{class_player_aad33b52bfe73c4c978a3135172f286a0}{health}}
+\item 
+int \mbox{\hyperlink{class_player_a5be44b48759fcff995237e50ebbcd4be}{workers\+Collected}}
+\item 
+int \mbox{\hyperlink{class_player_a2196f0d382a1d97c739a036781b2316b}{max\+Health}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class \+: \mbox{\hyperlink{class_player}{Player}} Description\+: The player is controlled by the user using the Arrow keys or W,A,S and D keys. the player can shoot using the spacebar. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_player_a4c481b6493f9e0d550377c0d99763c82}\label{class_player_a4c481b6493f9e0d550377c0d99763c82}} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\subsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily Player\+::\+Player (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+Description\+: \mbox{\hyperlink{class_player}{Player}} constructor, setting initial values for the player \mbox{\Hypertarget{class_player_a749d2c00e1fe0f5c2746f7505a58c062}\label{class_player_a749d2c00e1fe0f5c2746f7505a58c062}} 
+\index{Player@{Player}!````~Player@{$\sim$Player}}
+\index{````~Player@{$\sim$Player}!Player@{Player}}
+\subsubsection{\texorpdfstring{$\sim$Player()}{~Player()}}
+{\footnotesize\ttfamily Player\+::$\sim$\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_player_ae05f7bcbebe0c8e284f9138db51be539}\label{class_player_ae05f7bcbebe0c8e284f9138db51be539}} 
+\index{Player@{Player}!addDelHealth@{addDelHealth}}
+\index{addDelHealth@{addDelHealth}!Player@{Player}}
+\subsubsection{\texorpdfstring{addDelHealth()}{addDelHealth()}}
+{\footnotesize\ttfamily void Player\+::add\+Del\+Health (\begin{DoxyParamCaption}\item[{int}]{val }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_player_a1e4b3e6ef91fc400ff2c6c26b1370f8c}\label{class_player_a1e4b3e6ef91fc400ff2c6c26b1370f8c}} 
+\index{Player@{Player}!die@{die}}
+\index{die@{die}!Player@{Player}}
+\subsubsection{\texorpdfstring{die()}{die()}}
+{\footnotesize\ttfamily void Player\+::die (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Description\+: This method is called when the players health reaches 0 \mbox{\Hypertarget{class_player_a1c35f5008d1753ae66caec787a98171e}\label{class_player_a1c35f5008d1753ae66caec787a98171e}} 
+\index{Player@{Player}!draw@{draw}}
+\index{draw@{draw}!Player@{Player}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Player\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{win,  }\item[{float}]{a }\end{DoxyParamCaption})}
+
+Description\+: Draws the players sprites \mbox{\Hypertarget{class_player_a9a2292e396c2b77758dde50adbed38d4}\label{class_player_a9a2292e396c2b77758dde50adbed38d4}} 
+\index{Player@{Player}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!Player@{Player}}
+\subsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Player\+::handle\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_input_handler}{Input\+Handler}} \&}]{input }\end{DoxyParamCaption})}
+
+Description\+: Here we check the input handler and perform an action depednign on what buttons were pressed/held down \mbox{\Hypertarget{class_player_a8ec53df67585a2b4fdb57359bff28c93}\label{class_player_a8ec53df67585a2b4fdb57359bff28c93}} 
+\index{Player@{Player}!setAudioRef@{setAudioRef}}
+\index{setAudioRef@{setAudioRef}!Player@{Player}}
+\subsubsection{\texorpdfstring{setAudioRef()}{setAudioRef()}}
+{\footnotesize\ttfamily void Player\+::set\+Audio\+Ref (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&}]{resources }\end{DoxyParamCaption})}
+
+Description\+: Adds a value to the players health (we want to increase on pickup of workers/powerups) and decrease when hit by enemy missiles (predator, \mbox{\hyperlink{class_nest}{Nest}}) \mbox{\Hypertarget{class_player_ad473d94189017b621f4471ed2d3fb73d}\label{class_player_ad473d94189017b621f4471ed2d3fb73d}} 
+\index{Player@{Player}!setTexture@{setTexture}}
+\index{setTexture@{setTexture}!Player@{Player}}
+\subsubsection{\texorpdfstring{setTexture()}{setTexture()}}
+{\footnotesize\ttfamily void Player\+::set\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&}]{resources }\end{DoxyParamCaption})}
+
+Description\+: Sets the Textures for the player \mbox{\Hypertarget{class_player_a9117f98ab1e6f0d58c099f3c721f4906}\label{class_player_a9117f98ab1e6f0d58c099f3c721f4906}} 
+\index{Player@{Player}!update@{update}}
+\index{update@{update}!Player@{Player}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Player\+::update (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})}
+
+Description\+: Updates the players position 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_player_ae78c3b0c8074de09d30bbafa899c6c47}\label{class_player_ae78c3b0c8074de09d30bbafa899c6c47}} 
+\index{Player@{Player}!e@{e}}
+\index{e@{e}!Player@{Player}}
+\subsubsection{\texorpdfstring{e}{e}}
+{\footnotesize\ttfamily sf\+::\+Event Player\+::e}
+
+\mbox{\Hypertarget{class_player_aad33b52bfe73c4c978a3135172f286a0}\label{class_player_aad33b52bfe73c4c978a3135172f286a0}} 
+\index{Player@{Player}!health@{health}}
+\index{health@{health}!Player@{Player}}
+\subsubsection{\texorpdfstring{health}{health}}
+{\footnotesize\ttfamily int Player\+::health}
+
+\mbox{\Hypertarget{class_player_a5f3088b84a4ba515a053122b9539ab24}\label{class_player_a5f3088b84a4ba515a053122b9539ab24}} 
+\index{Player@{Player}!m\_physicsBody@{m\_physicsBody}}
+\index{m\_physicsBody@{m\_physicsBody}!Player@{Player}}
+\subsubsection{\texorpdfstring{m\_physicsBody}{m\_physicsBody}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_physics_body}{Physics\+Body}} Player\+::m\+\_\+physics\+Body}
+
+\mbox{\Hypertarget{class_player_a84084a5e97891280d56c093264e62720}\label{class_player_a84084a5e97891280d56c093264e62720}} 
+\index{Player@{Player}!m\_position@{m\_position}}
+\index{m\_position@{m\_position}!Player@{Player}}
+\subsubsection{\texorpdfstring{m\_position}{m\_position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Player\+::m\+\_\+position}
+
+\mbox{\Hypertarget{class_player_a3d5f4aa30da7571cc93beef07c364539}\label{class_player_a3d5f4aa30da7571cc93beef07c364539}} 
+\index{Player@{Player}!m\_prevPos@{m\_prevPos}}
+\index{m\_prevPos@{m\_prevPos}!Player@{Player}}
+\subsubsection{\texorpdfstring{m\_prevPos}{m\_prevPos}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Player\+::m\+\_\+prev\+Pos}
+
+\mbox{\Hypertarget{class_player_ae12b339db716d6dcf1f5e4400c28c532}\label{class_player_ae12b339db716d6dcf1f5e4400c28c532}} 
+\index{Player@{Player}!m\_rangeCollider@{m\_rangeCollider}}
+\index{m\_rangeCollider@{m\_rangeCollider}!Player@{Player}}
+\subsubsection{\texorpdfstring{m\_rangeCollider}{m\_rangeCollider}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_collision_circle}{Collision\+Circle}} Player\+::m\+\_\+range\+Collider}
+
+\mbox{\Hypertarget{class_player_acea3e1bbd92be7a0fbf26764ec919b24}\label{class_player_acea3e1bbd92be7a0fbf26764ec919b24}} 
+\index{Player@{Player}!m\_sprite@{m\_sprite}}
+\index{m\_sprite@{m\_sprite}!Player@{Player}}
+\subsubsection{\texorpdfstring{m\_sprite}{m\_sprite}}
+{\footnotesize\ttfamily sf\+::\+Sprite Player\+::m\+\_\+sprite}
+
+\mbox{\Hypertarget{class_player_a770194ea3e16274ea08fbcbc6d47e76f}\label{class_player_a770194ea3e16274ea08fbcbc6d47e76f}} 
+\index{Player@{Player}!m\_velocity@{m\_velocity}}
+\index{m\_velocity@{m\_velocity}!Player@{Player}}
+\subsubsection{\texorpdfstring{m\_velocity}{m\_velocity}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Player\+::m\+\_\+velocity}
+
+\mbox{\Hypertarget{class_player_a2196f0d382a1d97c739a036781b2316b}\label{class_player_a2196f0d382a1d97c739a036781b2316b}} 
+\index{Player@{Player}!maxHealth@{maxHealth}}
+\index{maxHealth@{maxHealth}!Player@{Player}}
+\subsubsection{\texorpdfstring{maxHealth}{maxHealth}}
+{\footnotesize\ttfamily int Player\+::max\+Health}
+
+\mbox{\Hypertarget{class_player_ac84e59bad7aa8bf5d9146d1e6b0e8b60}\label{class_player_ac84e59bad7aa8bf5d9146d1e6b0e8b60}} 
+\index{Player@{Player}!ourResources@{ourResources}}
+\index{ourResources@{ourResources}!Player@{Player}}
+\subsubsection{\texorpdfstring{ourResources}{ourResources}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_resource_manager}{Resource\+Manager}}$\ast$ Player\+::our\+Resources}
+
+\mbox{\Hypertarget{class_player_a5be44b48759fcff995237e50ebbcd4be}\label{class_player_a5be44b48759fcff995237e50ebbcd4be}} 
+\index{Player@{Player}!workersCollected@{workersCollected}}
+\index{workersCollected@{workersCollected}!Player@{Player}}
+\subsubsection{\texorpdfstring{workersCollected}{workersCollected}}
+{\footnotesize\ttfamily int Player\+::workers\+Collected}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_player_8h}{Player.\+h}}\item 
+Source/\mbox{\hyperlink{_player_8cpp}{Player.\+cpp}}\end{DoxyCompactItemize}

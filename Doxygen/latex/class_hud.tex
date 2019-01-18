@@ -1,0 +1,112 @@
+\hypertarget{class_hud}{}\section{Hud Class Reference}
+\label{class_hud}\index{Hud@{Hud}}
+
+
+{\ttfamily \#include $<$Hud.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hud_a473653a9ce3114aa55b48acf77294899}{Hud}} (\mbox{\hyperlink{class_player}{Player}} \&player, \mbox{\hyperlink{class_grid}{Grid}} \&grid)
+\item 
+void \mbox{\hyperlink{class_hud_aac69f76ed8b4e7966753fa16541a46a2}{update}} (double dt)
+\item 
+void \mbox{\hyperlink{class_hud_a2328332d9175e59b8f3c6db45438ad07}{draw}} (sf\+::\+Drawable \&item)
+\item 
+void \mbox{\hyperlink{class_hud_aec596c1aa18c05aed1c36144698de4bf}{display}} (sf\+::\+Render\+Window \&win)
+\item 
+void \mbox{\hyperlink{class_hud_a55f8809879eb36adb46193a8fa555f9f}{update\+Waypoint}} (double dt)
+\item 
+void \mbox{\hyperlink{class_hud_a0c4185aae3d86c96a1f963cfa5f6a119}{set\+Texture}} (\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&resources)
+\item 
+void \mbox{\hyperlink{class_hud_a879a878942dd2bcd839242ef9f46704a}{update\+Hud}} ()
+\item 
+void \mbox{\hyperlink{class_hud_a68616386d3e44eef176ec9cfa4e68dbe}{handle\+Input}} (\mbox{\hyperlink{class_input_handler}{Input\+Handler}} \&input)
+\item 
+void \mbox{\hyperlink{class_hud_a92f4216b26f6d20c62e9a89376b72717}{set\+Max\+Workers}} (int num)
+\item 
+sf\+::\+View \& \mbox{\hyperlink{class_hud_a3dbe2361eec00c3b2834351e4dbe6b1d}{get\+View}} ()
+\item 
+sf\+::\+Float\+Rect \& \mbox{\hyperlink{class_hud_a4b838665eb682780fbec8602871ef611}{get\+View\+Detector}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description\+: \mbox{\hyperlink{class_hud}{Hud}} for the game, including worker bar, health bar and minimap, you can zoom in and out using Q and E 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hud_a473653a9ce3114aa55b48acf77294899}\label{class_hud_a473653a9ce3114aa55b48acf77294899}} 
+\index{Hud@{Hud}!Hud@{Hud}}
+\index{Hud@{Hud}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{Hud()}{Hud()}}
+{\footnotesize\ttfamily Hud\+::\+Hud (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{player,  }\item[{\mbox{\hyperlink{class_grid}{Grid}} \&}]{grid }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hud_aec596c1aa18c05aed1c36144698de4bf}\label{class_hud_aec596c1aa18c05aed1c36144698de4bf}} 
+\index{Hud@{Hud}!display@{display}}
+\index{display@{display}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Hud\+::display (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{win }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_hud_a2328332d9175e59b8f3c6db45438ad07}\label{class_hud_a2328332d9175e59b8f3c6db45438ad07}} 
+\index{Hud@{Hud}!draw@{draw}}
+\index{draw@{draw}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Hud\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Drawable \&}]{item }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_hud_a3dbe2361eec00c3b2834351e4dbe6b1d}\label{class_hud_a3dbe2361eec00c3b2834351e4dbe6b1d}} 
+\index{Hud@{Hud}!getView@{getView}}
+\index{getView@{getView}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{getView()}{getView()}}
+{\footnotesize\ttfamily sf\+::\+View\& Hud\+::get\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_hud_a4b838665eb682780fbec8602871ef611}\label{class_hud_a4b838665eb682780fbec8602871ef611}} 
+\index{Hud@{Hud}!getViewDetector@{getViewDetector}}
+\index{getViewDetector@{getViewDetector}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{getViewDetector()}{getViewDetector()}}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect\& Hud\+::get\+View\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_hud_a68616386d3e44eef176ec9cfa4e68dbe}\label{class_hud_a68616386d3e44eef176ec9cfa4e68dbe}} 
+\index{Hud@{Hud}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Hud\+::handle\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_input_handler}{Input\+Handler}} \&}]{input }\end{DoxyParamCaption})}
+
+Description\+: Handle sinput to zoom in and out of the minimap \mbox{\Hypertarget{class_hud_a92f4216b26f6d20c62e9a89376b72717}\label{class_hud_a92f4216b26f6d20c62e9a89376b72717}} 
+\index{Hud@{Hud}!setMaxWorkers@{setMaxWorkers}}
+\index{setMaxWorkers@{setMaxWorkers}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{setMaxWorkers()}{setMaxWorkers()}}
+{\footnotesize\ttfamily void Hud\+::set\+Max\+Workers (\begin{DoxyParamCaption}\item[{int}]{num }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_hud_a0c4185aae3d86c96a1f963cfa5f6a119}\label{class_hud_a0c4185aae3d86c96a1f963cfa5f6a119}} 
+\index{Hud@{Hud}!setTexture@{setTexture}}
+\index{setTexture@{setTexture}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{setTexture()}{setTexture()}}
+{\footnotesize\ttfamily void Hud\+::set\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&}]{resources }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_hud_aac69f76ed8b4e7966753fa16541a46a2}\label{class_hud_aac69f76ed8b4e7966753fa16541a46a2}} 
+\index{Hud@{Hud}!update@{update}}
+\index{update@{update}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Hud\+::update (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})}
+
+Description\+: Updates the hud, show sthe players health and the amount of workers gathered \mbox{\Hypertarget{class_hud_a879a878942dd2bcd839242ef9f46704a}\label{class_hud_a879a878942dd2bcd839242ef9f46704a}} 
+\index{Hud@{Hud}!updateHud@{updateHud}}
+\index{updateHud@{updateHud}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{updateHud()}{updateHud()}}
+{\footnotesize\ttfamily void Hud\+::update\+Hud (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Description\+: sets how much of the bar to show (the red progress bar) for the health and workers gathered \mbox{\Hypertarget{class_hud_a55f8809879eb36adb46193a8fa555f9f}\label{class_hud_a55f8809879eb36adb46193a8fa555f9f}} 
+\index{Hud@{Hud}!updateWaypoint@{updateWaypoint}}
+\index{updateWaypoint@{updateWaypoint}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{updateWaypoint()}{updateWaypoint()}}
+{\footnotesize\ttfamily void Hud\+::update\+Waypoint (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})}
+
+Description\+: updates the waypoint 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_hud_8h}{Hud.\+h}}\item 
+Source/\mbox{\hyperlink{_hud_8cpp}{Hud.\+cpp}}\end{DoxyCompactItemize}

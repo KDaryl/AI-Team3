@@ -1,0 +1,142 @@
+\hypertarget{class_nest_missile}{}\section{Nest\+Missile Class Reference}
+\label{class_nest_missile}\index{NestMissile@{NestMissile}}
+
+
+{\ttfamily \#include $<$Nest\+Missile.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_nest_missile_a247f13ab901201350105cd06c42cf4bc}{Nest\+Missile}} (\mbox{\hyperlink{class_vector2f}{Vector2f}} \&player\+Pos, \mbox{\hyperlink{class_grid}{Grid}} $\ast$grid)
+\item 
+void \mbox{\hyperlink{class_nest_missile_a04925ab3da63f65253bf47d809222367}{update}} (double dt)
+\item 
+void \mbox{\hyperlink{class_nest_missile_af858a9e01982e6e10c2745c31718a611}{draw}} (sf\+::\+Render\+Window \&window)
+\item 
+void \mbox{\hyperlink{class_nest_missile_ad4a5ec72363fb7a16ac85b8f05bbcadc}{spawn}} (\mbox{\hyperlink{class_vector2f}{Vector2f}} position, float angle)
+\item 
+void \mbox{\hyperlink{class_nest_missile_a1a66ea6e80bd6cc96f08c2c7ced52833}{set\+Texture}} (\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&resources)
+\item 
+void \mbox{\hyperlink{class_nest_missile_a8594c06cd3421068518862e155dd07f8}{has\+Collided}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const float \mbox{\hyperlink{class_nest_missile_a51e665742f8a19c90f533bed00149876}{ttl}} = 5
+\item 
+const int \mbox{\hyperlink{class_nest_missile_a3555ba31ea53907ad1861343e86de153}{damage}} = 50
+\item 
+float \mbox{\hyperlink{class_nest_missile_a5780098c2ece04024fe80f198326afef}{time\+Alive}}
+\item 
+bool \mbox{\hyperlink{class_nest_missile_ae5d58fc3c25e7b328ea3341902678330}{alive}}
+\item 
+bool \mbox{\hyperlink{class_nest_missile_a327592403bd6a9c62e6d8ed69cc81704}{collided}}
+\item 
+bool \mbox{\hyperlink{class_nest_missile_ae0882f8ef7f3381a9095974f46dd9c5d}{dead}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_nest_missile_a30712497be18b5c46fe96d982cda0f1c}{m\+\_\+position}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_nest_missile_a3bdbbd200131b67ba061f17f0303455b}{m\+\_\+velocity}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description\+: Here is the enst missile, it fires when a playe ris in range 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_nest_missile_a247f13ab901201350105cd06c42cf4bc}\label{class_nest_missile_a247f13ab901201350105cd06c42cf4bc}} 
+\index{NestMissile@{NestMissile}!NestMissile@{NestMissile}}
+\index{NestMissile@{NestMissile}!NestMissile@{NestMissile}}
+\subsubsection{\texorpdfstring{NestMissile()}{NestMissile()}}
+{\footnotesize\ttfamily Nest\+Missile\+::\+Nest\+Missile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}} \&}]{player\+Pos,  }\item[{\mbox{\hyperlink{class_grid}{Grid}} $\ast$}]{grid }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_nest_missile_af858a9e01982e6e10c2745c31718a611}\label{class_nest_missile_af858a9e01982e6e10c2745c31718a611}} 
+\index{NestMissile@{NestMissile}!draw@{draw}}
+\index{draw@{draw}!NestMissile@{NestMissile}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Nest\+Missile\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_nest_missile_a8594c06cd3421068518862e155dd07f8}\label{class_nest_missile_a8594c06cd3421068518862e155dd07f8}} 
+\index{NestMissile@{NestMissile}!hasCollided@{hasCollided}}
+\index{hasCollided@{hasCollided}!NestMissile@{NestMissile}}
+\subsubsection{\texorpdfstring{hasCollided()}{hasCollided()}}
+{\footnotesize\ttfamily void Nest\+Missile\+::has\+Collided (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Description\+: Sets the missile as collided \mbox{\Hypertarget{class_nest_missile_a1a66ea6e80bd6cc96f08c2c7ced52833}\label{class_nest_missile_a1a66ea6e80bd6cc96f08c2c7ced52833}} 
+\index{NestMissile@{NestMissile}!setTexture@{setTexture}}
+\index{setTexture@{setTexture}!NestMissile@{NestMissile}}
+\subsubsection{\texorpdfstring{setTexture()}{setTexture()}}
+{\footnotesize\ttfamily void Nest\+Missile\+::set\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&}]{resources }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_nest_missile_ad4a5ec72363fb7a16ac85b8f05bbcadc}\label{class_nest_missile_ad4a5ec72363fb7a16ac85b8f05bbcadc}} 
+\index{NestMissile@{NestMissile}!spawn@{spawn}}
+\index{spawn@{spawn}!NestMissile@{NestMissile}}
+\subsubsection{\texorpdfstring{spawn()}{spawn()}}
+{\footnotesize\ttfamily void Nest\+Missile\+::spawn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{position,  }\item[{float}]{angle }\end{DoxyParamCaption})}
+
+Description\+: spawns the missile at the position and angle passsed \mbox{\Hypertarget{class_nest_missile_a04925ab3da63f65253bf47d809222367}\label{class_nest_missile_a04925ab3da63f65253bf47d809222367}} 
+\index{NestMissile@{NestMissile}!update@{update}}
+\index{update@{update}!NestMissile@{NestMissile}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Nest\+Missile\+::update (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})}
+
+Description\+: Updates the nest missile and pathfinds to the player if he is out of range, else he seeks to the player 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_nest_missile_ae5d58fc3c25e7b328ea3341902678330}\label{class_nest_missile_ae5d58fc3c25e7b328ea3341902678330}} 
+\index{NestMissile@{NestMissile}!alive@{alive}}
+\index{alive@{alive}!NestMissile@{NestMissile}}
+\subsubsection{\texorpdfstring{alive}{alive}}
+{\footnotesize\ttfamily bool Nest\+Missile\+::alive}
+
+\mbox{\Hypertarget{class_nest_missile_a327592403bd6a9c62e6d8ed69cc81704}\label{class_nest_missile_a327592403bd6a9c62e6d8ed69cc81704}} 
+\index{NestMissile@{NestMissile}!collided@{collided}}
+\index{collided@{collided}!NestMissile@{NestMissile}}
+\subsubsection{\texorpdfstring{collided}{collided}}
+{\footnotesize\ttfamily bool Nest\+Missile\+::collided}
+
+\mbox{\Hypertarget{class_nest_missile_a3555ba31ea53907ad1861343e86de153}\label{class_nest_missile_a3555ba31ea53907ad1861343e86de153}} 
+\index{NestMissile@{NestMissile}!damage@{damage}}
+\index{damage@{damage}!NestMissile@{NestMissile}}
+\subsubsection{\texorpdfstring{damage}{damage}}
+{\footnotesize\ttfamily const int Nest\+Missile\+::damage = 50}
+
+\mbox{\Hypertarget{class_nest_missile_ae0882f8ef7f3381a9095974f46dd9c5d}\label{class_nest_missile_ae0882f8ef7f3381a9095974f46dd9c5d}} 
+\index{NestMissile@{NestMissile}!dead@{dead}}
+\index{dead@{dead}!NestMissile@{NestMissile}}
+\subsubsection{\texorpdfstring{dead}{dead}}
+{\footnotesize\ttfamily bool Nest\+Missile\+::dead}
+
+\mbox{\Hypertarget{class_nest_missile_a30712497be18b5c46fe96d982cda0f1c}\label{class_nest_missile_a30712497be18b5c46fe96d982cda0f1c}} 
+\index{NestMissile@{NestMissile}!m\_position@{m\_position}}
+\index{m\_position@{m\_position}!NestMissile@{NestMissile}}
+\subsubsection{\texorpdfstring{m\_position}{m\_position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Nest\+Missile\+::m\+\_\+position}
+
+\mbox{\Hypertarget{class_nest_missile_a3bdbbd200131b67ba061f17f0303455b}\label{class_nest_missile_a3bdbbd200131b67ba061f17f0303455b}} 
+\index{NestMissile@{NestMissile}!m\_velocity@{m\_velocity}}
+\index{m\_velocity@{m\_velocity}!NestMissile@{NestMissile}}
+\subsubsection{\texorpdfstring{m\_velocity}{m\_velocity}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Nest\+Missile\+::m\+\_\+velocity}
+
+\mbox{\Hypertarget{class_nest_missile_a5780098c2ece04024fe80f198326afef}\label{class_nest_missile_a5780098c2ece04024fe80f198326afef}} 
+\index{NestMissile@{NestMissile}!timeAlive@{timeAlive}}
+\index{timeAlive@{timeAlive}!NestMissile@{NestMissile}}
+\subsubsection{\texorpdfstring{timeAlive}{timeAlive}}
+{\footnotesize\ttfamily float Nest\+Missile\+::time\+Alive}
+
+\mbox{\Hypertarget{class_nest_missile_a51e665742f8a19c90f533bed00149876}\label{class_nest_missile_a51e665742f8a19c90f533bed00149876}} 
+\index{NestMissile@{NestMissile}!ttl@{ttl}}
+\index{ttl@{ttl}!NestMissile@{NestMissile}}
+\subsubsection{\texorpdfstring{ttl}{ttl}}
+{\footnotesize\ttfamily const float Nest\+Missile\+::ttl = 5}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_nest_missile_8h}{Nest\+Missile.\+h}}\item 
+Source/\mbox{\hyperlink{_nest_missile_8cpp}{Nest\+Missile.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,99 @@
+\hypertarget{class_enemy_bullet}{}\section{Enemy\+Bullet Class Reference}
+\label{class_enemy_bullet}\index{EnemyBullet@{EnemyBullet}}
+
+
+{\ttfamily \#include $<$Enemy\+Bullet.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_enemy_bullet_ad412518e8a4b8bb79806caf6ba79ed6d}{Enemy\+Bullet}} ()
+\item 
+void \mbox{\hyperlink{class_enemy_bullet_a127b1d58aa26ac06559f7cebf183b940}{update}} (double dt)
+\item 
+void \mbox{\hyperlink{class_enemy_bullet_a8c46608c19627f2ed50882506b43d9bd}{draw}} (sf\+::\+Render\+Window \&window)
+\item 
+void \mbox{\hyperlink{class_enemy_bullet_a71bda569adc832b5438b2452942a7246}{spawn}} (\mbox{\hyperlink{class_vector2f}{Vector2f}} position, float angle)
+\item 
+void \mbox{\hyperlink{class_enemy_bullet_a48615a287b12f7abcc70a8454a49fb84}{set\+Texture}} (\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&resources)
+\item 
+void \mbox{\hyperlink{class_enemy_bullet_ad91b04f76ddc0f1d2f26f3dd4d78576f}{has\+Collided}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_enemy_bullet_a0e3d53bac30ca999801134e4a3d04ad0}{alive}}
+\item 
+bool \mbox{\hyperlink{class_enemy_bullet_a562c7fa519326360d6a4909367b68108}{collided}}
+\item 
+bool \mbox{\hyperlink{class_enemy_bullet_a0dfe3d06058023f6c5baf3c5fab4acbc}{dead}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_enemy_bullet_ad412518e8a4b8bb79806caf6ba79ed6d}\label{class_enemy_bullet_ad412518e8a4b8bb79806caf6ba79ed6d}} 
+\index{EnemyBullet@{EnemyBullet}!EnemyBullet@{EnemyBullet}}
+\index{EnemyBullet@{EnemyBullet}!EnemyBullet@{EnemyBullet}}
+\subsubsection{\texorpdfstring{EnemyBullet()}{EnemyBullet()}}
+{\footnotesize\ttfamily Enemy\+Bullet\+::\+Enemy\+Bullet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_enemy_bullet_a8c46608c19627f2ed50882506b43d9bd}\label{class_enemy_bullet_a8c46608c19627f2ed50882506b43d9bd}} 
+\index{EnemyBullet@{EnemyBullet}!draw@{draw}}
+\index{draw@{draw}!EnemyBullet@{EnemyBullet}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Enemy\+Bullet\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+Description\+: Draws the bullet \mbox{\Hypertarget{class_enemy_bullet_ad91b04f76ddc0f1d2f26f3dd4d78576f}\label{class_enemy_bullet_ad91b04f76ddc0f1d2f26f3dd4d78576f}} 
+\index{EnemyBullet@{EnemyBullet}!hasCollided@{hasCollided}}
+\index{hasCollided@{hasCollided}!EnemyBullet@{EnemyBullet}}
+\subsubsection{\texorpdfstring{hasCollided()}{hasCollided()}}
+{\footnotesize\ttfamily void Enemy\+Bullet\+::has\+Collided (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Description\+: Sets the bullet as collided \mbox{\Hypertarget{class_enemy_bullet_a48615a287b12f7abcc70a8454a49fb84}\label{class_enemy_bullet_a48615a287b12f7abcc70a8454a49fb84}} 
+\index{EnemyBullet@{EnemyBullet}!setTexture@{setTexture}}
+\index{setTexture@{setTexture}!EnemyBullet@{EnemyBullet}}
+\subsubsection{\texorpdfstring{setTexture()}{setTexture()}}
+{\footnotesize\ttfamily void Enemy\+Bullet\+::set\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&}]{resources }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_enemy_bullet_a71bda569adc832b5438b2452942a7246}\label{class_enemy_bullet_a71bda569adc832b5438b2452942a7246}} 
+\index{EnemyBullet@{EnemyBullet}!spawn@{spawn}}
+\index{spawn@{spawn}!EnemyBullet@{EnemyBullet}}
+\subsubsection{\texorpdfstring{spawn()}{spawn()}}
+{\footnotesize\ttfamily void Enemy\+Bullet\+::spawn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{position,  }\item[{float}]{angle }\end{DoxyParamCaption})}
+
+Description\+: Spawns the bullet at the position adn at the angle passed \mbox{\Hypertarget{class_enemy_bullet_a127b1d58aa26ac06559f7cebf183b940}\label{class_enemy_bullet_a127b1d58aa26ac06559f7cebf183b940}} 
+\index{EnemyBullet@{EnemyBullet}!update@{update}}
+\index{update@{update}!EnemyBullet@{EnemyBullet}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Enemy\+Bullet\+::update (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})}
+
+Description\+: Updates the enemy bullet 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_enemy_bullet_a0e3d53bac30ca999801134e4a3d04ad0}\label{class_enemy_bullet_a0e3d53bac30ca999801134e4a3d04ad0}} 
+\index{EnemyBullet@{EnemyBullet}!alive@{alive}}
+\index{alive@{alive}!EnemyBullet@{EnemyBullet}}
+\subsubsection{\texorpdfstring{alive}{alive}}
+{\footnotesize\ttfamily bool Enemy\+Bullet\+::alive}
+
+\mbox{\Hypertarget{class_enemy_bullet_a562c7fa519326360d6a4909367b68108}\label{class_enemy_bullet_a562c7fa519326360d6a4909367b68108}} 
+\index{EnemyBullet@{EnemyBullet}!collided@{collided}}
+\index{collided@{collided}!EnemyBullet@{EnemyBullet}}
+\subsubsection{\texorpdfstring{collided}{collided}}
+{\footnotesize\ttfamily bool Enemy\+Bullet\+::collided}
+
+\mbox{\Hypertarget{class_enemy_bullet_a0dfe3d06058023f6c5baf3c5fab4acbc}\label{class_enemy_bullet_a0dfe3d06058023f6c5baf3c5fab4acbc}} 
+\index{EnemyBullet@{EnemyBullet}!dead@{dead}}
+\index{dead@{dead}!EnemyBullet@{EnemyBullet}}
+\subsubsection{\texorpdfstring{dead}{dead}}
+{\footnotesize\ttfamily bool Enemy\+Bullet\+::dead}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_enemy_bullet_8h}{Enemy\+Bullet.\+h}}\item 
+Source/\mbox{\hyperlink{_enemy_bullet_8cpp}{Enemy\+Bullet.\+cpp}}\end{DoxyCompactItemize}

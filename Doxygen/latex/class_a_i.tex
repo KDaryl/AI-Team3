@@ -1,0 +1,343 @@
+\hypertarget{class_a_i}{}\section{AI Class Reference}
+\label{class_a_i}\index{AI@{AI}}
+
+
+{\ttfamily \#include $<$A\+I.\+h$>$}
+
+Inheritance diagram for AI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_i}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_i_a64ec60281e9eb8496f16525615db54b7}{AI}} ()
+\item 
+\mbox{\hyperlink{class_a_i_a66a8645f0c27285cd75346f2c2bbfb14}{$\sim$\+AI}} ()
+\item 
+virtual void \mbox{\hyperlink{class_a_i_a6a845cbba63ca3eaab42771f10175e7f}{update}} (float dt)=0
+\item 
+virtual void \mbox{\hyperlink{class_a_i_a7d2082a5c1692991512725797346705f}{render}} (sf\+::\+Render\+Window \&window)=0
+\item 
+sf\+::\+Sprite \& \mbox{\hyperlink{class_a_i_a2d820861174c0e16c7db9b8576cfe7ae}{get\+Sprite}} ()
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_a_i_a17308d8d0aee28ede770a40407f7f718}{get\+Velocity}} ()
+\item 
+float \mbox{\hyperlink{class_a_i_af8eeea1934b1e37dff601aedb329004d}{get\+New\+Orientation\+By\+Velocity}} (float current\+Orientation, \mbox{\hyperlink{class_vector2f}{Vector2f}} current\+Velocity)
+\item 
+float \mbox{\hyperlink{class_a_i_ad61ab7dbffc1376a0d61c4b1ede418a8}{get\+New\+Orientation\+By\+Position}} (float current\+Orientation, \mbox{\hyperlink{class_vector2f}{Vector2f}} current\+Velocity)
+\item 
+void \mbox{\hyperlink{class_a_i_a747a1974597ef32587e22ed7ff09380c}{set\+Texture}} (\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&resources, std\+::string name, \mbox{\hyperlink{class_vector2f}{Vector2f}} center)
+\item 
+void \mbox{\hyperlink{class_a_i_af39a721d8336a0c5e03aedbd6c35dc59}{set\+Target}} (\mbox{\hyperlink{class_vector2f}{Vector2f}} target)
+\item 
+void \mbox{\hyperlink{class_a_i_a79d3e48945e34807fd2e340032cda22d}{set\+Angle}} (\mbox{\hyperlink{class_vector2f}{Vector2f}} \&v, float f)
+\item 
+void \mbox{\hyperlink{class_a_i_a52f464d4a5079e2e3a11aeb4f18c4fc3}{seek}} ()
+\item 
+void \mbox{\hyperlink{class_a_i_a89507f04066c22ee528a14cc4d0edc7e}{flee}} ()
+\item 
+void \mbox{\hyperlink{class_a_i_a3206d8de1de5e5171b81f2eecf5b1449}{wander}} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_a_i_a41df20650ec22657d745f565120d3578}{truncate}} (\mbox{\hyperlink{class_vector2f}{Vector2f}} v, float max)
+\item 
+static float \mbox{\hyperlink{class_a_i_a1811108f5cf63c3735bd68064c59fd45}{get\+Orientation}} (float current\+Angle, \mbox{\hyperlink{class_vector2f}{Vector2f}} vel)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player}{Player}} $\ast$ \mbox{\hyperlink{class_a_i_a9fbe0ffe6d8e18e76f2fde95e05688d8}{m\+\_\+player}}
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{class_a_i_ac1e86894edd8bda2591c578ef4cb0f33}{m\+\_\+sprite}}
+\item 
+sf\+::\+Texture \mbox{\hyperlink{class_a_i_aeb01d3a3dfe5722217097a2a7a924a8b}{m\+\_\+texture}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_a_i_a9aaff71f56bce9c3dcc7e2da78f57a5a}{m\+\_\+position}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_a_i_a33985bd7d9e5593015255eccbfb4cf76}{m\+\_\+velocity}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_a_i_a91d93e35a65caef2fd7a087dfa99cd07}{m\+\_\+target}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_a_i_ad84240b48bd8e5697d070d47a815148d}{m\+\_\+desired\+Velocity}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_a_i_a0f5d53c997939a0dcb77a93b7855726e}{m\+\_\+steering}}
+\item 
+sf\+::\+Float\+Rect \mbox{\hyperlink{class_a_i_ada01ba361d0137e4aa75f4bac6e1b5e0}{m\+\_\+range\+Collider}}
+\item 
+\mbox{\hyperlink{class_physics_body}{Physics\+Body}} \mbox{\hyperlink{class_a_i_aa507f59217affc35b609c276de0e6f68}{m\+\_\+physics\+Body}}
+\item 
+float \mbox{\hyperlink{class_a_i_a614a539cce03130bcdbd8f78a5b8160a}{m\+\_\+max\+Speed}}
+\item 
+float \mbox{\hyperlink{class_a_i_a0ab1fa08223d1f464b10b0b62a0605d8}{m\+\_\+orientation}}
+\item 
+float \mbox{\hyperlink{class_a_i_a5b71bb4f4fc843c27be8ce7df287d998}{m\+\_\+mass}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_a_i_ac0ba44ffdc797966a26fc8d44b0b2faf}{m\+\_\+circle\+Center}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_a_i_ad68c628e218a76dc48d50cba41cd8c54}{m\+\_\+wander\+Force}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_a_i_a36110c862108ea5166046dd460a7ef76}{m\+\_\+displacement}}
+\item 
+float \mbox{\hyperlink{class_a_i_a84e42b4f0762bb1e7777edca276856ea}{m\+\_\+wander\+Angle}} = 0
+\item 
+float \mbox{\hyperlink{class_a_i_a3be3fedd8ea354c0c24600453b0b6d44}{m\+\_\+random\+Num}} = 0
+\item 
+const float \mbox{\hyperlink{class_a_i_ab5f7c13e87603201e56621a94175bcda}{C\+I\+R\+C\+L\+E\+\_\+\+D\+I\+S\+T\+A\+N\+CE}} = 100.\+0f
+\item 
+const float \mbox{\hyperlink{class_a_i_a6e0782290618efecd32afee880be15b2}{C\+I\+R\+C\+L\+E\+\_\+\+R\+A\+D\+I\+US}} = 25.\+0f
+\item 
+const float \mbox{\hyperlink{class_a_i_a2f93f21e5247247935f9375c56d2ea5e}{A\+N\+G\+L\+E\+\_\+\+C\+H\+A\+N\+GE}} = 1.\+0f
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base \mbox{\hyperlink{class_a_i}{AI}} class which other ai classes use 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_a_i_a64ec60281e9eb8496f16525615db54b7}\label{class_a_i_a64ec60281e9eb8496f16525615db54b7}} 
+\index{AI@{AI}!AI@{AI}}
+\index{AI@{AI}!AI@{AI}}
+\subsubsection{\texorpdfstring{AI()}{AI()}}
+{\footnotesize\ttfamily A\+I\+::\+AI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_a_i_a66a8645f0c27285cd75346f2c2bbfb14}\label{class_a_i_a66a8645f0c27285cd75346f2c2bbfb14}} 
+\index{AI@{AI}!````~AI@{$\sim$AI}}
+\index{````~AI@{$\sim$AI}!AI@{AI}}
+\subsubsection{\texorpdfstring{$\sim$AI()}{~AI()}}
+{\footnotesize\ttfamily A\+I\+::$\sim$\+AI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_a_i_a89507f04066c22ee528a14cc4d0edc7e}\label{class_a_i_a89507f04066c22ee528a14cc4d0edc7e}} 
+\index{AI@{AI}!flee@{flee}}
+\index{flee@{flee}!AI@{AI}}
+\subsubsection{\texorpdfstring{flee()}{flee()}}
+{\footnotesize\ttfamily void A\+I\+::flee (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+function used to calculate the flee behaviour \mbox{\Hypertarget{class_a_i_ad61ab7dbffc1376a0d61c4b1ede418a8}\label{class_a_i_ad61ab7dbffc1376a0d61c4b1ede418a8}} 
+\index{AI@{AI}!getNewOrientationByPosition@{getNewOrientationByPosition}}
+\index{getNewOrientationByPosition@{getNewOrientationByPosition}!AI@{AI}}
+\subsubsection{\texorpdfstring{getNewOrientationByPosition()}{getNewOrientationByPosition()}}
+{\footnotesize\ttfamily float A\+I\+::get\+New\+Orientation\+By\+Position (\begin{DoxyParamCaption}\item[{float}]{current\+Orientation,  }\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{current\+Velocity }\end{DoxyParamCaption})}
+
+function used to get the orientation using the sprites position \mbox{\Hypertarget{class_a_i_af8eeea1934b1e37dff601aedb329004d}\label{class_a_i_af8eeea1934b1e37dff601aedb329004d}} 
+\index{AI@{AI}!getNewOrientationByVelocity@{getNewOrientationByVelocity}}
+\index{getNewOrientationByVelocity@{getNewOrientationByVelocity}!AI@{AI}}
+\subsubsection{\texorpdfstring{getNewOrientationByVelocity()}{getNewOrientationByVelocity()}}
+{\footnotesize\ttfamily float A\+I\+::get\+New\+Orientation\+By\+Velocity (\begin{DoxyParamCaption}\item[{float}]{current\+Orientation,  }\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{current\+Velocity }\end{DoxyParamCaption})}
+
+function used to get the orientation using the sprites velocity \mbox{\Hypertarget{class_a_i_a1811108f5cf63c3735bd68064c59fd45}\label{class_a_i_a1811108f5cf63c3735bd68064c59fd45}} 
+\index{AI@{AI}!getOrientation@{getOrientation}}
+\index{getOrientation@{getOrientation}!AI@{AI}}
+\subsubsection{\texorpdfstring{getOrientation()}{getOrientation()}}
+{\footnotesize\ttfamily float A\+I\+::get\+Orientation (\begin{DoxyParamCaption}\item[{float}]{current\+Angle,  }\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{vel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+function used to get the orientation using the sprites velocity \mbox{\Hypertarget{class_a_i_a2d820861174c0e16c7db9b8576cfe7ae}\label{class_a_i_a2d820861174c0e16c7db9b8576cfe7ae}} 
+\index{AI@{AI}!getSprite@{getSprite}}
+\index{getSprite@{getSprite}!AI@{AI}}
+\subsubsection{\texorpdfstring{getSprite()}{getSprite()}}
+{\footnotesize\ttfamily sf\+::\+Sprite \& A\+I\+::get\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+function used to return the sprite \mbox{\Hypertarget{class_a_i_a17308d8d0aee28ede770a40407f7f718}\label{class_a_i_a17308d8d0aee28ede770a40407f7f718}} 
+\index{AI@{AI}!getVelocity@{getVelocity}}
+\index{getVelocity@{getVelocity}!AI@{AI}}
+\subsubsection{\texorpdfstring{getVelocity()}{getVelocity()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} A\+I\+::get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+function used to return the velocity \mbox{\Hypertarget{class_a_i_a7d2082a5c1692991512725797346705f}\label{class_a_i_a7d2082a5c1692991512725797346705f}} 
+\index{AI@{AI}!render@{render}}
+\index{render@{render}!AI@{AI}}
+\subsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily virtual void A\+I\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_sweeper_a8308b5cec3c19e0292947081100d777b}{Sweeper}}.
+
+\mbox{\Hypertarget{class_a_i_a52f464d4a5079e2e3a11aeb4f18c4fc3}\label{class_a_i_a52f464d4a5079e2e3a11aeb4f18c4fc3}} 
+\index{AI@{AI}!seek@{seek}}
+\index{seek@{seek}!AI@{AI}}
+\subsubsection{\texorpdfstring{seek()}{seek()}}
+{\footnotesize\ttfamily void A\+I\+::seek (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+function used to calculate the seek behaviour \mbox{\Hypertarget{class_a_i_a79d3e48945e34807fd2e340032cda22d}\label{class_a_i_a79d3e48945e34807fd2e340032cda22d}} 
+\index{AI@{AI}!setAngle@{setAngle}}
+\index{setAngle@{setAngle}!AI@{AI}}
+\subsubsection{\texorpdfstring{setAngle()}{setAngle()}}
+{\footnotesize\ttfamily void A\+I\+::set\+Angle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}} \&}]{v,  }\item[{float}]{f }\end{DoxyParamCaption})}
+
+function used to set the angle of vector \mbox{\Hypertarget{class_a_i_af39a721d8336a0c5e03aedbd6c35dc59}\label{class_a_i_af39a721d8336a0c5e03aedbd6c35dc59}} 
+\index{AI@{AI}!setTarget@{setTarget}}
+\index{setTarget@{setTarget}!AI@{AI}}
+\subsubsection{\texorpdfstring{setTarget()}{setTarget()}}
+{\footnotesize\ttfamily void A\+I\+::set\+Target (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{target }\end{DoxyParamCaption})}
+
+function used to set the target the ai uses for calculations \mbox{\Hypertarget{class_a_i_a747a1974597ef32587e22ed7ff09380c}\label{class_a_i_a747a1974597ef32587e22ed7ff09380c}} 
+\index{AI@{AI}!setTexture@{setTexture}}
+\index{setTexture@{setTexture}!AI@{AI}}
+\subsubsection{\texorpdfstring{setTexture()}{setTexture()}}
+{\footnotesize\ttfamily void A\+I\+::set\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&}]{resources,  }\item[{std\+::string}]{name,  }\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{center }\end{DoxyParamCaption})}
+
+function used to set the texture of the sprite \mbox{\Hypertarget{class_a_i_a41df20650ec22657d745f565120d3578}\label{class_a_i_a41df20650ec22657d745f565120d3578}} 
+\index{AI@{AI}!truncate@{truncate}}
+\index{truncate@{truncate}!AI@{AI}}
+\subsubsection{\texorpdfstring{truncate()}{truncate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} A\+I\+::truncate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{v,  }\item[{float}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+function to truncate a vector to some value between 0 and 1 \mbox{\Hypertarget{class_a_i_a6a845cbba63ca3eaab42771f10175e7f}\label{class_a_i_a6a845cbba63ca3eaab42771f10175e7f}} 
+\index{AI@{AI}!update@{update}}
+\index{update@{update}!AI@{AI}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void A\+I\+::update (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Pure virtual functions for the \mbox{\hyperlink{class_a_i}{AI}} 
+
+Implemented in \mbox{\hyperlink{class_sweeper_aa186e2bb4c00d8f00c6a947cfd7b4a08}{Sweeper}}.
+
+\mbox{\Hypertarget{class_a_i_a3206d8de1de5e5171b81f2eecf5b1449}\label{class_a_i_a3206d8de1de5e5171b81f2eecf5b1449}} 
+\index{AI@{AI}!wander@{wander}}
+\index{wander@{wander}!AI@{AI}}
+\subsubsection{\texorpdfstring{wander()}{wander()}}
+{\footnotesize\ttfamily void A\+I\+::wander (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+function used to calculate the wander behaviour 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_a_i_a2f93f21e5247247935f9375c56d2ea5e}\label{class_a_i_a2f93f21e5247247935f9375c56d2ea5e}} 
+\index{AI@{AI}!ANGLE\_CHANGE@{ANGLE\_CHANGE}}
+\index{ANGLE\_CHANGE@{ANGLE\_CHANGE}!AI@{AI}}
+\subsubsection{\texorpdfstring{ANGLE\_CHANGE}{ANGLE\_CHANGE}}
+{\footnotesize\ttfamily const float A\+I\+::\+A\+N\+G\+L\+E\+\_\+\+C\+H\+A\+N\+GE = 1.\+0f\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_ab5f7c13e87603201e56621a94175bcda}\label{class_a_i_ab5f7c13e87603201e56621a94175bcda}} 
+\index{AI@{AI}!CIRCLE\_DISTANCE@{CIRCLE\_DISTANCE}}
+\index{CIRCLE\_DISTANCE@{CIRCLE\_DISTANCE}!AI@{AI}}
+\subsubsection{\texorpdfstring{CIRCLE\_DISTANCE}{CIRCLE\_DISTANCE}}
+{\footnotesize\ttfamily const float A\+I\+::\+C\+I\+R\+C\+L\+E\+\_\+\+D\+I\+S\+T\+A\+N\+CE = 100.\+0f\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_a6e0782290618efecd32afee880be15b2}\label{class_a_i_a6e0782290618efecd32afee880be15b2}} 
+\index{AI@{AI}!CIRCLE\_RADIUS@{CIRCLE\_RADIUS}}
+\index{CIRCLE\_RADIUS@{CIRCLE\_RADIUS}!AI@{AI}}
+\subsubsection{\texorpdfstring{CIRCLE\_RADIUS}{CIRCLE\_RADIUS}}
+{\footnotesize\ttfamily const float A\+I\+::\+C\+I\+R\+C\+L\+E\+\_\+\+R\+A\+D\+I\+US = 25.\+0f\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_ac0ba44ffdc797966a26fc8d44b0b2faf}\label{class_a_i_ac0ba44ffdc797966a26fc8d44b0b2faf}} 
+\index{AI@{AI}!m\_circleCenter@{m\_circleCenter}}
+\index{m\_circleCenter@{m\_circleCenter}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_circleCenter}{m\_circleCenter}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} A\+I\+::m\+\_\+circle\+Center\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_ad84240b48bd8e5697d070d47a815148d}\label{class_a_i_ad84240b48bd8e5697d070d47a815148d}} 
+\index{AI@{AI}!m\_desiredVelocity@{m\_desiredVelocity}}
+\index{m\_desiredVelocity@{m\_desiredVelocity}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_desiredVelocity}{m\_desiredVelocity}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} A\+I\+::m\+\_\+desired\+Velocity\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_a36110c862108ea5166046dd460a7ef76}\label{class_a_i_a36110c862108ea5166046dd460a7ef76}} 
+\index{AI@{AI}!m\_displacement@{m\_displacement}}
+\index{m\_displacement@{m\_displacement}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_displacement}{m\_displacement}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} A\+I\+::m\+\_\+displacement\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_a5b71bb4f4fc843c27be8ce7df287d998}\label{class_a_i_a5b71bb4f4fc843c27be8ce7df287d998}} 
+\index{AI@{AI}!m\_mass@{m\_mass}}
+\index{m\_mass@{m\_mass}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_mass}{m\_mass}}
+{\footnotesize\ttfamily float A\+I\+::m\+\_\+mass\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_a614a539cce03130bcdbd8f78a5b8160a}\label{class_a_i_a614a539cce03130bcdbd8f78a5b8160a}} 
+\index{AI@{AI}!m\_maxSpeed@{m\_maxSpeed}}
+\index{m\_maxSpeed@{m\_maxSpeed}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_maxSpeed}{m\_maxSpeed}}
+{\footnotesize\ttfamily float A\+I\+::m\+\_\+max\+Speed\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_a0ab1fa08223d1f464b10b0b62a0605d8}\label{class_a_i_a0ab1fa08223d1f464b10b0b62a0605d8}} 
+\index{AI@{AI}!m\_orientation@{m\_orientation}}
+\index{m\_orientation@{m\_orientation}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_orientation}{m\_orientation}}
+{\footnotesize\ttfamily float A\+I\+::m\+\_\+orientation\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_aa507f59217affc35b609c276de0e6f68}\label{class_a_i_aa507f59217affc35b609c276de0e6f68}} 
+\index{AI@{AI}!m\_physicsBody@{m\_physicsBody}}
+\index{m\_physicsBody@{m\_physicsBody}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_physicsBody}{m\_physicsBody}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_physics_body}{Physics\+Body}} A\+I\+::m\+\_\+physics\+Body\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_a9fbe0ffe6d8e18e76f2fde95e05688d8}\label{class_a_i_a9fbe0ffe6d8e18e76f2fde95e05688d8}} 
+\index{AI@{AI}!m\_player@{m\_player}}
+\index{m\_player@{m\_player}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_player}{m\_player}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}}$\ast$ A\+I\+::m\+\_\+player\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_a9aaff71f56bce9c3dcc7e2da78f57a5a}\label{class_a_i_a9aaff71f56bce9c3dcc7e2da78f57a5a}} 
+\index{AI@{AI}!m\_position@{m\_position}}
+\index{m\_position@{m\_position}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_position}{m\_position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} A\+I\+::m\+\_\+position\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_a3be3fedd8ea354c0c24600453b0b6d44}\label{class_a_i_a3be3fedd8ea354c0c24600453b0b6d44}} 
+\index{AI@{AI}!m\_randomNum@{m\_randomNum}}
+\index{m\_randomNum@{m\_randomNum}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_randomNum}{m\_randomNum}}
+{\footnotesize\ttfamily float A\+I\+::m\+\_\+random\+Num = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_ada01ba361d0137e4aa75f4bac6e1b5e0}\label{class_a_i_ada01ba361d0137e4aa75f4bac6e1b5e0}} 
+\index{AI@{AI}!m\_rangeCollider@{m\_rangeCollider}}
+\index{m\_rangeCollider@{m\_rangeCollider}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_rangeCollider}{m\_rangeCollider}}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect A\+I\+::m\+\_\+range\+Collider\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_ac1e86894edd8bda2591c578ef4cb0f33}\label{class_a_i_ac1e86894edd8bda2591c578ef4cb0f33}} 
+\index{AI@{AI}!m\_sprite@{m\_sprite}}
+\index{m\_sprite@{m\_sprite}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_sprite}{m\_sprite}}
+{\footnotesize\ttfamily sf\+::\+Sprite A\+I\+::m\+\_\+sprite\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_a0f5d53c997939a0dcb77a93b7855726e}\label{class_a_i_a0f5d53c997939a0dcb77a93b7855726e}} 
+\index{AI@{AI}!m\_steering@{m\_steering}}
+\index{m\_steering@{m\_steering}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_steering}{m\_steering}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} A\+I\+::m\+\_\+steering\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_a91d93e35a65caef2fd7a087dfa99cd07}\label{class_a_i_a91d93e35a65caef2fd7a087dfa99cd07}} 
+\index{AI@{AI}!m\_target@{m\_target}}
+\index{m\_target@{m\_target}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_target}{m\_target}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} A\+I\+::m\+\_\+target\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_aeb01d3a3dfe5722217097a2a7a924a8b}\label{class_a_i_aeb01d3a3dfe5722217097a2a7a924a8b}} 
+\index{AI@{AI}!m\_texture@{m\_texture}}
+\index{m\_texture@{m\_texture}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_texture}{m\_texture}}
+{\footnotesize\ttfamily sf\+::\+Texture A\+I\+::m\+\_\+texture\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_a33985bd7d9e5593015255eccbfb4cf76}\label{class_a_i_a33985bd7d9e5593015255eccbfb4cf76}} 
+\index{AI@{AI}!m\_velocity@{m\_velocity}}
+\index{m\_velocity@{m\_velocity}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_velocity}{m\_velocity}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} A\+I\+::m\+\_\+velocity\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_a84e42b4f0762bb1e7777edca276856ea}\label{class_a_i_a84e42b4f0762bb1e7777edca276856ea}} 
+\index{AI@{AI}!m\_wanderAngle@{m\_wanderAngle}}
+\index{m\_wanderAngle@{m\_wanderAngle}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_wanderAngle}{m\_wanderAngle}}
+{\footnotesize\ttfamily float A\+I\+::m\+\_\+wander\+Angle = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_a_i_ad68c628e218a76dc48d50cba41cd8c54}\label{class_a_i_ad68c628e218a76dc48d50cba41cd8c54}} 
+\index{AI@{AI}!m\_wanderForce@{m\_wanderForce}}
+\index{m\_wanderForce@{m\_wanderForce}!AI@{AI}}
+\subsubsection{\texorpdfstring{m\_wanderForce}{m\_wanderForce}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} A\+I\+::m\+\_\+wander\+Force\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_a_i_8h}{A\+I.\+h}}\item 
+Source/\mbox{\hyperlink{_a_i_8cpp}{A\+I.\+cpp}}\end{DoxyCompactItemize}

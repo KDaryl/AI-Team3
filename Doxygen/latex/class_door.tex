@@ -1,0 +1,94 @@
+\hypertarget{class_door}{}\section{Door Class Reference}
+\label{class_door}\index{Door@{Door}}
+
+
+{\ttfamily \#include $<$Door.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_door_a7645be7f8752d419f8d2d5734eaa7ebd}{Door}} (float x, float y, \mbox{\hyperlink{class_player}{Player}} \&player)
+\item 
+\mbox{\hyperlink{class_door_a3dbbbd7a49698a8461d3c22df60bd2d3}{$\sim$\+Door}} ()
+\item 
+void \mbox{\hyperlink{class_door_a47a3f92167ee4b4ce53c9c93e7d5b805}{update}} (double dt)
+\item 
+void \mbox{\hyperlink{class_door_a67129ae17ae7d32e2db613c0ba8d21ff}{draw}} (sf\+::\+Render\+Window \&win)
+\item 
+void \mbox{\hyperlink{class_door_a1f958c48c09f2f57d1a117764764fbfc}{set\+Texture}} (\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&resources)
+\item 
+void \mbox{\hyperlink{class_door_a482562e2f8ffe5857491464debd419ad}{set\+Rotation}} (float angle)
+\item 
+sf\+::\+Float\+Rect \mbox{\hyperlink{class_door_a981d32d899bf7bf19833bce9e47364a1}{collider}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_collision_circle}{Collision\+Circle}} \mbox{\hyperlink{class_door_a671b74fd40342beadc202df82132621b}{m\+\_\+range\+Collider}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description\+: simple door class that openswhen a player is nearby 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_door_a7645be7f8752d419f8d2d5734eaa7ebd}\label{class_door_a7645be7f8752d419f8d2d5734eaa7ebd}} 
+\index{Door@{Door}!Door@{Door}}
+\index{Door@{Door}!Door@{Door}}
+\subsubsection{\texorpdfstring{Door()}{Door()}}
+{\footnotesize\ttfamily Door\+::\+Door (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{player }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_door_a3dbbbd7a49698a8461d3c22df60bd2d3}\label{class_door_a3dbbbd7a49698a8461d3c22df60bd2d3}} 
+\index{Door@{Door}!````~Door@{$\sim$Door}}
+\index{````~Door@{$\sim$Door}!Door@{Door}}
+\subsubsection{\texorpdfstring{$\sim$Door()}{~Door()}}
+{\footnotesize\ttfamily Door\+::$\sim$\+Door (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_door_a981d32d899bf7bf19833bce9e47364a1}\label{class_door_a981d32d899bf7bf19833bce9e47364a1}} 
+\index{Door@{Door}!collider@{collider}}
+\index{collider@{collider}!Door@{Door}}
+\subsubsection{\texorpdfstring{collider()}{collider()}}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect Door\+::collider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_door_a67129ae17ae7d32e2db613c0ba8d21ff}\label{class_door_a67129ae17ae7d32e2db613c0ba8d21ff}} 
+\index{Door@{Door}!draw@{draw}}
+\index{draw@{draw}!Door@{Door}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Door\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{win }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_door_a482562e2f8ffe5857491464debd419ad}\label{class_door_a482562e2f8ffe5857491464debd419ad}} 
+\index{Door@{Door}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!Door@{Door}}
+\subsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily void Door\+::set\+Rotation (\begin{DoxyParamCaption}\item[{float}]{angle }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_door_a1f958c48c09f2f57d1a117764764fbfc}\label{class_door_a1f958c48c09f2f57d1a117764764fbfc}} 
+\index{Door@{Door}!setTexture@{setTexture}}
+\index{setTexture@{setTexture}!Door@{Door}}
+\subsubsection{\texorpdfstring{setTexture()}{setTexture()}}
+{\footnotesize\ttfamily void Door\+::set\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&}]{resources }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_door_a47a3f92167ee4b4ce53c9c93e7d5b805}\label{class_door_a47a3f92167ee4b4ce53c9c93e7d5b805}} 
+\index{Door@{Door}!update@{update}}
+\index{update@{update}!Door@{Door}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Door\+::update (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})}
+
+Description\+: door opens if the player is in range 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_door_a671b74fd40342beadc202df82132621b}\label{class_door_a671b74fd40342beadc202df82132621b}} 
+\index{Door@{Door}!m\_rangeCollider@{m\_rangeCollider}}
+\index{m\_rangeCollider@{m\_rangeCollider}!Door@{Door}}
+\subsubsection{\texorpdfstring{m\_rangeCollider}{m\_rangeCollider}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_collision_circle}{Collision\+Circle}} Door\+::m\+\_\+range\+Collider}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_door_8h}{Door.\+h}}\item 
+Source/\mbox{\hyperlink{_door_8cpp}{Door.\+cpp}}\end{DoxyCompactItemize}

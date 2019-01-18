@@ -1,0 +1,102 @@
+\hypertarget{class_grid}{}\section{Grid Class Reference}
+\label{class_grid}\index{Grid@{Grid}}
+
+
+{\ttfamily \#include $<$Grid.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_grid_a4ac9ff4f63552b4c61ff90fcb35ad66c}{Grid}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_vector2f}{Vector2f}} $>$ \mbox{\hyperlink{class_grid_af12fcb815f27ae538ac1dd8178c30b6f}{B\+FS}} (\mbox{\hyperlink{class_cell}{Cell}} \&from, \mbox{\hyperlink{class_cell}{Cell}} \&goal, std\+::vector$<$ \mbox{\hyperlink{class_cell}{Cell}} $\ast$ $>$ \&cells)
+\item 
+void \mbox{\hyperlink{class_grid_a9b42b1d0dcfc434d790b11faf4b461ce}{draw}} (sf\+::\+Render\+Window \&window)
+\item 
+std\+::string \mbox{\hyperlink{class_grid_a0d44166cb6fff74a173d454023c1cce4}{convert\+To\+String}} (sf\+::\+Vector2i pos)
+\item 
+std\+::string \mbox{\hyperlink{class_grid_a0bb1f758e9bec3d4f083d52d42fdeedd}{convert\+To\+String}} (int x, int y)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ std\+::string, \mbox{\hyperlink{class_cell}{Cell}} $>$ \mbox{\hyperlink{class_grid_ab2dedb463583b59622965acc2a6bedc7}{m\+\_\+split\+Gridcells}}
+\item 
+std\+::map$<$ std\+::string, std\+::vector$<$ \mbox{\hyperlink{class_cell}{Cell}} $\ast$ $>$ $>$ \mbox{\hyperlink{class_grid_aaa5f3ec4dfd546d45ba997a89296cad9}{m\+\_\+split\+Cells}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_cell}{Cell}} $\ast$ $>$ \mbox{\hyperlink{class_grid_ad2fee42b47a1d2fdb9a490ebf52aa944}{m\+\_\+cells\+Ptrs}}
+\item 
+std\+::map$<$ std\+::string, \mbox{\hyperlink{class_cell}{Cell}} $>$ \mbox{\hyperlink{class_grid_aeb22e641359f6de5c09d58c570d08a1e}{m\+\_\+cells}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description\+: \mbox{\hyperlink{class_grid}{Grid}} class for pathfinding 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_grid_a4ac9ff4f63552b4c61ff90fcb35ad66c}\label{class_grid_a4ac9ff4f63552b4c61ff90fcb35ad66c}} 
+\index{Grid@{Grid}!Grid@{Grid}}
+\index{Grid@{Grid}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{Grid()}{Grid()}}
+{\footnotesize\ttfamily Grid\+::\+Grid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_grid_af12fcb815f27ae538ac1dd8178c30b6f}\label{class_grid_af12fcb815f27ae538ac1dd8178c30b6f}} 
+\index{Grid@{Grid}!BFS@{BFS}}
+\index{BFS@{BFS}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{BFS()}{BFS()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_vector2f}{Vector2f}} $>$ Grid\+::\+B\+FS (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cell}{Cell}} \&}]{from,  }\item[{\mbox{\hyperlink{class_cell}{Cell}} \&}]{goal,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_cell}{Cell}} $\ast$ $>$ \&}]{cells }\end{DoxyParamCaption})}
+
+Description\+: Here we pathfind and get a path from a cell to another and return it \mbox{\Hypertarget{class_grid_a0d44166cb6fff74a173d454023c1cce4}\label{class_grid_a0d44166cb6fff74a173d454023c1cce4}} 
+\index{Grid@{Grid}!convertToString@{convertToString}}
+\index{convertToString@{convertToString}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{convertToString()}{convertToString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string Grid\+::convert\+To\+String (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2i}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a0bb1f758e9bec3d4f083d52d42fdeedd}\label{class_grid_a0bb1f758e9bec3d4f083d52d42fdeedd}} 
+\index{Grid@{Grid}!convertToString@{convertToString}}
+\index{convertToString@{convertToString}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{convertToString()}{convertToString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string Grid\+::convert\+To\+String (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a9b42b1d0dcfc434d790b11faf4b461ce}\label{class_grid_a9b42b1d0dcfc434d790b11faf4b461ce}} 
+\index{Grid@{Grid}!draw@{draw}}
+\index{draw@{draw}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Grid\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+Description\+: draws the cells in the game 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_grid_aeb22e641359f6de5c09d58c570d08a1e}\label{class_grid_aeb22e641359f6de5c09d58c570d08a1e}} 
+\index{Grid@{Grid}!m\_cells@{m\_cells}}
+\index{m\_cells@{m\_cells}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\_cells}{m\_cells}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, \mbox{\hyperlink{class_cell}{Cell}}$>$ Grid\+::m\+\_\+cells}
+
+\mbox{\Hypertarget{class_grid_ad2fee42b47a1d2fdb9a490ebf52aa944}\label{class_grid_ad2fee42b47a1d2fdb9a490ebf52aa944}} 
+\index{Grid@{Grid}!m\_cellsPtrs@{m\_cellsPtrs}}
+\index{m\_cellsPtrs@{m\_cellsPtrs}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\_cellsPtrs}{m\_cellsPtrs}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_cell}{Cell}}$\ast$$>$ Grid\+::m\+\_\+cells\+Ptrs}
+
+\mbox{\Hypertarget{class_grid_aaa5f3ec4dfd546d45ba997a89296cad9}\label{class_grid_aaa5f3ec4dfd546d45ba997a89296cad9}} 
+\index{Grid@{Grid}!m\_splitCells@{m\_splitCells}}
+\index{m\_splitCells@{m\_splitCells}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\_splitCells}{m\_splitCells}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, std\+::vector$<$\mbox{\hyperlink{class_cell}{Cell}}$\ast$$>$ $>$ Grid\+::m\+\_\+split\+Cells}
+
+\mbox{\Hypertarget{class_grid_ab2dedb463583b59622965acc2a6bedc7}\label{class_grid_ab2dedb463583b59622965acc2a6bedc7}} 
+\index{Grid@{Grid}!m\_splitGridcells@{m\_splitGridcells}}
+\index{m\_splitGridcells@{m\_splitGridcells}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\_splitGridcells}{m\_splitGridcells}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, \mbox{\hyperlink{class_cell}{Cell}}$>$ Grid\+::m\+\_\+split\+Gridcells}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_grid_8h}{Grid.\+h}}\item 
+Source/\mbox{\hyperlink{_grid_8cpp}{Grid.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,96 @@
+\hypertarget{class_nest}{}\section{Nest Class Reference}
+\label{class_nest}\index{Nest@{Nest}}
+
+
+{\ttfamily \#include $<$Nest.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_nest_ab6ee6871ff8b0cd03443ae5c4925f3a6}{Nest}} (\mbox{\hyperlink{class_player}{Player}} \&player, \mbox{\hyperlink{class_grid}{Grid}} \&grid, \mbox{\hyperlink{class_vector2f}{Vector2f}} pos, std\+::vector$<$ \mbox{\hyperlink{class_predator}{Predator}} $>$ \&preds)
+\item 
+\mbox{\hyperlink{class_nest_a3e879ba15acd31717b1dc9bdc87488d5}{$\sim$\+Nest}} ()
+\item 
+void \mbox{\hyperlink{class_nest_adaff7cf66767b702b90b48aad3ac1e88}{update}} (double dt, std\+::vector$<$ \mbox{\hyperlink{class_nest}{Nest}} $>$ \&other\+Nests)
+\item 
+void \mbox{\hyperlink{class_nest_ac163aeb55369c46b551f6c415c2946c9}{draw}} (sf\+::\+Render\+Window \&window)
+\item 
+void \mbox{\hyperlink{class_nest_a168e5f70cab698039ea3ceb3ae979ca2}{die}} ()
+\item 
+void \mbox{\hyperlink{class_nest_abe5daf6621900c3be55e79a8390fff54}{set\+Texture}} (\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&resources)
+\item 
+void \mbox{\hyperlink{class_nest_aa27374891443c16bf480b1cda4edf2aa}{add\+Dec\+Health}} (int val)
+\item 
+bool \mbox{\hyperlink{class_nest_aa7382d9fa6b7f65bf94dc62d838b193c}{is\+Building}} ()
+\item 
+sf\+::\+Float\+Rect \& \mbox{\hyperlink{class_nest_a3388bd5cc2dc967a15d842e6c5f21760}{collider}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description\+: The nest spawns predators and shoots players that are nearby 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_nest_ab6ee6871ff8b0cd03443ae5c4925f3a6}\label{class_nest_ab6ee6871ff8b0cd03443ae5c4925f3a6}} 
+\index{Nest@{Nest}!Nest@{Nest}}
+\index{Nest@{Nest}!Nest@{Nest}}
+\subsubsection{\texorpdfstring{Nest()}{Nest()}}
+{\footnotesize\ttfamily Nest\+::\+Nest (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{player,  }\item[{\mbox{\hyperlink{class_grid}{Grid}} \&}]{grid,  }\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{pos,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_predator}{Predator}} $>$ \&}]{preds }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_nest_a3e879ba15acd31717b1dc9bdc87488d5}\label{class_nest_a3e879ba15acd31717b1dc9bdc87488d5}} 
+\index{Nest@{Nest}!````~Nest@{$\sim$Nest}}
+\index{````~Nest@{$\sim$Nest}!Nest@{Nest}}
+\subsubsection{\texorpdfstring{$\sim$Nest()}{~Nest()}}
+{\footnotesize\ttfamily Nest\+::$\sim$\+Nest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_nest_aa27374891443c16bf480b1cda4edf2aa}\label{class_nest_aa27374891443c16bf480b1cda4edf2aa}} 
+\index{Nest@{Nest}!addDecHealth@{addDecHealth}}
+\index{addDecHealth@{addDecHealth}!Nest@{Nest}}
+\subsubsection{\texorpdfstring{addDecHealth()}{addDecHealth()}}
+{\footnotesize\ttfamily void Nest\+::add\+Dec\+Health (\begin{DoxyParamCaption}\item[{int}]{val }\end{DoxyParamCaption})}
+
+Description\+: Here we add or decrement the health of the nest \mbox{\Hypertarget{class_nest_a3388bd5cc2dc967a15d842e6c5f21760}\label{class_nest_a3388bd5cc2dc967a15d842e6c5f21760}} 
+\index{Nest@{Nest}!collider@{collider}}
+\index{collider@{collider}!Nest@{Nest}}
+\subsubsection{\texorpdfstring{collider()}{collider()}}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect\& Nest\+::collider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_nest_a168e5f70cab698039ea3ceb3ae979ca2}\label{class_nest_a168e5f70cab698039ea3ceb3ae979ca2}} 
+\index{Nest@{Nest}!die@{die}}
+\index{die@{die}!Nest@{Nest}}
+\subsubsection{\texorpdfstring{die()}{die()}}
+{\footnotesize\ttfamily void Nest\+::die (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Description\+: Kills the nest \mbox{\Hypertarget{class_nest_ac163aeb55369c46b551f6c415c2946c9}\label{class_nest_ac163aeb55369c46b551f6c415c2946c9}} 
+\index{Nest@{Nest}!draw@{draw}}
+\index{draw@{draw}!Nest@{Nest}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Nest\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_nest_aa7382d9fa6b7f65bf94dc62d838b193c}\label{class_nest_aa7382d9fa6b7f65bf94dc62d838b193c}} 
+\index{Nest@{Nest}!isBuilding@{isBuilding}}
+\index{isBuilding@{isBuilding}!Nest@{Nest}}
+\subsubsection{\texorpdfstring{isBuilding()}{isBuilding()}}
+{\footnotesize\ttfamily bool Nest\+::is\+Building (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_nest_abe5daf6621900c3be55e79a8390fff54}\label{class_nest_abe5daf6621900c3be55e79a8390fff54}} 
+\index{Nest@{Nest}!setTexture@{setTexture}}
+\index{setTexture@{setTexture}!Nest@{Nest}}
+\subsubsection{\texorpdfstring{setTexture()}{setTexture()}}
+{\footnotesize\ttfamily void Nest\+::set\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&}]{resources }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_nest_adaff7cf66767b702b90b48aad3ac1e88}\label{class_nest_adaff7cf66767b702b90b48aad3ac1e88}} 
+\index{Nest@{Nest}!update@{update}}
+\index{update@{update}!Nest@{Nest}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Nest\+::update (\begin{DoxyParamCaption}\item[{double}]{dt,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_nest}{Nest}} $>$ \&}]{other\+Nests }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_nest_8h}{Nest.\+h}}\item 
+Source/\mbox{\hyperlink{_nest_8cpp}{Nest.\+cpp}}\end{DoxyCompactItemize}

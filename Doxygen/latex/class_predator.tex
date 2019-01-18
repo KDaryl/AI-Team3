@@ -1,0 +1,243 @@
+\hypertarget{class_predator}{}\section{Predator Class Reference}
+\label{class_predator}\index{Predator@{Predator}}
+
+
+{\ttfamily \#include $<$Predator.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_predator_1_1bool_vec_pair}{bool\+Vec\+Pair}}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_predator_abda10d554bf3bc115474a48c1bfa1dc5}{Predator}} (\mbox{\hyperlink{class_vector2f}{Vector2f}} \&player\+Pos, \mbox{\hyperlink{class_grid}{Grid}} $\ast$grid, int id\+In)
+\item 
+\mbox{\hyperlink{class_predator_a9ef1a4a3a5988d1d1e5844a235b36b8b}{$\sim$\+Predator}} ()
+\item 
+void \mbox{\hyperlink{class_predator_a17133c4b982c810352e56daa6e0bc5a4}{update}} (double dt)
+\item 
+void \mbox{\hyperlink{class_predator_abd7de2991eb29a4ae7fa0d57124e4be3}{draw}} (sf\+::\+Render\+Window \&window)
+\item 
+bool \mbox{\hyperlink{class_predator_a348b20a5648b3079c34dd1a15d12f07a}{seek}} (\mbox{\hyperlink{struct_predator_1_1bool_vec_pair}{bool\+Vec\+Pair}} \&p, double dt)
+\item 
+void \mbox{\hyperlink{class_predator_af584656b9bef9131f7617ffc13a9b7e6}{look\+At\+Player}} (double dt)
+\item 
+void \mbox{\hyperlink{class_predator_ac5ed60176f5495793e31d03e6307d539}{spawn}} (\mbox{\hyperlink{class_vector2f}{Vector2f}} spawn\+Pos)
+\item 
+void \mbox{\hyperlink{class_predator_ac1d720679ac232c291cfc4dac4d887a1}{decrement\+Health}} (int val)
+\item 
+float \mbox{\hyperlink{class_predator_a2b71c74871cc39b38b1d668879ff1f6e}{get\+Move\+Speed}} ()
+\item 
+void \mbox{\hyperlink{class_predator_ae2beabc22f0adbe02932e85ad96a84b8}{set\+Texture}} (\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&resources)
+\item 
+void \mbox{\hyperlink{class_predator_a67e5da42f1a7e8a92e066e2f9402af5e}{die}} ()
+\item 
+bool \& \mbox{\hyperlink{class_predator_a01db6f18bc0047f66202b29597a77917}{is\+Spawned}} ()
+\item 
+void \mbox{\hyperlink{class_predator_a5445765daaf7807765d8082eb94b01d8}{flock}} (std\+::vector$<$ \mbox{\hyperlink{class_predator}{Predator}} $>$ $\ast$p, int currentP)
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_predator_a532e33a8f19a128f4a16018e105f3364}{separation}} (std\+::vector$<$ \mbox{\hyperlink{class_predator}{Predator}} $>$ $\ast$p, int currentP)
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_predator_afd1be3bbb0b2be00076c938488aafc04}{alignment}} (std\+::vector$<$ \mbox{\hyperlink{class_predator}{Predator}} $>$ $\ast$p, int currentP)
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_predator_a55f6ee2c3cd0fbe79cd8b7f1329338ed}{cohesion}} (std\+::vector$<$ \mbox{\hyperlink{class_predator}{Predator}} $>$ $\ast$p, int currentP)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_predator_a08fe1220545a64b2c57e7f480a0e572e}{m\+\_\+position}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_predator_a5019723ed9af503dce198a11bb0852f8}{m\+\_\+velocity}}
+\item 
+int \mbox{\hyperlink{class_predator_a56843e2fa044cd63f18d327f58ee6e50}{m\+\_\+id}} = 0
+\item 
+float \mbox{\hyperlink{class_predator_abc20de08927cc96a54ff8e79499f27bf}{distance\+Between\+Max}} = 300
+\item 
+float \mbox{\hyperlink{class_predator_a85ec5ed9b4b40864c759ce7e5e31b468}{ali\+Weight}} = 0.\+5
+\item 
+float \mbox{\hyperlink{class_predator_a69d8d2679a46ce9d30b49ca9df149c82}{sep\+Weight}} = 0.\+5
+\item 
+float \mbox{\hyperlink{class_predator_a934675083ce5d755e18102f32361e707}{coh\+Weight}} = 0.\+5
+\item 
+int \mbox{\hyperlink{class_predator_a64b266324d1d8031e88c436f119346b0}{m\+\_\+neighbours}} = 0
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_predator_a44e0651b94e62a2ca1b1ea3d69e9f61f}{m\+\_\+flock\+Velocity}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_predator_a414c5d03d3d91d1331ffcdecfa2d97de}{m\+\_\+flock\+Vector}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description\+: Here is the predator, it seeks and flocks when around a player 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_predator_abda10d554bf3bc115474a48c1bfa1dc5}\label{class_predator_abda10d554bf3bc115474a48c1bfa1dc5}} 
+\index{Predator@{Predator}!Predator@{Predator}}
+\index{Predator@{Predator}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{Predator()}{Predator()}}
+{\footnotesize\ttfamily Predator\+::\+Predator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}} \&}]{player\+Pos,  }\item[{\mbox{\hyperlink{class_grid}{Grid}} $\ast$}]{grid,  }\item[{int}]{id\+In }\end{DoxyParamCaption})}
+
+Description\+: \mbox{\hyperlink{class_predator}{Predator}} constructor, setting initial values for the predator \mbox{\Hypertarget{class_predator_a9ef1a4a3a5988d1d1e5844a235b36b8b}\label{class_predator_a9ef1a4a3a5988d1d1e5844a235b36b8b}} 
+\index{Predator@{Predator}!````~Predator@{$\sim$Predator}}
+\index{````~Predator@{$\sim$Predator}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{$\sim$Predator()}{~Predator()}}
+{\footnotesize\ttfamily Predator\+::$\sim$\+Predator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_predator_afd1be3bbb0b2be00076c938488aafc04}\label{class_predator_afd1be3bbb0b2be00076c938488aafc04}} 
+\index{Predator@{Predator}!alignment@{alignment}}
+\index{alignment@{alignment}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{alignment()}{alignment()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Predator\+::alignment (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_predator}{Predator}} $>$ $\ast$}]{p,  }\item[{int}]{currentP }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_predator_a55f6ee2c3cd0fbe79cd8b7f1329338ed}\label{class_predator_a55f6ee2c3cd0fbe79cd8b7f1329338ed}} 
+\index{Predator@{Predator}!cohesion@{cohesion}}
+\index{cohesion@{cohesion}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{cohesion()}{cohesion()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Predator\+::cohesion (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_predator}{Predator}} $>$ $\ast$}]{p,  }\item[{int}]{currentP }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_predator_ac1d720679ac232c291cfc4dac4d887a1}\label{class_predator_ac1d720679ac232c291cfc4dac4d887a1}} 
+\index{Predator@{Predator}!decrementHealth@{decrementHealth}}
+\index{decrementHealth@{decrementHealth}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{decrementHealth()}{decrementHealth()}}
+{\footnotesize\ttfamily void Predator\+::decrement\+Health (\begin{DoxyParamCaption}\item[{int}]{val }\end{DoxyParamCaption})}
+
+Description\+: Adds/\+Subtracts a value from health, if health reaches 0 call \mbox{\hyperlink{class_predator_a67e5da42f1a7e8a92e066e2f9402af5e}{die()}} method \mbox{\Hypertarget{class_predator_a67e5da42f1a7e8a92e066e2f9402af5e}\label{class_predator_a67e5da42f1a7e8a92e066e2f9402af5e}} 
+\index{Predator@{Predator}!die@{die}}
+\index{die@{die}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{die()}{die()}}
+{\footnotesize\ttfamily void Predator\+::die (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Description\+: Kills the predator (plays a death animation) \mbox{\Hypertarget{class_predator_abd7de2991eb29a4ae7fa0d57124e4be3}\label{class_predator_abd7de2991eb29a4ae7fa0d57124e4be3}} 
+\index{Predator@{Predator}!draw@{draw}}
+\index{draw@{draw}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Predator\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+Description\+: Draws the predators sprites \mbox{\Hypertarget{class_predator_a5445765daaf7807765d8082eb94b01d8}\label{class_predator_a5445765daaf7807765d8082eb94b01d8}} 
+\index{Predator@{Predator}!flock@{flock}}
+\index{flock@{flock}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{flock()}{flock()}}
+{\footnotesize\ttfamily void Predator\+::flock (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_predator}{Predator}} $>$ $\ast$}]{p,  }\item[{int}]{currentP }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_predator_a2b71c74871cc39b38b1d668879ff1f6e}\label{class_predator_a2b71c74871cc39b38b1d668879ff1f6e}} 
+\index{Predator@{Predator}!getMoveSpeed@{getMoveSpeed}}
+\index{getMoveSpeed@{getMoveSpeed}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{getMoveSpeed()}{getMoveSpeed()}}
+{\footnotesize\ttfamily float Predator\+::get\+Move\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_predator_a01db6f18bc0047f66202b29597a77917}\label{class_predator_a01db6f18bc0047f66202b29597a77917}} 
+\index{Predator@{Predator}!isSpawned@{isSpawned}}
+\index{isSpawned@{isSpawned}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{isSpawned()}{isSpawned()}}
+{\footnotesize\ttfamily bool\& Predator\+::is\+Spawned (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_predator_af584656b9bef9131f7617ffc13a9b7e6}\label{class_predator_af584656b9bef9131f7617ffc13a9b7e6}} 
+\index{Predator@{Predator}!lookAtPlayer@{lookAtPlayer}}
+\index{lookAtPlayer@{lookAtPlayer}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{lookAtPlayer()}{lookAtPlayer()}}
+{\footnotesize\ttfamily void Predator\+::look\+At\+Player (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})}
+
+Description\+: Looks towards the player and if the predator can fire, it will spawn a bullet \mbox{\Hypertarget{class_predator_a348b20a5648b3079c34dd1a15d12f07a}\label{class_predator_a348b20a5648b3079c34dd1a15d12f07a}} 
+\index{Predator@{Predator}!seek@{seek}}
+\index{seek@{seek}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{seek()}{seek()}}
+{\footnotesize\ttfamily bool Predator\+::seek (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_predator_1_1bool_vec_pair}{bool\+Vec\+Pair}} \&}]{p,  }\item[{double}]{dt }\end{DoxyParamCaption})}
+
+Description\+: Seeks to the location in the \mbox{\hyperlink{struct_predator_1_1bool_vec_pair}{bool\+Vec\+Pair}} and if it reaches the position, it marks it as true \mbox{\Hypertarget{class_predator_a532e33a8f19a128f4a16018e105f3364}\label{class_predator_a532e33a8f19a128f4a16018e105f3364}} 
+\index{Predator@{Predator}!separation@{separation}}
+\index{separation@{separation}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{separation()}{separation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Predator\+::separation (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_predator}{Predator}} $>$ $\ast$}]{p,  }\item[{int}]{currentP }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_predator_ae2beabc22f0adbe02932e85ad96a84b8}\label{class_predator_ae2beabc22f0adbe02932e85ad96a84b8}} 
+\index{Predator@{Predator}!setTexture@{setTexture}}
+\index{setTexture@{setTexture}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{setTexture()}{setTexture()}}
+{\footnotesize\ttfamily void Predator\+::set\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_resource_manager}{Resource\+Manager}} \&}]{resources }\end{DoxyParamCaption})}
+
+Description\+: Sets the textures of the predator \mbox{\Hypertarget{class_predator_ac5ed60176f5495793e31d03e6307d539}\label{class_predator_ac5ed60176f5495793e31d03e6307d539}} 
+\index{Predator@{Predator}!spawn@{spawn}}
+\index{spawn@{spawn}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{spawn()}{spawn()}}
+{\footnotesize\ttfamily void Predator\+::spawn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{spawn\+Pos }\end{DoxyParamCaption})}
+
+Description\+: Spawns the predator at the specified location (the nests position) \mbox{\Hypertarget{class_predator_a17133c4b982c810352e56daa6e0bc5a4}\label{class_predator_a17133c4b982c810352e56daa6e0bc5a4}} 
+\index{Predator@{Predator}!update@{update}}
+\index{update@{update}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Predator\+::update (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})}
+
+Description\+: Updates the predator, if he is alive and out of range of the player, he does a pathfind to him, if hes in range of the player he looks at the player and fires a bullet 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_predator_a85ec5ed9b4b40864c759ce7e5e31b468}\label{class_predator_a85ec5ed9b4b40864c759ce7e5e31b468}} 
+\index{Predator@{Predator}!aliWeight@{aliWeight}}
+\index{aliWeight@{aliWeight}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{aliWeight}{aliWeight}}
+{\footnotesize\ttfamily float Predator\+::ali\+Weight = 0.\+5}
+
+\mbox{\Hypertarget{class_predator_a934675083ce5d755e18102f32361e707}\label{class_predator_a934675083ce5d755e18102f32361e707}} 
+\index{Predator@{Predator}!cohWeight@{cohWeight}}
+\index{cohWeight@{cohWeight}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{cohWeight}{cohWeight}}
+{\footnotesize\ttfamily float Predator\+::coh\+Weight = 0.\+5}
+
+\mbox{\Hypertarget{class_predator_abc20de08927cc96a54ff8e79499f27bf}\label{class_predator_abc20de08927cc96a54ff8e79499f27bf}} 
+\index{Predator@{Predator}!distanceBetweenMax@{distanceBetweenMax}}
+\index{distanceBetweenMax@{distanceBetweenMax}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{distanceBetweenMax}{distanceBetweenMax}}
+{\footnotesize\ttfamily float Predator\+::distance\+Between\+Max = 300}
+
+\mbox{\Hypertarget{class_predator_a414c5d03d3d91d1331ffcdecfa2d97de}\label{class_predator_a414c5d03d3d91d1331ffcdecfa2d97de}} 
+\index{Predator@{Predator}!m\_flockVector@{m\_flockVector}}
+\index{m\_flockVector@{m\_flockVector}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{m\_flockVector}{m\_flockVector}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Predator\+::m\+\_\+flock\+Vector}
+
+\mbox{\Hypertarget{class_predator_a44e0651b94e62a2ca1b1ea3d69e9f61f}\label{class_predator_a44e0651b94e62a2ca1b1ea3d69e9f61f}} 
+\index{Predator@{Predator}!m\_flockVelocity@{m\_flockVelocity}}
+\index{m\_flockVelocity@{m\_flockVelocity}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{m\_flockVelocity}{m\_flockVelocity}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Predator\+::m\+\_\+flock\+Velocity}
+
+\mbox{\Hypertarget{class_predator_a56843e2fa044cd63f18d327f58ee6e50}\label{class_predator_a56843e2fa044cd63f18d327f58ee6e50}} 
+\index{Predator@{Predator}!m\_id@{m\_id}}
+\index{m\_id@{m\_id}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{m\_id}{m\_id}}
+{\footnotesize\ttfamily int Predator\+::m\+\_\+id = 0}
+
+\mbox{\Hypertarget{class_predator_a64b266324d1d8031e88c436f119346b0}\label{class_predator_a64b266324d1d8031e88c436f119346b0}} 
+\index{Predator@{Predator}!m\_neighbours@{m\_neighbours}}
+\index{m\_neighbours@{m\_neighbours}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{m\_neighbours}{m\_neighbours}}
+{\footnotesize\ttfamily int Predator\+::m\+\_\+neighbours = 0}
+
+\mbox{\Hypertarget{class_predator_a08fe1220545a64b2c57e7f480a0e572e}\label{class_predator_a08fe1220545a64b2c57e7f480a0e572e}} 
+\index{Predator@{Predator}!m\_position@{m\_position}}
+\index{m\_position@{m\_position}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{m\_position}{m\_position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Predator\+::m\+\_\+position}
+
+\mbox{\Hypertarget{class_predator_a5019723ed9af503dce198a11bb0852f8}\label{class_predator_a5019723ed9af503dce198a11bb0852f8}} 
+\index{Predator@{Predator}!m\_velocity@{m\_velocity}}
+\index{m\_velocity@{m\_velocity}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{m\_velocity}{m\_velocity}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Predator\+::m\+\_\+velocity}
+
+\mbox{\Hypertarget{class_predator_a69d8d2679a46ce9d30b49ca9df149c82}\label{class_predator_a69d8d2679a46ce9d30b49ca9df149c82}} 
+\index{Predator@{Predator}!sepWeight@{sepWeight}}
+\index{sepWeight@{sepWeight}!Predator@{Predator}}
+\subsubsection{\texorpdfstring{sepWeight}{sepWeight}}
+{\footnotesize\ttfamily float Predator\+::sep\+Weight = 0.\+5}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_predator_8h}{Predator.\+h}}\item 
+Source/\mbox{\hyperlink{_predator_8cpp}{Predator.\+cpp}}\end{DoxyCompactItemize}

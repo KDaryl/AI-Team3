@@ -1,0 +1,133 @@
+\hypertarget{class_cell}{}\section{Cell Class Reference}
+\label{class_cell}\index{Cell@{Cell}}
+
+
+{\ttfamily \#include $<$Grid.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cell_a394510643e8664cf12b5efaf5cb99f71}{Cell}} ()
+\item 
+\mbox{\hyperlink{class_cell_a593b00540f83a9e43da779ca17e9a3f5}{Cell}} (\mbox{\hyperlink{class_vector2f}{Vector2f}} pos, sf\+::\+Vector2i grid\+Pos)
+\item 
+void \mbox{\hyperlink{class_cell_a22a3a73581af175918b3601ee1bf40f2}{set\+Rectangle}} (float sizeX, float sizeY)
+\item 
+void \mbox{\hyperlink{class_cell_a7a6b856714dcd60e3f819217c74c7b30}{add\+Split\+Grid\+Position}} (float x, float y)
+\item 
+void \mbox{\hyperlink{class_cell_aa60de37dfe4cadffa660e8239e68546d}{add\+Split\+Grid\+Position}} (sf\+::\+Vector2i pos)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_cell_a49a494187bbad4415fef8f29e770072b}{cost}}
+\item 
+bool \mbox{\hyperlink{class_cell_ac0fdf52adc7d9dd8c5de95635ff04de3}{visited}}
+\item 
+bool \mbox{\hyperlink{class_cell_a18a31874213ac8e564a7275cc9513de3}{is\+Wall}}
+\item 
+\mbox{\hyperlink{class_vector2f}{Vector2f}} \mbox{\hyperlink{class_cell_acdc3c3503837eb58baed27f15e29127c}{position}}
+\item 
+sf\+::\+Vector2i \mbox{\hyperlink{class_cell_a3553994227bdd472919b976635954a28}{grid\+Position}}
+\item 
+\mbox{\hyperlink{class_cell}{Cell}} $\ast$ \mbox{\hyperlink{class_cell_aa2848f5811bdd74d823ec181e81b96cf}{previous}}
+\item 
+std\+::vector$<$ sf\+::\+Vector2i $>$ \mbox{\hyperlink{class_cell_aa84384a1a569adb1f7391786ec2c71e7}{split\+Grid\+Pos}}
+\item 
+sf\+::\+Float\+Rect \mbox{\hyperlink{class_cell_a9caa7beb50cd41653973716195a28061}{rect}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description\+: \mbox{\hyperlink{class_cell}{Cell}} class, used for the grid 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_cell_a394510643e8664cf12b5efaf5cb99f71}\label{class_cell_a394510643e8664cf12b5efaf5cb99f71}} 
+\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{Cell()}{Cell()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Cell\+::\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_cell_a593b00540f83a9e43da779ca17e9a3f5}\label{class_cell_a593b00540f83a9e43da779ca17e9a3f5}} 
+\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{Cell()}{Cell()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Cell\+::\+Cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector2f}{Vector2f}}}]{pos,  }\item[{sf\+::\+Vector2i}]{grid\+Pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_cell_a7a6b856714dcd60e3f819217c74c7b30}\label{class_cell_a7a6b856714dcd60e3f819217c74c7b30}} 
+\index{Cell@{Cell}!addSplitGridPosition@{addSplitGridPosition}}
+\index{addSplitGridPosition@{addSplitGridPosition}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{addSplitGridPosition()}{addSplitGridPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Cell\+::add\+Split\+Grid\+Position (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_cell_aa60de37dfe4cadffa660e8239e68546d}\label{class_cell_aa60de37dfe4cadffa660e8239e68546d}} 
+\index{Cell@{Cell}!addSplitGridPosition@{addSplitGridPosition}}
+\index{addSplitGridPosition@{addSplitGridPosition}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{addSplitGridPosition()}{addSplitGridPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Cell\+::add\+Split\+Grid\+Position (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2i}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_cell_a22a3a73581af175918b3601ee1bf40f2}\label{class_cell_a22a3a73581af175918b3601ee1bf40f2}} 
+\index{Cell@{Cell}!setRectangle@{setRectangle}}
+\index{setRectangle@{setRectangle}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{setRectangle()}{setRectangle()}}
+{\footnotesize\ttfamily void Cell\+::set\+Rectangle (\begin{DoxyParamCaption}\item[{float}]{sizeX,  }\item[{float}]{sizeY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_cell_a49a494187bbad4415fef8f29e770072b}\label{class_cell_a49a494187bbad4415fef8f29e770072b}} 
+\index{Cell@{Cell}!cost@{cost}}
+\index{cost@{cost}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{cost}{cost}}
+{\footnotesize\ttfamily int Cell\+::cost}
+
+\mbox{\Hypertarget{class_cell_a3553994227bdd472919b976635954a28}\label{class_cell_a3553994227bdd472919b976635954a28}} 
+\index{Cell@{Cell}!gridPosition@{gridPosition}}
+\index{gridPosition@{gridPosition}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{gridPosition}{gridPosition}}
+{\footnotesize\ttfamily sf\+::\+Vector2i Cell\+::grid\+Position}
+
+\mbox{\Hypertarget{class_cell_a18a31874213ac8e564a7275cc9513de3}\label{class_cell_a18a31874213ac8e564a7275cc9513de3}} 
+\index{Cell@{Cell}!isWall@{isWall}}
+\index{isWall@{isWall}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{isWall}{isWall}}
+{\footnotesize\ttfamily bool Cell\+::is\+Wall}
+
+\mbox{\Hypertarget{class_cell_acdc3c3503837eb58baed27f15e29127c}\label{class_cell_acdc3c3503837eb58baed27f15e29127c}} 
+\index{Cell@{Cell}!position@{position}}
+\index{position@{position}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2f}{Vector2f}} Cell\+::position}
+
+\mbox{\Hypertarget{class_cell_aa2848f5811bdd74d823ec181e81b96cf}\label{class_cell_aa2848f5811bdd74d823ec181e81b96cf}} 
+\index{Cell@{Cell}!previous@{previous}}
+\index{previous@{previous}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{previous}{previous}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cell}{Cell}}$\ast$ Cell\+::previous}
+
+\mbox{\Hypertarget{class_cell_a9caa7beb50cd41653973716195a28061}\label{class_cell_a9caa7beb50cd41653973716195a28061}} 
+\index{Cell@{Cell}!rect@{rect}}
+\index{rect@{rect}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{rect}{rect}}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect Cell\+::rect}
+
+\mbox{\Hypertarget{class_cell_aa84384a1a569adb1f7391786ec2c71e7}\label{class_cell_aa84384a1a569adb1f7391786ec2c71e7}} 
+\index{Cell@{Cell}!splitGridPos@{splitGridPos}}
+\index{splitGridPos@{splitGridPos}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{splitGridPos}{splitGridPos}}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Vector2i$>$ Cell\+::split\+Grid\+Pos}
+
+\mbox{\Hypertarget{class_cell_ac0fdf52adc7d9dd8c5de95635ff04de3}\label{class_cell_ac0fdf52adc7d9dd8c5de95635ff04de3}} 
+\index{Cell@{Cell}!visited@{visited}}
+\index{visited@{visited}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{visited}{visited}}
+{\footnotesize\ttfamily bool Cell\+::visited}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Header/\mbox{\hyperlink{_grid_8h}{Grid.\+h}}\end{DoxyCompactItemize}
