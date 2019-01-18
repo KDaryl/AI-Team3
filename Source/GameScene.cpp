@@ -22,7 +22,7 @@ GameScene::GameScene() :
 	//Make it  more efficient than deleting and creating 
 	for (int i = 0; i < 4; i++)
 	{
-		m_predatorAI.push_back(Predator(m_player.m_position, &m_grid));
+		m_predatorAI.push_back(Predator(m_player.m_position, &m_grid, i));
 	}
 
 	loadMap();
