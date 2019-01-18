@@ -125,18 +125,18 @@ void Player::handleInput(InputHandler & input)
 				{
 					m_timeToFire = 0; //Reset our time to fire
 					bullet.spawn(m_position, m_angle);
+					ourResources->playAudio("Shoot", "sound", false);
+					m_timeToFire = 0; //Reset our time to fire
+					bullet.spawn(m_position, m_angle);
 					break;
-          ourResources->playAudio("Shoot", "sound", false);
-          m_timeToFire = 0; //Reset our time to fire
-          bullet.spawn(m_position, m_angle);
-          break;
+				}
 		  	}
 				
 		}
 
-    if (input.isButtonDown("W") || input.isButtonDown("Up"))
-    {
-		m_isMoving = true;
+		if (input.isButtonDown("W") || input.isButtonDown("Up"))
+		{
+			m_isMoving = true;
 		}
 		//If turning left
 		if (input.isButtonDown("A") || input.isButtonDown("Left"))

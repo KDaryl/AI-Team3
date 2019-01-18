@@ -2,7 +2,6 @@
 
 GameScene::GameScene() :
 	//player pointer maxSpeed and position
-	m_sweeperBot(&m_player, 100, Vector2f(5760,6476)),
 	m_player(5840, 6163),
 	m_hud(m_player, m_grid) //Our hud (minimap, health, workers collected)
 {
